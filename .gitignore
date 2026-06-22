@@ -1,0 +1,16 @@
+# Segredos — nunca versionar
+.automation/.env
+
+# Python
+.automation/__pycache__/
+.automation/*.pyc
+.automation/.venv/
+
+# Obsidian — config de workspace dá conflito entre máquinas
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.trash/
+
+# macOS
+.DS_Store

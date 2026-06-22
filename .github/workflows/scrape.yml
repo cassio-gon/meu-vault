@@ -1,0 +1,54 @@
+name: Scrape para o vault
+
+on:
+  schedule:
+    # GitHub usa UTC. 11:00 UTC = 08:00 no horário de Brasília (UTC-3).
+    - cron: "0 11 * * *"
+  # Permite rodar manualmente pela aba "Actions" do GitHub
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "URL para crawl"
+        required: true
+        default: "https://exemplo.com"
+      limit:
+        description: "Máx. de páginas"
+        required: false
+        default: "10"
+      tag:
+        description: "Tag das notas"
+        required: false
+        default: "research"
+
+# Necessário para o GITHUB_TOKEN poder dar push de volta no repo
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do vault
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependências
+        run: pip install -r .automation/requirements.txt
+
+      - name: Rodar scraper e commitar
+        env:
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+          VAULT_PATH: ${{ github.workspace }}
+          NOTES_SUBDIR: Research
+          GIT_BRANCH: ${{ github.ref_name }}
+        run: |
+          git config user.name "vault-bot"
+          git config user.email "actions@users.noreply.github.com"
+          python .automation/main.py crawl \
+            --url "${{ github.event.inputs.url || 'https://exemplo.com' }}" \
+            --limit "${{ github.event.inputs.limit || '10' }}" \
+            --tag "${{ github.event.inputs.tag || 'research' }}"
