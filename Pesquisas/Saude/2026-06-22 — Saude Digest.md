@@ -8,7 +8,7 @@ area: Saude
 source: firecrawl+gemini
 ---
 
-# 🤖 Saude — Principais do dia (2026-06-22)
+# 🗞️ Saude — Principais do dia (2026-06-22)
 
 ## 1. 📰 Ministério da Saúde inicia aplicação da vacina Pneumo 20 em todo o país
 
@@ -28,7 +28,7 @@ O governo federal anunciou um investimento de R$ 476 milhões para Minas Gerais,
 
 [Fonte](https://www.gov.br/saude/pt-br/assuntos/noticias/2026/junho/lula-e-padilha-anunciam-r-476-milhoes-para-ampliar-atendimento-especializado-e-reforcar-a-rede-sus-em-minas-gerais)
 
-## 4. 🛠️ Vaping é provável causa de câncer de pulmão e oral, aponta revisão
+## 4. 🔬 Vaping é provável causa de câncer de pulmão e oral, aponta revisão
 
 Uma revisão abrangente de evidências científicas concluiu que o uso de cigarros eletrônicos (vaping) provavelmente causa câncer de pulmão e oral. As descobertas, baseadas em biomarcadores humanos, estudos em animais e testes laboratoriais, questionam a percepção de que o vaping seja uma alternativa inofensiva ao tabagismo.
 
@@ -40,7 +40,7 @@ Os Estados Unidos aprovaram um novo ingrediente ativo para protetores solares, o
 
 [Fonte](https://portugues.medscape.com/viewarticle/novo-ativo-protetor-solar-aprovado-nos-eua-ap%C3%B3s-duas-2026a1000krx)
 
-## 6. 🛠️ Cientistas descobrem que neurônios precisam quebrar seu DNA para construir o cérebro
+## 6. 🔬 Cientistas descobrem que neurônios precisam quebrar seu DNA para construir o cérebro
 
 Pesquisadores descobriram que, durante o desenvolvimento cerebral, os neurônios recém-formados precisam romper seu DNA para conseguir se mover por espaços apertados e atingir seus destinos. Essa descoberta desafia a visão tradicional de que o DNA deve ser sempre preservado e abre novas perspectivas sobre a neurogênese.
 

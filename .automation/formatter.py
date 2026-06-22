@@ -53,6 +53,15 @@ def save_note(doc: ScrapedDoc, notes_dir: Path, tag: str) -> Path:
 # --- Digest (resumo do dia gerado por IA) -------------------------------------
 
 
+# Ícone por categoria de tópico (cobre as categorias de todas as áreas).
+CATEGORY_EMOJI = {
+    "noticia": "📰",
+    "ferramenta": "🛠️",
+    "estudo": "🔬",
+}
+DEFAULT_CATEGORY_EMOJI = "📌"
+
+
 def render_digest(topics: list[dict], day: str, tag: str, area: str) -> str:
     """Gera o conteúdo do digest: frontmatter + tópicos resumidos."""
     frontmatter = {
@@ -64,9 +73,9 @@ def render_digest(topics: list[dict], day: str, tag: str, area: str) -> str:
     }
     yaml_block = yaml.safe_dump(frontmatter, allow_unicode=True, sort_keys=False).strip()
 
-    parts = [f"---\n{yaml_block}\n---\n", f"# 🤖 {area} — Principais do dia ({day})\n"]
+    parts = [f"---\n{yaml_block}\n---\n", f"# 🗞️ {area} — Principais do dia ({day})\n"]
     for i, t in enumerate(topics, 1):
-        emoji = "📰" if t.get("category") == "noticia" else "🛠️"
+        emoji = CATEGORY_EMOJI.get(t.get("category"), DEFAULT_CATEGORY_EMOJI)
         parts.append(
             f"## {i}. {emoji} {t['title']}\n\n{t['summary'].strip()}\n\n[Fonte]({t['url']})\n"
         )
