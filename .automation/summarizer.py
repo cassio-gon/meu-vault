@@ -5,6 +5,7 @@ Usa a API REST do Google Generative Language via stdlib (sem dependências extra
 from __future__ import annotations
 
 import json
+import os
 import re
 import time
 import urllib.error
@@ -12,7 +13,8 @@ import urllib.request
 
 from scraper import ScrapedDoc
 
-MODEL = "gemini-2.5-flash"
+# Modelo pode ser sobrescrito por env (ex.: gemini-2.0-flash quando o 2.5 está em 503).
+MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
 ENDPOINT = (
     f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent"
 )
@@ -80,12 +82,43 @@ def _call_gemini(api_key: str, prompt: str, max_tokens: int = 8000) -> str:
     raise RuntimeError(f"Gemini falhou após {MAX_RETRIES} tentativas") from last_err
 
 
+# Perfis de prompt por área do digest. Cada área enquadra o resumo no seu domínio.
+DEFAULT_PROFILE = {
+    "role": "editor de tecnologia especializado em IA",
+    "focus": (
+        "notícias e ferramentas de IA (priorize o que realmente importa: lançamentos, "
+        "rodadas de investimento, modelos novos, ferramentas relevantes)"
+    ),
+    "categories": ["noticia", "ferramenta"],
+}
+PROFILES = {
+    "IA": DEFAULT_PROFILE,
+    "Saude": {
+        "role": "editor de jornalismo de saúde e medicina",
+        "focus": (
+            "atualidades em saúde e medicina (priorize o que realmente importa: estudos "
+            "científicos relevantes, políticas públicas e SUS, surtos e epidemiologia, novas "
+            "diretrizes clínicas, aprovações de medicamentos e tratamentos)"
+        ),
+        "categories": ["noticia", "estudo"],
+    },
+}
+
+
 def summarize_digest(
     api_key: str,
     docs: list[ScrapedDoc],
     num_topics: int = NUM_TOPICS,
+    area: str = "IA",
 ) -> list[dict]:
-    """Recebe os docs raspados e devolve uma lista de tópicos do dia."""
+    """Recebe os docs raspados e devolve uma lista de tópicos do dia.
+
+    O enquadramento do resumo depende da área (ver PROFILES).
+    """
+    profile = PROFILES.get(area, DEFAULT_PROFILE)
+    cats = profile["categories"]
+    cats_json = "|".join(f"'{c}'" for c in cats)
+
     blocks = []
     for d in docs:
         trecho = d.markdown[:MAX_CHARS_PER_SOURCE].strip()
@@ -94,21 +127,19 @@ def summarize_digest(
     context = "\n\n---\n\n".join(blocks)
 
     prompt = (
-        "Você é um editor de tecnologia especializado em IA. A seguir estão conteúdos "
-        "raspados HOJE de várias fontes (notícias e ferramentas de IA).\n\n"
-        f"Selecione os {num_topics} tópicos MAIS IMPORTANTES do dia no total, misturando "
-        "notícias e ferramentas (priorize o que realmente importa: lançamentos, rodadas de "
-        "investimento, modelos novos, ferramentas relevantes). Para cada tópico escreva um "
-        "resumo objetivo em português do Brasil de aproximadamente 500 caracteres. Use a URL "
-        "mais relevante da fonte correspondente e classifique cada tópico como 'noticia' ou "
-        "'ferramenta'.\n\n"
+        f"Você é um {profile['role']}. A seguir estão conteúdos raspados HOJE de várias "
+        "fontes.\n\n"
+        f"Selecione os {num_topics} tópicos MAIS IMPORTANTES do dia no total, cobrindo "
+        f"{profile['focus']}. Para cada tópico escreva um resumo objetivo em português do "
+        "Brasil de aproximadamente 500 caracteres. Use a URL mais relevante da fonte "
+        f"correspondente e classifique cada tópico como {cats_json}.\n\n"
         "Responda APENAS com um objeto JSON válido no formato:\n"
         '{"topics": [{"title": "...", "summary": "...", "url": "...", '
-        '"category": "noticia"|"ferramenta"}]}\n\n'
+        f'"category": {cats_json}}}]}}\n\n'
         f"Conteúdo das fontes:\n\n{context}"
     )
 
-    print(f"🧠 Resumindo com {MODEL}...")
+    print(f"🧠 Resumindo com {MODEL} (área: {area})...")
     text = _call_gemini(api_key, prompt)
     topics = _parse_topics(text)
     print(f"   → {len(topics)} tópicos gerados")
