@@ -10,38 +10,38 @@ source: firecrawl+gemini
 
 # 🗞️ Saude — Principais do dia (2026-06-22)
 
-## 1. 📰 SUS incorpora medicamento para leucemia e Acordo Global sobre Pandemias
+## 1. 📰 Governo cria política para formação médica (Enamed) e CFM se posiciona contra
 
-O SUS incorporou um novo medicamento para tratamento de leucemia mieloide aguda, ampliando as opções terapêuticas para pacientes. Simultaneamente, o presidente Lula e a OMS reforçam o pedido pela conclusão do Acordo Global sobre Pandemias, visando fortalecer a preparação e resposta mundial a futuras crises sanitárias, destacando a importância da cooperação internacional em saúde pública.
-
-[Fonte](https://agencia.fiocruz.br/giro-saude-destaca-novo-medicamento-para-leucemia-no-sus-e-pedido-para-conclusao-do-acordo-global)
-
-## 2. 📰 InfoGripe alerta para aumento de casos de SRAG em todas as idades
-
-O boletim InfoGripe da Fiocruz alerta para o aumento de casos de Síndrome Respiratória Aguda Grave (SRAG) em todas as faixas etárias – jovens, adultos e idosos. O crescimento acende um sinal de alerta para as autoridades de saúde e a população, indicando a necessidade de reforçar medidas preventivas e a vigilância epidemiológica para conter a propagação e evitar a sobrecarga dos sistemas de saúde.
-
-[Fonte](https://agencia.fiocruz.br/infogripe-numero-de-casos-de-srag-volta-aumentar-entre-jovens-adultos-e-idosos)
-
-## 3. 📰 Ministério da Saúde inicia aplicação da vacina Pneumo 20 no SUS
-
-O Ministério da Saúde iniciou a aplicação da vacina Pneumo 20 em todo o país, um imunizante que amplia a proteção contra doenças pneumocócicas como pneumonia e meningite. A prioridade é para crianças que ainda não completaram o esquema vacinal recomendado, marcando um avanço significativo na prevenção de infecções respiratórias graves e no calendário infantil de vacinação do SUS.
-
-[Fonte](https://www.gov.br/saude/pt-br/assuntos/noticias/2026/junho/ministerio-da-saude-inicia-aplicacao-da-vacina-pneumo-20-em-todo-o-pais)
-
-## 4. 📰 Governo cria política integrada para formação médica com Enamed
-
-O Governo Federal instituiu uma política integrada para a formação médica no Brasil, com a criação do Enamed. Esta Medida Provisória estabelece o Exame Nacional de Revalidação de Diplomas Médicos como avaliação obrigatória da graduação em medicina, requisito para acesso à residência médica e para o exercício profissional. A medida visa qualificar a formação e assegurar a competência dos futuros médicos.
+Medida Provisória estabelece o Enamed como avaliação obrigatória para graduação, acesso à residência e exercício profissional. O Conselho Federal de Medicina (CFM) expressou preocupação, afirmando que a MP 1.370/2026 não atende às necessidades de qualificação e aprendizagem, defendendo um exame de proficiência mais robusto.
 
 [Fonte](https://www.gov.br/saude/pt-br/assuntos/noticias/2026/junho/governo-do-brasil-cria-politica-integrada-para-formacao-medica)
 
-## 5. 🔬 Estudo Fiocruz: Bolsa Família reduz risco de morte por violência
+## 2. 📰 Ministério da Saúde inicia aplicação da vacina Pneumo 20 no país
 
-Um estudo da Fiocruz revelou que o programa Bolsa Família tem um impacto positivo na saúde pública, reduzindo em 18% o risco de morte em vítimas de violência interpessoal. A pesquisa destaca a importância das políticas sociais na proteção da vida e na diminuição das vulnerabilidades, mostrando como o suporte financeiro pode atuar como um fator protetor contra desfechos trágicos associados à violência.
+O Ministério da Saúde começou a aplicar a vacina Pneumo 20 em todo o Brasil, ampliando a proteção contra doenças como pneumonia e meningite. A imunização prioriza crianças que ainda não completaram o esquema vacinal recomendado, representando um avanço no calendário infantil e na saúde pública.
 
-[Fonte](https://agencia.fiocruz.br/estudo-revela-que-bolsa-familia-reduz-risco-de-morte-em-18-em-vitimas-de-violencia-interpessoal)
+[Fonte](https://www.gov.br/saude/pt-br/assuntos/noticias/2026/junho/ministerio-da-saude-inicia-aplicacao-da-vacina-pneumo-20-em-todo-o-pais)
 
-## 6. 🔬 Revisão científica: Vaping pode causar câncer de pulmão e oral
+## 3. 📰 Governo anuncia R$ 476 milhões para ampliar atendimento no SUS de MG
 
-Uma importante revisão científica concluiu que o uso de vapes (cigarros eletrônicos) é provável causador de câncer de pulmão e oral. Baseada em evidências de biomarcadores humanos, estudos em animais e laboratoriais, a pesquisa desafia a percepção de que o vaping é uma alternativa inofensiva ao tabagismo, alertando para riscos à saúde que podem surgir mais cedo do que o esperado.
+Lula e Padilha anunciaram um investimento de R$ 476 milhões para fortalecer o SUS em Minas Gerais. Os recursos visam ampliar o atendimento especializado, incluindo um hospital oncológico 100% SUS, cirurgia robótica, um novo hospital universitário e a expansão do programa "Agora Tem Especialistas – Caminhos da Saúde", melhorando o acesso da população.
+
+[Fonte](https://www.gov.br/saude/pt-br/assuntos/noticias/2026/junho/lula-e-padilha-anunciam-r-476-milhoes-para-ampliar-atendimento-especializado-e-reforcar-a-rede-sus-em-minas-gerais)
+
+## 4. 🔬 Revisão importante indica que vaping pode causar câncer de pulmão e oral
+
+Uma revisão abrangente concluiu que cigarros eletrônicos com nicotina provavelmente causam câncer de pulmão e oral. A evidência, que inclui biomarcadores humanos e estudos em animais e laboratório, desafia a ideia de que o vaping é uma alternativa inofensiva ao fumo, sugerindo riscos à saúde que podem surgir mais cedo do que o esperado.
 
 [Fonte](https://www.sciencedaily.com/releases/2026/06/260619020520.htm)
+
+## 5. 📰 CFM orienta rastreio de tuberculose antes de terapias imunobiológicas
+
+O Conselho Federal de Medicina (CFM) publicou o Parecer nº 14/2026, tornando obrigatório o rastreio da Infecção Latente por Tuberculose (ILTB) antes da prescrição de terapias imunobiológicas, como medicamentos anti-TNF e inibidores de JAK. A medida visa garantir a segurança dos pacientes e prevenir complicações graves, estabelecendo diretrizes claras para a prática médica.
+
+[Fonte](https://portal.cfm.org.br/noticias/cfm-orienta-medicos-sobre-rastreio-obrigatorio-antes-de-terapias-imunobiologicas/)
+
+## 6. 🔬 Hipertensão resistente em jovens eleva risco de AVC a níveis de idosos
+
+Pesquisas recentes indicam que a hipertensão resistente em pacientes jovens está causando taxas de Acidente Vascular Cerebral (AVC) comparáveis às observadas em idosos. Este achado preocupante destaca a gravidade da condição e a necessidade de intervenções precoces e eficazes para gerenciar a pressão arterial em populações mais jovens, prevenindo complicações cardiovasculares sérias.
+
+[Fonte](https://portugues.medscape.com/viewarticle/hipertens%C3%A3o-resistente-jovens-j%C3%A1-provoca-taxas-avc-comparaveis-as-de-idosos-2026a1000ksi)
