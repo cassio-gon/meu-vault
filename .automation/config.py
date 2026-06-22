@@ -14,7 +14,7 @@ load_dotenv(Path(__file__).resolve().parent / ".env")
 @dataclass(frozen=True)
 class Config:
     firecrawl_api_key: str
-    anthropic_api_key: str
+    gemini_api_key: str
     vault_path: Path
     notes_dir: Path
     github_repo: str
@@ -28,7 +28,7 @@ def load_config() -> Config:
     Levanta RuntimeError se algo essencial estiver faltando.
     """
     api_key = os.getenv("FIRECRAWL_API_KEY", "").strip()
-    anthropic_api_key = os.getenv("ANTHROPIC_API_KEY", "").strip()
+    gemini_api_key = os.getenv("GEMINI_API_KEY", "").strip()
     vault_path = Path(os.getenv("VAULT_PATH", "").strip()).expanduser()
     notes_subdir = os.getenv("NOTES_SUBDIR", "Research").strip()
     github_repo = os.getenv("GITHUB_REPO", "").strip()
@@ -40,7 +40,7 @@ def load_config() -> Config:
 
     return Config(
         firecrawl_api_key=api_key,
-        anthropic_api_key=anthropic_api_key,
+        gemini_api_key=gemini_api_key,
         vault_path=vault_path,
         notes_dir=vault_path / notes_subdir,
         github_repo=github_repo,
