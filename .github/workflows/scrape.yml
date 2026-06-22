@@ -52,3 +52,12 @@ jobs:
             --url "${{ github.event.inputs.url || 'https://exemplo.com' }}" \
             --limit "${{ github.event.inputs.limit || '10' }}" \
             --tag "${{ github.event.inputs.tag || 'research' }}"
+
+      - name: Notificar via ntfy
+        if: success()
+        run: |
+          curl -s \
+            -H "Title: Scrape concluido" \
+            -H "Tags: spider_web,robot" \
+            -d "Scrape para o vault finalizado." \
+            "https://ntfy.sh/cassio-vault-101dd452"
