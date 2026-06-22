@@ -20,15 +20,28 @@ import scraper
 import summarizer
 from config import load_config
 
-# Fontes que alimentam o digest de IA (notícias + ferramentas).
-# r/LocalLLaMA e X ficaram de fora por bloquearem scraping.
-IA_SOURCES = [
-    "https://techcrunch.com/category/artificial-intelligence/",
-    "https://www.theverge.com/ai-artificial-intelligence",
-    "https://tldr.tech/ai",
-    "https://huggingface.co/models?sort=trending",
-    "https://www.theresanaiforthat.com/",
-]
+# Fontes que alimentam cada digest, indexadas por área (--area).
+# r/LocalLLaMA e X ficaram de fora do digest de IA por bloquearem scraping.
+DIGEST_SOURCES = {
+    "IA": [
+        "https://techcrunch.com/category/artificial-intelligence/",
+        "https://www.theverge.com/ai-artificial-intelligence",
+        "https://tldr.tech/ai",
+        "https://huggingface.co/models?sort=trending",
+        "https://www.theresanaiforthat.com/",
+    ],
+    # Saúde (viés Brasil) + medicina com base científica.
+    "Saude": [
+        # Saúde geral
+        "https://portal.fiocruz.br/noticias",
+        "https://www.gov.br/saude/pt-br/assuntos/noticias",
+        "https://saude.abril.com.br/",
+        # Medicina / base científica
+        "https://portal.cfm.org.br/noticias",
+        "https://portugues.medscape.com/",
+        "https://www.sciencedaily.com/news/health_medicine/",
+    ],
+}
 
 
 def _cmd_scrape(args, cfg) -> int:
@@ -58,9 +71,15 @@ def _cmd_digest(args, cfg) -> int:
     tag = args.tag or cfg.default_tag
     notes_dir = cfg.vault_path / args.folder
 
+    sources = DIGEST_SOURCES.get(args.area)
+    if not sources:
+        disponiveis = ", ".join(DIGEST_SOURCES)
+        print(f"❌ Área sem fontes definidas: {args.area}. Disponíveis: {disponiveis}")
+        return 2
+
     # 1. Raspa cada fonte (falhas individuais não derrubam o digest)
     docs = []
-    for url in IA_SOURCES:
+    for url in sources:
         try:
             doc = scraper.scrape_url(cfg.firecrawl_api_key, url)
             if doc.markdown.strip():
