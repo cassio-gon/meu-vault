@@ -14,6 +14,7 @@ from __future__ import annotations
 import argparse
 import sys
 
+import feeds
 import formatter
 import git_sync
 import scraper
@@ -21,6 +22,8 @@ import summarizer
 from config import load_config
 
 # Fontes que alimentam cada digest, indexadas por área (--area).
+# Cada fonte é uma URL (str → scrape via Firecrawl) ou um dict
+# {"url", "kind": "rss"|"scrape"}. RSS é lido por stdlib e NÃO gasta crédito.
 # r/LocalLLaMA e X ficaram de fora do digest de IA por bloquearem scraping.
 DIGEST_SOURCES = {
     "IA": [
@@ -31,15 +34,17 @@ DIGEST_SOURCES = {
         "https://www.theresanaiforthat.com/",
     ],
     # Saúde (viés Brasil) + medicina com base científica.
+    # RSS onde há feed noticioso bom; scrape via Firecrawl onde não há.
+    # gov.br: /RSS lista pastas por ano (inútil) → scrape. Medscape PT: sem feed → scrape.
     "Saude": [
         # Saúde geral
-        "https://portal.fiocruz.br/noticias",
-        "https://www.gov.br/saude/pt-br/assuntos/noticias",
-        "https://saude.abril.com.br/",
+        {"url": "https://agencia.fiocruz.br/rss.xml", "kind": "rss"},
+        {"url": "https://www.gov.br/saude/pt-br/assuntos/noticias", "kind": "scrape"},
+        {"url": "https://saude.abril.com.br/feed/", "kind": "rss"},
         # Medicina / base científica
-        "https://portal.cfm.org.br/noticias",
-        "https://portugues.medscape.com/",
-        "https://www.sciencedaily.com/news/health_medicine/",
+        {"url": "https://portal.cfm.org.br/noticias/feed/", "kind": "rss"},
+        {"url": "https://portugues.medscape.com/", "kind": "scrape"},
+        {"url": "https://www.sciencedaily.com/rss/health_medicine.xml", "kind": "rss"},
     ],
 }
 
@@ -77,11 +82,18 @@ def _cmd_digest(args, cfg) -> int:
         print(f"❌ Área sem fontes definidas: {args.area}. Disponíveis: {disponiveis}")
         return 2
 
-    # 1. Raspa cada fonte (falhas individuais não derrubam o digest)
+    # 1. Coleta cada fonte: RSS (stdlib) ou scrape (Firecrawl).
+    #    Falhas individuais não derrubam o digest.
     docs = []
-    for url in sources:
+    for src in sources:
+        if isinstance(src, str):
+            src = {"url": src, "kind": "scrape"}
+        url, kind = src["url"], src.get("kind", "scrape")
         try:
-            doc = scraper.scrape_url(cfg.firecrawl_api_key, url)
+            if kind == "rss":
+                doc = feeds.fetch_feed(url)
+            else:
+                doc = scraper.scrape_url(cfg.firecrawl_api_key, url)
             if doc.markdown.strip():
                 docs.append(doc)
         except Exception as err:  # noqa: BLE001
