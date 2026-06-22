@@ -6,6 +6,7 @@ from __future__ import annotations
 
 import json
 import re
+import time
 import urllib.error
 import urllib.request
 
@@ -17,6 +18,10 @@ ENDPOINT = (
 )
 MAX_CHARS_PER_SOURCE = 6000  # limita tokens de entrada por fonte
 NUM_TOPICS = 6
+
+# Retry para 429/5xx (sobrecarga transitória do Gemini)
+MAX_RETRIES = 4
+RETRYABLE = {429, 500, 502, 503, 504}
 
 
 def _parse_topics(text: str) -> list[dict]:
@@ -44,23 +49,35 @@ def _call_gemini(api_key: str, prompt: str, max_tokens: int = 8000) -> str:
         }
     ).encode("utf-8")
 
-    req = urllib.request.Request(
-        f"{ENDPOINT}?key={api_key}",
-        data=body,
-        headers={"Content-Type": "application/json"},
-        method="POST",
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=120) as resp:
-            data = json.load(resp)
-    except urllib.error.HTTPError as err:
-        detail = err.read().decode("utf-8", "ignore")[:300]
-        raise RuntimeError(f"Gemini HTTP {err.code}: {detail}") from err
-
-    candidates = data.get("candidates", [])
-    if not candidates:
-        raise RuntimeError(f"Gemini não retornou candidates: {str(data)[:300]}")
-    return candidates[0]["content"]["parts"][0]["text"]
+    last_err: Exception | None = None
+    for attempt in range(1, MAX_RETRIES + 1):
+        req = urllib.request.Request(
+            f"{ENDPOINT}?key={api_key}",
+            data=body,
+            headers={"Content-Type": "application/json"},
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=120) as resp:
+                data = json.load(resp)
+            candidates = data.get("candidates", [])
+            if not candidates:
+                raise RuntimeError(f"Gemini não retornou candidates: {str(data)[:300]}")
+            return candidates[0]["content"]["parts"][0]["text"]
+        except urllib.error.HTTPError as err:
+            detail = err.read().decode("utf-8", "ignore")[:200]
+            last_err = RuntimeError(f"Gemini HTTP {err.code}: {detail}")
+            if err.code not in RETRYABLE:
+                raise last_err from err
+            wait = 5 * attempt
+            print(f"⚠️  Gemini HTTP {err.code} (tentativa {attempt}/{MAX_RETRIES}); aguardando {wait}s...")
+        except urllib.error.URLError as err:
+            last_err = RuntimeError(f"Gemini erro de rede: {err}")
+            wait = 5 * attempt
+            print(f"⚠️  Rede falhou (tentativa {attempt}/{MAX_RETRIES}); aguardando {wait}s...")
+        if attempt < MAX_RETRIES:
+            time.sleep(wait)
+    raise RuntimeError(f"Gemini falhou após {MAX_RETRIES} tentativas") from last_err
 
 
 def summarize_digest(
