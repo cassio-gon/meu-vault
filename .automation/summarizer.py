@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import re
 
 from anthropic import Anthropic
 
@@ -11,28 +12,18 @@ MODEL = "claude-opus-4-8"
 MAX_CHARS_PER_SOURCE = 6000  # limita tokens de entrada por fonte
 NUM_TOPICS = 6
 
-# Estrutura garantida da resposta (structured outputs)
-SCHEMA = {
-    "type": "object",
-    "properties": {
-        "topics": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "title": {"type": "string"},
-                    "summary": {"type": "string"},
-                    "url": {"type": "string"},
-                    "category": {"type": "string", "enum": ["noticia", "ferramenta"]},
-                },
-                "required": ["title", "summary", "url", "category"],
-                "additionalProperties": False,
-            },
-        }
-    },
-    "required": ["topics"],
-    "additionalProperties": False,
-}
+
+def _parse_topics(text: str) -> list[dict]:
+    """Extrai o array de tópicos do texto da resposta (tolerante a cercas ```)."""
+    cleaned = text.strip()
+    # Remove cercas de código tipo ```json ... ```
+    fence = re.search(r"```(?:json)?\s*(.*?)```", cleaned, re.DOTALL)
+    if fence:
+        cleaned = fence.group(1).strip()
+    data = json.loads(cleaned)
+    if isinstance(data, dict):
+        return data.get("topics", [])
+    return data  # caso o modelo devolva o array direto
 
 
 def summarize_digest(
@@ -59,6 +50,9 @@ def summarize_digest(
         "resumo objetivo em português do Brasil de aproximadamente 500 caracteres. Use a URL "
         "mais relevante da fonte correspondente e classifique cada tópico como 'noticia' ou "
         "'ferramenta'.\n\n"
+        "Responda APENAS com um objeto JSON válido, sem texto antes ou depois, no formato:\n"
+        '{"topics": [{"title": "...", "summary": "...", "url": "...", '
+        '"category": "noticia"|"ferramenta"}]}\n\n'
         f"Conteúdo das fontes:\n\n{context}"
     )
 
@@ -66,8 +60,6 @@ def summarize_digest(
     response = client.messages.create(
         model=MODEL,
         max_tokens=8000,
-        thinking={"type": "adaptive"},
-        output_config={"format": {"type": "json_schema", "schema": SCHEMA}},
         messages=[{"role": "user", "content": prompt}],
     )
 
@@ -75,6 +67,6 @@ def summarize_digest(
         raise RuntimeError("Claude recusou a requisição (stop_reason=refusal).")
 
     text = next(b.text for b in response.content if b.type == "text")
-    topics = json.loads(text)["topics"]
+    topics = _parse_topics(text)
     print(f"   → {len(topics)} tópicos gerados")
     return topics
