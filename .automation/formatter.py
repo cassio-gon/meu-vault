@@ -1,8 +1,9 @@
-"""Converte ScrapedDoc em arquivo .md com frontmatter YAML."""
+"""Converte resultados em arquivos .md com frontmatter YAML."""
 from __future__ import annotations
 
 import re
 import unicodedata
+from datetime import date
 from pathlib import Path
 
 import yaml
@@ -14,11 +15,9 @@ MAX_SLUG_LEN = 80
 
 def slugify(text: str) -> str:
     """Transforma um título em slug seguro para nome de arquivo."""
-    # Remove acentos
     text = unicodedata.normalize("NFKD", text)
     text = text.encode("ascii", "ignore").decode("ascii")
     text = text.lower().strip()
-    # Troca tudo que não é alfanumérico por hífen
     text = re.sub(r"[^a-z0-9]+", "-", text)
     text = text.strip("-")
     return (text or "sem-titulo")[:MAX_SLUG_LEN]
@@ -30,7 +29,7 @@ def build_filename(doc: ScrapedDoc) -> str:
 
 
 def render_markdown(doc: ScrapedDoc, tag: str, source: str = "firecrawl") -> str:
-    """Gera o conteúdo final do .md (frontmatter YAML + corpo)."""
+    """Gera o conteúdo de uma nota crua (scrape/crawl)."""
     frontmatter = {
         "title": doc.title,
         "date": doc.scraped_at,
@@ -38,16 +37,47 @@ def render_markdown(doc: ScrapedDoc, tag: str, source: str = "firecrawl") -> str
         "tags": [tag],
         "source": source,
     }
-    yaml_block = yaml.safe_dump(
-        frontmatter, allow_unicode=True, sort_keys=False
-    ).strip()
+    yaml_block = yaml.safe_dump(frontmatter, allow_unicode=True, sort_keys=False).strip()
     return f"---\n{yaml_block}\n---\n\n{doc.markdown.strip()}\n"
 
 
 def save_note(doc: ScrapedDoc, notes_dir: Path, tag: str) -> Path:
-    """Escreve a nota em disco e retorna o caminho do arquivo criado."""
+    """Escreve uma nota crua em disco e retorna o caminho."""
     notes_dir.mkdir(parents=True, exist_ok=True)
     path = notes_dir / build_filename(doc)
     path.write_text(render_markdown(doc, tag), encoding="utf-8")
     print(f"✅ Nota salva: {path.name}")
+    return path
+
+
+# --- Digest (resumo do dia gerado por IA) -------------------------------------
+
+
+def render_digest(topics: list[dict], day: str, tag: str, area: str) -> str:
+    """Gera o conteúdo do digest: frontmatter + tópicos resumidos."""
+    frontmatter = {
+        "title": f"{area} — Digest {day}",
+        "date": day,
+        "tags": [tag, "digest"],
+        "area": area,
+        "source": "firecrawl+claude",
+    }
+    yaml_block = yaml.safe_dump(frontmatter, allow_unicode=True, sort_keys=False).strip()
+
+    parts = [f"---\n{yaml_block}\n---\n", f"# 🤖 {area} — Principais do dia ({day})\n"]
+    for i, t in enumerate(topics, 1):
+        emoji = "📰" if t.get("category") == "noticia" else "🛠️"
+        parts.append(
+            f"## {i}. {emoji} {t['title']}\n\n{t['summary'].strip()}\n\n[Fonte]({t['url']})\n"
+        )
+    return "\n".join(parts)
+
+
+def save_digest(topics: list[dict], notes_dir: Path, tag: str, area: str) -> Path:
+    """Escreve o digest do dia e retorna o caminho do arquivo."""
+    notes_dir.mkdir(parents=True, exist_ok=True)
+    day = date.today().isoformat()
+    path = notes_dir / f"{day} — {area} Digest.md"
+    path.write_text(render_digest(topics, day, tag, area), encoding="utf-8")
+    print(f"✅ Digest salvo: {path.name}")
     return path

@@ -1,11 +1,13 @@
 """vault-automator — entry point CLI.
 
 Pipeline: Firecrawl scrape → Markdown formatado → Git commit → Push GitHub.
+Modo digest: várias fontes → resumo do dia (Claude) → 1 nota.
 
 Uso:
     python main.py scrape --url https://exemplo.com --tag medicina
     python main.py crawl  --url https://exemplo.com --limit 10 --tag concorrentes
-    python main.py sync   # só faz o git push, sem scrape
+    python main.py digest --area IA --tag ia --folder "Pesquisas/IA"
+    python main.py sync
 """
 from __future__ import annotations
 
@@ -15,7 +17,18 @@ import sys
 import formatter
 import git_sync
 import scraper
+import summarizer
 from config import load_config
+
+# Fontes que alimentam o digest de IA (notícias + ferramentas).
+# r/LocalLLaMA e X ficaram de fora por bloquearem scraping.
+IA_SOURCES = [
+    "https://techcrunch.com/category/artificial-intelligence/",
+    "https://www.theverge.com/ai-artificial-intelligence",
+    "https://tldr.tech/ai",
+    "https://huggingface.co/models?sort=trending",
+    "https://www.theresanaiforthat.com/",
+]
 
 
 def _cmd_scrape(args, cfg) -> int:
@@ -41,6 +54,36 @@ def _cmd_crawl(args, cfg) -> int:
     return 0
 
 
+def _cmd_digest(args, cfg) -> int:
+    tag = args.tag or cfg.default_tag
+    notes_dir = cfg.vault_path / args.folder
+
+    # 1. Raspa cada fonte (falhas individuais não derrubam o digest)
+    docs = []
+    for url in IA_SOURCES:
+        try:
+            doc = scraper.scrape_url(cfg.firecrawl_api_key, url)
+            if doc.markdown.strip():
+                docs.append(doc)
+        except Exception as err:  # noqa: BLE001
+            print(f"⚠️  Pulei {url}: {err}")
+
+    if not docs:
+        print("❌ Nenhuma fonte retornou conteúdo.")
+        return 1
+
+    # 2. Claude sintetiza os tópicos do dia
+    topics = summarizer.summarize_digest(cfg.anthropic_api_key, docs, num_topics=args.topics)
+    if not topics:
+        print("❌ O resumo não gerou tópicos.")
+        return 1
+
+    # 3. Salva o digest e sincroniza
+    formatter.save_digest(topics, notes_dir, tag, area=args.area)
+    git_sync.sync(cfg.vault_path, cfg.git_branch, note_count=1)
+    return 0
+
+
 def _cmd_sync(args, cfg) -> int:
     git_sync.sync(cfg.vault_path, cfg.git_branch, note_count=0)
     return 0
@@ -54,15 +97,22 @@ def build_parser() -> argparse.ArgumentParser:
     sub = parser.add_subparsers(dest="command", required=True)
 
     p_scrape = sub.add_parser("scrape", help="Scrape de uma única URL")
-    p_scrape.add_argument("--url", required=True, help="URL a ser raspada")
-    p_scrape.add_argument("--tag", help="Tag aplicada na nota (default: DEFAULT_TAG)")
+    p_scrape.add_argument("--url", required=True)
+    p_scrape.add_argument("--tag")
     p_scrape.set_defaults(func=_cmd_scrape)
 
     p_crawl = sub.add_parser("crawl", help="Crawl de um domínio inteiro")
-    p_crawl.add_argument("--url", required=True, help="URL base do domínio")
-    p_crawl.add_argument("--limit", type=int, default=10, help="Máx. de páginas (default: 10)")
-    p_crawl.add_argument("--tag", help="Tag aplicada nas notas (default: DEFAULT_TAG)")
+    p_crawl.add_argument("--url", required=True)
+    p_crawl.add_argument("--limit", type=int, default=10)
+    p_crawl.add_argument("--tag")
     p_crawl.set_defaults(func=_cmd_crawl)
+
+    p_digest = sub.add_parser("digest", help="Resumo do dia (várias fontes → Claude → 1 nota)")
+    p_digest.add_argument("--area", default="IA", help="Nome da área (ex: IA)")
+    p_digest.add_argument("--tag", help="Tag das notas (default: DEFAULT_TAG)")
+    p_digest.add_argument("--folder", default="Pesquisas/IA", help="Subpasta de destino no vault")
+    p_digest.add_argument("--topics", type=int, default=6, help="Quantidade de tópicos")
+    p_digest.set_defaults(func=_cmd_digest)
 
     p_sync = sub.add_parser("sync", help="Só commita e dá push (sem scrape)")
     p_sync.set_defaults(func=_cmd_sync)
