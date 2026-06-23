@@ -2,8 +2,8 @@ name: Scrape para o vault
 
 on:
   schedule:
-    # GitHub usa UTC. 11:00 UTC = 08:00 no horário de Brasília (UTC-3).
-    - cron: "0 11 * * *"
+    # GitHub usa UTC. 10:00 UTC = 07:00 no horário de Brasília (UTC-3).
+    - cron: "0 10 * * *"
   # Permite rodar manualmente pela aba "Actions" do GitHub
   workflow_dispatch:
     inputs:
