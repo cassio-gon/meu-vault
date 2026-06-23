@@ -43,7 +43,7 @@ jobs:
         env:
           FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
           VAULT_PATH: ${{ github.workspace }}
-          NOTES_SUBDIR: Research
+          NOTES_SUBDIR: .raw
           GIT_BRANCH: ${{ github.ref_name }}
         run: |
           git config user.name "vault-bot"
