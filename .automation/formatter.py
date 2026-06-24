@@ -75,11 +75,13 @@ def render_digest(topics: list[dict], day: str, tag: str, area: str) -> str:
     }
     yaml_block = yaml.safe_dump(frontmatter, allow_unicode=True, sort_keys=False).strip()
 
-    parts = [f"---\n{yaml_block}\n---\n", f"# 🗞️ {area} — Principais do dia ({day})\n\n> Gerado em {day}\n"]
+    parts = [f"---\n{yaml_block}\n---\n", f"# 🗞️ {area} — Principais do dia ({day})\n"]
     for i, t in enumerate(topics, 1):
         emoji = CATEGORY_EMOJI.get(t.get("category"), DEFAULT_CATEGORY_EMOJI)
+        news_date = t.get("date", "N/D")
         parts.append(
-            f"## {i}. {emoji} {t['title']}\n\n{t['summary'].strip()}\n\n[Fonte]({t['url']})\n"
+            f"## {i}. {emoji} {t['title']}\n\n{t['summary'].strip()}\n\n"
+            f"📅 Data da notícia: {news_date} · [Fonte]({t['url']})\n"
         )
     return "\n".join(parts)
 

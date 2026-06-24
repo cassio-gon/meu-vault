@@ -232,7 +232,9 @@ def summarize_digest(
         f"correspondente e classifique cada tópico como {cats_json}.\n\n"
         "Responda APENAS com um objeto JSON válido no formato:\n"
         '{"topics": [{"title": "...", "summary": "...", "url": "...", '
-        f'"category": {cats_json}}}]}}\n\n'
+        f'"category": {cats_json}, "date": "DD/MM/AAAA"}}]}}\n\n'
+        'O campo "date" deve conter a data de publicação da notícia no formato DD/MM/AAAA. '
+        'Se não for possível identificar a data, use "N/D".\n\n'
         f"Conteúdo das fontes:\n\n{context}"
     )
 
