@@ -2,8 +2,9 @@ name: Resumos Diários
 
 on:
   schedule:
-    # 09:30 UTC = 06:30 no horário de Brasília (UTC-3)
-    - cron: "30 9 * * *"
+    # 08:07 UTC = 05:07 no horário do Rio de Janeiro (UTC-3)
+    # Minuto "quebrado" para reduzir atraso/skip do agendador do GitHub no horário de pico.
+    - cron: "7 8 * * *"
   workflow_dispatch:
 
 permissions:
