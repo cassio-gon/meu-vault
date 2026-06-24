@@ -169,6 +169,16 @@ PROFILES = {
         ),
         "categories": ["noticia", "analise", "dado"],
     },
+    "Jogos": {
+        "role": "editor de jornalismo de games especializado em PS5 e PC",
+        "focus": (
+            "jogos e indústria de games (priorize: lançamentos e reviews relevantes, "
+            "notícias da indústria como aquisições e demissões, novidades de PS5 e PC, "
+            "atualizações de jogos em destaque, tendências de mercado e eventos como "
+            "State of Play, Xbox Showcase e The Game Awards)"
+        ),
+        "categories": ["noticia", "review", "lancamento"],
+    },
     "MedTrab": {
         "role": "editor especializado em medicina do trabalho e saúde ocupacional no Brasil",
         "focus": (

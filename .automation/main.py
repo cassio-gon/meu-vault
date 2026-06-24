@@ -80,6 +80,19 @@ DIGEST_SOURCES = {
         {"url": "https://www.pais-e-filhos.com.br/bebe/", "kind": "scrape"},
         {"url": "https://agencia.fiocruz.br/rss.xml", "kind": "rss"},
     ],
+    # Jogos — foco em PS5 e PC, mix brasileiro e internacional.
+    "Jogos": [
+        {"url": "https://br.ign.com/feed.xml", "kind": "rss"},
+        {"url": "https://www.eurogamer.net/?format=rss", "kind": "rss"},
+        {"url": "https://www.rockpapershotgun.com/feed/", "kind": "rss"},
+        {"url": "https://www.theverge.com/games/rss/index.xml", "kind": "rss"},
+        {"url": "https://www.pcgamer.com/rss/", "kind": "rss"},
+        {"url": "https://www.gamesradar.com/rss/", "kind": "rss"},
+        {"url": "https://www.destructoid.com/feed/", "kind": "rss"},
+        {"url": "https://www.gamesindustry.biz/feed", "kind": "rss"},
+        {"url": "https://www.adrenaline.com.br/feed/", "kind": "rss"},
+        {"url": "https://www.videogameschronicle.com/feed/", "kind": "rss"},
+    ],
     # Saúde (viés Brasil) + medicina com base científica.
     # RSS onde há feed noticioso bom; scrape onde não há.
     # gov.br: /RSS lista pastas por ano (inútil) → scrape. Medscape PT: sem feed → scrape.

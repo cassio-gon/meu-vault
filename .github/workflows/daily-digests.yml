@@ -48,6 +48,12 @@ jobs:
             topics: 10
             ntfy_title: "Digest Puerpério pronto"
             ntfy_tags: "pregnant_woman,robot"
+          - area: Jogos
+            tag: jogos
+            folder: "Pesquisas/Jogos"
+            topics: 10
+            ntfy_title: "Digest de Jogos pronto"
+            ntfy_tags: "video_game,robot"
           - area: RN
             tag: recem-nascidos
             folder: "Pesquisas/RN"
