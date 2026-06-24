@@ -41,6 +41,12 @@ jobs:
             topics: 10
             ntfy_title: "Digest Mercado Financeiro pronto"
             ntfy_tags: "chart_with_upwards_trend,robot"
+          - area: RN
+            tag: recem-nascidos
+            folder: "Pesquisas/RN"
+            topics: 10
+            ntfy_title: "Digest Recém-Nascidos pronto"
+            ntfy_tags: "baby,robot"
           # Para adicionar nova área: copie um bloco acima e ajuste os campos.
 
     steps:
