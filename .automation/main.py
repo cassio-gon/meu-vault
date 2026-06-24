@@ -45,11 +45,11 @@ DIGEST_SOURCES = {
     # Medicina do Trabalho e Saúde Ocupacional — viés regulatório brasileiro.
     "MedTrab": [
         {"url": "https://www.anamt.org.br/portal/", "kind": "scrape"},
-        {"url": "https://www.fundacentro.gov.br/noticias", "kind": "scrape"},
-        {"url": "https://www.gov.br/trabalho-e-emprego/pt-br/noticias-e-conteudo/noticias", "kind": "scrape"},
-        {"url": "https://www.cipamagazine.com.br/", "kind": "scrape"},
         {"url": "https://rbmt.org.br/", "kind": "scrape"},
         {"url": "https://www.segurancanotrabalho.com.br/", "kind": "scrape"},
+        {"url": "https://portal.cfm.org.br/noticias/feed/", "kind": "rss"},
+        {"url": "https://news.google.com/rss/search?q=medicina+do+trabalho+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+        {"url": "https://news.google.com/rss/search?q=NR+segurança+saúde+trabalho+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
     ],
     # Saúde (viés Brasil) + medicina com base científica.
     # RSS onde há feed noticioso bom; scrape onde não há.

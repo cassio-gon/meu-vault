@@ -48,7 +48,7 @@ def _parse_topics(text: str) -> list[dict]:
     return data
 
 
-def _call_gemini(api_key: str, prompt: str, max_tokens: int = 8000) -> str:
+def _call_gemini(api_key: str, prompt: str, max_tokens: int = 16000) -> str:
     """Chama o Gemini e devolve o texto da resposta (JSON forçado)."""
     body = json.dumps(
         {
