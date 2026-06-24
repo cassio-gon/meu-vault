@@ -6,7 +6,9 @@ import time
 import urllib.parse
 import urllib.request
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
+
+_BRT = timezone(timedelta(hours=-3))
 from html.parser import HTMLParser
 
 import trafilatura
@@ -67,7 +69,7 @@ def _hf_trending() -> ScrapedDoc:
         title="HuggingFace Trending Models",
         markdown="\n".join(lines),
         url="https://huggingface.co/models?sort=trending",
-        scraped_at=datetime.now().strftime("%Y-%m-%d %Hh%M"),
+        scraped_at=datetime.now(tz=_BRT).strftime("%Y-%m-%d %Hh%M"),
     )
 
 
@@ -90,7 +92,7 @@ def _extract_text(url: str) -> ScrapedDoc:
         title=str(result.get("title") or url).strip(),
         markdown=str(result["text"]).strip(),
         url=str(result.get("url") or url),
-        scraped_at=datetime.now().strftime("%Y-%m-%d %Hh%M"),
+        scraped_at=datetime.now(tz=_BRT).strftime("%Y-%m-%d %Hh%M"),
     )
 
 

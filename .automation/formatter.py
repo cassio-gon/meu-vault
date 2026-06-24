@@ -3,7 +3,9 @@ from __future__ import annotations
 
 import re
 import unicodedata
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
+
+_BRT = timezone(timedelta(hours=-3))
 from pathlib import Path
 
 import yaml
@@ -85,7 +87,7 @@ def render_digest(topics: list[dict], day: str, tag: str, area: str) -> str:
 def save_digest(topics: list[dict], notes_dir: Path, tag: str, area: str) -> Path:
     """Escreve o digest do dia e retorna o caminho do arquivo."""
     notes_dir.mkdir(parents=True, exist_ok=True)
-    day = datetime.now().strftime("%Y-%m-%d %Hh%M")
+    day = datetime.now(tz=_BRT).strftime("%Y-%m-%d %Hh%M")
     path = notes_dir / f"{day} — {area} Digest.md"
     path.write_text(render_digest(topics, day, tag, area), encoding="utf-8")
     print(f"✅ Digest salvo: {path.name}")
