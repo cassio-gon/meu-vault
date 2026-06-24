@@ -1,0 +1,85 @@
+name: Resumos Diários
+
+on:
+  schedule:
+    # 09:30 UTC = 06:30 no horário de Brasília (UTC-3)
+    - cron: "30 9 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false   # falha numa área não cancela as demais
+      max-parallel: 1    # sequencial para evitar conflito no git push
+      matrix:
+        include:
+          - area: IA
+            tag: ia
+            folder: "Pesquisas/IA"
+            topics: 10
+            ntfy_title: "Digest de IA pronto"
+            ntfy_tags: "newspaper,robot"
+          - area: Saude
+            tag: saude
+            folder: "Pesquisas/Saude"
+            topics: 10
+            ntfy_title: "Digest de Saúde pronto"
+            ntfy_tags: "hospital,robot"
+          - area: MedTrab
+            tag: medtrab
+            folder: "Pesquisas/Medicina do Trabalho"
+            topics: 10
+            ntfy_title: "Digest Med. Trabalho pronto"
+            ntfy_tags: "stethoscope,robot"
+          - area: MercFin
+            tag: mercado-financeiro
+            folder: "Pesquisas/Mercado Financeiro"
+            topics: 10
+            ntfy_title: "Digest Mercado Financeiro pronto"
+            ntfy_tags: "chart_with_upwards_trend,robot"
+          # Para adicionar nova área: copie um bloco acima e ajuste os campos.
+
+    steps:
+      - name: Checkout do vault
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependências
+        run: pip install -r .automation/requirements.txt
+
+      - name: Gerar digest e commitar
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          VAULT_PATH: ${{ github.workspace }}
+          GIT_BRANCH: ${{ github.ref_name }}
+        run: |
+          git config user.name "vault-bot"
+          git config user.email "actions@users.noreply.github.com"
+          python .automation/main.py digest \
+            --area "${{ matrix.area }}" \
+            --tag "${{ matrix.tag }}" \
+            --folder "${{ matrix.folder }}" \
+            --topics "${{ matrix.topics }}"
+
+      - name: Notificar via ntfy
+        if: success()
+        run: |
+          NOTE=$(git show --pretty="" --name-only --diff-filter=A HEAD | grep -E '\.md$' | head -1 || true)
+          if [ -n "$NOTE" ] && [ -f "$NOTE" ]; then
+            BODY=$(head -c 1500 "$NOTE")
+          else
+            BODY="Digest de ${{ matrix.area }} do dia gerado no vault."
+          fi
+          curl -s \
+            -H "Title: ${{ matrix.ntfy_title }}" \
+            -H "Tags: ${{ matrix.ntfy_tags }}" \
+            -d "$BODY" \
+            "https://ntfy.sh/cassio-vault-101dd452"

@@ -1,10 +1,6 @@
 name: Digest de Saúde
 
 on:
-  schedule:
-    # 11:30 UTC = 08:30 no horário de Brasília (UTC-3).
-    # Defasado do digest de IA (08:00) para não colidir no push — git_sync não faz pull/rebase.
-    - cron: "30 11 * * *"
   workflow_dispatch:
     inputs:
       topics:

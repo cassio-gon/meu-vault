@@ -1,10 +1,6 @@
 name: Digest de Medicina do Trabalho
 
 on:
-  schedule:
-    # 12:00 UTC = 09:00 no horário de Brasília (UTC-3).
-    # Defasado do digest de Saúde (08:30) para não colidir no push.
-    - cron: "0 12 * * *"
   workflow_dispatch:
     inputs:
       topics:

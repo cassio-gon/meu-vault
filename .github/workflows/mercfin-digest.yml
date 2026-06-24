@@ -1,10 +1,6 @@
 name: Digest de Mercado Financeiro
 
 on:
-  schedule:
-    # 12:30 UTC = 09:30 no horário de Brasília (UTC-3).
-    # Defasado do digest de MedTrab (09:00) para não colidir no push.
-    - cron: "30 12 * * *"
   workflow_dispatch:
     inputs:
       topics:
