@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Vault Digest" />
+  <title>Vault Digest</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface2: #334155;
+      --accent: #38bdf8;
+      --accent2: #818cf8;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --border: #334155;
+      --radius: 12px;
+      --safe-bottom: env(safe-area-inset-bottom, 16px);
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100dvh;
+    }
+
+    /* Header */
+    .header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 20px 12px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .header h1 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.5px;
+    }
+    .header .subtitle {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 12px 16px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .tabs::-webkit-scrollbar { display: none; }
+
+    .tab {
+      flex-shrink: 0;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+    .tab.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    /* Content area */
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      padding-bottom: calc(16px + var(--safe-bottom));
+    }
+
+    /* File list */
+    .file-list { display: flex; flex-direction: column; gap: 10px; }
+
+    .file-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .file-card:active { background: var(--surface2); }
+    .file-card.latest { border-color: var(--accent); }
+
+    .file-card .date {
+      font-size: 11px;
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .file-card.latest .date::after {
+      content: ' · HOJE';
+      color: #4ade80;
+    }
+    .file-card .title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-top: 4px;
+    }
+    .file-card .arrow {
+      float: right;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1;
+      margin-top: -20px;
+    }
+
+    /* Article view */
+    .article-view { display: none; }
+    .article-view.active { display: block; }
+
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-size: 15px;
+      cursor: pointer;
+      padding: 0 0 16px;
+      font-weight: 500;
+    }
+
+    .article-content {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 20px;
+      line-height: 1.7;
+    }
+
+    /* Markdown styles */
+    .article-content h1 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+    .article-content h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 20px 0 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    .article-content p {
+      font-size: 14px;
+      color: #cbd5e1;
+      margin-bottom: 12px;
+    }
+    .article-content strong { color: var(--text); }
+    .article-content em { color: var(--muted); }
+    .article-content ul, .article-content ol {
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+    .article-content li {
+      font-size: 14px;
+      color: #cbd5e1;
+      margin-bottom: 4px;
+    }
+    .article-content blockquote {
+      border-left: 3px solid var(--accent);
+      padding-left: 12px;
+      color: var(--muted);
+      margin: 12px 0;
+    }
+    .article-content a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .article-content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 16px 0;
+    }
+
+    /* Loading / empty states */
+    .state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      text-align: center;
+      gap: 12px;
+    }
+    .state .icon { font-size: 40px; }
+    .state .msg { color: var(--muted); font-size: 14px; }
+    .spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Nav indicator in list */
+    .list-view { display: block; }
+    .list-view.hidden { display: none; }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📋 Vault Digest</h1>
+  <div class="subtitle" id="last-update">Carregando...</div>
+</div>
+
+<div class="tabs" id="tabs"></div>
+
+<div class="content" id="content">
+  <div class="state">
+    <div class="spinner"></div>
+    <div class="msg">Buscando categorias...</div>
+  </div>
+</div>
+
+<script>
+  const REPO = 'cassio-gon/meu-vault';
+  const BASE = 'Pesquisas';
+  const API = `https://api.github.com/repos/${REPO}/contents`;
+  const RAW = `https://raw.githubusercontent.com/${REPO}/main`;
+
+  let categories = [];
+  let activeCategory = null;
+  let files = {};    // { category: [{name, path, date}] }
+  let inArticle = false;
+
+  // ── Fetch helpers ─────────────────────────────────────────────
+
+  async function apiFetch(path) {
+    const res = await fetch(`${API}/${path}`);
+    if (!res.ok) throw new Error(`API error ${res.status}`);
+    return res.json();
+  }
+
+  async function rawFetch(path) {
+    const res = await fetch(`${RAW}/${path}`);
+    if (!res.ok) throw new Error(`Raw error ${res.status}`);
+    return res.text();
+  }
+
+  // ── Init ──────────────────────────────────────────────────────
+
+  async function init() {
+    try {
+      const items = await apiFetch(BASE);
+      categories = items
+        .filter(i => i.type === 'dir')
+        .map(i => i.name)
+        .sort();
+
+      renderTabs();
+      if (categories.length > 0) {
+        selectCategory(categories[0]);
+      } else {
+        showEmpty('Nenhuma categoria encontrada.');
+      }
+    } catch (e) {
+      showError('Não foi possível carregar as categorias.');
+      console.error(e);
+    }
+  }
+
+  // ── Tabs ──────────────────────────────────────────────────────
+
+  function renderTabs() {
+    const container = document.getElementById('tabs');
+    container.innerHTML = '';
+    categories.forEach(cat => {
+      const btn = document.createElement('button');
+      btn.className = 'tab';
+      btn.textContent = catLabel(cat);
+      btn.onclick = () => selectCategory(cat);
+      btn.dataset.cat = cat;
+      container.appendChild(btn);
+    });
+  }
+
+  function catLabel(name) {
+    const icons = {
+      'Saude': '🏥 Saúde',
+      'IA': '🤖 IA',
+      'Mercado Financeiro': '📈 Finanças',
+      'Medicina do Trabalho': '👷 Med. Trabalho',
+      'Research': '🔬 Research',
+    };
+    return icons[name] || name;
+  }
+
+  // ── Category select ───────────────────────────────────────────
+
+  async function selectCategory(cat) {
+    activeCategory = cat;
+    inArticle = false;
+
+    document.querySelectorAll('.tab').forEach(t => {
+      t.classList.toggle('active', t.dataset.cat === cat);
+    });
+
+    if (files[cat]) {
+      renderFileList(cat);
+      return;
+    }
+
+    showLoading();
+    try {
+      const items = await apiFetch(`${BASE}/${encodeURIComponent(cat)}`);
+      const digests = items
+        .filter(i => i.type === 'file' && i.name.endsWith('.md') && !i.name.startsWith('_'))
+        .map(i => ({ name: i.name, path: i.path }))
+        .sort((a, b) => b.name.localeCompare(a.name)); // newest first
+
+      files[cat] = digests;
+      renderFileList(cat);
+    } catch (e) {
+      showError('Erro ao carregar arquivos.');
+    }
+  }
+
+  // ── File list ─────────────────────────────────────────────────
+
+  function renderFileList(cat) {
+    const list = files[cat];
+    const content = document.getElementById('content');
+
+    if (list.length === 0) {
+      showEmpty('Nenhum arquivo nesta categoria.');
+      return;
+    }
+
+    // Update subtitle
+    const latest = list[0];
+    const latestDate = extractDate(latest.name);
+    document.getElementById('last-update').textContent =
+      `Atualizado em ${formatDate(latestDate)}`;
+
+    content.innerHTML = '<div class="file-list" id="file-list"></div>';
+    const fileList = document.getElementById('file-list');
+
+    list.forEach((file, idx) => {
+      const date = extractDate(file.name);
+      const card = document.createElement('div');
+      card.className = 'file-card' + (idx === 0 ? ' latest' : '');
+      card.innerHTML = `
+        <div class="date">${formatDate(date)}</div>
+        <div class="title">${catLabel(cat)} Digest</div>
+        <div class="arrow">›</div>
+      `;
+      card.onclick = () => openArticle(file, cat);
+      fileList.appendChild(card);
+    });
+  }
+
+  // ── Article view ──────────────────────────────────────────────
+
+  async function openArticle(file, cat) {
+    inArticle = true;
+    showLoading();
+
+    try {
+      const markdown = await rawFetch(file.path);
+      const html = marked.parse(markdown);
+      const date = extractDate(file.name);
+      const content = document.getElementById('content');
+
+      content.innerHTML = `
+        <button class="back-btn" onclick="goBack()">← Voltar</button>
+        <div class="article-content">${html}</div>
+      `;
+    } catch (e) {
+      showError('Erro ao carregar o artigo.');
+    }
+  }
+
+  function goBack() {
+    inArticle = false;
+    renderFileList(activeCategory);
+  }
+
+  // ── Utilities ─────────────────────────────────────────────────
+
+  function extractDate(filename) {
+    const match = filename.match(/^(\d{4}-\d{2}-\d{2})/);
+    return match ? match[1] : '';
+  }
+
+  function formatDate(dateStr) {
+    if (!dateStr) return '';
+    const [y, m, d] = dateStr.split('-');
+    const months = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+    return `${parseInt(d)} ${months[parseInt(m)-1]} ${y}`;
+  }
+
+  function showLoading() {
+    document.getElementById('content').innerHTML = `
+      <div class="state">
+        <div class="spinner"></div>
+        <div class="msg">Carregando...</div>
+      </div>`;
+  }
+
+  function showEmpty(msg) {
+    document.getElementById('content').innerHTML = `
+      <div class="state">
+        <div class="icon">📭</div>
+        <div class="msg">${msg}</div>
+      </div>`;
+  }
+
+  function showError(msg) {
+    document.getElementById('content').innerHTML = `
+      <div class="state">
+        <div class="icon">⚠️</div>
+        <div class="msg">${msg}</div>
+      </div>`;
+  }
+
+  // ── Back button (mobile) ──────────────────────────────────────
+
+  window.addEventListener('popstate', () => {
+    if (inArticle) goBack();
+  });
+
+  // ── PWA manifest inline ───────────────────────────────────────
+
+  const manifest = {
+    name: 'Vault Digest',
+    short_name: 'Vault',
+    start_url: '.',
+    display: 'standalone',
+    background_color: '#0f172a',
+    theme_color: '#0f172a',
+    icons: [{ src: 'https://fakeimg.pl/192x192/38bdf8/0f172a?text=V&font_size=80', sizes: '192x192', type: 'image/png' }]
+  };
+  const blob = new Blob([JSON.stringify(manifest)], { type: 'application/json' });
+  const manifestURL = URL.createObjectURL(blob);
+  const link = document.createElement('link');
+  link.rel = 'manifest';
+  link.href = manifestURL;
+  document.head.appendChild(link);
+
+  // ── Start ─────────────────────────────────────────────────────
+
+  init();
+</script>
+
+</body>
+</html>
