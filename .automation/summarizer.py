@@ -1,6 +1,6 @@
-"""Sumarização com Gemini Flash (free tier): gera N tópicos do dia.
+"""Sumarização com Claude (Haiku para volume): gera N tópicos do dia.
 
-Usa a API REST do Google Generative Language via stdlib (sem dependências extras).
+Usa a API REST da Anthropic via stdlib (sem dependências extras).
 """
 from __future__ import annotations
 
@@ -14,11 +14,14 @@ import urllib.request
 
 from scraper import ScrapedDoc
 
-# Cadeia de modelos: tenta o primeiro; se ele esgotar os retries com erro
-# transitório (503 sobrecarga) ou de cota (429), cai para o próximo.
-# `GEMINI_MODEL` (env), se setado, entra como primário e o resto vira fallback.
-_DEFAULT_CHAIN = ["gemini-2.5-flash", "gemini-2.5-flash-lite"]
-_env_model = os.environ.get("GEMINI_MODEL")
+ANTHROPIC_API = "https://api.anthropic.com/v1/messages"
+ANTHROPIC_VERSION = "2023-06-01"
+
+# Cadeia de modelos: tenta o primeiro; se esgotar retries com erro
+# transitório ou de cota, cai para o próximo.
+# `CLAUDE_MODEL` (env), se setado, entra como primário.
+_DEFAULT_CHAIN = ["claude-haiku-4-5-20251001", "claude-sonnet-4-6"]
+_env_model = os.environ.get("CLAUDE_MODEL")
 MODELS = (
     [_env_model] + [m for m in _DEFAULT_CHAIN if m != _env_model]
     if _env_model
@@ -28,23 +31,16 @@ MODELS = (
 MAX_CHARS_PER_SOURCE = 6000  # limita tokens de entrada por fonte
 NUM_TOPICS = 6
 
-# Retry por modelo para 429/5xx (sobrecarga/cota transitória do Gemini).
-# Picos de demanda do Gemini ("high demand", 503) costumam durar minutos, então
-# o backoff é exponencial com teto e jitter — atravessa o pico sem derrubar a run.
 MAX_RETRIES = 5
-RETRYABLE = {429, 500, 502, 503, 504}
+RETRYABLE = {429, 500, 502, 503, 504, 529}  # 529 = Claude overloaded
 BACKOFF_BASE = 2.0  # segundos: 2 → 4 → 8 → 16 → 32 (+jitter), com teto
-BACKOFF_CAP = 60.0  # teto por espera, em segundos
+BACKOFF_CAP = 60.0
 
 
 def _backoff_seconds(attempt: int) -> float:
     """Espera exponencial (base 2) com teto e jitter aleatório de até 1s."""
     delay = min(BACKOFF_CAP, BACKOFF_BASE * 2 ** (attempt - 1))
     return delay + random.uniform(0, 1)
-
-
-def _endpoint(model: str) -> str:
-    return f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
 
 
 def _repair_truncated_json(text: str) -> str:
@@ -96,57 +92,53 @@ def _parse_topics(text: str) -> list[dict]:
     return data
 
 
-def _call_gemini(api_key: str, prompt: str, max_tokens: int = 32768) -> str:
-    """Chama o Gemini e devolve o texto da resposta (JSON forçado)."""
-    body = json.dumps(
-        {
-            "contents": [{"parts": [{"text": prompt}]}],
-            "generationConfig": {
-                "maxOutputTokens": max_tokens,
-                "responseMimeType": "application/json",
-                "temperature": 0.4,
-                # thinkingBudget=0 desativa thinking interno do 2.5 Flash,
-                # evitando que tokens de raciocínio consumam o limite de saída
-                "thinkingConfig": {"thinkingBudget": 0},
-            },
-        }
-    ).encode("utf-8")
-
+def _call_claude(api_key: str, prompt: str, max_tokens: int = 8192) -> str:
+    """Chama a API da Anthropic e devolve o texto da resposta."""
     last_err: Exception | None = None
     for mi, model in enumerate(MODELS):
-        endpoint = _endpoint(model)
+        body = json.dumps(
+            {
+                "model": model,
+                "max_tokens": max_tokens,
+                "temperature": 0.4,
+                "messages": [{"role": "user", "content": prompt}],
+            }
+        ).encode("utf-8")
         print(f"   ↳ modelo: {model}")
         for attempt in range(1, MAX_RETRIES + 1):
             req = urllib.request.Request(
-                f"{endpoint}?key={api_key}",
+                ANTHROPIC_API,
                 data=body,
-                headers={"Content-Type": "application/json"},
+                headers={
+                    "Content-Type": "application/json",
+                    "x-api-key": api_key,
+                    "anthropic-version": ANTHROPIC_VERSION,
+                },
                 method="POST",
             )
             try:
                 with urllib.request.urlopen(req, timeout=120) as resp:
                     data = json.load(resp)
-                candidates = data.get("candidates", [])
-                if not candidates:
-                    raise RuntimeError(f"Gemini não retornou candidates: {str(data)[:300]}")
-                return candidates[0]["content"]["parts"][0]["text"]
+                content = data.get("content", [])
+                if not content:
+                    raise RuntimeError(f"Claude não retornou content: {str(data)[:300]}")
+                return content[0]["text"]
             except urllib.error.HTTPError as err:
                 detail = err.read().decode("utf-8", "ignore")[:200]
-                last_err = RuntimeError(f"Gemini HTTP {err.code}: {detail}")
+                last_err = RuntimeError(f"Claude HTTP {err.code}: {detail}")
                 if err.code not in RETRYABLE:
                     raise last_err from err
                 wait = _backoff_seconds(attempt)
                 print(f"⚠️  {model} HTTP {err.code} (tentativa {attempt}/{MAX_RETRIES}); aguardando {wait:.1f}s...")
             except urllib.error.URLError as err:
-                last_err = RuntimeError(f"Gemini erro de rede: {err}")
+                last_err = RuntimeError(f"Erro de rede: {err}")
                 wait = _backoff_seconds(attempt)
                 print(f"⚠️  Rede falhou em {model} (tentativa {attempt}/{MAX_RETRIES}); aguardando {wait:.1f}s...")
             if attempt < MAX_RETRIES:
                 time.sleep(wait)
-        # Esgotou os retries deste modelo: cai para o próximo da cadeia, se houver.
         if mi < len(MODELS) - 1:
             print(f"↪️  {model} indisponível; tentando próximo modelo...")
-    raise RuntimeError(f"Todos os modelos Gemini falharam ({', '.join(MODELS)})") from last_err
+    raise RuntimeError(f"Todos os modelos falharam ({', '.join(MODELS)})") from last_err
 
 
 # Perfis de prompt por área do digest. Cada área enquadra o resumo no seu domínio.
@@ -227,7 +219,7 @@ def summarize_digest(
     )
 
     print(f"🧠 Resumindo (área: {area}) — cadeia: {' → '.join(MODELS)}")
-    text = _call_gemini(api_key, prompt)
+    text = _call_claude(api_key, prompt)
     topics = _parse_topics(text)
     print(f"   → {len(topics)} tópicos gerados")
     return topics
