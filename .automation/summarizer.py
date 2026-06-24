@@ -118,6 +118,16 @@ PROFILES = {
         ),
         "categories": ["noticia", "estudo"],
     },
+    "MercFin": {
+        "role": "editor financeiro especializado em mercados de capitais e economia",
+        "focus": (
+            "mercado financeiro brasileiro e global (priorize: movimentos relevantes de bolsa "
+            "e câmbio, decisões de bancos centrais, resultados corporativos relevantes, "
+            "fusões e aquisições, commodities, cenário macro Brasil/EUA/China e tendências "
+            "de investimento)"
+        ),
+        "categories": ["noticia", "analise", "dado"],
+    },
     "MedTrab": {
         "role": "editor especializado em medicina do trabalho e saúde ocupacional no Brasil",
         "focus": (

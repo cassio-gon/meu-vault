@@ -33,6 +33,15 @@ DIGEST_SOURCES = {
         "https://huggingface.co/models?sort=trending",
         "https://www.theresanaiforthat.com/",
     ],
+    # Mercado Financeiro — fontes brasileiras e globais via RSS e scrape.
+    "MercFin": [
+        {"url": "https://www.infomoney.com.br/feed/", "kind": "rss"},
+        {"url": "https://feeds.reuters.com/reuters/businessNews", "kind": "rss"},
+        {"url": "https://www.cnbc.com/id/10000664/device/rss/rss.html", "kind": "rss"},
+        {"url": "https://exame.com/mercados/", "kind": "scrape"},
+        {"url": "https://br.investing.com/news/stock-market-news", "kind": "scrape"},
+        {"url": "https://www.moneytimes.com.br/", "kind": "scrape"},
+    ],
     # Medicina do Trabalho e Saúde Ocupacional — viés regulatório brasileiro.
     "MedTrab": [
         {"url": "https://www.anamt.org.br/portal/", "kind": "scrape"},
