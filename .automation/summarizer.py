@@ -237,7 +237,7 @@ def summarize_digest(
     )
 
     print(f"🧠 Resumindo (área: {area}) — cadeia: {' → '.join(MODELS)}")
-    text = _call_groq(api_key, prompt)
+    text = _call_groq(api_key, prompt, max_tokens=2048)
     topics = _parse_topics(text)
     print(f"   → {len(topics)} tópicos gerados")
     return topics

@@ -38,18 +38,3 @@ jobs:
           python .automation/main.py digest \
             --area IA --tag ia --folder "Pesquisas/IA" \
             --topics "${{ github.event.inputs.topics || '10' }}"
-
-      - name: Notificar via ntfy
-        if: success()
-        run: |
-          NOTE=$(git show --pretty="" --name-only --diff-filter=A HEAD | grep -E '^Pesquisas/IA/.*\.md$' | head -1 || true)
-          if [ -n "$NOTE" ] && [ -f "$NOTE" ]; then
-            BODY=$(head -c 1500 "$NOTE")
-          else
-            BODY="Digest de IA do dia gerado no vault."
-          fi
-          curl -s \
-            -H "Title: Digest de IA pronto" \
-            -H "Tags: newspaper,robot" \
-            -d "$BODY" \
-            "https://ntfy.sh/cassio-vault-101dd452"

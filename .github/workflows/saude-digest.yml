@@ -38,18 +38,3 @@ jobs:
           python .automation/main.py digest \
             --area Saude --tag saude --folder "Pesquisas/Saude" \
             --topics "${{ github.event.inputs.topics || '10' }}"
-
-      - name: Notificar via ntfy
-        if: success()
-        run: |
-          NOTE=$(git show --pretty="" --name-only --diff-filter=A HEAD | grep -E '^Pesquisas/Saude/.*\.md$' | head -1 || true)
-          if [ -n "$NOTE" ] && [ -f "$NOTE" ]; then
-            BODY=$(head -c 1500 "$NOTE")
-          else
-            BODY="Digest de Saude do dia gerado no vault."
-          fi
-          curl -s \
-            -H "Title: Digest de Saude pronto" \
-            -H "Tags: hospital,robot" \
-            -d "$BODY" \
-            "https://ntfy.sh/cassio-vault-101dd452"
