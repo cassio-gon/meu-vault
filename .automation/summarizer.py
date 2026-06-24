@@ -6,6 +6,7 @@ from __future__ import annotations
 
 import json
 import os
+import random
 import re
 import time
 import urllib.error
@@ -27,9 +28,19 @@ MODELS = (
 MAX_CHARS_PER_SOURCE = 6000  # limita tokens de entrada por fonte
 NUM_TOPICS = 6
 
-# Retry por modelo para 429/5xx (sobrecarga/cota transitória do Gemini)
-MAX_RETRIES = 3
+# Retry por modelo para 429/5xx (sobrecarga/cota transitória do Gemini).
+# Picos de demanda do Gemini ("high demand", 503) costumam durar minutos, então
+# o backoff é exponencial com teto e jitter — atravessa o pico sem derrubar a run.
+MAX_RETRIES = 5
 RETRYABLE = {429, 500, 502, 503, 504}
+BACKOFF_BASE = 2.0  # segundos: 2 → 4 → 8 → 16 → 32 (+jitter), com teto
+BACKOFF_CAP = 60.0  # teto por espera, em segundos
+
+
+def _backoff_seconds(attempt: int) -> float:
+    """Espera exponencial (base 2) com teto e jitter aleatório de até 1s."""
+    delay = min(BACKOFF_CAP, BACKOFF_BASE * 2 ** (attempt - 1))
+    return delay + random.uniform(0, 1)
 
 
 def _endpoint(model: str) -> str:
@@ -124,12 +135,12 @@ def _call_gemini(api_key: str, prompt: str, max_tokens: int = 32768) -> str:
                 last_err = RuntimeError(f"Gemini HTTP {err.code}: {detail}")
                 if err.code not in RETRYABLE:
                     raise last_err from err
-                wait = 5 * attempt
-                print(f"⚠️  {model} HTTP {err.code} (tentativa {attempt}/{MAX_RETRIES}); aguardando {wait}s...")
+                wait = _backoff_seconds(attempt)
+                print(f"⚠️  {model} HTTP {err.code} (tentativa {attempt}/{MAX_RETRIES}); aguardando {wait:.1f}s...")
             except urllib.error.URLError as err:
                 last_err = RuntimeError(f"Gemini erro de rede: {err}")
-                wait = 5 * attempt
-                print(f"⚠️  Rede falhou em {model} (tentativa {attempt}/{MAX_RETRIES}); aguardando {wait}s...")
+                wait = _backoff_seconds(attempt)
+                print(f"⚠️  Rede falhou em {model} (tentativa {attempt}/{MAX_RETRIES}); aguardando {wait:.1f}s...")
             if attempt < MAX_RETRIES:
                 time.sleep(wait)
         # Esgotou os retries deste modelo: cai para o próximo da cadeia, se houver.
