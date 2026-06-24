@@ -118,6 +118,16 @@ PROFILES = {
         ),
         "categories": ["noticia", "estudo"],
     },
+    "MedTrab": {
+        "role": "editor especializado em medicina do trabalho e saúde ocupacional no Brasil",
+        "focus": (
+            "medicina do trabalho e saúde ocupacional no Brasil (priorize: atualizações de NRs "
+            "e legislação trabalhista, doenças ocupacionais e nexo causal, segurança e saúde no "
+            "trabalho, PCMSO/PGR/LTCAT, ergonomia, perícia médica trabalhista e jurisprudência "
+            "do TST relevante para saúde do trabalhador)"
+        ),
+        "categories": ["noticia", "regulatorio", "estudo"],
+    },
 }
 
 

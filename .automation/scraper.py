@@ -1,15 +1,25 @@
-"""Lógica de scraping/crawling via Firecrawl Python SDK."""
+"""Scraping via trafilatura (sem API externa, sem limites de crédito)."""
 from __future__ import annotations
 
+import json
 import time
+import urllib.parse
+import urllib.request
 from dataclasses import dataclass
-from datetime import date
+from datetime import datetime
+from html.parser import HTMLParser
 
-from firecrawl import FirecrawlApp
+import trafilatura
 
-# Política de retry para rate limit / erros transitórios
 MAX_RETRIES = 3
 BACKOFF_SECONDS = 2
+
+_HF_API = "https://huggingface.co/api/models?sort=trending&limit=20"
+_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (compatible; vault-bot/1.0; +https://github.com/cassio-gon/meu-vault)"
+    )
+}
 
 
 @dataclass
@@ -17,38 +27,15 @@ class ScrapedDoc:
     title: str
     markdown: str
     url: str
-    scraped_at: str  # YYYY-MM-DD
-
-
-def _extract_doc(result: dict, fallback_url: str) -> ScrapedDoc:
-    """Normaliza a resposta do Firecrawl (dict) num ScrapedDoc."""
-    # O SDK pode devolver o conteúdo na raiz ou dentro de "data"
-    data = result.get("data", result) if isinstance(result, dict) else {}
-    metadata = data.get("metadata", {}) or {}
-
-    title = (
-        metadata.get("title")
-        or metadata.get("ogTitle")
-        or fallback_url
-    )
-    url = metadata.get("sourceURL") or metadata.get("url") or fallback_url
-    markdown = data.get("markdown") or ""
-
-    return ScrapedDoc(
-        title=str(title).strip(),
-        markdown=markdown,
-        url=url,
-        scraped_at=date.today().isoformat(),
-    )
+    scraped_at: str  # YYYY-MM-DD HH:MM
 
 
 def _with_retry(fn, label: str):
-    """Executa fn() com retry e backoff linear (2s, 4s, 6s)."""
     last_err: Exception | None = None
     for attempt in range(1, MAX_RETRIES + 1):
         try:
             return fn()
-        except Exception as err:  # noqa: BLE001 — Firecrawl agrega vários tipos
+        except Exception as err:  # noqa: BLE001
             last_err = err
             wait = BACKOFF_SECONDS * attempt
             print(f"⚠️  {label} falhou (tentativa {attempt}/{MAX_RETRIES}): {err}")
@@ -58,38 +45,106 @@ def _with_retry(fn, label: str):
     raise RuntimeError(f"{label} falhou após {MAX_RETRIES} tentativas") from last_err
 
 
-def scrape_url(api_key: str, url: str) -> ScrapedDoc:
+def _hf_trending() -> ScrapedDoc:
+    """Busca modelos trending via API pública do HuggingFace (sem JS)."""
+    req = urllib.request.Request(_HF_API, headers=_HEADERS)
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        models = json.load(resp)
+
+    lines = ["# HuggingFace — Modelos Trending\n"]
+    for m in models[:20]:
+        name = m.get("id", "")
+        likes = m.get("likes", 0)
+        downloads = m.get("downloads", 0)
+        pipeline = m.get("pipeline_tag", "")
+        line = f"- [{name}](https://huggingface.co/{name})"
+        if pipeline:
+            line += f" ({pipeline})"
+        line += f" — {likes} likes, {downloads} downloads"
+        lines.append(line)
+
+    return ScrapedDoc(
+        title="HuggingFace Trending Models",
+        markdown="\n".join(lines),
+        url="https://huggingface.co/models?sort=trending",
+        scraped_at=datetime.now().strftime("%Y-%m-%d %H:%M"),
+    )
+
+
+def _extract_text(url: str) -> ScrapedDoc:
+    """Extrai texto limpo de uma URL via trafilatura."""
+    downloaded = trafilatura.fetch_url(url)
+    if not downloaded:
+        raise RuntimeError("trafilatura não conseguiu baixar a página")
+
+    result = trafilatura.bare_extraction(
+        downloaded,
+        include_links=False,
+        include_images=False,
+        favor_recall=True,
+    )
+    if not result or not result.get("text"):
+        raise RuntimeError("trafilatura não extraiu conteúdo")
+
+    return ScrapedDoc(
+        title=str(result.get("title") or url).strip(),
+        markdown=str(result["text"]).strip(),
+        url=str(result.get("url") or url),
+        scraped_at=datetime.now().strftime("%Y-%m-%d %H:%M"),
+    )
+
+
+def scrape_url(url: str) -> ScrapedDoc:
     """Faz scrape de uma única URL e retorna um ScrapedDoc."""
-    app = FirecrawlApp(api_key=api_key)
+    if "huggingface.co/models" in url:
+        print(f"🤗 HuggingFace API: {url}")
+        return _with_retry(_hf_trending, "huggingface-api")
+
     print(f"📄 Scrape: {url}")
-
-    def _run():
-        return app.scrape_url(url, params={"formats": ["markdown"]})
-
-    result = _with_retry(_run, "scrape_url")
-    return _extract_doc(result, url)
+    return _with_retry(lambda: _extract_text(url), f"scrape({url})")
 
 
-def crawl_domain(api_key: str, url: str, limit: int = 10) -> list[ScrapedDoc]:
-    """Faz crawl de um domínio inteiro (até `limit` páginas)."""
-    app = FirecrawlApp(api_key=api_key)
+class _LinkParser(HTMLParser):
+    """Extrai links internos de uma página HTML."""
+
+    def __init__(self, base: str) -> None:
+        super().__init__()
+        self.base = base
+        self.links: set[str] = set()
+
+    def handle_starttag(self, tag: str, attrs: list) -> None:
+        if tag != "a":
+            return
+        for attr, val in attrs:
+            if attr == "href" and val:
+                full = urllib.parse.urljoin(self.base, val).split("#")[0]
+                if full.startswith(self.base) and full != self.base:
+                    self.links.add(full)
+
+
+def crawl_domain(url: str, limit: int = 10) -> list[ScrapedDoc]:
+    """Faz crawl de um domínio (até `limit` páginas) sem API externa."""
     print(f"🕸️  Crawl: {url} (limite {limit} páginas)")
 
-    def _run():
-        return app.crawl_url(
-            url,
-            params={"limit": limit, "scrapeOptions": {"formats": ["markdown"]}},
-        )
+    try:
+        req = urllib.request.Request(url, headers=_HEADERS)
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            html = resp.read().decode("utf-8", "ignore")
+    except Exception as err:
+        raise RuntimeError(f"Não foi possível acessar {url}: {err}") from err
 
-    result = _with_retry(_run, "crawl_url")
+    parser = _LinkParser(url)
+    parser.feed(html)
+    urls_to_crawl = list(parser.links)[:limit]
 
-    # crawl_url devolve algo como {"status": ..., "data": [ {..}, {..} ]}
-    pages = result.get("data", []) if isinstance(result, dict) else []
     docs: list[ScrapedDoc] = []
-    for page in pages:
-        doc = _extract_doc(page, url)
-        if doc.markdown.strip():
-            docs.append(doc)
+    for page_url in urls_to_crawl:
+        try:
+            doc = scrape_url(page_url)
+            if doc.markdown.strip():
+                docs.append(doc)
+        except Exception as err:  # noqa: BLE001
+            print(f"⚠️  Pulei {page_url}: {err}")
 
     print(f"   → {len(docs)} páginas com conteúdo")
     return docs

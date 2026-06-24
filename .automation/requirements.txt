@@ -1,4 +1,4 @@
-firecrawl-py==1.6.8
+trafilatura==1.12.2
 python-dotenv==1.0.1
 PyYAML==6.0.2
 pydantic>=2.0,<3.0

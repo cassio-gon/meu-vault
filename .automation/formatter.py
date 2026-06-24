@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import re
 import unicodedata
-from datetime import date
+from datetime import datetime
 from pathlib import Path
 
 import yaml
@@ -28,7 +28,7 @@ def build_filename(doc: ScrapedDoc) -> str:
     return f"{doc.scraped_at} — {slugify(doc.title)}.md"
 
 
-def render_markdown(doc: ScrapedDoc, tag: str, source: str = "firecrawl") -> str:
+def render_markdown(doc: ScrapedDoc, tag: str, source: str = "trafilatura") -> str:
     """Gera o conteúdo de uma nota crua (scrape/crawl)."""
     frontmatter = {
         "title": doc.title,
@@ -69,11 +69,11 @@ def render_digest(topics: list[dict], day: str, tag: str, area: str) -> str:
         "date": day,
         "tags": [tag, "digest"],
         "area": area,
-        "source": "firecrawl+gemini",
+        "source": "trafilatura+gemini",
     }
     yaml_block = yaml.safe_dump(frontmatter, allow_unicode=True, sort_keys=False).strip()
 
-    parts = [f"---\n{yaml_block}\n---\n", f"# 🗞️ {area} — Principais do dia ({day})\n"]
+    parts = [f"---\n{yaml_block}\n---\n", f"# 🗞️ {area} — Principais do dia ({day})\n\n> Gerado em {day}\n"]
     for i, t in enumerate(topics, 1):
         emoji = CATEGORY_EMOJI.get(t.get("category"), DEFAULT_CATEGORY_EMOJI)
         parts.append(
@@ -85,7 +85,7 @@ def render_digest(topics: list[dict], day: str, tag: str, area: str) -> str:
 def save_digest(topics: list[dict], notes_dir: Path, tag: str, area: str) -> Path:
     """Escreve o digest do dia e retorna o caminho do arquivo."""
     notes_dir.mkdir(parents=True, exist_ok=True)
-    day = date.today().isoformat()
+    day = datetime.now().strftime("%Y-%m-%d %H:%M")
     path = notes_dir / f"{day} — {area} Digest.md"
     path.write_text(render_digest(topics, day, tag, area), encoding="utf-8")
     print(f"✅ Digest salvo: {path.name}")

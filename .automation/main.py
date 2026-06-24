@@ -33,8 +33,17 @@ DIGEST_SOURCES = {
         "https://huggingface.co/models?sort=trending",
         "https://www.theresanaiforthat.com/",
     ],
+    # Medicina do Trabalho e Saúde Ocupacional — viés regulatório brasileiro.
+    "MedTrab": [
+        {"url": "https://www.anamt.org.br/portal/", "kind": "scrape"},
+        {"url": "https://www.fundacentro.gov.br/noticias", "kind": "scrape"},
+        {"url": "https://www.gov.br/trabalho-e-emprego/pt-br/noticias-e-conteudo/noticias", "kind": "scrape"},
+        {"url": "https://www.cipamagazine.com.br/", "kind": "scrape"},
+        {"url": "https://rbmt.org.br/", "kind": "scrape"},
+        {"url": "https://www.segurancanotrabalho.com.br/", "kind": "scrape"},
+    ],
     # Saúde (viés Brasil) + medicina com base científica.
-    # RSS onde há feed noticioso bom; scrape via Firecrawl onde não há.
+    # RSS onde há feed noticioso bom; scrape onde não há.
     # gov.br: /RSS lista pastas por ano (inútil) → scrape. Medscape PT: sem feed → scrape.
     "Saude": [
         # Saúde geral
@@ -51,7 +60,7 @@ DIGEST_SOURCES = {
 
 def _cmd_scrape(args, cfg) -> int:
     tag = args.tag or cfg.default_tag
-    doc = scraper.scrape_url(cfg.firecrawl_api_key, args.url)
+    doc = scraper.scrape_url(args.url)
     if not doc.markdown.strip():
         print("❌ Scrape não retornou conteúdo.")
         return 1
@@ -62,7 +71,7 @@ def _cmd_scrape(args, cfg) -> int:
 
 def _cmd_crawl(args, cfg) -> int:
     tag = args.tag or cfg.default_tag
-    docs = scraper.crawl_domain(cfg.firecrawl_api_key, args.url, limit=args.limit)
+    docs = scraper.crawl_domain(args.url, limit=args.limit)
     if not docs:
         print("❌ Crawl não retornou páginas com conteúdo.")
         return 1
@@ -93,7 +102,7 @@ def _cmd_digest(args, cfg) -> int:
             if kind == "rss":
                 doc = feeds.fetch_feed(url)
             else:
-                doc = scraper.scrape_url(cfg.firecrawl_api_key, url)
+                doc = scraper.scrape_url(url)
             if doc.markdown.strip():
                 docs.append(doc)
         except Exception as err:  # noqa: BLE001
