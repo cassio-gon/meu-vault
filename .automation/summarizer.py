@@ -27,7 +27,8 @@ MODELS = (
     else list(_DEFAULT_CHAIN)
 )
 
-MAX_CHARS_PER_SOURCE = 6000  # limita tokens de entrada por fonte
+MAX_CHARS_PER_SOURCE = 1500   # limita chars por fonte (~375 tokens)
+MAX_TOTAL_CONTEXT_CHARS = 18_000  # teto do bloco de contexto (~4500 tokens)
 NUM_TOPICS = 6
 
 MAX_RETRIES = 5
@@ -209,11 +210,18 @@ def summarize_digest(
     cats_json = "|".join(f"'{c}'" for c in cats)
 
     blocks = []
+    total_chars = 0
     for d in docs:
         trecho = d.markdown[:MAX_CHARS_PER_SOURCE].strip()
-        if trecho:
-            blocks.append(f"## Fonte: {d.title}\nURL: {d.url}\n\n{trecho}")
+        if not trecho:
+            continue
+        bloco = f"## Fonte: {d.title}\nURL: {d.url}\n\n{trecho}"
+        if total_chars + len(bloco) > MAX_TOTAL_CONTEXT_CHARS:
+            break
+        blocks.append(bloco)
+        total_chars += len(bloco)
     context = "\n\n---\n\n".join(blocks)
+    print(f"   ↳ contexto: {len(blocks)} fontes, {total_chars} chars")
 
     prompt = (
         f"Você é um {profile['role']}. A seguir estão conteúdos raspados HOJE de várias "
