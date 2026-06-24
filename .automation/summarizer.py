@@ -36,19 +36,56 @@ def _endpoint(model: str) -> str:
     return f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
 
 
+def _repair_truncated_json(text: str) -> str:
+    """Tenta fechar um JSON truncado adicionando delimitadores faltantes."""
+    s = text.rstrip()
+    # Conta chaves e colchetes abertos para fechar na ordem certa
+    stack = []
+    in_string = False
+    escaped = False
+    for ch in s:
+        if escaped:
+            escaped = False
+            continue
+        if ch == "\\" and in_string:
+            escaped = True
+            continue
+        if ch == '"':
+            in_string = not in_string
+            continue
+        if in_string:
+            continue
+        if ch in "{[":
+            stack.append("}" if ch == "{" else "]")
+        elif ch in "}]" and stack:
+            stack.pop()
+    # Fecha string aberta e estruturas pendentes
+    suffix = '"' if in_string else ""
+    suffix += "".join(reversed(stack))
+    return s + suffix
+
+
 def _parse_topics(text: str) -> list[dict]:
-    """Extrai o array de tópicos do texto da resposta (tolerante a cercas ```)."""
+    """Extrai o array de tópicos do texto da resposta (tolerante a cercas e JSON truncado)."""
     cleaned = text.strip()
     fence = re.search(r"```(?:json)?\s*(.*?)```", cleaned, re.DOTALL)
     if fence:
         cleaned = fence.group(1).strip()
-    data = json.loads(cleaned)
+    try:
+        data = json.loads(cleaned)
+    except json.JSONDecodeError:
+        repaired = _repair_truncated_json(cleaned)
+        try:
+            data = json.loads(repaired)
+            print(f"⚠️  JSON truncado reparado ({len(cleaned)}→{len(repaired)} chars)")
+        except json.JSONDecodeError as err:
+            raise RuntimeError(f"JSON inválido mesmo após reparo: {err}") from err
     if isinstance(data, dict):
         return data.get("topics", [])
     return data
 
 
-def _call_gemini(api_key: str, prompt: str, max_tokens: int = 16000) -> str:
+def _call_gemini(api_key: str, prompt: str, max_tokens: int = 32768) -> str:
     """Chama o Gemini e devolve o texto da resposta (JSON forçado)."""
     body = json.dumps(
         {
@@ -57,6 +94,9 @@ def _call_gemini(api_key: str, prompt: str, max_tokens: int = 16000) -> str:
                 "maxOutputTokens": max_tokens,
                 "responseMimeType": "application/json",
                 "temperature": 0.4,
+                # thinkingBudget=0 desativa thinking interno do 2.5 Flash,
+                # evitando que tokens de raciocínio consumam o limite de saída
+                "thinkingConfig": {"thinkingBudget": 0},
             },
         }
     ).encode("utf-8")
