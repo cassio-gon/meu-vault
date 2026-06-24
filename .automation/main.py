@@ -51,6 +51,21 @@ DIGEST_SOURCES = {
         {"url": "https://news.google.com/rss/search?q=medicina+do+trabalho+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
         {"url": "https://news.google.com/rss/search?q=NR+segurança+saúde+trabalho+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
     ],
+    # Puerpério e fim da gestação — 3º trimestre, pós-parto, saúde materna.
+    # Fontes brasileiras de autoridade (FEBRASGO, RBGO, Fiocruz, COFEN, MinSaúde)
+    # + internacionais (ScienceDaily, CDC, WHO) + Google News PT-BR contextual.
+    "Puerperio": [
+        {"url": "https://news.google.com/rss/search?q=puerp%C3%A9rio+p%C3%B3s-parto+sa%C3%BAde+materna+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+        {"url": "https://news.google.com/rss/search?q=terceiro+trimestre+gesta%C3%A7%C3%A3o+pr%C3%A9-natal+gestante&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+        {"url": "https://www.febrasgo.org.br/noticias/", "kind": "scrape"},
+        {"url": "https://journalrbgo.org/", "kind": "scrape"},
+        {"url": "https://portaldeboaspraticas.iff.fiocruz.br/atencao-mulher/", "kind": "scrape"},
+        {"url": "https://www.cofen.gov.br/", "kind": "scrape"},
+        {"url": "https://www.sciencedaily.com/rss/health_medicine/womens_health.xml", "kind": "rss"},
+        {"url": "https://www.cdc.gov/maternal-infant-health/index.html", "kind": "scrape"},
+        {"url": "https://www.who.int/news-room/fact-sheets/detail/maternal-mortality", "kind": "scrape"},
+        {"url": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/s/saude-da-mulher/saude-materna", "kind": "scrape"},
+    ],
     # Recém-Nascidos — saúde, desenvolvimento e orientação para pais.
     # Mix de fontes brasileiras (SBP, Fiocruz, Medscape PT) e internacionais (AAP, WHO, ScienceDaily).
     "RN": [

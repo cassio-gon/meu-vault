@@ -41,6 +41,12 @@ jobs:
             topics: 10
             ntfy_title: "Digest Mercado Financeiro pronto"
             ntfy_tags: "chart_with_upwards_trend,robot"
+          - area: Puerperio
+            tag: puerperio
+            folder: "Pesquisas/Puerperio"
+            topics: 10
+            ntfy_title: "Digest Puerpério pronto"
+            ntfy_tags: "pregnant_woman,robot"
           - area: RN
             tag: recem-nascidos
             folder: "Pesquisas/RN"
