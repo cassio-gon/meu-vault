@@ -150,9 +150,8 @@ def _cmd_digest(args, cfg) -> int:
         print("❌ Nenhuma fonte retornou conteúdo.")
         return 1
 
-    # 2. Claude sintetiza os tópicos do dia
     topics = summarizer.summarize_digest(
-        cfg.gemini_api_key, docs, num_topics=args.topics, area=args.area
+        cfg.anthropic_api_key, docs, num_topics=args.topics, area=args.area
     )
     if not topics:
         print("❌ O resumo não gerou tópicos.")

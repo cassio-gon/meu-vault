@@ -70,7 +70,7 @@ jobs:
 
       - name: Gerar digest e commitar
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           VAULT_PATH: ${{ github.workspace }}
           GIT_BRANCH: ${{ github.ref_name }}
         run: |
