@@ -67,7 +67,7 @@ def _hf_trending() -> ScrapedDoc:
         title="HuggingFace Trending Models",
         markdown="\n".join(lines),
         url="https://huggingface.co/models?sort=trending",
-        scraped_at=datetime.now().strftime("%Y-%m-%d %H:%M"),
+        scraped_at=datetime.now().strftime("%Y-%m-%d %Hh%M"),
     )
 
 
@@ -90,7 +90,7 @@ def _extract_text(url: str) -> ScrapedDoc:
         title=str(result.get("title") or url).strip(),
         markdown=str(result["text"]).strip(),
         url=str(result.get("url") or url),
-        scraped_at=datetime.now().strftime("%Y-%m-%d %H:%M"),
+        scraped_at=datetime.now().strftime("%Y-%m-%d %Hh%M"),
     )
 
 
