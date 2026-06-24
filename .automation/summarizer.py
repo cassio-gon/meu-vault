@@ -1,6 +1,6 @@
-"""Sumarização com Claude (Haiku para volume): gera N tópicos do dia.
+"""Sumarização com Groq (free tier): gera N tópicos do dia.
 
-Usa a API REST da Anthropic via stdlib (sem dependências extras).
+Usa a API REST do Groq (compatível com OpenAI) via stdlib (sem dependências extras).
 """
 from __future__ import annotations
 
@@ -14,14 +14,13 @@ import urllib.request
 
 from scraper import ScrapedDoc
 
-ANTHROPIC_API = "https://api.anthropic.com/v1/messages"
-ANTHROPIC_VERSION = "2023-06-01"
+GROQ_API = "https://api.groq.com/openai/v1/chat/completions"
 
 # Cadeia de modelos: tenta o primeiro; se esgotar retries com erro
 # transitório ou de cota, cai para o próximo.
-# `CLAUDE_MODEL` (env), se setado, entra como primário.
-_DEFAULT_CHAIN = ["claude-haiku-4-5-20251001", "claude-sonnet-4-6"]
-_env_model = os.environ.get("CLAUDE_MODEL")
+# `GROQ_MODEL` (env), se setado, entra como primário.
+_DEFAULT_CHAIN = ["llama-3.3-70b-versatile", "llama-3.1-8b-instant"]
+_env_model = os.environ.get("GROQ_MODEL")
 MODELS = (
     [_env_model] + [m for m in _DEFAULT_CHAIN if m != _env_model]
     if _env_model
@@ -92,8 +91,8 @@ def _parse_topics(text: str) -> list[dict]:
     return data
 
 
-def _call_claude(api_key: str, prompt: str, max_tokens: int = 8192) -> str:
-    """Chama a API da Anthropic e devolve o texto da resposta."""
+def _call_groq(api_key: str, prompt: str, max_tokens: int = 8192) -> str:
+    """Chama a API do Groq e devolve o texto da resposta."""
     last_err: Exception | None = None
     for mi, model in enumerate(MODELS):
         body = json.dumps(
@@ -107,25 +106,24 @@ def _call_claude(api_key: str, prompt: str, max_tokens: int = 8192) -> str:
         print(f"   ↳ modelo: {model}")
         for attempt in range(1, MAX_RETRIES + 1):
             req = urllib.request.Request(
-                ANTHROPIC_API,
+                GROQ_API,
                 data=body,
                 headers={
                     "Content-Type": "application/json",
-                    "x-api-key": api_key,
-                    "anthropic-version": ANTHROPIC_VERSION,
+                    "Authorization": f"Bearer {api_key}",
                 },
                 method="POST",
             )
             try:
                 with urllib.request.urlopen(req, timeout=120) as resp:
                     data = json.load(resp)
-                content = data.get("content", [])
-                if not content:
-                    raise RuntimeError(f"Claude não retornou content: {str(data)[:300]}")
-                return content[0]["text"]
+                choices = data.get("choices", [])
+                if not choices:
+                    raise RuntimeError(f"Groq não retornou choices: {str(data)[:300]}")
+                return choices[0]["message"]["content"]
             except urllib.error.HTTPError as err:
                 detail = err.read().decode("utf-8", "ignore")[:200]
-                last_err = RuntimeError(f"Claude HTTP {err.code}: {detail}")
+                last_err = RuntimeError(f"Groq HTTP {err.code}: {detail}")
                 if err.code not in RETRYABLE:
                     raise last_err from err
                 wait = _backoff_seconds(attempt)
@@ -138,7 +136,7 @@ def _call_claude(api_key: str, prompt: str, max_tokens: int = 8192) -> str:
                 time.sleep(wait)
         if mi < len(MODELS) - 1:
             print(f"↪️  {model} indisponível; tentando próximo modelo...")
-    raise RuntimeError(f"Todos os modelos falharam ({', '.join(MODELS)})") from last_err
+    raise RuntimeError(f"Todos os modelos Groq falharam ({', '.join(MODELS)})") from last_err
 
 
 # Perfis de prompt por área do digest. Cada área enquadra o resumo no seu domínio.
@@ -219,7 +217,7 @@ def summarize_digest(
     )
 
     print(f"🧠 Resumindo (área: {area}) — cadeia: {' → '.join(MODELS)}")
-    text = _call_claude(api_key, prompt)
+    text = _call_groq(api_key, prompt)
     topics = _parse_topics(text)
     print(f"   → {len(topics)} tópicos gerados")
     return topics

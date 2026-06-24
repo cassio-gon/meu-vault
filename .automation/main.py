@@ -151,7 +151,7 @@ def _cmd_digest(args, cfg) -> int:
         return 1
 
     topics = summarizer.summarize_digest(
-        cfg.anthropic_api_key, docs, num_topics=args.topics, area=args.area
+        cfg.groq_api_key, docs, num_topics=args.topics, area=args.area
     )
     if not topics:
         print("❌ O resumo não gerou tópicos.")
