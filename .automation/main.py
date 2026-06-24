@@ -66,19 +66,28 @@ DIGEST_SOURCES = {
         {"url": "https://www.who.int/news-room/fact-sheets/detail/maternal-mortality", "kind": "scrape"},
         {"url": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/s/saude-da-mulher/saude-materna", "kind": "scrape"},
     ],
-    # Recém-Nascidos — saúde, desenvolvimento e orientação para pais.
-    # Mix de fontes brasileiras (SBP, Fiocruz, Medscape PT) e internacionais (AAP, WHO, ScienceDaily).
+    # Recém-Nascidos — notícias, curiosidades, cuidados e orientação para pais.
+    # Prioridade: fontes brasileiras de autoridade (SBP, Fiocruz, gov.br, Crescer, Drauzio, Pais&Filhos).
+    # Internacional: HealthyChildren (AAP) e Mayo Clinic (2 referências de peso).
     "RN": [
+        # Google News PT-BR — agrega notícias brasileiras sobre RN em tempo real
         {"url": "https://news.google.com/rss/search?q=rec%C3%A9m+nascido+neonatal+sa%C3%BAde+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
-        {"url": "https://news.google.com/rss/search?q=neonatologia+pediatria+beb%C3%AA+rec%C3%A9m+nascido&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+        # SBP — Sociedade Brasileira de Pediatria (autoridade máxima no Brasil)
         {"url": "https://www.sbp.com.br/noticias/", "kind": "scrape"},
-        {"url": "https://www.jped.com.br/", "kind": "scrape"},
-        {"url": "https://www.sciencedaily.com/rss/health_medicine/infant_and_toddler_health.xml", "kind": "rss"},
-        {"url": "https://www.healthychildren.org/English/ages-stages/baby/Pages/default.aspx", "kind": "scrape"},
-        {"url": "https://portugues.medscape.com/pediatria", "kind": "scrape"},
-        {"url": "https://www.who.int/news/item/", "kind": "scrape"},
-        {"url": "https://www.pais-e-filhos.com.br/bebe/", "kind": "scrape"},
+        # Crescer (Globo) — notícias e atualidades para pais, linguagem acessível
+        {"url": "https://crescer.globo.com/bebe/", "kind": "scrape"},
+        # Drauzio Varella — cuidados e dicas com embasamento médico acessível
+        {"url": "https://drauziovarella.uol.com.br/pediatria/", "kind": "scrape"},
+        # Pais & Filhos — curiosidades e dicas práticas para famílias
+        {"url": "https://www.paisfilhos.com.br/bebe/", "kind": "scrape"},
+        # Ministério da Saúde — programas oficiais e orientações regulatórias
+        {"url": "https://www.gov.br/saude/pt-br/assuntos/saude-da-crianca", "kind": "scrape"},
+        # Fiocruz — pesquisa científica brasileira, incluindo saúde materno-infantil
         {"url": "https://agencia.fiocruz.br/rss.xml", "kind": "rss"},
+        # HealthyChildren (AAP) — Academia Americana de Pediatria, referência global
+        {"url": "https://www.healthychildren.org/English/ages-stages/baby/Pages/default.aspx", "kind": "scrape"},
+        # Mayo Clinic — artigos clínicos detalhados e linguagem acessível
+        {"url": "https://www.mayoclinic.org/healthy-lifestyle/infant-and-toddler-health/basics/infant-health/hlv-20049400", "kind": "scrape"},
     ],
     # Jogos — foco em PS5 e PC, mix brasileiro e internacional.
     "Jogos": [

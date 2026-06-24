@@ -111,6 +111,8 @@ def _call_groq(api_key: str, prompt: str, max_tokens: int = 8192) -> str:
                 headers={
                     "Content-Type": "application/json",
                     "Authorization": f"Bearer {api_key}",
+                    "User-Agent": "groq-python/0.9.0",
+                    "Accept": "application/json",
                 },
                 method="POST",
             )
