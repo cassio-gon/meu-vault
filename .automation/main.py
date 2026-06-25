@@ -59,12 +59,12 @@ DIGEST_SOURCES = {
         {"url": "https://feeds.reuters.com/reuters/businessNews", "kind": "rss"},
     ],
     # Puerpério — 3º trimestre: exercícios, alimentação, dicas práticas, bem-estar.
-    # Fontes com conteúdo editorial/tips, não notícias institucionais.
+    # Apenas RSS com pubDate para garantir conteúdo da semana.
     "Puerperio": [
-        {"url": "https://www.tuasaude.com/gravidez/", "kind": "scrape"},
-        {"url": "https://www.tuasaude.com/exercicios-na-gravidez/", "kind": "scrape"},
         {"url": "https://news.google.com/rss/search?q=%22exercicios+para+gestantes%22+OR+%22yoga+gestante%22+OR+%22pilates+gravidez%22&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
         {"url": "https://news.google.com/rss/search?q=%22alimentacao+na+gravidez%22+OR+%22o+que+comer+gravidez%22+OR+%22nutricao+gestante%22&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+        {"url": "https://news.google.com/rss/search?q=%22dicas+para+gestantes%22+OR+%22cuidados+na+gravidez%22+OR+%22bem-estar+gestante%22&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+        {"url": "https://news.google.com/rss/search?q=%22preparacao+para+o+parto%22+OR+%22saude+mental+gestante%22+OR+%22ansiedade+gravidez%22&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
         {"url": "https://www.sciencedaily.com/rss/health_medicine/womens_health.xml", "kind": "rss"},
     ],
     # Jogos — foco em PS5 e PC, feeds diários com artigos individuais.
@@ -76,12 +76,13 @@ DIGEST_SOURCES = {
         {"url": "https://www.rockpapershotgun.com/feed/", "kind": "rss"},
     ],
     # Recém-Nascidos — cuidados práticos com RN, amamentação, desenvolvimento, sono.
+    # Apenas RSS com pubDate para garantir conteúdo da semana.
     "RN": [
-        {"url": "https://www.tuasaude.com/recem-nascido/", "kind": "scrape"},
-        {"url": "https://news.google.com/rss/search?q=%22cuidados+recem-nascido%22+OR+%22como+cuidar+do+bebe%22+OR+%22amamentacao+dicas%22&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
-        {"url": "https://news.google.com/rss/search?q=%22desenvolvimento+bebe%22+OR+%22sono+bebe%22+OR+%22choro+recem-nascido%22+OR+%22colic+bebe%22&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
-        {"url": "https://news.google.com/rss/search?q=%22aleitamento+materno%22+OR+%22amamentacao%22+OR+%22leite+materno%22&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
-        {"url": "https://www.sbp.com.br/noticias/", "kind": "scrape"},
+        {"url": "https://news.google.com/rss/search?q=%22cuidados+recem-nascido%22+OR+%22como+cuidar+do+bebe%22+OR+%22dicas+bebe%22&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+        {"url": "https://news.google.com/rss/search?q=%22amamentacao%22+OR+%22aleitamento+materno%22+OR+%22leite+materno%22&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+        {"url": "https://news.google.com/rss/search?q=%22desenvolvimento+bebe%22+OR+%22sono+bebe%22+OR+%22choro+bebe%22&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+        {"url": "https://news.google.com/rss/search?q=%22vacina+bebe%22+OR+%22triagem+neonatal%22+OR+%22teste+pezinho%22&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+        {"url": "https://www.sciencedaily.com/rss/health_medicine/infant_and_toddler_health.xml", "kind": "rss"},
     ],
 }
 
