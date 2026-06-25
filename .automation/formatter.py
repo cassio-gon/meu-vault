@@ -92,7 +92,7 @@ def render_digest(topics: list[dict], day: str, tag: str, area: str) -> str:
         emoji = CATEGORY_EMOJI.get(t.get("category"), DEFAULT_CATEGORY_EMOJI)
         news_date = t.get("date", "N/D")
         image_url = t.get("image_url", "").strip()
-        image_block = f"![|400]({image_url})\n\n" if image_url else ""
+        image_block = f'<img src="{image_url}" width="350" style="max-width:100%"/>\n\n' if image_url else ""
         parts.append(
             f"## {i}. {emoji} {t['title']}\n\n"
             f"{image_block}"
