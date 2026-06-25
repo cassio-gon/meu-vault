@@ -1,23 +1,26 @@
 """Leitura de feeds RSS/Atom via stdlib (sem Firecrawl → 0 créditos).
 
 Devolve um ScrapedDoc compatível com o resto do pipeline (summarizer/formatter):
-o markdown vira uma lista das manchetes mais recentes + resumo de cada item.
+o markdown vira uma lista das manchetes recentes + resumo de cada item.
+Itens mais antigos que MAX_AGE_DAYS são descartados automaticamente.
 """
 from __future__ import annotations
 
+import email.utils
 import re
 import time
 import urllib.error
 import urllib.request
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 from xml.etree import ElementTree as ET
 
 from scraper import ScrapedDoc
 
-MAX_ITEMS = 15        # nº de manchetes por feed que entram no contexto do LLM
-MAX_DESC_CHARS = 500  # corta a descrição de cada item
+MAX_ITEMS = 15
+MAX_DESC_CHARS = 500
 MAX_RETRIES = 3
 BACKOFF_SECONDS = 2
+MAX_AGE_DAYS = 7  # descarta artigos mais antigos que isso
 
 _TAG_RE = re.compile(r"<[^>]+>")
 _ENTITIES = {
@@ -27,7 +30,6 @@ _ENTITIES = {
 
 
 def _localname(tag: str) -> str:
-    """Nome da tag sem namespace, em minúsculas (ex.: '{ns}item' → 'item')."""
     return tag.split("}")[-1].lower()
 
 
@@ -42,8 +44,49 @@ def _strip_html(s: str) -> str:
     return re.sub(r"\s+", " ", s).strip()
 
 
+def _parse_date(s: str) -> datetime | None:
+    """Parseia data RSS (RFC 2822) ou Atom (ISO 8601). Retorna None se falhar."""
+    if not s:
+        return None
+    s = s.strip()
+    # RFC 2822: "Tue, 24 Jun 2026 15:30:00 +0000"
+    try:
+        return email.utils.parsedate_to_datetime(s)
+    except Exception:
+        pass
+    # ISO 8601: "2026-06-24T15:30:00Z" ou "2026-06-24T15:30:00+00:00"
+    try:
+        return datetime.fromisoformat(s.replace("Z", "+00:00"))
+    except ValueError:
+        pass
+    # Só data: "2026-06-24"
+    try:
+        return datetime.strptime(s[:10], "%Y-%m-%d").replace(tzinfo=timezone.utc)
+    except ValueError:
+        pass
+    return None
+
+
+def _is_recent(raw_date: str) -> bool:
+    """Retorna True se o artigo for de até MAX_AGE_DAYS atrás. Sem data = inclui."""
+    dt = _parse_date(raw_date)
+    if dt is None:
+        return True
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    cutoff = datetime.now(tz=timezone.utc) - timedelta(days=MAX_AGE_DAYS)
+    return dt >= cutoff
+
+
+def _fmt_date(raw_date: str) -> str:
+    """Formata a data como DD/MM/AAAA para exibição."""
+    dt = _parse_date(raw_date)
+    if dt is None:
+        return ""
+    return dt.strftime("%d/%m/%Y")
+
+
 def _fetch(url: str) -> bytes:
-    """GET com retry/backoff; devolve os bytes do XML."""
     last_err: Exception | None = None
     for attempt in range(1, MAX_RETRIES + 1):
         try:
@@ -62,18 +105,24 @@ def _fetch(url: str) -> bytes:
 
 
 def _item_link(entry) -> str:
-    """Extrai o link de um item (RSS: texto de <link>; Atom: href, evita rel=self)."""
     fallback = ""
     for c in entry:
         if _localname(c.tag) != "link":
             continue
         if c.text and c.text.strip():
-            return c.text.strip()  # RSS/RDF: link no texto
+            return c.text.strip()
         href = c.get("href", "")
         if href and c.get("rel") != "self":
-            return href  # Atom: alternate
+            return href
         fallback = fallback or href
     return fallback
+
+
+def _item_date(entry) -> str:
+    for c in entry:
+        if _localname(c.tag) in ("pubdate", "published", "updated", "date"):
+            return _text(c)
+    return ""
 
 
 def fetch_feed(url: str, max_items: int = MAX_ITEMS) -> ScrapedDoc:
@@ -81,7 +130,6 @@ def fetch_feed(url: str, max_items: int = MAX_ITEMS) -> ScrapedDoc:
     print(f"📡 RSS: {url}")
     root = ET.fromstring(_fetch(url))
 
-    # Título do feed: primeiro <title> em ordem de documento (channel/feed).
     feed_title = url
     for el in root.iter():
         if _localname(el.tag) == "title" and _text(el):
@@ -91,28 +139,42 @@ def fetch_feed(url: str, max_items: int = MAX_ITEMS) -> ScrapedDoc:
     entries = [el for el in root.iter() if _localname(el.tag) in ("item", "entry")]
 
     lines = []
+    skipped_old = 0
     for entry in entries[:max_items]:
-        title = desc = ""
+        title = desc = raw_date = ""
         for c in entry:
             ln = _localname(c.tag)
             if ln == "title" and not title:
                 title = _text(c)
             elif ln in ("description", "summary", "encoded", "content") and not desc:
                 desc = _text(c)
+            elif ln in ("pubdate", "published", "updated", "date") and not raw_date:
+                raw_date = _text(c)
+
+        if not _is_recent(raw_date):
+            skipped_old += 1
+            continue
+
         title = _strip_html(title)
         desc = _strip_html(desc)[:MAX_DESC_CHARS]
         link = _item_link(entry)
+        date_str = _fmt_date(raw_date)
+
         if not title:
             continue
+
         block = f"- **{title}**"
+        if date_str:
+            block += f" [{date_str}]"
         if desc:
             block += f": {desc}"
         if link:
-            block += f"\n  {link}"
+            block += f"\n  URL: {link}"
         lines.append(block)
 
     markdown = f"# {feed_title}\n\n" + "\n".join(lines)
-    print(f"   → {len(lines)} itens")
+    suffix = f" ({skipped_old} antigos ignorados)" if skipped_old else ""
+    print(f"   → {len(lines)} itens recentes{suffix}")
     return ScrapedDoc(
         title=feed_title,
         markdown=markdown,

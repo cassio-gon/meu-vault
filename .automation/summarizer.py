@@ -27,9 +27,9 @@ MODELS = (
     else list(_DEFAULT_CHAIN)
 )
 
-MAX_CHARS_PER_SOURCE = 1500   # limita chars por fonte (~375 tokens)
-MAX_TOTAL_CONTEXT_CHARS = 18_000  # teto do bloco de contexto (~4500 tokens)
-NUM_TOPICS = 6
+MAX_CHARS_PER_SOURCE = 3000   # limita chars por fonte (~750 tokens)
+MAX_TOTAL_CONTEXT_CHARS = 24_000  # teto do bloco de contexto (~6000 tokens)
+NUM_TOPICS = 5
 
 MAX_RETRIES = 5
 RETRYABLE = {429, 500, 502, 503, 504, 529}  # 529 = Claude overloaded
@@ -228,13 +228,15 @@ def summarize_digest(
         "fontes.\n\n"
         f"Selecione os {num_topics} tópicos MAIS IMPORTANTES do dia no total, cobrindo "
         f"{profile['focus']}. Para cada tópico escreva um resumo objetivo em português do "
-        "Brasil de aproximadamente 500 caracteres. Use a URL mais relevante da fonte "
-        f"correspondente e classifique cada tópico como {cats_json}.\n\n"
+        "Brasil de aproximadamente 800 caracteres. "
+        "Use a URL ESPECÍFICA do artigo (a linha 'URL:' que aparece logo após cada manchete "
+        "no conteúdo abaixo) — NUNCA use a URL do feed ou da fonte em si. "
+        f"Classifique cada tópico como {cats_json}.\n\n"
         "Responda APENAS com um objeto JSON válido no formato:\n"
         '{"topics": [{"title": "...", "summary": "...", "url": "...", '
         f'"category": {cats_json}, "date": "DD/MM/AAAA"}}]}}\n\n'
-        'O campo "date" deve conter a data de publicação da notícia no formato DD/MM/AAAA. '
-        'Se não for possível identificar a data, use "N/D".\n\n'
+        'O campo "date" deve conter a data de publicação da notícia (campo entre colchetes '
+        'na manchete, ex: [24/06/2026]). Se não houver data, use "N/D".\n\n'
         f"Conteúdo das fontes:\n\n{context}"
     )
 
