@@ -75,9 +75,15 @@ def _repair_truncated_json(text: str) -> str:
 def _parse_topics(text: str) -> list[dict]:
     """Extrai o array de tópicos do texto da resposta (tolerante a cercas e JSON truncado)."""
     cleaned = text.strip()
+    if not cleaned:
+        raise RuntimeError("Modelo retornou resposta vazia")
     fence = re.search(r"```(?:json)?\s*(.*?)```", cleaned, re.DOTALL)
     if fence:
         cleaned = fence.group(1).strip()
+    # Tenta localizar início do JSON caso o modelo adicione texto antes
+    json_start = next((i for i, c in enumerate(cleaned) if c in "{["), -1)
+    if json_start > 0:
+        cleaned = cleaned[json_start:]
     try:
         data = json.loads(cleaned)
     except json.JSONDecodeError:
@@ -86,7 +92,8 @@ def _parse_topics(text: str) -> list[dict]:
             data = json.loads(repaired)
             print(f"⚠️  JSON truncado reparado ({len(cleaned)}→{len(repaired)} chars)")
         except json.JSONDecodeError as err:
-            raise RuntimeError(f"JSON inválido mesmo após reparo: {err}") from err
+            preview = cleaned[:200].replace("\n", " ")
+            raise RuntimeError(f"JSON inválido mesmo após reparo: {err}\nResposta recebida: {preview}") from err
     if isinstance(data, dict):
         return data.get("topics", [])
     return data
@@ -123,7 +130,16 @@ def _call_groq(api_key: str, prompt: str, max_tokens: int = 8192) -> str:
                 choices = data.get("choices", [])
                 if not choices:
                     raise RuntimeError(f"Groq não retornou choices: {str(data)[:300]}")
-                return choices[0]["message"]["content"]
+                content = choices[0]["message"]["content"] or ""
+                if not content.strip():
+                    finish = choices[0].get("finish_reason", "?")
+                    last_err = RuntimeError(f"Groq retornou content vazio (finish_reason={finish})")
+                    wait = _backoff_seconds(attempt)
+                    print(f"⚠️  {last_err}; aguardando {wait:.1f}s...")
+                    if attempt < MAX_RETRIES:
+                        time.sleep(wait)
+                    continue
+                return content
             except urllib.error.HTTPError as err:
                 detail = err.read().decode("utf-8", "ignore")[:200]
                 last_err = RuntimeError(f"Groq HTTP {err.code}: {detail}")
