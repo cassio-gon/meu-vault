@@ -37,4 +37,4 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           python .automation/main.py digest \
             --area Puerperio --tag puerperio --folder "Pesquisas/Puerperio" \
-            --topics "${{ github.event.inputs.topics || '10' }}"
+            --topics "${{ github.event.inputs.topics || '5' }}"

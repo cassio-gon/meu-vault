@@ -34,7 +34,7 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           VAULT_PATH: ${{ github.workspace }}
           GIT_BRANCH: ${{ github.ref_name }}
-        run: python .automation/main.py digest --area IA --tag ia --folder "Pesquisas/IA" --topics 10
+        run: python .automation/main.py digest --area IA --tag ia --folder "Pesquisas/IA" --topics 5
 
       - name: Aguardar 5 min (reset TPM Groq)
         run: sleep 300
@@ -46,7 +46,7 @@ jobs:
           FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
           VAULT_PATH: ${{ github.workspace }}
           GIT_BRANCH: ${{ github.ref_name }}
-        run: python .automation/main.py digest --area Saude --tag saude --folder "Pesquisas/Saude" --topics 10
+        run: python .automation/main.py digest --area Saude --tag saude --folder "Pesquisas/Saude" --topics 5
 
       - name: Aguardar 5 min (reset TPM Groq)
         run: sleep 300
@@ -57,7 +57,7 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           VAULT_PATH: ${{ github.workspace }}
           GIT_BRANCH: ${{ github.ref_name }}
-        run: python .automation/main.py digest --area MedTrab --tag medtrab --folder "Pesquisas/Medicina do Trabalho" --topics 10
+        run: python .automation/main.py digest --area MedTrab --tag medtrab --folder "Pesquisas/Medicina do Trabalho" --topics 5
 
       - name: Aguardar 5 min (reset TPM Groq)
         run: sleep 300
@@ -68,7 +68,7 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           VAULT_PATH: ${{ github.workspace }}
           GIT_BRANCH: ${{ github.ref_name }}
-        run: python .automation/main.py digest --area MercFin --tag mercado-financeiro --folder "Pesquisas/Mercado Financeiro" --topics 10
+        run: python .automation/main.py digest --area MercFin --tag mercado-financeiro --folder "Pesquisas/Mercado Financeiro" --topics 5
 
       - name: Aguardar 5 min (reset TPM Groq)
         run: sleep 300
@@ -80,7 +80,7 @@ jobs:
           FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
           VAULT_PATH: ${{ github.workspace }}
           GIT_BRANCH: ${{ github.ref_name }}
-        run: python .automation/main.py digest --area Puerperio --tag puerperio --folder "Pesquisas/Puerperio" --topics 10
+        run: python .automation/main.py digest --area Puerperio --tag puerperio --folder "Pesquisas/Puerperio" --topics 5
 
       - name: Aguardar 5 min (reset TPM Groq)
         run: sleep 300
@@ -91,7 +91,7 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           VAULT_PATH: ${{ github.workspace }}
           GIT_BRANCH: ${{ github.ref_name }}
-        run: python .automation/main.py digest --area Jogos --tag jogos --folder "Pesquisas/Jogos" --topics 10
+        run: python .automation/main.py digest --area Jogos --tag jogos --folder "Pesquisas/Jogos" --topics 5
 
       - name: Aguardar 5 min (reset TPM Groq)
         run: sleep 300
@@ -103,4 +103,4 @@ jobs:
           FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
           VAULT_PATH: ${{ github.workspace }}
           GIT_BRANCH: ${{ github.ref_name }}
-        run: python .automation/main.py digest --area RN --tag recem-nascidos --folder "Pesquisas/RN" --topics 10
+        run: python .automation/main.py digest --area RN --tag recem-nascidos --folder "Pesquisas/RN" --topics 5

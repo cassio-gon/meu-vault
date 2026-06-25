@@ -26,94 +26,61 @@ from config import load_config
 # {"url", "kind": "rss"|"scrape"}. RSS é lido por stdlib e NÃO gasta crédito.
 # r/LocalLLaMA e X ficaram de fora do digest de IA por bloquearem scraping.
 DIGEST_SOURCES = {
+    # IA — fontes com RSS diário e URLs individuais de artigos.
     "IA": [
-        "https://techcrunch.com/category/artificial-intelligence/",
-        "https://www.theverge.com/ai-artificial-intelligence",
-        "https://tldr.tech/ai",
-        "https://huggingface.co/models?sort=trending",
-        "https://www.theresanaiforthat.com/",
+        {"url": "https://news.google.com/rss/search?q=inteligencia+artificial+IA+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+        {"url": "https://techcrunch.com/category/artificial-intelligence/feed/", "kind": "rss"},
+        {"url": "https://venturebeat.com/category/ai/feed/", "kind": "rss"},
+        {"url": "https://www.artificialintelligence-news.com/feed/", "kind": "rss"},
+        {"url": "https://www.technologyreview.com/feed/", "kind": "rss"},
     ],
-    # Mercado Financeiro — fontes brasileiras e globais via RSS e scrape.
-    "MercFin": [
-        {"url": "https://www.infomoney.com.br/feed/", "kind": "rss"},
-        {"url": "https://feeds.reuters.com/reuters/businessNews", "kind": "rss"},
-        {"url": "https://www.cnbc.com/id/10000664/device/rss/rss.html", "kind": "rss"},
-        {"url": "https://exame.com/mercados/", "kind": "scrape"},
-        {"url": "https://br.investing.com/news/stock-market-news", "kind": "scrape"},
-        {"url": "https://www.moneytimes.com.br/", "kind": "scrape"},
-    ],
-    # Medicina do Trabalho e Saúde Ocupacional — viés regulatório brasileiro.
-    "MedTrab": [
-        {"url": "https://www.anamt.org.br/portal/", "kind": "scrape"},
-        {"url": "https://rbmt.org.br/", "kind": "scrape"},
-        {"url": "https://www.segurancanotrabalho.com.br/", "kind": "scrape"},
-        {"url": "https://portal.cfm.org.br/noticias/feed/", "kind": "rss"},
-        {"url": "https://news.google.com/rss/search?q=medicina+do+trabalho+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
-        {"url": "https://news.google.com/rss/search?q=NR+segurança+saúde+trabalho+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
-    ],
-    # Puerpério e fim da gestação — 3º trimestre, pós-parto, saúde materna.
-    # Fontes brasileiras de autoridade (FEBRASGO, RBGO, Fiocruz, COFEN, MinSaúde)
-    # + internacionais (ScienceDaily, CDC, WHO) + Google News PT-BR contextual.
-    "Puerperio": [
-        {"url": "https://news.google.com/rss/search?q=puerp%C3%A9rio+p%C3%B3s-parto+sa%C3%BAde+materna+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
-        {"url": "https://news.google.com/rss/search?q=terceiro+trimestre+gesta%C3%A7%C3%A3o+pr%C3%A9-natal+gestante&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
-        {"url": "https://www.febrasgo.org.br/noticias/", "kind": "scrape"},
-        {"url": "https://journalrbgo.org/", "kind": "scrape"},
-        {"url": "https://portaldeboaspraticas.iff.fiocruz.br/atencao-mulher/", "kind": "scrape"},
-        {"url": "https://www.cofen.gov.br/", "kind": "scrape"},
-        {"url": "https://www.sciencedaily.com/rss/health_medicine/womens_health.xml", "kind": "rss"},
-        {"url": "https://www.cdc.gov/maternal-infant-health/index.html", "kind": "scrape"},
-        {"url": "https://www.who.int/news-room/fact-sheets/detail/maternal-mortality", "kind": "scrape"},
-        {"url": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/s/saude-da-mulher/saude-materna", "kind": "scrape"},
-    ],
-    # Recém-Nascidos — notícias, curiosidades, cuidados e orientação para pais.
-    # Prioridade: fontes brasileiras de autoridade (SBP, Fiocruz, gov.br, Crescer, Drauzio, Pais&Filhos).
-    # Internacional: HealthyChildren (AAP) e Mayo Clinic (2 referências de peso).
-    "RN": [
-        # Google News PT-BR — agrega notícias brasileiras sobre RN em tempo real
-        {"url": "https://news.google.com/rss/search?q=rec%C3%A9m+nascido+neonatal+sa%C3%BAde+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
-        # SBP — Sociedade Brasileira de Pediatria (autoridade máxima no Brasil)
-        {"url": "https://www.sbp.com.br/noticias/", "kind": "scrape"},
-        # Crescer (Globo) — notícias e atualidades para pais, linguagem acessível
-        {"url": "https://crescer.globo.com/bebe/", "kind": "scrape"},
-        # Drauzio Varella — cuidados e dicas com embasamento médico acessível
-        {"url": "https://drauziovarella.uol.com.br/pediatria/", "kind": "scrape"},
-        # Pais & Filhos — curiosidades e dicas práticas para famílias
-        {"url": "https://www.paisfilhos.com.br/bebe/", "kind": "scrape"},
-        # Ministério da Saúde — programas oficiais e orientações regulatórias
-        {"url": "https://www.gov.br/saude/pt-br/assuntos/saude-da-crianca", "kind": "scrape"},
-        # Fiocruz — pesquisa científica brasileira, incluindo saúde materno-infantil
+    # Saúde — viés brasileiro, fontes com RSS noticioso diário.
+    "Saude": [
+        {"url": "https://news.google.com/rss/search?q=saude+medicina+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
         {"url": "https://agencia.fiocruz.br/rss.xml", "kind": "rss"},
-        # HealthyChildren (AAP) — Academia Americana de Pediatria, referência global
-        {"url": "https://www.healthychildren.org/English/ages-stages/baby/Pages/default.aspx", "kind": "scrape"},
-        # Mayo Clinic — artigos clínicos detalhados e linguagem acessível
-        {"url": "https://www.mayoclinic.org/healthy-lifestyle/infant-and-toddler-health/basics/infant-health/hlv-20049400", "kind": "scrape"},
+        {"url": "https://rss.uol.com.br/feed/saude.xml", "kind": "rss"},
+        {"url": "https://portal.cfm.org.br/noticias/feed/", "kind": "rss"},
+        {"url": "https://www.sciencedaily.com/rss/health_medicine.xml", "kind": "rss"},
     ],
-    # Jogos — foco em PS5 e PC, mix brasileiro e internacional.
+    # Medicina do Trabalho — viés regulatório e científico brasileiro.
+    "MedTrab": [
+        {"url": "https://news.google.com/rss/search?q=medicina+do+trabalho+saude+ocupacional+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+        {"url": "https://news.google.com/rss/search?q=NR+seguranca+trabalho+acidente+doenca+ocupacional+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+        {"url": "https://agencia.fiocruz.br/rss.xml", "kind": "rss"},
+        {"url": "https://portal.cfm.org.br/noticias/feed/", "kind": "rss"},
+        {"url": "https://rss.uol.com.br/feed/saude.xml", "kind": "rss"},
+    ],
+    # Mercado Financeiro — Brasil e global, RSS com artigos datados.
+    "MercFin": [
+        {"url": "https://news.google.com/rss/search?q=mercado+financeiro+bolsa+ibovespa+economia+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+        {"url": "https://www.infomoney.com.br/feed/", "kind": "rss"},
+        {"url": "https://rss.uol.com.br/feed/economia.xml", "kind": "rss"},
+        {"url": "https://www.moneytimes.com.br/feed/", "kind": "rss"},
+        {"url": "https://feeds.reuters.com/reuters/businessNews", "kind": "rss"},
+    ],
+    # Puerpério — 3º trimestre, pós-parto, saúde materna Brasil + internacional.
+    "Puerperio": [
+        {"url": "https://news.google.com/rss/search?q=puerperio+pos-parto+saude+materna+amamentacao+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+        {"url": "https://news.google.com/rss/search?q=gestacao+pre-natal+gestante+terceiro+trimestre+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+        {"url": "https://agencia.fiocruz.br/rss.xml", "kind": "rss"},
+        {"url": "https://www.sciencedaily.com/rss/health_medicine/womens_health.xml", "kind": "rss"},
+        {"url": "https://rss.uol.com.br/feed/saude.xml", "kind": "rss"},
+    ],
+    # Jogos — foco em PS5 e PC, feeds diários com artigos individuais.
     "Jogos": [
         {"url": "https://br.ign.com/feed.xml", "kind": "rss"},
         {"url": "https://www.eurogamer.net/?format=rss", "kind": "rss"},
-        {"url": "https://www.rockpapershotgun.com/feed/", "kind": "rss"},
-        {"url": "https://www.theverge.com/games/rss/index.xml", "kind": "rss"},
         {"url": "https://www.pcgamer.com/rss/", "kind": "rss"},
-        {"url": "https://www.gamesradar.com/rss/", "kind": "rss"},
         {"url": "https://www.destructoid.com/feed/", "kind": "rss"},
-        {"url": "https://www.gamesindustry.biz/feed", "kind": "rss"},
-        {"url": "https://www.adrenaline.com.br/feed/", "kind": "rss"},
-        {"url": "https://www.videogameschronicle.com/feed/", "kind": "rss"},
+        {"url": "https://www.rockpapershotgun.com/feed/", "kind": "rss"},
     ],
-    # Saúde (viés Brasil) + medicina com base científica.
-    # RSS onde há feed noticioso bom; scrape onde não há.
-    # gov.br: /RSS lista pastas por ano (inútil) → scrape. Medscape PT: sem feed → scrape.
-    "Saude": [
-        # Saúde geral
+    # Recém-Nascidos — Google News agrega diário; SBP como autoridade brasileira.
+    "RN": [
+        {"url": "https://news.google.com/rss/search?q=recem+nascido+neonatal+bebe+saude+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+        {"url": "https://news.google.com/rss/search?q=neonatologia+pediatria+recem-nascido&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
         {"url": "https://agencia.fiocruz.br/rss.xml", "kind": "rss"},
-        {"url": "https://www.gov.br/saude/pt-br/assuntos/noticias", "kind": "scrape"},
-        {"url": "https://saude.abril.com.br/feed/", "kind": "rss"},
-        # Medicina / base científica
-        {"url": "https://portal.cfm.org.br/noticias/feed/", "kind": "rss"},
-        {"url": "https://portugues.medscape.com/", "kind": "scrape"},
-        {"url": "https://www.sciencedaily.com/rss/health_medicine.xml", "kind": "rss"},
+        {"url": "https://rss.uol.com.br/feed/saude.xml", "kind": "rss"},
+        {"url": "https://www.sbp.com.br/noticias/", "kind": "scrape"},
     ],
 }
 
