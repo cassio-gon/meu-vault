@@ -80,7 +80,7 @@ def render_digest(topics: list[dict], day: str, tag: str, area: str) -> str:
         "date": day,
         "tags": [tag, "digest"],
         "area": area,
-        "source": "trafilatura+gemini",
+        "source": "trafilatura+groq",
     }
     yaml_block = yaml.safe_dump(frontmatter, allow_unicode=True, sort_keys=False).strip()
 
