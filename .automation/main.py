@@ -59,12 +59,13 @@ DIGEST_SOURCES = {
         {"url": "https://feeds.reuters.com/reuters/businessNews", "kind": "rss"},
     ],
     # Puerpério — 3º trimestre: exercícios, alimentação, dicas práticas, bem-estar.
+    # Fontes com conteúdo editorial/tips, não notícias institucionais.
     "Puerperio": [
-        {"url": "https://news.google.com/rss/search?q=exercicios+gestante+gravidez+terceiro+trimestre+yoga&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
-        {"url": "https://news.google.com/rss/search?q=alimentacao+nutricao+gestante+gravidez+dieta&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
-        {"url": "https://news.google.com/rss/search?q=cuidados+gestante+bem-estar+gravidez+dicas+autocuidado&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+        {"url": "https://www.tuasaude.com/gravidez/", "kind": "scrape"},
+        {"url": "https://www.tuasaude.com/exercicios-na-gravidez/", "kind": "scrape"},
+        {"url": "https://news.google.com/rss/search?q=%22exercicios+para+gestantes%22+OR+%22yoga+gestante%22+OR+%22pilates+gravidez%22&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+        {"url": "https://news.google.com/rss/search?q=%22alimentacao+na+gravidez%22+OR+%22o+que+comer+gravidez%22+OR+%22nutricao+gestante%22&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
         {"url": "https://www.sciencedaily.com/rss/health_medicine/womens_health.xml", "kind": "rss"},
-        {"url": "https://news.google.com/rss/search?q=preparacao+parto+saude+mental+gestante+ansiedade+gravidez&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
     ],
     # Jogos — foco em PS5 e PC, feeds diários com artigos individuais.
     "Jogos": [

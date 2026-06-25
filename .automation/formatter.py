@@ -60,6 +60,15 @@ CATEGORY_EMOJI = {
     "noticia": "📰",
     "ferramenta": "🛠️",
     "estudo": "🔬",
+    "analise": "📊",
+    "dado": "📈",
+    "review": "⭐",
+    "lancamento": "🚀",
+    "regulatorio": "⚖️",
+    "exercicio": "🏃",
+    "nutricao": "🥗",
+    "dica": "💡",
+    "curiosidade": "🔍",
 }
 DEFAULT_CATEGORY_EMOJI = "📌"
 

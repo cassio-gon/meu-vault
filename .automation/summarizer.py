@@ -211,12 +211,13 @@ PROFILES = {
     "Puerperio": {
         "role": "especialista em saúde materna com foco no 3º trimestre de gestação",
         "focus": (
-            "cuidados práticos para gestantes no 3º trimestre (priorize exclusivamente: "
-            "exercícios físicos seguros na gravidez, alimentação e nutrição da gestante, "
-            "dicas de bem-estar e autocuidado, preparação para o parto, saúde mental e "
-            "emocional na gestação, curiosidades sobre o desenvolvimento fetal, cuidados "
-            "com o corpo e sono. IGNORE completamente: políticas públicas de saúde, "
-            "notícias institucionais, programas governamentais e legislação)"
+            "APENAS conteúdo prático e educativo para gestantes: exercícios físicos seguros "
+            "na gravidez, alimentação e nutrição da gestante, dicas de bem-estar e autocuidado, "
+            "preparação para o parto, saúde mental na gestação, curiosidades sobre o "
+            "desenvolvimento fetal, cuidados com o corpo e sono. "
+            "DESCARTE OBRIGATORIAMENTE qualquer tópico sobre: Fiocruz, Ministério da Saúde, "
+            "SUS, políticas públicas, seminários, cooperações institucionais, legislação, "
+            "programas governamentais ou notícias de eventos — esses NÃO devem aparecer"
         ),
         "categories": ["exercicio", "nutricao", "dica", "curiosidade"],
     },
