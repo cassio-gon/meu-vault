@@ -42,13 +42,11 @@ DIGEST_SOURCES = {
         {"url": "https://portal.cfm.org.br/noticias/feed/", "kind": "rss"},
         {"url": "https://www.sciencedaily.com/rss/health_medicine.xml", "kind": "rss"},
     ],
-    # Medicina do Trabalho — viés regulatório e científico brasileiro.
+    # Medicina do Trabalho — fontes especializadas definidas pelo usuário.
     "MedTrab": [
-        {"url": "https://news.google.com/rss/search?q=medicina+do+trabalho+saude+ocupacional+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
-        {"url": "https://news.google.com/rss/search?q=NR+seguranca+trabalho+acidente+doenca+ocupacional+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
-        {"url": "https://agencia.fiocruz.br/rss.xml", "kind": "rss"},
-        {"url": "https://portal.cfm.org.br/noticias/feed/", "kind": "rss"},
-        {"url": "https://rss.uol.com.br/feed/saude.xml", "kind": "rss"},
+        {"url": "https://abmt.org.br/noticias/", "kind": "scrape"},
+        {"url": "https://www.anamt.org.br/portal/", "kind": "scrape"},
+        {"url": "https://www.soc.com.br/", "kind": "scrape"},
     ],
     # Mercado Financeiro — Brasil e global, RSS com artigos datados.
     "MercFin": [
