@@ -28,17 +28,6 @@ jobs:
           git config user.name "vault-bot"
           git config user.email "actions@users.noreply.github.com"
 
-      - name: Digest IA
-        continue-on-error: true
-        env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-          VAULT_PATH: ${{ github.workspace }}
-          GIT_BRANCH: ${{ github.ref_name }}
-        run: python .automation/main.py digest --area IA --tag ia --folder "Pesquisas/IA" --topics 5
-
-      - name: Aguardar 10 min (reset TPM Groq)
-        run: sleep 600
-
       - name: Digest Saude
         continue-on-error: true
         env:
