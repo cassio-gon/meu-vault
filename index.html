@@ -2,8 +2,8 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <meta name="theme-color" content="#060b18" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f172a" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Vault Digest" />
@@ -12,21 +12,13 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --glass-bg:        rgba(255, 255, 255, 0.07);
-      --glass-border:    rgba(255, 255, 255, 0.13);
-      --glass-highlight: rgba(255, 255, 255, 0.20);
-      --glass-shadow:    rgba(0, 0, 0, 0.50);
-      --text:            #f1f5f9;
-      --muted:           #94a3b8;
-      --radius:          16px;
-      --radius-lg:       24px;
-      --safe-bottom:     env(safe-area-inset-bottom, 16px);
-      --safe-top:        env(safe-area-inset-top, 0px);
+      --bg:      #0f172a;
+      --surface: #1e293b;
+      --fg:      #f1f5f9;
+      --muted:   #94a3b8;
+      --border:  rgba(255,255,255,0.10);
 
-      /* cores por categoria */
       --c-saude:    #10b981;
       --c-ia:       #8b5cf6;
       --c-financas: #f59e0b;
@@ -36,332 +28,369 @@
       --c-rn:       #fb7185;
       --c-puerp:    #c084fc;
       --c-default:  #38bdf8;
+
+      --safe-top:    env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
     }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html, body {
       height: 100%;
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow: hidden;
     }
 
-    body {
+    #app {
+      height: 100%;
       display: flex;
       flex-direction: column;
-      min-height: 100dvh;
-      background: #0f1117;
+      max-width: 430px;
+      margin: 0 auto;
     }
 
-    /* ── Glass helper ───────────────────────────────────────────── */
-    .glass {
-      background: var(--glass-bg);
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      border: 1px solid var(--glass-border);
-      box-shadow:
-        0 8px 32px var(--glass-shadow),
-        inset 0 1px 0 var(--glass-highlight);
-    }
+    /* ── Views ──────────────────────────────────────────────────── */
+    .view { display: none; flex-direction: column; flex: 1; overflow: hidden; }
+    .view.active { display: flex; }
 
     /* ── Header ─────────────────────────────────────────────────── */
-    .header {
-      background: #0f1117;
-      padding: calc(var(--safe-top) + 18px) 20px 16px;
-      position: sticky;
-      top: 0;
-      z-index: 20;
-    }
-
-    .header-inner {
+    .app-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
-    }
-
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex: 1;
-      min-width: 0;
-    }
-
-    .back-btn {
-      display: none;
-      align-items: center;
-      justify-content: center;
-      width: 30px;
-      height: 30px;
+      padding: calc(var(--safe-top) + 12px) 20px 12px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
       flex-shrink: 0;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.09);
-      border: 1px solid rgba(255,255,255,0.15);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.18);
-      color: var(--text);
-      font-size: 20px;
-      line-height: 1;
-      cursor: pointer;
-      transition: background 0.15s;
+      min-height: 52px;
     }
-    .back-btn.visible { display: flex; }
-    .back-btn:active  { background: rgba(255,255,255,0.16); }
 
-    .breadcrumb {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      min-width: 0;
-    }
-    .breadcrumb-item {
-      font-size: 18px;
+    .header-brand {
+      font-size: 19px;
       font-weight: 700;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .breadcrumb-item.dim {
-      color: var(--muted);
-      font-weight: 400;
-      font-size: 14px;
-    }
-    .breadcrumb-sep {
-      color: var(--muted);
-      font-size: 13px;
-      flex-shrink: 0;
+      letter-spacing: -0.03em;
+      color: var(--fg);
     }
 
     .header-date {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--muted);
-      white-space: nowrap;
-      flex-shrink: 0;
     }
 
-    /* ── Content ─────────────────────────────────────────────────── */
-    .content {
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 1px;
+      background: none;
+      border: none;
+      color: var(--fg);
+      font-size: 17px;
+      font-weight: 400;
+      cursor: pointer;
+      padding: 10px 4px;
+      min-height: 44px;
+      -webkit-tap-highlight-color: transparent;
+      letter-spacing: -0.01em;
+      border-radius: 6px;
+    }
+    .back-btn:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+    .back-btn svg { width: 22px; height: 22px; margin-left: -4px; }
+
+    /* ── Home ────────────────────────────────────────────────────── */
+    .home-scroll {
       flex: 1;
       overflow-y: auto;
-      padding: 16px 16px calc(24px + var(--safe-bottom));
+      padding: 14px;
+      padding-bottom: calc(14px + var(--safe-bottom));
     }
 
-    .section-label {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-
-    /* ── Home grid ───────────────────────────────────────────────── */
-    .cat-grid {
+    .grid-2x2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 10px;
     }
 
     .cat-card {
-      background: #1a1d27;
-      border: 1px solid rgba(255,255,255,0.07);
-      border-top: 3px solid var(--cat-color, var(--c-default));
-      border-radius: var(--radius);
-      padding: 18px 14px 14px;
-      cursor: pointer;
-      position: relative;
+      background: var(--surface);
+      border-radius: 16px;
       overflow: hidden;
-      min-height: 148px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      border: 1px solid var(--border);
       display: flex;
       flex-direction: column;
-      transition: transform 0.12s ease, background 0.12s ease;
+      aspect-ratio: 0.88;
+      transition: transform 0.13s ease;
+      user-select: none;
     }
+    .cat-card:active { transform: scale(0.96); }
+    .cat-card:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
 
-    .cat-card:active {
-      transform: scale(0.96);
-      background: #1f2333;
-    }
+    /* strip colorida no topo */
+    .cat-strip { height: 4px; flex-shrink: 0; }
 
-    .cat-icon  {
-      font-size: 38px;
-      line-height: 1;
-      margin-bottom: auto;
-      padding-bottom: 12px;
-    }
-    .cat-name  { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.2; }
-
-    .cat-footer {
+    .cat-body {
+      flex: 1;
+      padding: 16px 14px 14px;
       display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      margin-top: 10px;
+      flex-direction: column;
+      position: relative;
     }
-    .cat-date {
-      font-size: 11px;
+
+    .cat-emoji {
+      font-size: 44px;
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+
+    .cat-name {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--fg);
+    }
+
+    .cat-badge {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      font-size: 10px;
       font-weight: 500;
       color: var(--muted);
-      background: rgba(255,255,255,0.07);
-      padding: 2px 8px;
-      border-radius: 20px;
+      background: rgba(255,255,255,0.05);
+      padding: 3px 6px;
+      border-radius: 5px;
+      letter-spacing: 0.03em;
     }
-    .cat-arrow { display: none; }
 
-    /* ── Subcategory list ─────────────────────────────────────────── */
-    .subcat-list { display: flex; flex-direction: column; gap: 10px; }
-
-    .subcat-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      border: 1px solid var(--glass-border);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.35), inset 0 1px 0 var(--glass-highlight);
-      border-radius: var(--radius);
-      padding: 14px 16px;
-      cursor: pointer;
+    /* ── Category band (cabeçalho da lista) ──────────────────────── */
+    .cat-band {
       display: flex;
       align-items: center;
-      gap: 14px;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.1s ease;
-    }
-
-    /* colored left strip */
-    .subcat-card::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 3px;
-      background: var(--cat-color, var(--c-default));
-      border-radius: 3px 0 0 3px;
-    }
-
-    .subcat-card:active { transform: scale(0.98); }
-
-    .subcat-icon {
-      font-size: 22px;
-      width: 42px; height: 42px;
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.1);
+      gap: 12px;
+      padding: 14px 20px 12px;
+      border-bottom: 1px solid var(--border);
       flex-shrink: 0;
     }
-    .subcat-info { flex: 1; min-width: 0; }
-    .subcat-name  { font-size: 15px; font-weight: 600; color: var(--text); }
-    .subcat-count { font-size: 12px; color: var(--muted); margin-top: 2px; }
-    .subcat-arrow { color: var(--muted); font-size: 18px; }
-
-    /* ── File list ────────────────────────────────────────────────── */
-    .file-list { display: flex; flex-direction: column; gap: 10px; }
-
-    .file-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      border: 1px solid var(--glass-border);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.3), inset 0 1px 0 var(--glass-highlight);
-      border-radius: var(--radius);
-      padding: 14px 44px 14px 16px;
-      cursor: pointer;
-      position: relative;
-      transition: transform 0.1s ease;
-    }
-    .file-card.latest {
-      border-color: rgba(255,255,255,0.22);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.28);
-    }
-    .file-card:active { transform: scale(0.98); }
-
-    .file-date {
-      font-size: 11px;
+    .band-emoji { font-size: 26px; }
+    .band-name {
+      font-size: 17px;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--cat-color, var(--c-default));
+      letter-spacing: -0.02em;
     }
-    .latest-badge {
+    .band-meta {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* ── Subcategorias ────────────────────────────────────────────── */
+    .list-scroll {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .subcat-list { list-style: none; }
+
+    .subcat-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: background 0.1s;
+    }
+    .subcat-row:active { background: rgba(255,255,255,0.04); }
+    .subcat-row:focus-visible {
+      outline: none;
+      background: rgba(255,255,255,0.06);
+      box-shadow: inset 2px 0 0 var(--fg);
+    }
+
+    .subcat-icon-wrap {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.07);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .subcat-info { flex: 1; }
+    .subcat-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--fg);
+      margin-bottom: 2px;
+    }
+    .subcat-meta {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .subcat-arrow { color: var(--muted); flex-shrink: 0; }
+
+    /* ── Digest list ─────────────────────────────────────────────── */
+    .digest-list { list-style: none; }
+
+    .digest-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: background 0.1s;
+    }
+    .digest-row:active { background: rgba(255,255,255,0.04); }
+    .digest-row:focus-visible {
+      outline: none;
+      background: rgba(255,255,255,0.06);
+      box-shadow: inset 2px 0 0 var(--fg);
+    }
+
+    .digest-day {
+      font-size: 38px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.05em;
+      font-variant-numeric: tabular-nums;
+      min-width: 52px;
+      flex-shrink: 0;
+    }
+
+    .digest-text { flex: 1; }
+
+    .digest-edition {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--fg);
+      margin-bottom: 3px;
+      letter-spacing: -0.01em;
+    }
+    .digest-edition .new-badge {
       display: inline-block;
       font-size: 9px;
       font-weight: 700;
-      padding: 1px 6px;
-      border-radius: 8px;
+      padding: 1px 5px;
+      border-radius: 4px;
       background: rgba(74,222,128,0.18);
       color: #4ade80;
       margin-left: 6px;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       vertical-align: middle;
     }
-    .file-title  { font-size: 15px; font-weight: 600; color: var(--text); margin-top: 4px; }
-    .file-arrow  {
-      position: absolute;
-      right: 16px; top: 50%;
-      transform: translateY(-50%);
+
+    .digest-sub {
+      font-size: 13px;
       color: var(--muted);
-      font-size: 18px;
     }
 
+    .digest-arrow { color: var(--muted); flex-shrink: 0; }
+
     /* ── Article ─────────────────────────────────────────────────── */
-    .article-wrap {
-      background: var(--glass-bg);
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      border: 1px solid var(--glass-border);
-      box-shadow: 0 8px 32px var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
-      border-radius: var(--radius-lg);
-      padding: 24px 20px;
-      line-height: 1.75;
+    .article-scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 28px 20px;
+      padding-bottom: calc(48px + var(--safe-bottom));
     }
-    .article-wrap h1 {
-      font-size: 21px; font-weight: 700;
-      color: var(--text);
-      margin-bottom: 20px; line-height: 1.3;
+
+    .art-day {
+      font-size: 68px;
+      font-weight: 800;
+      letter-spacing: -0.055em;
+      line-height: 0.88;
+      font-variant-numeric: tabular-nums;
+      margin-bottom: 8px;
     }
-    .article-wrap h2 {
-      font-size: 15px; font-weight: 700;
-      color: var(--text);
-      margin: 22px 0 8px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--glass-border);
+
+    .art-month {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 16px;
     }
-    .article-wrap h3 {
-      font-size: 14px; font-weight: 600;
-      color: var(--text);
-      margin: 16px 0 6px;
+
+    .art-reading {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 18px;
     }
-    .article-wrap p  { font-size: 14px; color: #cbd5e1; margin-bottom: 12px; }
-    .article-wrap strong { color: var(--text); }
-    .article-wrap em     { color: var(--muted); }
-    .article-wrap ul, .article-wrap ol { padding-left: 20px; margin-bottom: 12px; }
-    .article-wrap li { font-size: 14px; color: #cbd5e1; margin-bottom: 5px; }
-    .article-wrap blockquote {
+
+    .art-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+
+    .art-divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 28px;
+    }
+
+    /* markdown renderizado */
+    .art-body { font-size: 15px; line-height: 1.75; color: rgba(241,245,249,0.82); }
+    .art-body h1 {
+      font-size: 20px; font-weight: 700; letter-spacing: -0.02em;
+      line-height: 1.3; color: var(--fg); margin: 0 0 16px;
+    }
+    .art-body h2 {
+      font-size: 17px; font-weight: 700; letter-spacing: -0.02em;
+      color: var(--fg); margin: 28px 0 10px;
+      padding-bottom: 8px; border-bottom: 1px solid var(--border);
+    }
+    .art-body h3 {
+      font-size: 15px; font-weight: 600; color: var(--fg); margin: 20px 0 8px;
+    }
+    .art-body p  { margin-bottom: 14px; }
+    .art-body strong { color: var(--fg); font-weight: 600; }
+    .art-body em     { color: var(--muted); }
+    .art-body ul, .art-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .art-body li { margin-bottom: 5px; }
+    .art-body blockquote {
       border-left: 3px solid var(--cat-color, var(--c-default));
       background: rgba(255,255,255,0.04);
       border-radius: 0 8px 8px 0;
-      padding: 10px 14px;
-      margin: 14px 0;
-      color: var(--muted);
+      padding: 12px 14px;
+      margin: 16px 0;
+      color: var(--fg);
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 1.68;
     }
-    .article-wrap a   { color: var(--cat-color, var(--c-default)); text-decoration: none; }
-    .article-wrap hr  { border: none; border-top: 1px solid var(--glass-border); margin: 18px 0; }
-    .article-wrap code {
-      font-size: 12px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 4px;
-      padding: 1px 5px;
+    .art-body a   { color: var(--cat-color, var(--c-default)); text-decoration: none; }
+    .art-body hr  { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+    .art-body code {
+      font-size: 12px; background: rgba(255,255,255,0.08);
+      border-radius: 4px; padding: 1px 5px;
     }
 
-    /* ── States ──────────────────────────────────────────────────── */
+    /* ── Estado vazio/erro/loading ───────────────────────────────── */
     .state {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 60px 20px;
-      text-align: center;
-      gap: 12px;
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 12px; text-align: center; padding: 40px 20px;
     }
-    .state .icon { font-size: 38px; }
-    .state .msg  { color: var(--muted); font-size: 14px; }
+    .state-icon { font-size: 36px; }
+    .state-msg  { font-size: 14px; color: var(--muted); }
     .spinner {
       width: 28px; height: 28px;
       border: 2px solid rgba(255,255,255,0.10);
@@ -370,33 +399,89 @@
       animation: spin 0.7s linear infinite;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Scrollbar hide ──────────────────────────────────────────── */
+    .home-scroll::-webkit-scrollbar,
+    .list-scroll::-webkit-scrollbar,
+    .article-scroll::-webkit-scrollbar { display: none; }
+    .home-scroll, .list-scroll, .article-scroll {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* ── Reduced motion ──────────────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      .cat-card, .digest-row, .subcat-row { transition: none; }
+      :root[data-nav-dir]::view-transition-new(root),
+      :root[data-nav-dir]::view-transition-old(root) { animation: none; }
+    }
+
+    /* ── View transitions (slide iOS-like) ───────────────────────── */
+    @keyframes vt-in-right  { from { opacity:0; transform:translateX(24px);  } to { opacity:1; transform:none; } }
+    @keyframes vt-out-left  { from { opacity:1; transform:none; } to { opacity:0; transform:translateX(-16px); } }
+    @keyframes vt-in-left   { from { opacity:0; transform:translateX(-24px); } to { opacity:1; transform:none; } }
+    @keyframes vt-out-right { from { opacity:1; transform:none; } to { opacity:0; transform:translateX(16px);  } }
+
+    :root[data-nav-dir="forward"]::view-transition-new(root)  { animation: vt-in-right  0.25s cubic-bezier(0.25,0.46,0.45,0.94); }
+    :root[data-nav-dir="forward"]::view-transition-old(root)  { animation: vt-out-left  0.20s cubic-bezier(0.55,0,1,0.45); }
+    :root[data-nav-dir="back"]::view-transition-new(root)     { animation: vt-in-left   0.25s cubic-bezier(0.25,0.46,0.45,0.94); }
+    :root[data-nav-dir="back"]::view-transition-old(root)     { animation: vt-out-right 0.20s cubic-bezier(0.55,0,1,0.45); }
   </style>
 </head>
 <body>
+<div id="app">
 
-<div class="header" id="header">
-  <div class="header-inner">
-    <div class="header-left">
-      <button class="back-btn" id="back-btn" onclick="goBack()">‹</button>
-      <div class="breadcrumb" id="breadcrumb">
-        <span class="breadcrumb-item">Vault Digest</span>
+  <!-- ══ HOME ══════════════════════════════════════════════════ -->
+  <div class="view active" id="view-home">
+    <header class="app-header">
+      <span class="header-brand">Vault Digest</span>
+      <span class="header-date" id="header-today"></span>
+    </header>
+    <div class="home-scroll">
+      <div class="grid-2x2" id="cat-grid">
+        <div class="state"><div class="spinner"></div></div>
       </div>
     </div>
-    <div class="header-date" id="header-date"></div>
   </div>
-</div>
 
-<div class="content" id="content">
-  <div class="state"><div class="spinner"></div><div class="msg">Carregando...</div></div>
-</div>
+  <!-- ══ LIST (subcats ou digests) ════════════════════════════ -->
+  <div class="view" id="view-list">
+    <header class="app-header">
+      <button class="back-btn" id="list-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        <span id="list-back-label">Início</span>
+      </button>
+    </header>
+    <div class="cat-band">
+      <div class="band-emoji" id="band-emoji"></div>
+      <div>
+        <div class="band-name" id="band-name"></div>
+        <div class="band-meta" id="band-meta"></div>
+      </div>
+    </div>
+    <div class="list-scroll" id="list-scroll-area">
+      <div class="state"><div class="spinner"></div></div>
+    </div>
+  </div>
 
+  <!-- ══ ARTICLE ══════════════════════════════════════════════ -->
+  <div class="view" id="view-article">
+    <header class="app-header">
+      <button class="back-btn" id="art-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        <span id="art-back-label"></span>
+      </button>
+    </header>
+    <div class="article-scroll" id="art-content"></div>
+  </div>
+
+</div>
 <script>
   const REPO = 'cassio-gon/meu-vault';
   const BASE = 'Pesquisas';
   const API  = `https://api.github.com/repos/${REPO}/contents`;
   const RAW  = `https://raw.githubusercontent.com/${REPO}/main`;
 
-  // metadados visuais por nome de pasta
   const META = {
     'Saude':                { icon: '🏥', label: 'Saúde',           color: '#10b981' },
     'IA':                   { icon: '🤖', label: 'IA',              color: '#8b5cf6' },
@@ -409,7 +494,7 @@
     'Puerperio':            { icon: '🤱', label: 'Puerpério',       color: '#c084fc' },
     'Puerpério':            { icon: '🤱', label: 'Puerpério',       color: '#c084fc' },
     'UTI':                  { icon: '🏨', label: 'UTI',             color: '#f97316' },
-    'Cardiologia':          { icon: '❤️', label: 'Cardiologia',     color: '#ef4444' },
+    'Cardiologia':          { icon: '❤️',  label: 'Cardiologia',    color: '#ef4444' },
     'Pediatria':            { icon: '🧒', label: 'Pediatria',       color: '#38bdf8' },
   };
 
@@ -417,60 +502,39 @@
     return META[name] || { icon: '📁', label: name, color: '#38bdf8' };
   }
 
-  // ── navStack: [{type, ...dados}] ─────────────────────────────
-  let navStack = [{ type: 'home' }];
+  // ── Estado de navegação ───────────────────────────────────────
+  // cada entrada: { view, data } — data varia por view
+  let navStack = [{ view: 'view-home', data: {} }];
+  let currentCatColor = '#38bdf8'; // cor ativa para estilo do artigo
 
-  function currentView() { return navStack[navStack.length - 1]; }
+  // ── Transições ────────────────────────────────────────────────
+  function showView(id, dir = 'forward') {
+    document.documentElement.setAttribute('data-nav-dir', dir);
+    const update = () => {
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      const scroll = document.querySelector(`#${id} [class*="-scroll"]`);
+      if (scroll) scroll.scrollTop = 0;
+    };
+    if (document.startViewTransition) document.startViewTransition(update);
+    else update();
+  }
 
-  function pushView(view) {
-    navStack.push(view);
-    render();
+  function navigateTo(viewId, data, dir = 'forward') {
+    navStack.push({ view: viewId, data });
+    showView(viewId, dir);
   }
 
   function goBack() {
     if (navStack.length <= 1) return;
     navStack.pop();
-    render();
+    const prev = navStack[navStack.length - 1];
+    showView(prev.view, 'back');
+    // re-renderiza a view anterior se necessário
+    if (prev.view === 'view-list' && prev.data) restoreList(prev.data);
   }
 
-  // ── Header ────────────────────────────────────────────────────
-  function updateHeader() {
-    const view = currentView();
-    const btn  = document.getElementById('back-btn');
-    const bc   = document.getElementById('breadcrumb');
-
-    btn.classList.toggle('visible', navStack.length > 1);
-
-    // monta breadcrumb
-    const crumbs = [{ label: 'Vault Digest', dim: navStack.length > 1 }];
-    if (view.type === 'subcats' || view.type === 'files' || view.type === 'article') {
-      const m = getMeta(view.category);
-      crumbs.push({ label: m.label, dim: view.type === 'files' && view.subcategory || view.type === 'article' });
-    }
-    if ((view.type === 'files' && view.subcategory) || (view.type === 'article' && view.subcategory)) {
-      crumbs.push({ label: getMeta(view.subcategory).label, dim: false });
-    }
-
-    bc.innerHTML = crumbs.map((c, i) => {
-      const sep = i < crumbs.length - 1 ? '<span class="breadcrumb-sep">›</span>' : '';
-      return `<span class="breadcrumb-item${c.dim ? ' dim' : ''}">${c.label}</span>${sep}`;
-    }).join('');
-  }
-
-  // ── Render dispatcher ─────────────────────────────────────────
-  function render() {
-    updateHeader();
-    const view = currentView();
-    const views = {
-      home:    () => renderHome(view),
-      subcats: () => renderSubcats(view),
-      files:   () => renderFileList(view),
-      article: () => renderArticle(view),
-    };
-    (views[view.type] || (() => {}))();
-  }
-
-  // ── Data helpers ──────────────────────────────────────────────
+  // ── Fetch helpers ─────────────────────────────────────────────
   async function apiFetch(path) {
     const res = await fetch(`${API}/${path}`);
     if (!res.ok) throw new Error(`API ${res.status}`);
@@ -483,74 +547,78 @@
     return res.text();
   }
 
-  // ── Date helpers ──────────────────────────────────────────────
-  function todayStr() {
-    const d = new Date();
-    const months = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
-    return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
-  }
-
+  // ── Data helpers ──────────────────────────────────────────────
   function extractDate(fname) {
     const m = fname.match(/^(\d{4}-\d{2}-\d{2})/);
     return m ? m[1] : '';
   }
 
-  function formatDate(ds) {
-    if (!ds) return '';
+  function parseDate(ds) {
+    if (!ds) return null;
     const [, mo, d] = ds.split('-');
     const months = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
-    return `${parseInt(d)} ${months[parseInt(mo)-1]}`;
+    return { day: parseInt(d), month: months[parseInt(mo)-1] };
+  }
+
+  function todayStr() {
+    const d = new Date();
+    const days   = ['dom','seg','ter','qua','qui','sex','sáb'];
+    const months = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+    return `${days[d.getDay()]}, ${d.getDate()} ${months[d.getMonth()]}`;
+  }
+
+  function wordCount(md) {
+    return md.trim().split(/\s+/).length;
+  }
+
+  function readingMin(md) {
+    return Math.max(1, Math.round(wordCount(md) / 200));
   }
 
   // ── Init ──────────────────────────────────────────────────────
   async function init() {
-    document.getElementById('header-date').textContent = todayStr();
-    showLoading();
+    document.getElementById('header-today').textContent = todayStr();
     try {
       const items = await apiFetch(BASE);
       const cats  = items.filter(i => i.type === 'dir').map(i => i.name).sort();
-      navStack[0].categories = cats;
-      render();
+      renderHome(cats);
     } catch {
-      showError('Não foi possível carregar as categorias.');
+      showStateInEl(document.getElementById('cat-grid'), '⚠️', 'Erro ao carregar categorias.');
     }
   }
 
   // ── Home ──────────────────────────────────────────────────────
-  function renderHome(view) {
-    const { categories = [] } = view;
-    if (!categories.length) { showEmpty('Nenhuma categoria encontrada.'); return; }
+  function renderHome(cats) {
+    const grid = document.getElementById('cat-grid');
+    if (!cats.length) { showStateInEl(grid, '📭', 'Nenhuma categoria encontrada.'); return; }
 
-    const el = document.createElement('div');
-    el.innerHTML = `<div class="section-label">Categorias</div>`;
-
-    const grid = document.createElement('div');
-    grid.className = 'cat-grid';
-
-    categories.forEach(cat => {
+    grid.innerHTML = '';
+    cats.forEach(cat => {
       const m    = getMeta(cat);
       const card = document.createElement('div');
       card.className = 'cat-card';
-      card.style.setProperty('--cat-color', m.color);
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-label', m.label);
       card.innerHTML = `
-        <div class="cat-icon">${m.icon}</div>
-        <div class="cat-name">${m.label}</div>
-        <div class="cat-footer">
-          <span class="cat-date" id="cdate-${cat}">—</span>
-          <span class="cat-arrow">›</span>
+        <div class="cat-strip" style="background:${m.color}"></div>
+        <div class="cat-body">
+          <div class="cat-emoji" aria-hidden="true">${m.icon}</div>
+          <div class="cat-name">${m.label}</div>
+          <div class="cat-badge" id="badge-${cat}">—</div>
         </div>`;
-      card.onclick = () => selectCategory(cat);
+      card.addEventListener('click', () => selectCategory(cat));
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectCategory(cat); }
+      });
       grid.appendChild(card);
 
-      // carrega data do digest mais recente em background
+      // data do digest mais recente em background
       loadLatestDate(cat).then(d => {
-        const span = document.getElementById(`cdate-${cat}`);
-        if (span) span.textContent = d || '—';
+        const el = document.getElementById(`badge-${cat}`);
+        if (el) el.textContent = d || '—';
       });
     });
-
-    el.appendChild(grid);
-    setContent(el);
   }
 
   async function loadLatestDate(cat) {
@@ -559,15 +627,15 @@
       const mds   = items.filter(i => i.type === 'file' && i.name.endsWith('.md') && !i.name.startsWith('_'));
       if (mds.length) {
         mds.sort((a, b) => b.name.localeCompare(a.name));
-        return formatDate(extractDate(mds[0].name));
+        const p = parseDate(extractDate(mds[0].name));
+        return p ? `${p.day} ${p.month}` : null;
       }
-      // tem subpastas — pega a primeira
       const dirs = items.filter(i => i.type === 'dir');
       if (dirs.length) {
         const sub = await apiFetch(`${BASE}/${encodeURIComponent(cat)}/${encodeURIComponent(dirs[0].name)}`);
         const sf  = sub.filter(i => i.type === 'file' && i.name.endsWith('.md') && !i.name.startsWith('_'));
         sf.sort((a, b) => b.name.localeCompare(a.name));
-        return sf.length ? formatDate(extractDate(sf[0].name)) : null;
+        if (sf.length) { const p = parseDate(extractDate(sf[0].name)); return p ? `${p.day} ${p.month}` : null; }
       }
     } catch {}
     return null;
@@ -575,179 +643,225 @@
 
   // ── Seleção de categoria ──────────────────────────────────────
   async function selectCategory(cat) {
-    showLoading();
+    const m = getMeta(cat);
+    currentCatColor = m.color;
+    setListHeader(m, 'Início', 'Carregando...');
+    showListLoading();
+    navigateTo('view-list', { type: 'loading', category: cat });
+    document.getElementById('list-back').onclick = () => goBack();
+
     try {
       const items = await apiFetch(`${BASE}/${encodeURIComponent(cat)}`);
       const dirs  = items.filter(i => i.type === 'dir');
       const mds   = items.filter(i => i.type === 'file' && i.name.endsWith('.md') && !i.name.startsWith('_'));
 
       if (dirs.length > 0 && mds.length === 0) {
-        // pasta-mãe com subcategorias (ex: Notícias → RN, Puerpério)
-        pushView({ type: 'subcats', category: cat, subcats: dirs.map(d => d.name) });
+        const data = { type: 'subcats', category: cat, subcats: dirs.map(d => d.name) };
+        navStack[navStack.length - 1].data = data;
+        renderSubcats(cat, dirs.map(d => d.name));
       } else {
         const files = mds.sort((a, b) => b.name.localeCompare(a.name)).map(f => ({ name: f.name, path: f.path }));
-        pushView({ type: 'files', category: cat, subcategory: null, files });
+        const data  = { type: 'digests', category: cat, subcategory: null, files };
+        navStack[navStack.length - 1].data = data;
+        renderDigestList(cat, null, files);
       }
     } catch {
-      showError('Erro ao carregar categoria.');
+      showStateInEl(document.getElementById('list-scroll-area'), '⚠️', 'Erro ao carregar categoria.');
     }
   }
 
   // ── Subcategorias ─────────────────────────────────────────────
-  function renderSubcats(view) {
-    const { category, subcats } = view;
-    const pm = getMeta(category);
+  function renderSubcats(cat, subcats) {
+    const pm = getMeta(cat);
+    setListHeader(pm, 'Início', `${subcats.length} subcategorias`);
 
-    const el = document.createElement('div');
-    el.innerHTML = `<div class="section-label">${pm.label}</div>`;
-
-    const list = document.createElement('div');
-    list.className = 'subcat-list';
+    const area = document.getElementById('list-scroll-area');
+    const ul   = document.createElement('ul');
+    ul.className = 'subcat-list';
 
     subcats.forEach(sub => {
-      const sm   = getMeta(sub);
-      const card = document.createElement('div');
-      card.className = 'subcat-card';
-      card.style.setProperty('--cat-color', sm.color || pm.color);
-      card.innerHTML = `
-        <div class="subcat-icon">${sm.icon}</div>
+      const sm = getMeta(sub);
+      const li = document.createElement('li');
+      li.className = 'subcat-row';
+      li.setAttribute('role', 'button');
+      li.setAttribute('tabindex', '0');
+      li.innerHTML = `
+        <div class="subcat-icon-wrap">${sm.icon}</div>
         <div class="subcat-info">
           <div class="subcat-name">${sm.label}</div>
-          <div class="subcat-count" id="sc-${sub}">carregando...</div>
+          <div class="subcat-meta" id="smeta-${sub}">carregando...</div>
         </div>
-        <div class="subcat-arrow">›</div>`;
-      card.onclick = () => selectSubcategory(category, sub);
-      list.appendChild(card);
+        <svg class="subcat-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>`;
+      li.addEventListener('click', () => selectSubcategory(cat, sub));
+      li.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectSubcategory(cat, sub); }
+      });
+      ul.appendChild(li);
 
-      apiFetch(`${BASE}/${encodeURIComponent(category)}/${encodeURIComponent(sub)}`)
-        .then(items => {
-          const n   = items.filter(i => i.type === 'file' && i.name.endsWith('.md') && !i.name.startsWith('_')).length;
-          const mds = items.filter(i => i.type === 'file' && i.name.endsWith('.md') && !i.name.startsWith('_'));
-          mds.sort((a, b) => b.name.localeCompare(a.name));
-          const latest = mds.length ? ` · ${formatDate(extractDate(mds[0].name))}` : '';
-          const span   = document.getElementById(`sc-${sub}`);
-          if (span) span.textContent = `${n} digest${n !== 1 ? 's' : ''}${latest}`;
-        })
-        .catch(() => {
-          const span = document.getElementById(`sc-${sub}`);
-          if (span) span.textContent = '';
-        });
+      apiFetch(`${BASE}/${encodeURIComponent(cat)}/${encodeURIComponent(sub)}`).then(items => {
+        const mds    = items.filter(i => i.type === 'file' && i.name.endsWith('.md') && !i.name.startsWith('_'));
+        const n      = mds.length;
+        mds.sort((a, b) => b.name.localeCompare(a.name));
+        const latest = mds.length ? parseDate(extractDate(mds[0].name)) : null;
+        const latStr = latest ? ` · ${latest.day} ${latest.month}` : '';
+        const el     = document.getElementById(`smeta-${sub}`);
+        if (el) el.textContent = `${n} digest${n !== 1 ? 's' : ''}${latStr}`;
+      }).catch(() => {
+        const el = document.getElementById(`smeta-${sub}`);
+        if (el) el.textContent = '';
+      });
     });
 
-    el.appendChild(list);
-    setContent(el);
+    area.innerHTML = '';
+    area.appendChild(ul);
   }
 
   async function selectSubcategory(cat, sub) {
-    showLoading();
+    const pm = getMeta(cat);
+    const sm = getMeta(sub);
+    currentCatColor = sm.color || pm.color;
+    setListHeader(sm, pm.label, 'Carregando...');
+    showListLoading();
+
+    // atualiza a entrada atual do navStack (estávamos em subcats)
+    // e empurra nova entrada para os digests
+    document.getElementById('list-back').onclick = () => goBack();
+
     try {
       const items = await apiFetch(`${BASE}/${encodeURIComponent(cat)}/${encodeURIComponent(sub)}`);
       const files = items
         .filter(i => i.type === 'file' && i.name.endsWith('.md') && !i.name.startsWith('_'))
         .sort((a, b) => b.name.localeCompare(a.name))
         .map(f => ({ name: f.name, path: f.path }));
-      pushView({ type: 'files', category: cat, subcategory: sub, files });
+
+      const data = { type: 'digests', category: cat, subcategory: sub, files };
+      navigateTo('view-list', data);
+      document.getElementById('list-back').onclick = () => goBack();
+      renderDigestList(cat, sub, files);
     } catch {
-      showError('Erro ao carregar subcategoria.');
+      showStateInEl(document.getElementById('list-scroll-area'), '⚠️', 'Erro ao carregar subcategoria.');
     }
   }
 
-  // ── Lista de arquivos ─────────────────────────────────────────
-  function renderFileList(view) {
-    const { category, subcategory, files } = view;
-    const m = getMeta(subcategory || category);
+  // ── Lista de digests ──────────────────────────────────────────
+  function renderDigestList(cat, sub, files) {
+    const m = getMeta(sub || cat);
+    setListHeader(m, sub ? getMeta(cat).label : 'Início', `${files.length} edição${files.length !== 1 ? 'ões' : ''}`);
 
-    if (!files.length) { showEmpty('Nenhum digest encontrado.'); return; }
+    if (!files.length) {
+      showStateInEl(document.getElementById('list-scroll-area'), '📭', 'Nenhum digest encontrado.');
+      return;
+    }
 
-    const el = document.createElement('div');
-    el.innerHTML = `<div class="section-label">${m.label}</div>`;
-
-    const list = document.createElement('div');
-    list.className = 'file-list';
+    const area = document.getElementById('list-scroll-area');
+    const ul   = document.createElement('ul');
+    ul.className = 'digest-list';
 
     files.forEach((file, idx) => {
-      const date = extractDate(file.name);
-      const card = document.createElement('div');
-      card.className = 'file-card' + (idx === 0 ? ' latest' : '');
-      card.style.setProperty('--cat-color', m.color);
-      card.innerHTML = `
-        <div class="file-date">${formatDate(date)}${idx === 0 ? '<span class="latest-badge">NOVO</span>' : ''}</div>
-        <div class="file-title">${m.label} Digest</div>
-        <div class="file-arrow">›</div>`;
-      card.onclick = () => openArticle(file, category, subcategory);
-      list.appendChild(card);
+      const ds   = extractDate(file.name);
+      const date = parseDate(ds);
+      const li   = document.createElement('li');
+      li.className = 'digest-row';
+      li.setAttribute('role', 'button');
+      li.setAttribute('tabindex', '0');
+      li.setAttribute('aria-label', `Digest ${ds}`);
+      const newBadge = idx === 0 ? '<span class="new-badge">novo</span>' : '';
+      li.innerHTML = `
+        <div class="digest-day" style="color:${m.color}" aria-hidden="true">${date ? date.day : '—'}</div>
+        <div class="digest-text">
+          <div class="digest-edition">${date ? `${date.day} ${date.month}` : ds}${newBadge}</div>
+          <div class="digest-sub">Digest · lendo...</div>
+        </div>
+        <svg class="digest-arrow" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>`;
+      li.addEventListener('click', () => openArticle(file, cat, sub));
+      li.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openArticle(file, cat, sub); }
+      });
+      ul.appendChild(li);
     });
 
-    el.appendChild(list);
-    setContent(el);
+    area.innerHTML = '';
+    area.appendChild(ul);
   }
 
   // ── Artigo ────────────────────────────────────────────────────
-  async function openArticle(file, category, subcategory) {
-    showLoading();
+  async function openArticle(file, cat, sub) {
+    const m    = getMeta(sub || cat);
+    const ds   = extractDate(file.name);
+    const date = parseDate(ds);
+
+    document.getElementById('art-back-label').textContent = m.label;
+    document.getElementById('art-back').onclick = () => goBack();
+    document.getElementById('art-content').innerHTML = '<div class="state"><div class="spinner"></div></div>';
+
+    navigateTo('view-article', { file, category: cat, subcategory: sub });
+
     try {
       const md   = await rawFetch(file.path);
       const html = marked.parse(md);
-      pushView({ type: 'article', file, category, subcategory, html });
+      const min  = readingMin(md);
+      const months = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+      const mo   = ds ? months[parseInt(ds.split('-')[1]) - 1] + ' ' + ds.split('-')[0] : '';
+
+      document.getElementById('art-content').innerHTML = `
+        <div class="art-day" style="color:${m.color}">${date ? date.day : '—'}</div>
+        <div class="art-month">${mo}</div>
+        <div class="art-reading">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          ${min} min de leitura
+        </div>
+        <div class="art-tag" style="background:${m.color}1a;color:${m.color}">${m.icon} ${m.label}</div>
+        <div class="art-divider"></div>
+        <div class="art-body" style="--cat-color:${m.color}">${html}</div>`;
     } catch {
-      showError('Erro ao carregar o artigo.');
+      document.getElementById('art-content').innerHTML =
+        '<div class="state"><div class="state-icon">⚠️</div><div class="state-msg">Erro ao carregar o artigo.</div></div>';
     }
   }
 
-  function renderArticle(view) {
-    const { html, category, subcategory } = view;
-    const m   = getMeta(subcategory || category);
-    const el  = document.createElement('div');
-    el.className = 'article-wrap';
-    el.style.setProperty('--cat-color', m.color);
-    el.innerHTML = html;
-    setContent(el);
+  // ── Restaurar list view ao voltar ─────────────────────────────
+  function restoreList(data) {
+    if (!data || data.type === 'loading') return;
+    const m = getMeta(data.subcategory || data.category);
+    currentCatColor = m.color;
+    document.getElementById('list-back').onclick = () => goBack();
+
+    if (data.type === 'subcats') {
+      renderSubcats(data.category, data.subcats);
+    } else if (data.type === 'digests') {
+      renderDigestList(data.category, data.subcategory, data.files);
+    }
   }
 
-  // ── Estados ───────────────────────────────────────────────────
-  function setContent(el) {
-    const c = document.getElementById('content');
-    c.innerHTML = '';
-    c.appendChild(el);
-    c.scrollTop = 0;
+  // ── Helpers de UI ─────────────────────────────────────────────
+  function setListHeader(meta, backLabel, metaText) {
+    document.getElementById('list-back-label').textContent = backLabel;
+    document.getElementById('band-emoji').textContent = meta.icon;
+    const nameEl = document.getElementById('band-name');
+    nameEl.textContent = meta.label;
+    nameEl.style.color = meta.color;
+    document.getElementById('band-meta').textContent = metaText;
   }
 
-  function showLoading() {
-    document.getElementById('content').innerHTML =
-      `<div class="state"><div class="spinner"></div><div class="msg">Carregando...</div></div>`;
+  function showListLoading() {
+    document.getElementById('list-scroll-area').innerHTML =
+      '<div class="state"><div class="spinner"></div></div>';
   }
 
-  function showEmpty(msg) {
-    document.getElementById('content').innerHTML =
-      `<div class="state"><div class="icon">📭</div><div class="msg">${msg}</div></div>`;
+  function showStateInEl(el, icon, msg) {
+    el.innerHTML = `<div class="state"><div class="state-icon">${icon}</div><div class="state-msg">${msg}</div></div>`;
   }
-
-  function showError(msg) {
-    document.getElementById('content').innerHTML =
-      `<div class="state"><div class="icon">⚠️</div><div class="msg">${msg}</div></div>`;
-  }
-
-  // ── Gesto voltar (mobile) ─────────────────────────────────────
-  window.addEventListener('popstate', () => {
-    if (navStack.length > 1) goBack();
-  });
 
   // ── PWA manifest ──────────────────────────────────────────────
   (() => {
-    const manifest = {
-      name: 'Vault Digest', short_name: 'Vault',
-      start_url: '.', display: 'standalone',
-      background_color: '#060b18', theme_color: '#060b18',
-      icons: [{ src: 'https://fakeimg.pl/192x192/060b18/f1f5f9?text=V&font_size=80', sizes: '192x192', type: 'image/png' }]
-    };
+    const m    = { name:'Vault Digest', short_name:'Vault', start_url:'.', display:'standalone', background_color:'#0f172a', theme_color:'#0f172a', icons:[{src:'https://fakeimg.pl/192x192/0f172a/f1f5f9?text=V&font_size=80',sizes:'192x192',type:'image/png'}] };
     const link = document.createElement('link');
     link.rel   = 'manifest';
-    link.href  = URL.createObjectURL(new Blob([JSON.stringify(manifest)], { type: 'application/json' }));
+    link.href  = URL.createObjectURL(new Blob([JSON.stringify(m)], {type:'application/json'}));
     document.head.appendChild(link);
   })();
 
   init();
 </script>
-
 </body>
 </html>
