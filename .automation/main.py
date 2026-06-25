@@ -26,17 +26,21 @@ from config import load_config
 # {"url", "kind": "rss"|"scrape"}. RSS é lido por stdlib e NÃO gasta crédito.
 # r/LocalLLaMA e X ficaram de fora do digest de IA por bloquearem scraping.
 DIGEST_SOURCES = {
-    # IA — fontes especializadas definidas pelo usuário.
+    # IA — RSS confiáveis (sem dependência de scrape com JS pesado).
     "IA": [
-        {"url": "https://tecnoblog.net/", "kind": "scrape"},
-        {"url": "https://mittechreview.com.br/", "kind": "scrape"},
-        {"url": "https://www.theverge.com/ai-artificial-intelligence", "kind": "scrape"},
+        {"url": "https://techcrunch.com/category/artificial-intelligence/feed/", "kind": "rss"},
+        {"url": "https://www.theverge.com/ai-artificial-intelligence/rss/index.xml", "kind": "rss"},
+        {"url": "https://www.technologyreview.com/feed/", "kind": "rss"},
+        {"url": "https://tecnoblog.net/feed/", "kind": "rss"},
+        {"url": "https://news.google.com/rss/search?q=inteligencia+artificial+ia&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
     ],
-    # Saúde — fontes especializadas definidas pelo usuário.
+    # Saúde — RSS confiáveis (sem dependência de scrape com JS pesado).
     "Saude": [
-        {"url": "https://g1.globo.com/saude/", "kind": "scrape"},
-        {"url": "https://www.nejm.org/", "kind": "scrape"},
-        {"url": "https://www.cnnbrasil.com.br/saude/", "kind": "scrape"},
+        {"url": "https://g1.globo.com/dynamo/saude/rss2.xml", "kind": "rss"},
+        {"url": "https://www.cnnbrasil.com.br/saude/feed/", "kind": "rss"},
+        {"url": "https://www.sciencedaily.com/rss/health_medicine.xml", "kind": "rss"},
+        {"url": "https://news.google.com/rss/search?q=saude+medicina+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+        {"url": "https://feeds.folha.uol.com.br/equilibrioesaude/rss091.xml", "kind": "rss"},
     ],
     # Medicina do Trabalho — fontes especializadas definidas pelo usuário.
     "MedTrab": [
