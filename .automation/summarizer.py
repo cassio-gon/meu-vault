@@ -19,7 +19,7 @@ GROQ_API = "https://api.groq.com/openai/v1/chat/completions"
 # Cadeia de modelos: tenta o primeiro; se esgotar retries com erro
 # transitório ou de cota, cai para o próximo.
 # `GROQ_MODEL` (env), se setado, entra como primário.
-_DEFAULT_CHAIN = ["llama-3.3-70b-versatile", "gemma2-9b-it"]
+_DEFAULT_CHAIN = ["llama-3.3-70b-versatile", "llama-3.1-70b-versatile"]
 _env_model = os.environ.get("GROQ_MODEL")
 MODELS = (
     [_env_model] + [m for m in _DEFAULT_CHAIN if m != _env_model]
