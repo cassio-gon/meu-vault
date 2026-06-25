@@ -1,8 +1,9 @@
 name: Resumos Diários
 
 on:
-  schedule:
-    - cron: "0 6 * * *"
+  # Schedule desligado: cada área agora roda em seu próprio workflow com cron
+  # escalonado (ver *-digest.yml). Mantido só o disparo manual para, se preciso,
+  # rodar todas as áreas de uma vez na sequência antiga.
   workflow_dispatch:
 
 permissions:

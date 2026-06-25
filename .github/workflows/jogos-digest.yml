@@ -1,6 +1,8 @@
 name: Digest de Jogos
 
 on:
+  schedule:
+    - cron: "15 7 * * *"  # 07:15 UTC / 04:15 BRT
   workflow_dispatch:
     inputs:
       topics:

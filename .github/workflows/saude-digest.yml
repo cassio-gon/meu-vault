@@ -1,6 +1,8 @@
 name: Digest de Saúde
 
 on:
+  schedule:
+    - cron: "15 6 * * *"  # 06:15 UTC / 03:15 BRT
   workflow_dispatch:
     inputs:
       topics:

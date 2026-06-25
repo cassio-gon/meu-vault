@@ -1,6 +1,8 @@
 name: Digest de Filmes e Séries
 
 on:
+  schedule:
+    - cron: "30 7 * * *"  # 07:30 UTC / 04:30 BRT
   workflow_dispatch:
     inputs:
       topics:

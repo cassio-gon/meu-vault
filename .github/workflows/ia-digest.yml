@@ -1,6 +1,8 @@
 name: Digest de IA
 
 on:
+  schedule:
+    - cron: "0 6 * * *"  # 06:00 UTC / 03:00 BRT
   workflow_dispatch:
     inputs:
       topics:
