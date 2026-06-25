@@ -209,14 +209,16 @@ PROFILES = {
         "categories": ["noticia", "regulatorio", "estudo"],
     },
     "Puerperio": {
-        "role": "editor especializado em saúde materna, gestação e puerpério",
+        "role": "especialista em saúde materna com foco no 3º trimestre de gestação",
         "focus": (
-            "cuidados com a gestante e o pós-parto (priorize: dicas práticas de cuidado com a "
-            "gestante, alimentação saudável na gravidez e amamentação, exercícios físicos seguros "
-            "na gestação, saúde mental materna, curiosidades sobre o desenvolvimento fetal, "
-            "puerério e recuperação pós-parto, amamentação e novidades em obstetrícia)"
+            "cuidados práticos para gestantes no 3º trimestre (priorize exclusivamente: "
+            "exercícios físicos seguros na gravidez, alimentação e nutrição da gestante, "
+            "dicas de bem-estar e autocuidado, preparação para o parto, saúde mental e "
+            "emocional na gestação, curiosidades sobre o desenvolvimento fetal, cuidados "
+            "com o corpo e sono. IGNORE completamente: políticas públicas de saúde, "
+            "notícias institucionais, programas governamentais e legislação)"
         ),
-        "categories": ["dica", "noticia", "estudo"],
+        "categories": ["exercicio", "nutricao", "dica", "curiosidade"],
     },
     "RN": {
         "role": "editor especializado em neonatologia e saúde do recém-nascido",

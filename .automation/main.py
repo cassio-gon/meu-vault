@@ -58,13 +58,13 @@ DIGEST_SOURCES = {
         {"url": "https://www.moneytimes.com.br/feed/", "kind": "rss"},
         {"url": "https://feeds.reuters.com/reuters/businessNews", "kind": "rss"},
     ],
-    # Puerpério — cuidados com gestante, pós-parto, alimentação, exercícios, saúde materna.
+    # Puerpério — 3º trimestre: exercícios, alimentação, dicas práticas, bem-estar.
     "Puerperio": [
-        {"url": "https://news.google.com/rss/search?q=gestante+gravidez+cuidados+alimentacao+exercicio+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
-        {"url": "https://news.google.com/rss/search?q=puerperio+pos-parto+amamentacao+saude+materna+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+        {"url": "https://news.google.com/rss/search?q=exercicios+gestante+gravidez+terceiro+trimestre+yoga&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+        {"url": "https://news.google.com/rss/search?q=alimentacao+nutricao+gestante+gravidez+dieta&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+        {"url": "https://news.google.com/rss/search?q=cuidados+gestante+bem-estar+gravidez+dicas+autocuidado&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
         {"url": "https://www.sciencedaily.com/rss/health_medicine/womens_health.xml", "kind": "rss"},
-        {"url": "https://agencia.fiocruz.br/rss.xml", "kind": "rss"},
-        {"url": "https://rss.uol.com.br/feed/saude.xml", "kind": "rss"},
+        {"url": "https://news.google.com/rss/search?q=preparacao+parto+saude+mental+gestante+ansiedade+gravidez&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
     ],
     # Jogos — foco em PS5 e PC, feeds diários com artigos individuais.
     "Jogos": [
