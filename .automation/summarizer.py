@@ -208,6 +208,26 @@ PROFILES = {
         ),
         "categories": ["noticia", "regulatorio", "estudo"],
     },
+    "Puerperio": {
+        "role": "editor especializado em saúde materna, gestação e puerpério",
+        "focus": (
+            "cuidados com a gestante e o pós-parto (priorize: dicas práticas de cuidado com a "
+            "gestante, alimentação saudável na gravidez e amamentação, exercícios físicos seguros "
+            "na gestação, saúde mental materna, curiosidades sobre o desenvolvimento fetal, "
+            "puerério e recuperação pós-parto, amamentação e novidades em obstetrícia)"
+        ),
+        "categories": ["dica", "noticia", "estudo"],
+    },
+    "RN": {
+        "role": "editor especializado em neonatologia e saúde do recém-nascido",
+        "focus": (
+            "saúde e cuidados com recém-nascidos e bebês (priorize: cuidados essenciais com o RN, "
+            "amamentação, desenvolvimento neuromotor, vacinas e triagem neonatal, curiosidades "
+            "sobre o desenvolvimento do bebê, saúde do sono, orientações para pais de primeira "
+            "viagem e novidades em pediatria neonatal)"
+        ),
+        "categories": ["dica", "noticia", "estudo"],
+    },
 }
 
 
