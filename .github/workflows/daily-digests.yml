@@ -2,7 +2,7 @@ name: Resumos Diários
 
 on:
   schedule:
-    - cron: "0 7 * * *"
+    - cron: "0 6 * * *"
   workflow_dispatch:
 
 permissions:
@@ -36,8 +36,8 @@ jobs:
           GIT_BRANCH: ${{ github.ref_name }}
         run: python .automation/main.py digest --area IA --tag ia --folder "Pesquisas/IA" --topics 5
 
-      - name: Aguardar 5 min (reset TPM Groq)
-        run: sleep 300
+      - name: Aguardar 10 min (reset TPM Groq)
+        run: sleep 600
 
       - name: Digest Saude
         continue-on-error: true
@@ -48,8 +48,8 @@ jobs:
           GIT_BRANCH: ${{ github.ref_name }}
         run: python .automation/main.py digest --area Saude --tag saude --folder "Pesquisas/Saude" --topics 5
 
-      - name: Aguardar 5 min (reset TPM Groq)
-        run: sleep 300
+      - name: Aguardar 10 min (reset TPM Groq)
+        run: sleep 600
 
       - name: Digest MedTrab
         continue-on-error: true
@@ -59,8 +59,8 @@ jobs:
           GIT_BRANCH: ${{ github.ref_name }}
         run: python .automation/main.py digest --area MedTrab --tag medtrab --folder "Pesquisas/Medicina do Trabalho" --topics 5
 
-      - name: Aguardar 5 min (reset TPM Groq)
-        run: sleep 300
+      - name: Aguardar 10 min (reset TPM Groq)
+        run: sleep 600
 
       - name: Digest MercFin
         continue-on-error: true
@@ -70,8 +70,8 @@ jobs:
           GIT_BRANCH: ${{ github.ref_name }}
         run: python .automation/main.py digest --area MercFin --tag mercado-financeiro --folder "Pesquisas/Mercado Financeiro" --topics 5
 
-      - name: Aguardar 5 min (reset TPM Groq)
-        run: sleep 300
+      - name: Aguardar 10 min (reset TPM Groq)
+        run: sleep 600
 
       - name: Digest Puerperio
         continue-on-error: true
@@ -82,8 +82,8 @@ jobs:
           GIT_BRANCH: ${{ github.ref_name }}
         run: python .automation/main.py digest --area Puerperio --tag puerperio --folder "Pesquisas/Puerperio" --topics 5
 
-      - name: Aguardar 5 min (reset TPM Groq)
-        run: sleep 300
+      - name: Aguardar 10 min (reset TPM Groq)
+        run: sleep 600
 
       - name: Digest Jogos
         continue-on-error: true
@@ -93,8 +93,8 @@ jobs:
           GIT_BRANCH: ${{ github.ref_name }}
         run: python .automation/main.py digest --area Jogos --tag jogos --folder "Pesquisas/Jogos" --topics 5
 
-      - name: Aguardar 5 min (reset TPM Groq)
-        run: sleep 300
+      - name: Aguardar 10 min (reset TPM Groq)
+        run: sleep 600
 
       - name: Digest Filmes
         continue-on-error: true
@@ -104,8 +104,8 @@ jobs:
           GIT_BRANCH: ${{ github.ref_name }}
         run: python .automation/main.py digest --area Filmes --tag filmes-series --folder "Pesquisas/Filmes e Series" --topics 5
 
-      - name: Aguardar 5 min (reset TPM Groq)
-        run: sleep 300
+      - name: Aguardar 10 min (reset TPM Groq)
+        run: sleep 600
 
       - name: Digest RN
         continue-on-error: true
