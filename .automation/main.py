@@ -26,13 +26,11 @@ from config import load_config
 # {"url", "kind": "rss"|"scrape"}. RSS é lido por stdlib e NÃO gasta crédito.
 # r/LocalLLaMA e X ficaram de fora do digest de IA por bloquearem scraping.
 DIGEST_SOURCES = {
-    # IA — fontes com RSS diário e URLs individuais de artigos.
+    # IA — fontes especializadas definidas pelo usuário.
     "IA": [
-        {"url": "https://news.google.com/rss/search?q=inteligencia+artificial+IA+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
-        {"url": "https://techcrunch.com/category/artificial-intelligence/feed/", "kind": "rss"},
-        {"url": "https://venturebeat.com/category/ai/feed/", "kind": "rss"},
-        {"url": "https://www.artificialintelligence-news.com/feed/", "kind": "rss"},
-        {"url": "https://www.technologyreview.com/feed/", "kind": "rss"},
+        {"url": "https://tecnoblog.net/", "kind": "scrape"},
+        {"url": "https://mittechreview.com.br/", "kind": "scrape"},
+        {"url": "https://www.theverge.com/ai-artificial-intelligence", "kind": "scrape"},
     ],
     # Saúde — fontes especializadas definidas pelo usuário.
     "Saude": [
