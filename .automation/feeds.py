@@ -125,6 +125,29 @@ def _item_date(entry) -> str:
     return ""
 
 
+def _item_image(entry) -> str:
+    """Extrai URL da imagem do item RSS (media:content, media:thumbnail, enclosure, img no HTML)."""
+    _IMG_EXT = (".jpg", ".jpeg", ".png", ".webp", ".gif")
+    for c in entry:
+        ln = _localname(c.tag)
+        if ln in ("content", "thumbnail"):
+            url = c.get("url", "")
+            if url and (c.get("medium") == "image" or url.split("?")[0].lower().endswith(_IMG_EXT)):
+                return url
+        if ln == "enclosure":
+            url = c.get("url", "")
+            if url and c.get("type", "").startswith("image/"):
+                return url
+    # fallback: primeiro <img src> encontrado no HTML da description
+    for c in entry:
+        if _localname(c.tag) in ("description", "summary", "content"):
+            html = c.text or ""
+            m = re.search(r'<img[^>]+src=["\']([^"\']+)["\']', html)
+            if m:
+                return m.group(1)
+    return ""
+
+
 def fetch_feed(url: str, max_items: int = MAX_ITEMS) -> ScrapedDoc:
     """Baixa e parseia um feed RSS/Atom/RDF, retornando um ScrapedDoc."""
     print(f"📡 RSS: {url}")
@@ -159,6 +182,7 @@ def fetch_feed(url: str, max_items: int = MAX_ITEMS) -> ScrapedDoc:
         desc = _strip_html(desc)[:MAX_DESC_CHARS]
         link = _item_link(entry)
         date_str = _fmt_date(raw_date)
+        image_url = _item_image(entry)
 
         if not title:
             continue
@@ -170,6 +194,8 @@ def fetch_feed(url: str, max_items: int = MAX_ITEMS) -> ScrapedDoc:
             block += f": {desc}"
         if link:
             block += f"\n  URL: {link}"
+        if image_url:
+            block += f"\n  IMAGEM: {image_url}"
         lines.append(block)
 
     markdown = f"# {feed_title}\n\n" + "\n".join(lines)
