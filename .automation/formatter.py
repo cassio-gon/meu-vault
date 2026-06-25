@@ -82,8 +82,12 @@ def render_digest(topics: list[dict], day: str, tag: str, area: str) -> str:
     for i, t in enumerate(valid, 1):
         emoji = CATEGORY_EMOJI.get(t.get("category"), DEFAULT_CATEGORY_EMOJI)
         news_date = t.get("date", "N/D")
+        image_url = t.get("image_url", "").strip()
+        image_block = f"![]({image_url})\n\n" if image_url else ""
         parts.append(
-            f"## {i}. {emoji} {t['title']}\n\n{t['summary'].strip()}\n\n"
+            f"## {i}. {emoji} {t['title']}\n\n"
+            f"{image_block}"
+            f"{t['summary'].strip()}\n\n"
             f"📅 Data da notícia: {news_date} · [Fonte]({t['url']})\n"
         )
     return "\n".join(parts)

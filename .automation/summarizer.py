@@ -272,9 +272,11 @@ def summarize_digest(
         f"Classifique cada tópico como {cats_json}.\n\n"
         "Responda APENAS com um objeto JSON válido no formato:\n"
         '{"topics": [{"title": "...", "summary": "...", "url": "...", '
-        f'"category": {cats_json}, "date": "DD/MM/AAAA"}}]}}\n\n'
-        'O campo "date" deve conter a data de publicação da notícia (campo entre colchetes '
-        'na manchete, ex: [24/06/2026]). Se não houver data, use "N/D".\n\n'
+        f'"category": {cats_json}, "date": "DD/MM/AAAA", "image_url": "..."}}]}}\n\n'
+        'O campo "date": data de publicação entre colchetes na manchete, ex: [24/06/2026]. '
+        'Se não houver, use "N/D".\n'
+        'O campo "image_url": URL da linha "IMAGEM:" correspondente ao artigo. '
+        'Se não houver imagem disponível, use "".\n\n'
         f"Conteúdo das fontes:\n\n{context}"
     )
 
