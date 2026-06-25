@@ -32,86 +32,65 @@ jobs:
       - name: Digest IA
         continue-on-error: true
         env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           VAULT_PATH: ${{ github.workspace }}
           GIT_BRANCH: ${{ github.ref_name }}
         run: python .automation/main.py digest --area IA --tag ia --folder "Pesquisas/IA" --topics 5
 
-      - name: Aguardar 10 min (reset TPM Groq)
-        run: sleep 600
-
       - name: Digest Saude
         continue-on-error: true
         env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
           VAULT_PATH: ${{ github.workspace }}
           GIT_BRANCH: ${{ github.ref_name }}
         run: python .automation/main.py digest --area Saude --tag saude --folder "Pesquisas/Saude" --topics 5
 
-      - name: Aguardar 10 min (reset TPM Groq)
-        run: sleep 600
-
       - name: Digest MedTrab
         continue-on-error: true
         env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           VAULT_PATH: ${{ github.workspace }}
           GIT_BRANCH: ${{ github.ref_name }}
         run: python .automation/main.py digest --area MedTrab --tag medtrab --folder "Pesquisas/Medicina do Trabalho" --topics 5
 
-      - name: Aguardar 10 min (reset TPM Groq)
-        run: sleep 600
-
       - name: Digest MercFin
         continue-on-error: true
         env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           VAULT_PATH: ${{ github.workspace }}
           GIT_BRANCH: ${{ github.ref_name }}
         run: python .automation/main.py digest --area MercFin --tag mercado-financeiro --folder "Pesquisas/Mercado Financeiro" --topics 5
 
-      - name: Aguardar 10 min (reset TPM Groq)
-        run: sleep 600
-
       - name: Digest Puerperio
         continue-on-error: true
         env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
           VAULT_PATH: ${{ github.workspace }}
           GIT_BRANCH: ${{ github.ref_name }}
         run: python .automation/main.py digest --area Puerperio --tag puerperio --folder "Pesquisas/Puerperio" --topics 5
 
-      - name: Aguardar 10 min (reset TPM Groq)
-        run: sleep 600
-
       - name: Digest Jogos
         continue-on-error: true
         env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           VAULT_PATH: ${{ github.workspace }}
           GIT_BRANCH: ${{ github.ref_name }}
         run: python .automation/main.py digest --area Jogos --tag jogos --folder "Pesquisas/Jogos" --topics 5
 
-      - name: Aguardar 10 min (reset TPM Groq)
-        run: sleep 600
-
       - name: Digest Filmes
         continue-on-error: true
         env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           VAULT_PATH: ${{ github.workspace }}
           GIT_BRANCH: ${{ github.ref_name }}
         run: python .automation/main.py digest --area Filmes --tag filmes-series --folder "Pesquisas/Filmes e Series" --topics 5
 
-      - name: Aguardar 10 min (reset TPM Groq)
-        run: sleep 600
-
       - name: Digest RN
         continue-on-error: true
         env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
           VAULT_PATH: ${{ github.workspace }}
           GIT_BRANCH: ${{ github.ref_name }}

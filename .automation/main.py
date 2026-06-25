@@ -1,7 +1,7 @@
 """vault-automator — entry point CLI.
 
 Pipeline: Firecrawl scrape → Markdown formatado → Git commit → Push GitHub.
-Modo digest: várias fontes → resumo do dia (Claude) → 1 nota.
+Modo digest: várias fontes → resumo do dia (Gemini) → 1 nota.
 
 Uso:
     python main.py scrape --url https://exemplo.com --tag medicina
@@ -152,7 +152,7 @@ def _cmd_digest(args, cfg) -> int:
         return 1
 
     topics = summarizer.summarize_digest(
-        cfg.groq_api_key, docs, num_topics=args.topics, area=args.area
+        cfg.gemini_api_key, docs, num_topics=args.topics, area=args.area
     )
     if not topics:
         print("❌ O resumo não gerou tópicos.")
@@ -187,7 +187,7 @@ def build_parser() -> argparse.ArgumentParser:
     p_crawl.add_argument("--tag")
     p_crawl.set_defaults(func=_cmd_crawl)
 
-    p_digest = sub.add_parser("digest", help="Resumo do dia (várias fontes → Claude → 1 nota)")
+    p_digest = sub.add_parser("digest", help="Resumo do dia (várias fontes → Gemini → 1 nota)")
     p_digest.add_argument("--area", default="IA", help="Nome da área (ex: IA)")
     p_digest.add_argument("--tag", help="Tag das notas (default: DEFAULT_TAG)")
     p_digest.add_argument("--folder", default="Pesquisas/IA", help="Subpasta de destino no vault")

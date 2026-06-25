@@ -1,26 +1,28 @@
-"""Sumarização com Groq (free tier): gera N tópicos do dia.
+"""Sumarização com Google Gemini (free tier): gera N tópicos do dia.
 
-Usa a API REST do Groq (compatível com OpenAI) via stdlib (sem dependências extras).
+Usa a API REST do Gemini (generativelanguage) via stdlib (sem dependências extras).
+A saída é forçada a JSON estruturado via `responseSchema`, então não há reparo
+manual de JSON — o modelo devolve um array válido no formato esperado.
 """
 from __future__ import annotations
 
 import json
 import os
 import random
-import re
 import time
 import urllib.error
 import urllib.request
 
 from scraper import ScrapedDoc
 
-GROQ_API = "https://api.groq.com/openai/v1/chat/completions"
+GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta/models"
 
 # Cadeia de modelos: tenta o primeiro; se esgotar retries com erro
 # transitório ou de cota, cai para o próximo.
-# `GROQ_MODEL` (env), se setado, entra como primário.
-_DEFAULT_CHAIN = ["llama-3.3-70b-versatile", "meta-llama/llama-4-scout-17b-16e-instruct"]
-_env_model = os.environ.get("GROQ_MODEL")
+# `GEMINI_MODEL` (env), se setado, entra como primário.
+# Ambos são elegíveis ao free tier (1.500 req/dia, 1M TPM, 15 RPM no flash).
+_DEFAULT_CHAIN = ["gemini-2.5-flash", "gemini-2.5-flash-lite"]
+_env_model = os.environ.get("GEMINI_MODEL")
 MODELS = (
     [_env_model] + [m for m in _DEFAULT_CHAIN if m != _env_model]
     if _env_model
@@ -32,7 +34,7 @@ MAX_TOTAL_CONTEXT_CHARS = 24_000  # teto do bloco de contexto (~6000 tokens)
 NUM_TOPICS = 5
 
 MAX_RETRIES = 5
-RETRYABLE = {429, 500, 502, 503, 504, 529}  # 529 = Claude overloaded
+RETRYABLE = {429, 500, 502, 503, 504}
 BACKOFF_BASE = 2.0  # segundos: 2 → 4 → 8 → 16 → 32 (+jitter), com teto
 BACKOFF_CAP = 60.0
 
@@ -43,83 +45,58 @@ def _backoff_seconds(attempt: int) -> float:
     return delay + random.uniform(0, 1)
 
 
-def _repair_truncated_json(text: str) -> str:
-    """Tenta fechar um JSON truncado adicionando delimitadores faltantes."""
-    s = text.rstrip()
-    # Conta chaves e colchetes abertos para fechar na ordem certa
-    stack = []
-    in_string = False
-    escaped = False
-    for ch in s:
-        if escaped:
-            escaped = False
-            continue
-        if ch == "\\" and in_string:
-            escaped = True
-            continue
-        if ch == '"':
-            in_string = not in_string
-            continue
-        if in_string:
-            continue
-        if ch in "{[":
-            stack.append("}" if ch == "{" else "]")
-        elif ch in "}]" and stack:
-            stack.pop()
-    # Fecha string aberta e estruturas pendentes
-    suffix = '"' if in_string else ""
-    suffix += "".join(reversed(stack))
-    return s + suffix
+def _topics_schema(categories: list[str]) -> dict:
+    """Monta o responseSchema (subset OpenAPI do Gemini) para o array de tópicos."""
+    return {
+        "type": "ARRAY",
+        "items": {
+            "type": "OBJECT",
+            "properties": {
+                "title": {"type": "STRING"},
+                "summary": {"type": "STRING"},
+                "url": {"type": "STRING"},
+                "category": {"type": "STRING", "enum": categories},
+                "date": {"type": "STRING"},
+                "image_url": {"type": "STRING"},
+            },
+            "required": ["title", "summary", "url", "category", "date", "image_url"],
+            "propertyOrdering": ["title", "summary", "url", "category", "date", "image_url"],
+        },
+    }
 
 
-def _parse_topics(text: str) -> list[dict]:
-    """Extrai o array de tópicos do texto da resposta (tolerante a cercas e JSON truncado)."""
-    cleaned = text.strip()
-    if not cleaned:
-        raise RuntimeError("Modelo retornou resposta vazia")
-    fence = re.search(r"```(?:json)?\s*(.*?)```", cleaned, re.DOTALL)
-    if fence:
-        cleaned = fence.group(1).strip()
-    # Tenta localizar início do JSON caso o modelo adicione texto antes
-    json_start = next((i for i, c in enumerate(cleaned) if c in "{["), -1)
-    if json_start > 0:
-        cleaned = cleaned[json_start:]
-    try:
-        data = json.loads(cleaned)
-    except json.JSONDecodeError:
-        repaired = _repair_truncated_json(cleaned)
-        try:
-            data = json.loads(repaired)
-            print(f"⚠️  JSON truncado reparado ({len(cleaned)}→{len(repaired)} chars)")
-        except json.JSONDecodeError as err:
-            preview = cleaned[:200].replace("\n", " ")
-            raise RuntimeError(f"JSON inválido mesmo após reparo: {err}\nResposta recebida: {preview}") from err
-    if isinstance(data, dict):
-        return data.get("topics", [])
-    return data
+def _call_gemini(
+    api_key: str, prompt: str, schema: dict, max_tokens: int = 8192
+) -> list[dict]:
+    """Chama a API do Gemini com saída JSON estruturada e devolve a lista de tópicos.
 
-
-def _call_groq(api_key: str, prompt: str, max_tokens: int = 8192) -> str:
-    """Chama a API do Groq e devolve o texto da resposta."""
+    `thinkingBudget: 0` desliga o raciocínio interno do modelo — desnecessário para
+    extração estruturada e que, se ligado, consome o orçamento de saída e trunca o JSON.
+    """
     last_err: Exception | None = None
-    for mi, model in enumerate(MODELS):
-        body = json.dumps(
-            {
-                "model": model,
-                "max_tokens": max_tokens,
+    body = json.dumps(
+        {
+            "contents": [{"role": "user", "parts": [{"text": prompt}]}],
+            "generationConfig": {
                 "temperature": 0.4,
-                "messages": [{"role": "user", "content": prompt}],
-            }
-        ).encode("utf-8")
+                "maxOutputTokens": max_tokens,
+                "responseMimeType": "application/json",
+                "responseSchema": schema,
+                "thinkingConfig": {"thinkingBudget": 0},
+            },
+        }
+    ).encode("utf-8")
+
+    for mi, model in enumerate(MODELS):
+        url = f"{GEMINI_API_BASE}/{model}:generateContent"
         print(f"   ↳ modelo: {model}")
         for attempt in range(1, MAX_RETRIES + 1):
             req = urllib.request.Request(
-                GROQ_API,
+                url,
                 data=body,
                 headers={
                     "Content-Type": "application/json",
-                    "Authorization": f"Bearer {api_key}",
-                    "User-Agent": "groq-python/0.9.0",
+                    "x-goog-api-key": api_key,
                     "Accept": "application/json",
                 },
                 method="POST",
@@ -127,25 +104,33 @@ def _call_groq(api_key: str, prompt: str, max_tokens: int = 8192) -> str:
             try:
                 with urllib.request.urlopen(req, timeout=120) as resp:
                     data = json.load(resp)
-                choices = data.get("choices", [])
-                if not choices:
-                    raise RuntimeError(f"Groq não retornou choices: {str(data)[:300]}")
-                content = choices[0]["message"]["content"] or ""
-                if not content.strip():
-                    finish = choices[0].get("finish_reason", "?")
-                    last_err = RuntimeError(f"Groq retornou content vazio (finish_reason={finish})")
+                candidates = data.get("candidates", [])
+                if not candidates:
+                    # promptFeedback.blockReason indica bloqueio por safety
+                    reason = data.get("promptFeedback", {}).get("blockReason", "?")
+                    raise RuntimeError(f"Gemini não retornou candidates (blockReason={reason})")
+                cand = candidates[0]
+                finish = cand.get("finishReason", "")
+                parts = cand.get("content", {}).get("parts", [])
+                text = "".join(p.get("text", "") for p in parts).strip()
+                if not text:
+                    last_err = RuntimeError(f"Gemini retornou content vazio (finishReason={finish})")
                     wait = _backoff_seconds(attempt)
                     print(f"⚠️  {last_err}; aguardando {wait:.1f}s...")
                     if attempt < MAX_RETRIES:
                         time.sleep(wait)
                     continue
-                return content
+                if finish == "MAX_TOKENS":
+                    raise RuntimeError(
+                        "Gemini truncou a saída (MAX_TOKENS) — aumente maxOutputTokens"
+                    )
+                # Com responseSchema a resposta é JSON válido; sem reparo manual.
+                return json.loads(text)
             except urllib.error.HTTPError as err:
-                detail = err.read().decode("utf-8", "ignore")[:200]
-                last_err = RuntimeError(f"Groq HTTP {err.code}: {detail}")
+                detail = err.read().decode("utf-8", "ignore")[:300]
+                last_err = RuntimeError(f"Gemini HTTP {err.code}: {detail}")
                 if err.code not in RETRYABLE:
                     raise last_err from err
-                # Respeita Retry-After do Groq (429 indica janela TPM ainda bloqueada)
                 retry_after = 0.0
                 try:
                     retry_after = float(err.headers.get("retry-after") or 0)
@@ -157,11 +142,15 @@ def _call_groq(api_key: str, prompt: str, max_tokens: int = 8192) -> str:
                 last_err = RuntimeError(f"Erro de rede: {err}")
                 wait = _backoff_seconds(attempt)
                 print(f"⚠️  Rede falhou em {model} (tentativa {attempt}/{MAX_RETRIES}); aguardando {wait:.1f}s...")
+            except json.JSONDecodeError as err:
+                last_err = RuntimeError(f"JSON inválido do Gemini: {err}")
+                wait = _backoff_seconds(attempt)
+                print(f"⚠️  {last_err}; aguardando {wait:.1f}s...")
             if attempt < MAX_RETRIES:
                 time.sleep(wait)
         if mi < len(MODELS) - 1:
             print(f"↪️  {model} indisponível; tentando próximo modelo...")
-    raise RuntimeError(f"Todos os modelos Groq falharam ({', '.join(MODELS)})") from last_err
+    raise RuntimeError(f"Todos os modelos Gemini falharam ({', '.join(MODELS)})") from last_err
 
 
 # Perfis de prompt por área do digest. Cada área enquadra o resumo no seu domínio.
@@ -290,10 +279,7 @@ def summarize_digest(
         "Brasil de aproximadamente 800 caracteres. "
         "Use a URL ESPECÍFICA do artigo (a linha 'URL:' que aparece logo após cada manchete "
         "no conteúdo abaixo) — NUNCA use a URL do feed ou da fonte em si. "
-        f"Classifique cada tópico como {cats_json}.\n\n"
-        "Responda APENAS com um objeto JSON válido no formato:\n"
-        '{"topics": [{"title": "...", "summary": "...", "url": "...", '
-        f'"category": {cats_json}, "date": "DD/MM/AAAA", "image_url": "..."}}]}}\n\n'
+        f"Classifique cada tópico em uma das categorias: {cats_json}.\n\n"
         'O campo "date": data de publicação entre colchetes na manchete, ex: [24/06/2026]. '
         'Se não houver, use "N/D".\n'
         'O campo "image_url": URL da linha "IMAGEM:" correspondente ao artigo. '
@@ -301,8 +287,8 @@ def summarize_digest(
         f"Conteúdo das fontes:\n\n{context}"
     )
 
+    schema = _topics_schema(cats)
     print(f"🧠 Resumindo (área: {area}) — cadeia: {' → '.join(MODELS)}")
-    text = _call_groq(api_key, prompt, max_tokens=2048)
-    topics = _parse_topics(text)
+    topics = _call_gemini(api_key, prompt, schema, max_tokens=8192)
     print(f"   → {len(topics)} tópicos gerados")
     return topics
