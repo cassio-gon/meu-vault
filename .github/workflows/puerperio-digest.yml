@@ -6,7 +6,7 @@ on:
       topics:
         description: "Quantidade de tópicos"
         required: false
-        default: "10"
+        default: "5"
 
 permissions:
   contents: write
