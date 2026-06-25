@@ -96,6 +96,17 @@ jobs:
       - name: Aguardar 5 min (reset TPM Groq)
         run: sleep 300
 
+      - name: Digest Filmes
+        continue-on-error: true
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          VAULT_PATH: ${{ github.workspace }}
+          GIT_BRANCH: ${{ github.ref_name }}
+        run: python .automation/main.py digest --area Filmes --tag filmes-series --folder "Pesquisas/Filmes e Series" --topics 5
+
+      - name: Aguardar 5 min (reset TPM Groq)
+        run: sleep 300
+
       - name: Digest RN
         continue-on-error: true
         env:

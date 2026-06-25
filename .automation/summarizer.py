@@ -188,6 +188,17 @@ PROFILES = {
         ),
         "categories": ["noticia", "analise", "dado"],
     },
+    "Filmes": {
+        "role": "editor de cinema e entretenimento especializado em filmes e séries",
+        "focus": (
+            "filmes e séries dos principais streamings e cinema (priorize: lançamentos e "
+            "estreias da semana no cinema e streaming, críticas e análises de títulos em "
+            "destaque, notícias sobre produções em andamento, renovações e cancelamentos "
+            "de séries, trailers e teasers relevantes, bastidores e casting, tendências "
+            "de Netflix, Disney+, Prime Video, Max, Apple TV+ e Globoplay)"
+        ),
+        "categories": ["lancamento", "critica", "noticia", "analise"],
+    },
     "Jogos": {
         "role": "editor de jornalismo de games especializado em PS5 e PC",
         "focus": (

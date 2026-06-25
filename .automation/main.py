@@ -67,6 +67,14 @@ DIGEST_SOURCES = {
         {"url": "https://news.google.com/rss/search?q=%22preparacao+para+o+parto%22+OR+%22saude+mental+gestante%22+OR+%22ansiedade+gravidez%22&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
         {"url": "https://www.sciencedaily.com/rss/health_medicine/womens_health.xml", "kind": "rss"},
     ],
+    # Filmes e Séries — lançamentos, críticas, notícias de streamings e cinema.
+    "Filmes": [
+        {"url": "https://omelete.com.br/feed/", "kind": "rss"},
+        {"url": "https://cinepop.com.br/feed", "kind": "rss"},
+        {"url": "https://variety.com/feed/", "kind": "rss"},
+        {"url": "https://collider.com/feed/", "kind": "rss"},
+        {"url": "https://news.google.com/rss/search?q=filmes+series+lancamento+streaming+cinema+netflix+disney&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+    ],
     # Jogos — foco em PS5 e PC, feeds diários com artigos individuais.
     "Jogos": [
         {"url": "https://br.ign.com/feed.xml", "kind": "rss"},
