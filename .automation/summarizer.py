@@ -19,7 +19,7 @@ GROQ_API = "https://api.groq.com/openai/v1/chat/completions"
 # Cadeia de modelos: tenta o primeiro; se esgotar retries com erro
 # transitório ou de cota, cai para o próximo.
 # `GROQ_MODEL` (env), se setado, entra como primário.
-_DEFAULT_CHAIN = ["llama-3.3-70b-versatile", "llama-3.1-70b-versatile"]
+_DEFAULT_CHAIN = ["llama-3.3-70b-versatile", "meta-llama/llama-4-scout-17b-16e-instruct"]
 _env_model = os.environ.get("GROQ_MODEL")
 MODELS = (
     [_env_model] + [m for m in _DEFAULT_CHAIN if m != _env_model]
@@ -145,7 +145,13 @@ def _call_groq(api_key: str, prompt: str, max_tokens: int = 8192) -> str:
                 last_err = RuntimeError(f"Groq HTTP {err.code}: {detail}")
                 if err.code not in RETRYABLE:
                     raise last_err from err
-                wait = _backoff_seconds(attempt)
+                # Respeita Retry-After do Groq (429 indica janela TPM ainda bloqueada)
+                retry_after = 0.0
+                try:
+                    retry_after = float(err.headers.get("retry-after") or 0)
+                except (TypeError, ValueError):
+                    pass
+                wait = max(_backoff_seconds(attempt), retry_after) + random.uniform(0, 2)
                 print(f"⚠️  {model} HTTP {err.code} (tentativa {attempt}/{MAX_RETRIES}); aguardando {wait:.1f}s...")
             except urllib.error.URLError as err:
                 last_err = RuntimeError(f"Erro de rede: {err}")
