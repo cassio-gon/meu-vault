@@ -75,12 +75,12 @@ DIGEST_SOURCES = {
         {"url": "https://www.destructoid.com/feed/", "kind": "rss"},
         {"url": "https://www.rockpapershotgun.com/feed/", "kind": "rss"},
     ],
-    # Recém-Nascidos — Google News agrega diário; SBP como autoridade brasileira.
+    # Recém-Nascidos — cuidados práticos com RN, amamentação, desenvolvimento, sono.
     "RN": [
-        {"url": "https://news.google.com/rss/search?q=recem+nascido+neonatal+bebe+saude+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
-        {"url": "https://news.google.com/rss/search?q=neonatologia+pediatria+recem-nascido&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
-        {"url": "https://agencia.fiocruz.br/rss.xml", "kind": "rss"},
-        {"url": "https://rss.uol.com.br/feed/saude.xml", "kind": "rss"},
+        {"url": "https://www.tuasaude.com/recem-nascido/", "kind": "scrape"},
+        {"url": "https://news.google.com/rss/search?q=%22cuidados+recem-nascido%22+OR+%22como+cuidar+do+bebe%22+OR+%22amamentacao+dicas%22&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+        {"url": "https://news.google.com/rss/search?q=%22desenvolvimento+bebe%22+OR+%22sono+bebe%22+OR+%22choro+recem-nascido%22+OR+%22colic+bebe%22&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
+        {"url": "https://news.google.com/rss/search?q=%22aleitamento+materno%22+OR+%22amamentacao%22+OR+%22leite+materno%22&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
         {"url": "https://www.sbp.com.br/noticias/", "kind": "scrape"},
     ],
 }

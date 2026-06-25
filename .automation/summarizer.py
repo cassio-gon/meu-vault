@@ -222,14 +222,17 @@ PROFILES = {
         "categories": ["exercicio", "nutricao", "dica", "curiosidade"],
     },
     "RN": {
-        "role": "editor especializado em neonatologia e saúde do recém-nascido",
+        "role": "especialista em cuidados com recém-nascidos e bebês",
         "focus": (
-            "saúde e cuidados com recém-nascidos e bebês (priorize: cuidados essenciais com o RN, "
-            "amamentação, desenvolvimento neuromotor, vacinas e triagem neonatal, curiosidades "
-            "sobre o desenvolvimento do bebê, saúde do sono, orientações para pais de primeira "
-            "viagem e novidades em pediatria neonatal)"
+            "APENAS conteúdo prático e educativo sobre recém-nascidos e bebês: cuidados "
+            "essenciais com o RN, amamentação e aleitamento materno, desenvolvimento "
+            "neuromotor e cognitivo, sono do bebê, choro e cólicas, curiosidades sobre "
+            "o desenvolvimento, orientações para pais de primeira viagem. "
+            "DESCARTE OBRIGATORIAMENTE qualquer tópico sobre: Fiocruz, Ministério da Saúde, "
+            "SUS, políticas públicas, seminários, cooperações institucionais, legislação, "
+            "programas governamentais ou notícias de eventos — esses NÃO devem aparecer"
         ),
-        "categories": ["dica", "noticia", "estudo"],
+        "categories": ["dica", "curiosidade", "estudo"],
     },
 }
 
