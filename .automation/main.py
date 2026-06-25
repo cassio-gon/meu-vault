@@ -45,6 +45,10 @@ DIGEST_SOURCES = {
         {"url": "https://abmt.org.br/noticias/", "kind": "scrape"},
         {"url": "https://www.anamt.org.br/portal/", "kind": "scrape"},
         {"url": "https://www.soc.com.br/", "kind": "scrape"},
+        {"url": "https://revistaproteger.com.br/", "kind": "scrape"},
+        {"url": "https://www.sesi.org.br/", "kind": "scrape"},
+        {"url": "https://www.fundacentro.gov.br/", "kind": "scrape"},
+        {"url": "https://sbmt.org.br/", "kind": "scrape"},
     ],
     # Mercado Financeiro — Brasil e global, RSS com artigos datados.
     "MercFin": [
