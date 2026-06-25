@@ -34,13 +34,11 @@ DIGEST_SOURCES = {
         {"url": "https://www.artificialintelligence-news.com/feed/", "kind": "rss"},
         {"url": "https://www.technologyreview.com/feed/", "kind": "rss"},
     ],
-    # Saúde — viés brasileiro, fontes com RSS noticioso diário.
+    # Saúde — fontes especializadas definidas pelo usuário.
     "Saude": [
-        {"url": "https://news.google.com/rss/search?q=saude+medicina+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
-        {"url": "https://agencia.fiocruz.br/rss.xml", "kind": "rss"},
-        {"url": "https://rss.uol.com.br/feed/saude.xml", "kind": "rss"},
-        {"url": "https://portal.cfm.org.br/noticias/feed/", "kind": "rss"},
-        {"url": "https://www.sciencedaily.com/rss/health_medicine.xml", "kind": "rss"},
+        {"url": "https://g1.globo.com/saude/", "kind": "scrape"},
+        {"url": "https://www.nejm.org/", "kind": "scrape"},
+        {"url": "https://www.cnnbrasil.com.br/saude/", "kind": "scrape"},
     ],
     # Medicina do Trabalho — fontes especializadas definidas pelo usuário.
     "MedTrab": [
