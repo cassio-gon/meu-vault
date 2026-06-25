@@ -75,8 +75,11 @@ def render_digest(topics: list[dict], day: str, tag: str, area: str) -> str:
     }
     yaml_block = yaml.safe_dump(frontmatter, allow_unicode=True, sort_keys=False).strip()
 
+    valid = [t for t in topics if t.get("title") and t.get("summary") and t.get("url")]
+    if len(valid) < len(topics):
+        print(f"⚠️  {len(topics) - len(valid)} tópico(s) incompletos descartados")
     parts = [f"---\n{yaml_block}\n---\n", f"# 🗞️ {area} — Principais do dia ({day})\n"]
-    for i, t in enumerate(topics, 1):
+    for i, t in enumerate(valid, 1):
         emoji = CATEGORY_EMOJI.get(t.get("category"), DEFAULT_CATEGORY_EMOJI)
         news_date = t.get("date", "N/D")
         parts.append(
