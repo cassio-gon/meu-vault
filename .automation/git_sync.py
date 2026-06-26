@@ -6,6 +6,7 @@ não levanta exceção nem quebra o pipeline.
 from __future__ import annotations
 
 import subprocess
+import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -29,6 +30,35 @@ def _has_changes(repo_path: Path) -> bool:
     """True se houver algo staged/unstaged para commitar."""
     result = _run(["status", "--porcelain"], repo_path)
     return bool(result.stdout.strip())
+
+
+# Quando vários digests rodam quase ao mesmo tempo, o push pode falhar porque o
+# branch remoto avançou (outro job já commitou). Em vez de perder o digest, fazemos
+# `pull --rebase` e tentamos de novo algumas vezes.
+PUSH_RETRIES = 4
+PUSH_BACKOFF_SECONDS = 3
+
+
+def _push_with_retry(repo_path: Path, branch: str) -> bool:
+    """Tenta `git push`; em conflito de fast-forward, faz `pull --rebase` e repete."""
+    for attempt in range(1, PUSH_RETRIES + 1):
+        push = _run(["push", "origin", branch], repo_path)
+        if push.returncode == 0:
+            return True
+
+        print(f"⚠️  git push falhou (tentativa {attempt}/{PUSH_RETRIES}): {push.stderr.strip()}")
+        if attempt == PUSH_RETRIES:
+            break
+
+        rebase = _run(["pull", "--rebase", "origin", branch], repo_path)
+        if rebase.returncode != 0:
+            print(f"❌ git pull --rebase falhou: {rebase.stderr.strip()}")
+            _run(["rebase", "--abort"], repo_path)  # garante árvore limpa p/ próximo digest
+            return False
+
+        time.sleep(PUSH_BACKOFF_SECONDS * attempt)
+
+    return False
 
 
 def sync(repo_path: Path, branch: str = "main", note_count: int = 0) -> bool:
@@ -61,9 +91,8 @@ def sync(repo_path: Path, branch: str = "main", note_count: int = 0) -> bool:
         return False
     print(f"📝 Commit: {message}")
 
-    push = _run(["push", "origin", branch], repo_path)
-    if push.returncode != 0:
-        print(f"❌ git push falhou: {push.stderr.strip()}")
+    if not _push_with_retry(repo_path, branch):
+        print("❌ git push falhou após todas as tentativas (inclusive rebase).")
         return False
 
     print(f"🚀 Push concluído para origin/{branch}")
