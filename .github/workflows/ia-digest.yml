@@ -2,7 +2,7 @@ name: Digest de IA
 
 on:
   schedule:
-    - cron: "0 6 * * *"  # 06:00 UTC / 03:00 BRT
+    - cron: "7 5 * * *"  # 05:07 UTC / 02:07 BRT
   workflow_dispatch:
     inputs:
       topics:

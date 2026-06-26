@@ -2,7 +2,7 @@ name: Digest de Saúde
 
 on:
   schedule:
-    - cron: "20 6 * * *"  # 06:20 UTC / 03:20 BRT
+    - cron: "12 5 * * *"  # 05:12 UTC / 02:12 BRT
   workflow_dispatch:
     inputs:
       topics:

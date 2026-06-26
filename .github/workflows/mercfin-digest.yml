@@ -2,7 +2,7 @@ name: Digest de Mercado Financeiro
 
 on:
   schedule:
-    - cron: "0 7 * * *"  # 07:00 UTC / 04:00 BRT
+    - cron: "22 5 * * *"  # 05:22 UTC / 02:22 BRT
   workflow_dispatch:
     inputs:
       topics:

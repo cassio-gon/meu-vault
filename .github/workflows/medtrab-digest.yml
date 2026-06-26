@@ -2,7 +2,7 @@ name: Digest de Medicina do Trabalho
 
 on:
   schedule:
-    - cron: "40 6 * * *"  # 06:40 UTC / 03:40 BRT
+    - cron: "17 5 * * *"  # 05:17 UTC / 02:17 BRT
   workflow_dispatch:
     inputs:
       topics:

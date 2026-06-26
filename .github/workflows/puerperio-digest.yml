@@ -2,7 +2,7 @@ name: Digest Puerpério
 
 on:
   schedule:
-    - cron: "20 7 * * *"  # 07:20 UTC / 04:20 BRT
+    - cron: "27 5 * * *"  # 05:27 UTC / 02:27 BRT
   workflow_dispatch:
     inputs:
       topics:
