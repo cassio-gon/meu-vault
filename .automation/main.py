@@ -58,7 +58,7 @@ DIGEST_SOURCES = {
         {"url": "https://www.infomoney.com.br/feed/", "kind": "rss"},
         {"url": "https://rss.uol.com.br/feed/economia.xml", "kind": "rss"},
         {"url": "https://www.moneytimes.com.br/feed/", "kind": "rss"},
-        {"url": "https://www.cnbc.com/id/10000664/device/rss/rss.html", "kind": "rss"},
+        {"url": "https://braziljournal.com/feed/", "kind": "rss"},
     ],
     # Puerpério — 3º trimestre: exercícios, alimentação, dicas práticas, bem-estar.
     # Apenas RSS com pubDate para garantir conteúdo da semana.
