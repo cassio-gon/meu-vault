@@ -6,8 +6,13 @@ não levanta exceção nem quebra o pipeline.
 from __future__ import annotations
 
 import subprocess
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
+
+# Fuso de Brasília (UTC-3, fixo — Brasil não usa horário de verão desde 2019),
+# consistente com formatter.py/scraper.py: mantém a mensagem de commit no mesmo
+# fuso dos nomes de arquivo, em vez do UTC do runner do GitHub Actions.
+_BRT = timezone(timedelta(hours=-3))
 
 
 def _run(args: list[str], cwd: Path) -> subprocess.CompletedProcess:
@@ -41,7 +46,7 @@ def sync(repo_path: Path, branch: str = "main", note_count: int = 0) -> bool:
         print("📭 Nada novo para commitar.")
         return False
 
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
+    timestamp = datetime.now(tz=_BRT).strftime("%Y-%m-%d %H:%M")
     message = f"auto: {timestamp} — {note_count} notas adicionadas"
 
     add = _run(["add", "."], repo_path)
