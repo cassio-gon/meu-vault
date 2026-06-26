@@ -29,7 +29,7 @@ DIGEST_SOURCES = {
     # IA — RSS confiáveis (sem dependência de scrape com JS pesado).
     "IA": [
         {"url": "https://techcrunch.com/category/artificial-intelligence/feed/", "kind": "rss"},
-        {"url": "https://www.theverge.com/ai-artificial-intelligence/rss/index.xml", "kind": "rss"},
+        {"url": "https://www.wired.com/feed/tag/ai/latest/rss", "kind": "rss"},
         {"url": "https://www.technologyreview.com/feed/", "kind": "rss"},
         {"url": "https://tecnoblog.net/feed/", "kind": "rss"},
         {"url": "https://news.google.com/rss/search?q=inteligencia+artificial+ia&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
@@ -37,7 +37,7 @@ DIGEST_SOURCES = {
     # Saúde — RSS confiáveis (sem dependência de scrape com JS pesado).
     "Saude": [
         {"url": "https://g1.globo.com/dynamo/saude/rss2.xml", "kind": "rss"},
-        {"url": "https://www.cnnbrasil.com.br/saude/feed/", "kind": "rss"},
+        {"url": "https://saude.abril.com.br/feed/", "kind": "rss"},
         {"url": "https://www.sciencedaily.com/rss/health_medicine.xml", "kind": "rss"},
         {"url": "https://news.google.com/rss/search?q=saude+medicina+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
         {"url": "https://feeds.folha.uol.com.br/equilibrioesaude/rss091.xml", "kind": "rss"},
@@ -58,7 +58,7 @@ DIGEST_SOURCES = {
         {"url": "https://www.infomoney.com.br/feed/", "kind": "rss"},
         {"url": "https://rss.uol.com.br/feed/economia.xml", "kind": "rss"},
         {"url": "https://www.moneytimes.com.br/feed/", "kind": "rss"},
-        {"url": "https://feeds.reuters.com/reuters/businessNews", "kind": "rss"},
+        {"url": "https://www.cnbc.com/id/10000664/device/rss/rss.html", "kind": "rss"},
     ],
     # Puerpério — 3º trimestre: exercícios, alimentação, dicas práticas, bem-estar.
     # Apenas RSS com pubDate para garantir conteúdo da semana.
@@ -67,7 +67,7 @@ DIGEST_SOURCES = {
         {"url": "https://news.google.com/rss/search?q=%22alimentacao+na+gravidez%22+OR+%22o+que+comer+gravidez%22+OR+%22nutricao+gestante%22&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
         {"url": "https://news.google.com/rss/search?q=%22dicas+para+gestantes%22+OR+%22cuidados+na+gravidez%22+OR+%22bem-estar+gestante%22&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
         {"url": "https://news.google.com/rss/search?q=%22preparacao+para+o+parto%22+OR+%22saude+mental+gestante%22+OR+%22ansiedade+gravidez%22&hl=pt-BR&gl=BR&ceid=BR:pt-419", "kind": "rss"},
-        {"url": "https://www.sciencedaily.com/rss/health_medicine/womens_health.xml", "kind": "rss"},
+        {"url": "https://www.sciencedaily.com/rss/health_medicine/pregnancy_and_childbirth.xml", "kind": "rss"},
     ],
     # Filmes e Séries — lançamentos, críticas, notícias de streamings e cinema.
     "Filmes": [
