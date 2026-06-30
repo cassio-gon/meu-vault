@@ -73,26 +73,36 @@ O usuário lê os digests por um **app que consome do Obsidian/GitHub**. Essa ca
 (`meu-vault`), mesmas pastas (`Pesquisas/<Área>/`), mesmo nome de arquivo e mesmo
 formato de nota. O app continua puxando os mesmos `.md` do mesmo lugar; nada nele muda.
 
+**Identificador de área:** o app filtra/indexa notas pelo campo `area:` e pelo filename.
+Ambos devem conter o **Código histórico curto** (IA, Saude, MedTrab, MercFin, Puerperio,
+RN, Filmes, Jogos), não o nome de exibição — esse contrato não pode ser quebrado.
+
 Única diferença cosmética: o campo `source:` no frontmatter passa de
 `trafilatura+groq` para `claude code` (decisão do usuário).
 
 ## Contrato de saída (formato da nota — rígido)
 
-Nome do arquivo: `AAAA-MM-DD HHhMM — <Área> Digest.md` (timestamp em BRT).
+> **Identificador de área:** em filename, `title:`, `area:` e heading H1 usa-se o
+> **Código histórico curto** — IA, Saude, MedTrab, MercFin, Puerperio, RN, Filmes, Jogos
+> — NÃO o nome de exibição completo (ex: "Medicina do Trabalho", "Filmes e Séries").
+> O app de leitura depende desse código para indexar e filtrar as notas.
+
+Nome do arquivo: `AAAA-MM-DD HHhMM — <Código> Digest.md` (timestamp em BRT).
+Exemplos reais do histórico: `2026-06-26 07h28 — MedTrab Digest.md`, `… — MercFin Digest.md`.
 Conteúdo:
 
 ```markdown
 ---
-title: <Área> — Digest AAAA-MM-DD HHhMM
+title: <Código> — Digest AAAA-MM-DD HHhMM
 date: AAAA-MM-DD HHhMM
 tags:
 - <tag>
 - digest
-area: <Área>
+area: <Código>
 source: claude code
 ---
 
-# 🗞️ <Área> — Principais do dia (AAAA-MM-DD HHhMM)
+# 🗞️ <Código> — Principais do dia (AAAA-MM-DD HHhMM)
 
 ## 1. <emoji> <título do tópico>
 

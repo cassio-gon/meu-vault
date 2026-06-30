@@ -5,14 +5,18 @@ Você é executado por uma Routine às 06:00 BRT. Objetivo: gerar o digest de ho
 Trabalhe na raiz do repo `meu-vault` já clonado. NÃO altere nada fora de `Pesquisas/`.
 
 ## Ordem das áreas (faça nesta ordem)
-1. IA → `Pesquisas/IA` → tag `ia`
-2. Saúde → `Pesquisas/Saude` → tag `saude`
-3. Medicina do Trabalho → `Pesquisas/Medicina do Trabalho` → tag `medtrab`
-4. Mercado Financeiro → `Pesquisas/Mercado Financeiro` → tag `mercado-financeiro`
-5. Puerpério → `Pesquisas/Puerperio` → tag `puerperio`
-6. Recém-Nascidos → `Pesquisas/RN` → tag `recem-nascidos`
-7. Filmes e Séries → `Pesquisas/Filmes e Series` → tag `filmes-series`
-8. Jogos → `Pesquisas/Jogos` → tag `jogos`
+
+O **Código** é o identificador curto que vai no filename, no `title:`, no `area:` do
+frontmatter e no heading H1. A pasta e a tag permanecem como abaixo.
+
+1. Código `IA` → pasta `Pesquisas/IA` → tag `ia`
+2. Código `Saude` → pasta `Pesquisas/Saude` → tag `saude`
+3. Código `MedTrab` → pasta `Pesquisas/Medicina do Trabalho` → tag `medtrab`
+4. Código `MercFin` → pasta `Pesquisas/Mercado Financeiro` → tag `mercado-financeiro`
+5. Código `Puerperio` → pasta `Pesquisas/Puerperio` → tag `puerperio`
+6. Código `RN` → pasta `Pesquisas/RN` → tag `recem-nascidos`
+7. Código `Filmes` → pasta `Pesquisas/Filmes e Series` → tag `filmes-series`
+8. Código `Jogos` → pasta `Pesquisas/Jogos` → tag `jogos`
 
 ## Para cada área, faça:
 
@@ -32,22 +36,27 @@ Mínimo 3 tópicos; se não houver material suficiente, gere menos e **não inve
 houver nada novo, **pule a área sem criar arquivo**.
 
 ### 4. Escreva a nota — formato OBRIGATÓRIO
-Nome do arquivo: `AAAA-MM-DD HHhMM — <Área> Digest.md` (data/hora em BRT, ex: `2026-06-30 06h05`).
-Use o nome de exibição da área (IA, Saúde, Medicina do Trabalho, Mercado Financeiro,
-Puerpério, Recém-Nascidos, Filmes e Séries, Jogos). Conteúdo:
+Use o **Código** da área (IA, Saude, MedTrab, MercFin, Puerperio, RN, Filmes, Jogos) —
+NÃO o nome de exibição completo — em todos os campos abaixo. O app de leitura depende
+desse identificador curto para indexar e filtrar as notas.
+
+Nome do arquivo: `AAAA-MM-DD HHhMM — <Código> Digest.md`
+(data/hora em BRT, ex: `2026-06-30 06h05 — MedTrab Digest.md`).
+
+Conteúdo:
 
 ```markdown
 ---
-title: <Área> — Digest AAAA-MM-DD HHhMM
+title: <Código> — Digest AAAA-MM-DD HHhMM
 date: AAAA-MM-DD HHhMM
 tags:
 - <tag-da-área>
 - digest
-area: <Área>
+area: <Código>
 source: claude code
 ---
 
-# 🗞️ <Área> — Principais do dia (AAAA-MM-DD HHhMM)
+# 🗞️ <Código> — Principais do dia (AAAA-MM-DD HHhMM)
 
 ## 1. <emoji> <título do tópico>
 
@@ -72,12 +81,13 @@ Se a busca/escrita de uma área falhar, registre o erro mentalmente e **siga par
 ## Fechamento (uma vez só, depois das 8 áreas)
 ```bash
 git add Pesquisas/
-git pull --rebase origin main   # absorve edições manuais do Obsidian
 git commit -m "auto: <AAAA-MM-DD HHhMM BRT> — digests do dia (<N> áreas)"
+git pull --rebase origin main   # absorve edições manuais do Obsidian
 git push origin main
 ```
-Se `git push` falhar por avanço do remoto, repita `git pull --rebase origin main` e
-`git push` (até 4 tentativas).
+O commit é feito **antes** do rebase para evitar que mudanças staged não-commitadas
+abortem o rebase. Se `git push` falhar por avanço do remoto, repita apenas
+`git pull --rebase origin main` e `git push` (até 4 tentativas; o commit já foi feito).
 
 ## Relatório final (sua última mensagem)
 Resuma: quantas áreas geraram nota, quais foram puladas (sem novidade) e quais falharam,
