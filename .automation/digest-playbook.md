@@ -25,14 +25,14 @@ Liste os 3 arquivos `*Digest.md` mais recentes da pasta da área e leia seus tí
 tópico. Guarde-os como "já publicado".
 
 ### 2. Busca do dia — use SOMENTE WebSearch e WebFetch (NUNCA firecrawl)
-Estratégia, nesta ordem de preferência:
-1. **Feeds RSS de `.automation/area-sources.md` via WebFetch** — são a espinha dorsal: trazem
-   de uma vez a URL real do artigo, a data (pubDate) e, na maioria, a imagem embutida
-   (`<enclosure>`, `media:content`/`media:thumbnail`). Faça WebFetch de cada feed da área e
-   leia os itens mais recentes (HOJE ou últimas ~48h).
-2. **WebSearch** para complementar/cobrir temas que os feeds não trouxeram.
-Priorize conteúdo datado e recente, com URL real e verificável. **Não use firecrawl** (sem
-créditos) — só as ferramentas nativas WebSearch/WebFetch.
+No ambiente da Routine, **WebSearch é a ferramenta principal e confiável**: é ela que traz
+os tópicos do dia (título, URL real e data). Use os sites de `.automation/area-sources.md`
+como pista de temas/fontes a pesquisar (ex.: `site:infomoney.com.br` na query).
+**WebFetch só funciona em parte dos sites** — a maioria dos grandes portais devolve **403
+(anti-bot)**, inclusive seus feeds RSS. Então use WebFetch apenas como tentativa
+**best-effort** para confirmar data/detalhe de um artigo, **sem depender dele**; se der 403,
+siga com o que o WebSearch já trouxe. **Não use firecrawl** (sem créditos). Priorize
+conteúdo datado e recente (HOJE ou últimas ~48h), com URL real e verificável.
 
 ### 3. Seleção
 Escolha os ~5 tópicos mais relevantes. **Descarte** qualquer um cujo assunto já apareça
@@ -81,18 +81,25 @@ lancamento 🚀 · regulatorio ⚖️ · exercicio 🏃 · nutricao 🥗 · dica
 Se não encaixar, use `📌`. Resumo SEMPRE em pt-BR (traduza fontes em inglês).
 Todo tópico precisa de título, resumo e URL reais; descarte os incompletos.
 
-**Imagem de referência (só ferramentas nativas — NUNCA firecrawl):** obtenha uma URL de
-imagem pública nesta ordem:
-1. **Imagem embutida no item RSS** — se o tópico veio de um feed (passo 2.1), use a imagem
-   que o próprio item já traz (`<enclosure url="...">`, `media:content`, `media:thumbnail`).
-   É a via mais confiável e não exige abrir o artigo.
-2. **`og:image` via WebFetch** — se não veio de RSS, faça WebFetch da URL do artigo e
-   procure `og:image`/`twitter:image` no HTML.
-Renderize **logo abaixo do título**: `<img src="URL" width="350" style="max-width:100%"/>`,
-com URL pública e estável (http/https). Se nenhuma via retornar imagem (paywall, anti-bot,
-JS), **omita** a linha `<img>` — não invente URL, não use placeholder. É aceitável que
-parte dos tópicos fique sem imagem; priorize fontes RSS que trazem imagem para maximizar a
-cobertura.
+**Imagem de referência (só ferramentas nativas — NUNCA firecrawl):** os grandes portais
+bloqueiam o WebFetch (403), então a `og:image` real quase nunca está acessível. Obtenha uma
+URL nesta ordem:
+1. **Imagem real, se vier de graça** — se você abriu um artigo/feed que NÃO deu 403 e ele já
+   expôs uma imagem (`og:image`, `twitter:image`, `<enclosure>`, `media:content`), use essa
+   URL: é a melhor, pois é a foto da própria notícia.
+2. **Imagem temática do Openverse (fallback padrão — quase sempre será este):** monte uma
+   query curta **em inglês** com 2–4 palavras-chave do tópico (entidade/assunto principal,
+   ex.: `OpenAI artificial intelligence`, `stock market brazil`, `newborn baby health`) e
+   faça **WebFetch** desta URL:
+   `https://api.openverse.org/v1/images/?q=<KEYWORDS>&page_size=3&aspect_ratio=wide&mature=false`
+   (troque espaços por `%20`). Peça ao WebFetch para extrair o campo **`thumbnail`** do
+   resultado mais relevante — é uma URL no formato
+   `https://api.openverse.org/v1/images/<id>/thumb/`, servida pelo CDN do Openverse (HTTP 200,
+   imagem livre/CC, estável). Essa API **não é anti-bot**, então responde normalmente. A
+   imagem é ilustrativa do tema, não a foto exata da notícia — e tudo bem.
+Renderize **logo abaixo do título**: `<img src="URL" width="350" style="max-width:100%"/>`.
+Só **omita** a linha `<img>` se nem o Openverse retornar resultado (raro). Nunca invente URL
+nem use placeholder.
 
 ### 5. Robustez
 Se a busca/escrita de uma área falhar, registre o erro mentalmente e **siga para a próxima

@@ -123,8 +123,13 @@ Regras de qualidade:
 - ~5 tópicos por área (mínimo 3; se não houver material, não inventar — escrever menos).
 - Cada tópico precisa de `título`, `resumo` e `url` reais; descartar incompletos.
 - **Imagem de referência** por tópico (logo abaixo do título): `<img src="URL" width="350"
-  style="max-width:100%"/>`, preferindo a `og:image` do artigo-fonte. Omitir a linha se a
-  fonte não tiver imagem. Restaura o comportamento do `formatter.py` original.
+  style="max-width:100%"/>`. No ambiente da Routine os grandes portais bloqueiam o WebFetch
+  (403 anti-bot), então a `og:image` real quase nunca está acessível e firecrawl está fora
+  (sem créditos, decisão do usuário). Estratégia adotada (2026-06-30): usar a `og:image`/RSS
+  real **apenas quando vier de graça** (site sem 403); caso contrário, **fallback para
+  imagem temática livre do Openverse** — `GET https://api.openverse.org/v1/images/?q=<kw>&
+  page_size=3&aspect_ratio=wide&mature=false`, campo `thumbnail` (CDN do Openverse, CC). É
+  ilustrativa do tema, não a foto exata. Omitir a linha só se nem o Openverse retornar nada.
 - Resumo sempre em pt-BR, mesmo de fonte em inglês.
 - `source: claude code` (substitui `trafilatura+groq`, que era impreciso).
 
