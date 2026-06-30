@@ -73,9 +73,8 @@ O usuário lê os digests por um **app que consome do Obsidian/GitHub**. Essa ca
 (`meu-vault`), mesmas pastas (`Pesquisas/<Área>/`), mesmo nome de arquivo e mesmo
 formato de nota. O app continua puxando os mesmos `.md` do mesmo lugar; nada nele muda.
 
-Única diferença cosmética possível: o campo `source:` no frontmatter passa de
-`trafilatura+groq` para `claude-cloud`. Se o app depender desse valor, manter o valor
-antigo é trivial (decisão do usuário).
+Única diferença cosmética: o campo `source:` no frontmatter passa de
+`trafilatura+groq` para `claude code` (decisão do usuário).
 
 ## Contrato de saída (formato da nota — rígido)
 
@@ -90,7 +89,7 @@ tags:
 - <tag>
 - digest
 area: <Área>
-source: claude-cloud
+source: claude code
 ---
 
 # 🗞️ <Área> — Principais do dia (AAAA-MM-DD HHhMM)
@@ -112,7 +111,7 @@ Regras de qualidade:
 - ~5 tópicos por área (mínimo 3; se não houver material, não inventar — escrever menos).
 - Cada tópico precisa de `título`, `resumo` e `url` reais; descartar incompletos.
 - Resumo sempre em pt-BR, mesmo de fonte em inglês.
-- `source: claude-cloud` (substitui `trafilatura+groq`, que era impreciso).
+- `source: claude code` (substitui `trafilatura+groq`, que era impreciso).
 
 ## Robustez e modos de falha
 
