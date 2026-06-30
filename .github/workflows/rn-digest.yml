@@ -1,8 +1,10 @@
 name: Digest Recém-Nascidos
 
 on:
-  schedule:
-    - cron: "42 5 * * *"  # 05:42 UTC / 02:42 BRT
+  # DESATIVADO 2026-06-30 — agendamento migrado para Routine do Claude Cloud.
+  # Mantido como fallback manual via "Run workflow" (workflow_dispatch).
+  # schedule:
+  #   - cron: "42 5 * * *"  # 05:42 UTC / 02:42 BRT
   workflow_dispatch:
     inputs:
       topics:

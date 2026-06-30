@@ -1,8 +1,10 @@
 name: Digest de Mercado Financeiro
 
 on:
-  schedule:
-    - cron: "22 5 * * *"  # 05:22 UTC / 02:22 BRT
+  # DESATIVADO 2026-06-30 — agendamento migrado para Routine do Claude Cloud.
+  # Mantido como fallback manual via "Run workflow" (workflow_dispatch).
+  # schedule:
+  #   - cron: "22 5 * * *"  # 05:22 UTC / 02:22 BRT
   workflow_dispatch:
     inputs:
       topics:

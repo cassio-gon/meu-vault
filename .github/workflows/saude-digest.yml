@@ -1,8 +1,10 @@
 name: Digest de Saúde
 
 on:
-  schedule:
-    - cron: "12 5 * * *"  # 05:12 UTC / 02:12 BRT
+  # DESATIVADO 2026-06-30 — agendamento migrado para Routine do Claude Cloud.
+  # Mantido como fallback manual via "Run workflow" (workflow_dispatch).
+  # schedule:
+  #   - cron: "12 5 * * *"  # 05:12 UTC / 02:12 BRT
   workflow_dispatch:
     inputs:
       topics:

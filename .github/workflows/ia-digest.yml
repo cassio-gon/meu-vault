@@ -1,8 +1,10 @@
 name: Digest de IA
 
 on:
-  schedule:
-    - cron: "7 5 * * *"  # 05:07 UTC / 02:07 BRT
+  # DESATIVADO 2026-06-30 — agendamento migrado para Routine do Claude Cloud.
+  # Mantido como fallback manual via "Run workflow" (workflow_dispatch).
+  # schedule:
+  #   - cron: "7 5 * * *"  # 05:07 UTC / 02:07 BRT
   workflow_dispatch:
     inputs:
       topics:

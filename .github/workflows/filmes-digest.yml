@@ -1,8 +1,10 @@
 name: Digest de Filmes e Séries
 
 on:
-  schedule:
-    - cron: "37 5 * * *"  # 05:37 UTC / 02:37 BRT
+  # DESATIVADO 2026-06-30 — agendamento migrado para Routine do Claude Cloud.
+  # Mantido como fallback manual via "Run workflow" (workflow_dispatch).
+  # schedule:
+  #   - cron: "37 5 * * *"  # 05:37 UTC / 02:37 BRT
   workflow_dispatch:
     inputs:
       topics:

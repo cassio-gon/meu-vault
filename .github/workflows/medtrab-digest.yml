@@ -1,8 +1,10 @@
 name: Digest de Medicina do Trabalho
 
 on:
-  schedule:
-    - cron: "17 5 * * *"  # 05:17 UTC / 02:17 BRT
+  # DESATIVADO 2026-06-30 — agendamento migrado para Routine do Claude Cloud.
+  # Mantido como fallback manual via "Run workflow" (workflow_dispatch).
+  # schedule:
+  #   - cron: "17 5 * * *"  # 05:17 UTC / 02:17 BRT
   workflow_dispatch:
     inputs:
       topics:
