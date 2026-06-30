@@ -24,10 +24,15 @@ frontmatter e no heading H1. A pasta e a tag permanecem como abaixo.
 Liste os 3 arquivos `*Digest.md` mais recentes da pasta da área e leia seus títulos de
 tópico. Guarde-os como "já publicado".
 
-### 2. Busca aberta do dia
-Busque as notícias/conteúdos mais relevantes de HOJE (ou das últimas ~48h) para o tema da
-área. Use `.automation/area-sources.md` como referência de fontes confiáveis e sementes,
-mas você pode ir além delas (busca aberta). Priorize conteúdo datado e recente.
+### 2. Busca do dia — use SOMENTE WebSearch e WebFetch (NUNCA firecrawl)
+Estratégia, nesta ordem de preferência:
+1. **Feeds RSS de `.automation/area-sources.md` via WebFetch** — são a espinha dorsal: trazem
+   de uma vez a URL real do artigo, a data (pubDate) e, na maioria, a imagem embutida
+   (`<enclosure>`, `media:content`/`media:thumbnail`). Faça WebFetch de cada feed da área e
+   leia os itens mais recentes (HOJE ou últimas ~48h).
+2. **WebSearch** para complementar/cobrir temas que os feeds não trouxeram.
+Priorize conteúdo datado e recente, com URL real e verificável. **Não use firecrawl** (sem
+créditos) — só as ferramentas nativas WebSearch/WebFetch.
 
 ### 3. Seleção
 Escolha os ~5 tópicos mais relevantes. **Descarte** qualquer um cujo assunto já apareça
@@ -76,12 +81,18 @@ lancamento 🚀 · regulatorio ⚖️ · exercicio 🏃 · nutricao 🥗 · dica
 Se não encaixar, use `📌`. Resumo SEMPRE em pt-BR (traduza fontes em inglês).
 Todo tópico precisa de título, resumo e URL reais; descarte os incompletos.
 
-**Imagem de referência (obrigatória quando existir):** para cada tópico, capture a imagem
-principal do artigo-fonte — prefira a meta tag `og:image`; na ausência dela, a imagem de
-destaque da matéria — e renderize-a **logo abaixo do título**, com a marcação EXATA
-`<img src="URL" width="350" style="max-width:100%"/>`. Use uma URL de imagem pública e
-estável (http/https, idealmente do próprio domínio da fonte). Se a fonte não expuser
-imagem alguma, **omita** a linha `<img>` (não invente URL, não use placeholder).
+**Imagem de referência (só ferramentas nativas — NUNCA firecrawl):** obtenha uma URL de
+imagem pública nesta ordem:
+1. **Imagem embutida no item RSS** — se o tópico veio de um feed (passo 2.1), use a imagem
+   que o próprio item já traz (`<enclosure url="...">`, `media:content`, `media:thumbnail`).
+   É a via mais confiável e não exige abrir o artigo.
+2. **`og:image` via WebFetch** — se não veio de RSS, faça WebFetch da URL do artigo e
+   procure `og:image`/`twitter:image` no HTML.
+Renderize **logo abaixo do título**: `<img src="URL" width="350" style="max-width:100%"/>`,
+com URL pública e estável (http/https). Se nenhuma via retornar imagem (paywall, anti-bot,
+JS), **omita** a linha `<img>` — não invente URL, não use placeholder. É aceitável que
+parte dos tópicos fique sem imagem; priorize fontes RSS que trazem imagem para maximizar a
+cobertura.
 
 ### 5. Robustez
 Se a busca/escrita de uma área falhar, registre o erro mentalmente e **siga para a próxima
