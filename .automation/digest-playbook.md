@@ -87,16 +87,24 @@ URL nesta ordem:
 1. **Imagem real, se vier de graça** — se você abriu um artigo/feed que NÃO deu 403 e ele já
    expôs uma imagem (`og:image`, `twitter:image`, `<enclosure>`, `media:content`), use essa
    URL: é a melhor, pois é a foto da própria notícia.
-2. **Imagem temática do Openverse (fallback padrão — quase sempre será este):** monte uma
-   query curta **em inglês** com 2–4 palavras-chave do tópico (entidade/assunto principal,
-   ex.: `OpenAI artificial intelligence`, `stock market brazil`, `newborn baby health`) e
-   faça **WebFetch** desta URL:
+2. **Imagem temática do Openverse (fallback padrão — quase sempre será este):** faça
+   **WebFetch** desta URL:
    `https://api.openverse.org/v1/images/?q=<KEYWORDS>&page_size=3&aspect_ratio=wide&mature=false`
-   (troque espaços por `%20`). Peça ao WebFetch para extrair o campo **`thumbnail`** do
-   resultado mais relevante — é uma URL no formato
-   `https://api.openverse.org/v1/images/<id>/thumb/`, servida pelo CDN do Openverse (HTTP 200,
-   imagem livre/CC, estável). Essa API **não é anti-bot**, então responde normalmente. A
-   imagem é ilustrativa do tema, não a foto exata da notícia — e tudo bem.
+   (troque espaços por `%20`) e extraia o campo **`thumbnail`** do resultado mais relevante —
+   é uma URL no formato `https://api.openverse.org/v1/images/<id>/thumb/`, servida pelo CDN do
+   Openverse (HTTP 200, imagem livre/CC, estável). Essa API **não é anti-bot** e está na
+   allowlist do ambiente, então responde normalmente. A imagem é ilustrativa do tema, não a
+   foto exata da notícia — e tudo bem.
+   **REGRA CRÍTICA da query** — o catálogo do Openverse é de imagens abertas/genéricas, então
+   **nomes próprios de produto/marca/pessoa retornam `result_count: 0`**. Use **termos
+   temáticos AMPLOS em inglês** (a categoria/conceito geral do tópico), NUNCA o nome próprio:
+   - "OpenAI lança GPT-5" → `artificial intelligence` (NÃO `GPT-5 OpenAI`)
+   - "Petrobras sobe na B3" → `stock market brazil` (NÃO `Petrobras B3`)
+   - "Novo filme do Christopher Nolan" → `cinema movie theater` (NÃO `Christopher Nolan`)
+   - "Estudo sobre amamentação" → `breastfeeding mother baby`
+   Se mesmo assim vier `result_count: 0`, **amplie ainda mais** (1–2 palavras bem genéricas da
+   área: `technology`, `finance`, `health`, `medicine`, `cinema`, `gaming`, `newborn`, etc.)
+   e refaça o WebFetch antes de desistir.
 Renderize **logo abaixo do título**: `<img src="URL" width="350" style="max-width:100%"/>`.
 Só **omita** a linha `<img>` se nem o Openverse retornar resultado (raro). Nunca invente URL
 nem use placeholder.
