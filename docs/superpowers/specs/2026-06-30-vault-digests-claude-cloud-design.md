@@ -106,6 +106,8 @@ source: claude code
 
 ## 1. <emoji> <título do tópico>
 
+<img src="<url-da-imagem>" width="350" style="max-width:100%"/>
+
 <resumo em pt-BR, 2–4 frases>
 
 📅 Data da notícia: <DD/MM/AAAA> · [Fonte](<url>)
@@ -120,6 +122,9 @@ exercicio 🏃 · nutricao 🥗 · dica 💡 · curiosidade 🔍` (default `📌
 Regras de qualidade:
 - ~5 tópicos por área (mínimo 3; se não houver material, não inventar — escrever menos).
 - Cada tópico precisa de `título`, `resumo` e `url` reais; descartar incompletos.
+- **Imagem de referência** por tópico (logo abaixo do título): `<img src="URL" width="350"
+  style="max-width:100%"/>`, preferindo a `og:image` do artigo-fonte. Omitir a linha se a
+  fonte não tiver imagem. Restaura o comportamento do `formatter.py` original.
 - Resumo sempre em pt-BR, mesmo de fonte em inglês.
 - `source: claude code` (substitui `trafilatura+groq`, que era impreciso).
 

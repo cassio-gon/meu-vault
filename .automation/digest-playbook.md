@@ -60,6 +60,8 @@ source: claude code
 
 ## 1. <emoji> <título do tópico>
 
+<img src="<url-da-imagem>" width="350" style="max-width:100%"/>
+
 <resumo em pt-BR, 2–4 frases>
 
 📅 Data da notícia: <DD/MM/AAAA> · [Fonte](<url-real>)
@@ -73,6 +75,13 @@ Emoji por categoria do tópico:
 lancamento 🚀 · regulatorio ⚖️ · exercicio 🏃 · nutricao 🥗 · dica 💡 · curiosidade 🔍`.
 Se não encaixar, use `📌`. Resumo SEMPRE em pt-BR (traduza fontes em inglês).
 Todo tópico precisa de título, resumo e URL reais; descarte os incompletos.
+
+**Imagem de referência (obrigatória quando existir):** para cada tópico, capture a imagem
+principal do artigo-fonte — prefira a meta tag `og:image`; na ausência dela, a imagem de
+destaque da matéria — e renderize-a **logo abaixo do título**, com a marcação EXATA
+`<img src="URL" width="350" style="max-width:100%"/>`. Use uma URL de imagem pública e
+estável (http/https, idealmente do próprio domínio da fonte). Se a fonte não expuser
+imagem alguma, **omita** a linha `<img>` (não invente URL, não use placeholder).
 
 ### 5. Robustez
 Se a busca/escrita de uma área falhar, registre o erro mentalmente e **siga para a próxima
