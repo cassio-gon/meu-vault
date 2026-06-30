@@ -144,12 +144,16 @@ Regras de qualidade:
 2. **firecrawl** disponível na sessão; se não, **fallback para web search nativa**.
 3. Fuso: agente calcula timestamps em **BRT (UTC-3)** independente do fuso do runner.
 
-## Desativação do legado (sem remover)
+## Desativação e remoção do legado
 
-- Em cada `.github/workflows/*-digest.yml`: **comentar o bloco `schedule:`** (manter
-  `workflow_dispatch` para disparo manual de emergência). Arquivos e `.automation/`
-  permanecem no repo como fallback e referência.
-- Nada do Python é deletado nesta migração.
+- **2026-06-30 (migração):** os 8 `.github/workflows/*-digest.yml` tiveram o `schedule:`
+  comentado; o Python permaneceu como fallback temporário.
+- **2026-06-30 (limpeza, após validação da Routine):** removidos os 8 workflows e o Python
+  legado de `.automation/` (`main.py`, `scraper.py`, `formatter.py`, `summarizer.py`,
+  `feeds.py`, `config.py`, `git_sync.py`, `requirements.txt`, `.env.example`).
+- **Permanecem** em `.automation/`: `digest-playbook.md` e `area-sources.md` — usados pela
+  Routine todo dia. Secrets antigos do GitHub Actions (`GEMINI_API_KEY`,
+  `FIRECRAWL_API_KEY`) podem ser removidos das settings do repo.
 
 ## Fora de escopo (YAGNI)
 
