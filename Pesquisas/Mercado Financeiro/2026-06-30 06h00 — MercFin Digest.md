@@ -10,32 +10,32 @@ source: claude code
 
 # 🗞️ MercFin — Principais do dia (2026-06-30 06h00)
 
-## 1. 📊 Balanço do 1º semestre: Ibovespa perde cerca de 13%, saindo de ~200 mil para 173 mil pontos
+## 1. 📈 Ibovespa Fecha em Alta Sustentado por Bancos; Dólar Recua na Semana
 
-O fechamento de hoje marca o fim do primeiro semestre de 2026 com um desempenho negativo expressivo para o Ibovespa: o índice saiu de perto dos 200 mil pontos em maio e recuou para a faixa dos 173 mil, pressionado pela combinação de dólar mais forte, juros elevados e incertezas fiscais domésticas. Historicamente, a virada de semestre gera rebalanceamento de carteiras institucionais, o que pode ampliar a volatilidade intraday. Gestores alertam que o ambiente externo — com tensões no Oriente Médio e pressão sobre commodities — continua sendo fator de risco relevante para o segundo semestre.
+O Ibovespa encerrou a sessão de 26 de junho de 2026 em alta de 0,76%, aos 173.295 pontos, impulsionado pelo desempenho positivo das ações de bancos, acumulando ganho de 2,95% na semana. O dólar à vista fechou com queda de 0,21%, cotado a R$ 5,1697, refletindo o enfraquecimento da moeda norte-americana ante divisas globais. Os investidores moderaram apostas de alta de juros pelo Federal Reserve após novo recuo nos preços do petróleo. A Braskem figurou entre as maiores quedas do pregão, pressionada por preocupações com sua situação financeira.
 
-📅 Data da notícia: 30/06/2026 · [Fonte](https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-30062026/)
+📅 Data da notícia: 26/06/2026 · [Fonte](https://www.cnnbrasil.com.br/economia/mercado/mercado-financeiro-ibovespa-dolar-26-junho-2026/)
 
-## 2. 📈 CAGED maio: Ministério do Trabalho divulga dados de emprego formal hoje
+## 2. 📊 BBVA Revisa PIB do Brasil para 2,1% em 2026 com Pressão Inflacionária e Cortes na Selic
 
-O Ministério do Trabalho e Emprego divulga hoje os dados do Cadastro Geral de Empregados e Desempregados (CAGED) referentes a maio de 2026, uma das principais referências para avaliar a saúde do mercado de trabalho formal brasileiro. O mercado acompanha o indicador de perto em um contexto de taxa de juros elevada e ajuste fiscal em andamento, buscando sinais sobre a resiliência do emprego. Os dados de emprego nos EUA também são divulgados hoje, o que tende a influenciar o câmbio e o fluxo de investimentos estrangeiros para o Brasil.
+O BBVA Research elevou em 0,4 ponto percentual sua projeção de crescimento do PIB brasileiro em 2026 para 2,1%, refletindo resiliência da atividade econômica e estímulo fiscal pré-eleitoral. A inflação deve ficar em torno de 5% no segundo semestre de 2026, pressionada pelo choque global de energia derivado do conflito no Oriente Médio, o que limita o espaço para novos cortes na Selic. O banco espanhol prevê que o Banco Central reduza a Selic a 13% até o fim do ano, mas alerta que a aceleração dos preços pode forçar uma pausa no ciclo de afrouxamento monetário. A inflação deverá convergir para 4% apenas em 2027, com riscos ainda inclinados para cima.
 
-📅 Data da notícia: 30/06/2026 · [Fonte](https://www.infomoney.com.br/mercados/ibovespa-hoje-bolsa-de-valores-ao-vivo-30062026/)
+📅 Data da notícia: 30/06/2026 · [Fonte](https://www.bbvaresearch.com/en/publicaciones/brazil-economic-outlook-june-2026/)
 
-## 3. 📊 Dólar estável a R$5,17 e bitcoin abaixo de US$60 mil no fechamento de semestre
+## 3. ⚖️ Operação Compliance Zero: PF Apura Vantagens a Jaques Wagner Ligadas ao Banco Master
 
-O dólar comercial segue cotado na faixa de R$5,17, pressionado pelo ambiente externo e pelos juros ainda elevados nos EUA. O bitcoin opera abaixo dos US$60 mil, refletindo a aversão ao risco global no fechamento do primeiro semestre. O petróleo Brent se sustenta acima dos US$73 por barril, amparado pelas tensões geopolíticas no Oriente Médio, o que representa um fator de suporte para as ações da Petrobras e, indiretamente, para o Ibovespa. Analistas recomendam cautela com posições alavancadas no período de rebalanceamento.
+A Polícia Federal deflagrou nova fase da Operação Compliance Zero mirando o senador Jaques Wagner (PT-BA), até então líder do governo no Senado, investigando o recebimento de apartamento avaliado em R$ 2,45 milhões de Augusto Ferreira Lima, ex-sócio do Banco Master. A investigação apura ainda a transferência de mais de R$ 5,5 milhões para a BN Financeira, empresa gerida por familiares do senador, além de outros crimes financeiros e de lavagem de dinheiro. Foram cumpridos 18 mandados de busca e apreensão na Bahia, São Paulo e Distrito Federal. Wagner negou as irregularidades e sua defesa entrou com pedido no STF para anular a operação.
 
-📅 Data da notícia: 30/06/2026 · [Fonte](https://revistaempreende.com.br/mercado-financeiro-hoje-29-junho-2026-ibovespa-dolar-bitcoin/)
+📅 Data da notícia: 25/06/2026 · [Fonte](https://agenciabrasil.ebc.com.br/justica/noticia/2026-06/apuracao-da-pf-acusa-jaques-wagner-de-receber-vantagens-senador-nega)
 
-## 4. 📊 IPCA de junho a caminho: mercado aguarda confirmação da tendência desinflacionária
+## 4. 🚀 Ascenty Investe US$ 1,2 Bilhão em Campus de Data Centers de IA em Sumaré, São Paulo
 
-O Índice de Preços ao Consumidor Amplo (IPCA) de junho será divulgado nos próximos dias e é o principal dado macroeconômico aguardado pelo mercado financeiro para confirmar — ou contrariar — a tendência sinalizada pelo IPCA-15 de 0,41%. Com o mercado projetando inflação acumulada em torno de 4,06% para 2026, o resultado de junho terá impacto direto nas expectativas para as próximas reuniões do Copom e na curva de juros. Um resultado acima do esperado poderia acrescentar pressão sobre os prêmios de risco dos ativos brasileiros.
+A Ascenty anunciou um investimento de US$ 1,2 bilhão para construção de quatro novos data centers no interior de São Paulo, com capacidade inicial de 150 megawatts, o equivalente a 40% de toda a capacidade construída pela empresa em 15 anos de operação. O complexo Sumaré 3 será o primeiro na América Latina projetado do zero para suportar cargas de trabalho de inteligência artificial em larga escala, com racks de até 1 MW e sistemas de resfriamento líquido e energia 100% renovável. A previsão é que a primeira fase esteja operacional em 18 meses a partir de maio de 2026. O projeto reforça o posicionamento do Brasil como hub regional de tecnologia e infraestrutura digital.
 
-📅 Data da notícia: 30/06/2026 · [Fonte](https://agenciabrasil.ebc.com.br/economia/noticia/2026-01/mercado-financeiro-projeta-inflacao-de-406-em-2026)
+📅 Data da notícia: 27/05/2026 · [Fonte](https://teletime.com.br/27/05/2026/ascenty-vai-investir-us-12-bilhao-em-quatro-data-centers-de-ia-em-sp/)
 
-## 5. 📈 Perspectivas de cessar-fogo no Oriente Médio sustentam Ibovespa após semanas de queda
+## 5. 📌 Brazil Market Roundup: Usiminas Lidera Ganhos com Alta de 72% no Ano e Risco Político Pesa
 
-O Ibovespa registrou algum alívio nas últimas sessões amparado pelas perspectivas de um cessar-fogo entre os EUA e o Irã na região do Estreito de Ormuz, depois de semanas marcadas por forte volatilidade e aversão ao risco global. Apesar do cenário externo ainda delicado — com o Catar tendo recomendado a suspensão de atividades marítimas no início da semana — qualquer avanço diplomático tende a reduzir o prêmio de risco no petróleo e beneficiar exportadores brasileiros. O setor de energia e o agronegócio são os segmentos mais sensíveis a esse vetor geopolítico.
+O resumo de mercado de 25 de junho de 2026 do Easy Brazil Investing destacou que o Ibovespa recuou 0,48%, aos 175.744 pontos, na contramão de Wall Street que fechou em alta, refletindo realização de lucros local e cautela com o cenário fiscal e político brasileiro. A siderúrgica Usiminas (USIM5) se destacou positivamente, acumulando alta de quase 72% no ano, impulsionada por margens em melhora e expectativas de recuperação industrial doméstica. A mudança na liderança do governo no Senado, após a Operação Compliance Zero, elevou o prêmio de risco político que investidores globais precisam monitorar. A Cosan ficou entre as ações sob pressão no pregão, enquanto o setor de infraestrutura digital ganhou destaque com o anúncio da Ascenty.
 
-📅 Data da notícia: 30/06/2026 · [Fonte](https://pt.tradingeconomics.com/brazil/stock-market)
+📅 Data da notícia: 25/06/2026 · [Fonte](https://www.easybrazilinvesting.com/brazil-market-roundup-june-25-2026/)
