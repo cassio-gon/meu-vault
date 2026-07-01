@@ -1,7 +1,8 @@
 # Playbook: Digests diários do Vault
 
 Você é executado por uma Routine às 06:00 BRT. Objetivo: gerar o digest de hoje para
-**cada uma das 8 áreas**, em sequência, e fazer **um único** commit+push no fim.
+**cada área elegível hoje** (veja "Cadência por área"), em sequência, e fazer **um único**
+commit+push no fim.
 Trabalhe na raiz do repo `meu-vault` já clonado. NÃO altere nada fora de `Pesquisas/`.
 
 ## Ordem das áreas (faça nesta ordem)
@@ -18,21 +19,32 @@ frontmatter e no heading H1. A pasta e a tag permanecem como abaixo.
 7. Código `Filmes` → pasta `Pesquisas/Filmes e Series` → tag `filmes-series`
 8. Código `Jogos` → pasta `Pesquisas/Jogos` → tag `jogos`
 
+## Cadência por área
+
+Por padrão todas as áreas rodam **todo dia**. Exceção (para conter custo):
+- **Puerperio** e **RN** só rodam **segunda, quarta e sexta** (3×/semana). Nos demais dias
+  (terça, quinta, sábado, domingo) **pule essas duas áreas** sem criar arquivo e sem contá-las
+  como falha. Determine o dia da semana a partir da data de hoje em BRT antes de começar.
+
 ## Para cada área, faça:
 
 ### 1. Dedupe — leia o que já saiu
 Liste os 3 arquivos `*Digest.md` mais recentes da pasta da área e leia seus títulos de
 tópico. Guarde-os como "já publicado".
 
-### 2. Busca do dia — use SOMENTE WebSearch e WebFetch (NUNCA firecrawl)
-No ambiente da Routine, **WebSearch é a ferramenta principal e confiável**: é ela que traz
-os tópicos do dia (título, URL real e data). Use os sites de `.automation/area-sources.md`
-como pista de temas/fontes a pesquisar (ex.: `site:infomoney.com.br` na query).
-**WebFetch só funciona em parte dos sites** — a maioria dos grandes portais devolve **403
-(anti-bot)**, inclusive seus feeds RSS. Então use WebFetch apenas como tentativa
-**best-effort** para confirmar data/detalhe de um artigo, **sem depender dele**; se der 403,
-siga com o que o WebSearch já trouxe. **Não use firecrawl** (sem créditos). Priorize
-conteúdo datado e recente (HOJE ou últimas ~48h), com URL real e verificável.
+### 2. Busca do dia — use WebSearch como fonte principal (NUNCA firecrawl)
+No ambiente da Routine, **WebSearch é a ferramenta principal e suficiente**: é ela que traz
+os tópicos do dia (título, URL real e data) já nos próprios snippets. Use os sites de
+`.automation/area-sources.md` como pista de temas/fontes a pesquisar (ex.:
+`site:infomoney.com.br` na query). Priorize conteúdo datado e recente (HOJE ou últimas ~48h),
+com URL real e verificável.
+
+**Não use WebFetch por padrão.** A maioria dos grandes portais devolve **403 (anti-bot)**,
+inclusive feeds RSS, e cada tentativa falha ainda queima tokens à toa. Extraia título, data e
+resumo direto dos snippets do WebSearch. Só recorra ao WebFetch se a **data** de um tópico que
+você realmente vai publicar estiver ambígua e não der pra resolver com outra busca — e, nesse
+caso, **uma única tentativa**; se der 403, siga com o que o WebSearch trouxe, sem reprocessar.
+**Não use firecrawl** (sem créditos).
 
 ### 3. Seleção
 Escolha os ~5 tópicos mais relevantes. **Descarte** qualquer um cujo assunto já apareça
@@ -65,8 +77,6 @@ source: claude code
 
 ## 1. <emoji> <título do tópico>
 
-<img src="<url-da-imagem>" width="350" style="max-width:100%"/>
-
 <resumo em pt-BR, 2–4 frases>
 
 📅 Data da notícia: <DD/MM/AAAA> · [Fonte](<url-real>)
@@ -80,34 +90,6 @@ Emoji por categoria do tópico:
 lancamento 🚀 · regulatorio ⚖️ · exercicio 🏃 · nutricao 🥗 · dica 💡 · curiosidade 🔍`.
 Se não encaixar, use `📌`. Resumo SEMPRE em pt-BR (traduza fontes em inglês).
 Todo tópico precisa de título, resumo e URL reais; descarte os incompletos.
-
-**Imagem de referência (só ferramentas nativas — NUNCA firecrawl):** os grandes portais
-bloqueiam o WebFetch (403), então a `og:image` real quase nunca está acessível. Obtenha uma
-URL nesta ordem:
-1. **Imagem real, se vier de graça** — se você abriu um artigo/feed que NÃO deu 403 e ele já
-   expôs uma imagem (`og:image`, `twitter:image`, `<enclosure>`, `media:content`), use essa
-   URL: é a melhor, pois é a foto da própria notícia.
-2. **Imagem temática do Openverse (fallback padrão — quase sempre será este):** faça
-   **WebFetch** desta URL:
-   `https://api.openverse.org/v1/images/?q=<KEYWORDS>&page_size=3&aspect_ratio=wide&mature=false`
-   (troque espaços por `%20`) e extraia o campo **`thumbnail`** do resultado mais relevante —
-   é uma URL no formato `https://api.openverse.org/v1/images/<id>/thumb/`, servida pelo CDN do
-   Openverse (HTTP 200, imagem livre/CC, estável). Essa API **não é anti-bot** e está na
-   allowlist do ambiente, então responde normalmente. A imagem é ilustrativa do tema, não a
-   foto exata da notícia — e tudo bem.
-   **REGRA CRÍTICA da query** — o catálogo do Openverse é de imagens abertas/genéricas, então
-   **nomes próprios de produto/marca/pessoa retornam `result_count: 0`**. Use **termos
-   temáticos AMPLOS em inglês** (a categoria/conceito geral do tópico), NUNCA o nome próprio:
-   - "OpenAI lança GPT-5" → `artificial intelligence` (NÃO `GPT-5 OpenAI`)
-   - "Petrobras sobe na B3" → `stock market brazil` (NÃO `Petrobras B3`)
-   - "Novo filme do Christopher Nolan" → `cinema movie theater` (NÃO `Christopher Nolan`)
-   - "Estudo sobre amamentação" → `breastfeeding mother baby`
-   Se mesmo assim vier `result_count: 0`, **amplie ainda mais** (1–2 palavras bem genéricas da
-   área: `technology`, `finance`, `health`, `medicine`, `cinema`, `gaming`, `newborn`, etc.)
-   e refaça o WebFetch antes de desistir.
-Renderize **logo abaixo do título**: `<img src="URL" width="350" style="max-width:100%"/>`.
-Só **omita** a linha `<img>` se nem o Openverse retornar resultado (raro). Nunca invente URL
-nem use placeholder.
 
 ### 5. Robustez
 Se a busca/escrita de uma área falhar, registre o erro mentalmente e **siga para a próxima
