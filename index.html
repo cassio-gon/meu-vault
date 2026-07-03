@@ -599,9 +599,30 @@
     if (prev.view === 'view-list' && prev.data) restoreList(prev.data);
   }
 
-  // ── Fetch ──────────────────────────────────────────────────────
-  async function apiFetch(path) { const r = await fetch(`${API}/${path}`); if (!r.ok) throw new Error('API ' + r.status); return r.json(); }
-  async function rawFetch(path) { const r = await fetch(`${RAW}/${path}`);  if (!r.ok) throw new Error('Raw ' + r.status); return r.text(); }
+  // ── Fetch (com cache em localStorage p/ poupar o rate limit da API do GitHub) ──
+  const CACHE_TTL_MS = 10 * 60 * 1000;
+  function readCache(key) {
+    try {
+      const hit = JSON.parse(localStorage.getItem('vault-cache:' + key));
+      if (hit && Date.now() - hit.t < CACHE_TTL_MS) return hit.v;
+    } catch (e) {}
+    return undefined;
+  }
+  function writeCache(key, value) {
+    try { localStorage.setItem('vault-cache:' + key, JSON.stringify({ t: Date.now(), v: value })); } catch (e) {}
+  }
+  async function apiFetch(path) {
+    const cached = readCache('api:' + path);
+    if (cached !== undefined) return cached;
+    const r = await fetch(`${API}/${path}`); if (!r.ok) throw new Error('API ' + r.status);
+    const data = await r.json(); writeCache('api:' + path, data); return data;
+  }
+  async function rawFetch(path) {
+    const cached = readCache('raw:' + path);
+    if (cached !== undefined) return cached;
+    const r = await fetch(`${RAW}/${path}`); if (!r.ok) throw new Error('Raw ' + r.status);
+    const text = await r.text(); writeCache('raw:' + path, text); return text;
+  }
 
   const isMd = i => i.type === 'file' && i.name.endsWith('.md') && !i.name.startsWith('_');
 
