@@ -389,6 +389,27 @@
     .art-body hr { border: none; border-top: 1px solid var(--line); margin: 20px 0; }
     .art-body code { font-family: ui-monospace, Menlo, monospace; font-size: 13px; background: var(--chip); border-radius: 4px; padding: 1px 5px; color: var(--fg); }
 
+    /* ── Callouts (Obsidian) ────────────────────────────────────── */
+    .art-body .callout {
+      --cc: 8,109,221;
+      margin: 16px 0; padding: 12px 14px; border-radius: 8px;
+      border: 1px solid rgba(var(--cc), 0.22);
+      background: rgba(var(--cc), 0.07);
+    }
+    .art-body .callout-title { font-family: var(--serif); font-weight: 600; font-size: 16px; color: rgb(var(--cc)); margin-bottom: 6px; letter-spacing: -0.01em; }
+    .art-body .callout-content { color: var(--fg); font-size: 16px; line-height: 1.62; }
+    .art-body .callout-content p { margin-bottom: 10px; }
+    .art-body .callout-content > :last-child { margin-bottom: 0; }
+    .art-body .callout[data-callout="note"], .art-body .callout[data-callout="info"], .art-body .callout[data-callout="todo"] { --cc: 8,109,221; }
+    .art-body .callout[data-callout="abstract"] { --cc: 0,176,165; }
+    .art-body .callout[data-callout="tip"]      { --cc: 2,170,176; }
+    .art-body .callout[data-callout="success"]  { --cc: 60,150,70; }
+    .art-body .callout[data-callout="question"] { --cc: 200,150,0; }
+    .art-body .callout[data-callout="warning"]  { --cc: 214,130,0; }
+    .art-body .callout[data-callout="failure"], .art-body .callout[data-callout="danger"], .art-body .callout[data-callout="bug"] { --cc: 210,64,64; }
+    .art-body .callout[data-callout="example"]  { --cc: 138,92,214; }
+    .art-body .callout[data-callout="quote"]    { --cc: 130,130,130; }
+
     /* ── States ─────────────────────────────────────────────────── */
     .state { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center; padding: 60px 24px; }
     .state-icon { font-size: 34px; }
@@ -645,12 +666,17 @@
     for (const raw of lines) {
       const line = raw.trim();
       if (!line) continue;
-      if (/^title:|^date:|^tags:|^source:|^area:/i.test(line)) continue;
+      if (/^title:|^date:|^tags:|^source:|^area:|^hub:/i.test(line)) continue;
       const h = line.match(/^#{1,3}\s+(.+)$/);
       if (h && !headline) { headline = cleanInline(h[1]); continue; }
-      if (!dek && !line.startsWith('#') && !line.startsWith('|') && !line.startsWith('---')) {
-        dek = cleanInline(line.replace(/^[-*>+\d.\s]+/, ''));
-        if (dek.length < 12) { dek = null; continue; }
+      if (!dek) {
+        // Linha marcadora de callout `> [!tipo] Título`: ignora; o corpo (linhas `>` seguintes) vira o dek.
+        if (/^>\s*\[!\w+\][+-]?/.test(line)) continue;
+        let cand = line.startsWith('>') ? line.replace(/^>\s?/, '') : line;
+        if (!cand.startsWith('#') && !cand.startsWith('|') && !cand.startsWith('---')) {
+          dek = cleanInline(cand.replace(/^[-*>+\d.\s]+/, ''));
+          if (dek.length < 12) { dek = null; continue; }
+        }
       }
       if (headline && dek) break;
     }
@@ -660,10 +686,45 @@
   }
   function cleanInline(s) {
     return s
+      .replace(/!?\[\[([^\]|#]+)(?:#[^\]|]*)?(?:\|([^\]]+))?\]\]/g, (m, a, b) => (b || a))
       .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
       .replace(/[*_`>#]/g, '')
       .replace(/^\s*[^\p{L}\p{N}"'(]+/u, '')
       .trim();
+  }
+
+  // ── Wikilinks + callouts do Obsidian → HTML legível no leitor web ──
+  // [[Nota]] / [[Nota|Texto]] viram texto puro (o leitor web não navega o vault).
+  function stripWikilinks(s) {
+    return s.replace(/!?\[\[([^\]|#]+)(?:#[^\]|]*)?(?:\|([^\]]+))?\]\]/g, (m, a, b) => (b || a).trim());
+  }
+  // Remove o bloco de frontmatter `---...---` antes do render (senão o marked o vira um <h2> setext feio).
+  function stripFrontmatter(md) {
+    const b = md.replace(/\r/g, '');
+    if (b.startsWith('---')) { const e = b.indexOf('\n---', 3); if (e !== -1) return b.slice(e + 4).replace(/^\s+/, ''); }
+    return md;
+  }
+  // Aliases de tipo do Obsidian → tipo canônico (usado no data-callout do CSS).
+  const CALLOUT_ALIAS = { tldr:'abstract', summary:'abstract', hint:'tip', important:'tip', check:'success', done:'success', help:'question', faq:'question', caution:'warning', attention:'warning', fail:'failure', missing:'failure', error:'danger', cite:'quote' };
+  // Converte blocos `> [!tipo] Título` (+ linhas `>`) em <div class="callout">.
+  function preRenderCallouts(md) {
+    const lines = md.replace(/\r/g, '').split('\n');
+    const out = []; let i = 0;
+    while (i < lines.length) {
+      const m = lines[i].match(/^\s*>\s*\[!(\w+)\][+-]?\s*(.*)$/);
+      if (m) {
+        const type = (CALLOUT_ALIAS[m[1].toLowerCase()] || m[1].toLowerCase());
+        const title = m[2].trim();
+        const content = []; i++;
+        while (i < lines.length && /^\s*>/.test(lines[i])) { content.push(lines[i].replace(/^\s*>\s?/, '')); i++; }
+        const inner = marked.parse(content.join('\n')).replace(/\n{2,}/g, '\n');
+        const titleHtml = title ? esc(title) : (type.charAt(0).toUpperCase() + type.slice(1));
+        out.push(`\n<div class="callout" data-callout="${type}"><div class="callout-title">${titleHtml}</div><div class="callout-content">${inner}</div></div>\n`);
+        continue;
+      }
+      out.push(lines[i]); i++;
+    }
+    return out.join('\n');
   }
 
   // ── Últimos digests por categoria ──────────────────────────────
@@ -975,7 +1036,7 @@
 
     try {
       const md = await rawFetch(file.path);
-      const html = marked.parse(md);
+      const html = marked.parse(preRenderCallouts(stripWikilinks(stripFrontmatter(md))));
       const min = readingMin(md);
       const meta = parseMeta(md, editionLabel);
       currentArticle.min = min;

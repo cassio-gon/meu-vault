@@ -60,36 +60,68 @@ desse identificador curto para indexar e filtrar as notas.
 Nome do arquivo: `AAAA-MM-DD HHhMM — <Código> Digest.md`
 (data/hora em BRT, ex: `2026-06-30 06h05 — MedTrab Digest.md`).
 
-Conteúdo:
+Conteúdo (Obsidian Flavored Markdown — **cada tópico é um callout**):
 
 ```markdown
 ---
 title: <Código> — Digest AAAA-MM-DD HHhMM
 date: AAAA-MM-DD HHhMM
 tags:
-- <tag-da-área>
-- digest
+  - <tag-da-área>
+  - digest
 area: <Código>
-source: claude code
+source: routine
 ---
 
 # 🗞️ <Código> — Principais do dia (AAAA-MM-DD HHhMM)
 
-## 1. <emoji> <título do tópico>
+> [!tldr] Resumo do dia
+> <1 frase em pt-BR resumindo o panorama do dia nesta área>
 
-<resumo em pt-BR, 2–4 frases>
+> [!<tipo>] <emoji> <título do tópico 1>
+> <resumo em pt-BR, 2–4 frases>
+>
+> 📅 <DD/MM/AAAA> · [Fonte](<url-real>)
 
-📅 Data da notícia: <DD/MM/AAAA> · [Fonte](<url-real>)
+> [!<tipo>] <emoji> <título do tópico 2>
+> <resumo em pt-BR, 2–4 frases>
+>
+> 📅 <DD/MM/AAAA> · [Fonte](<url-real>)
 
-## 2. <emoji> <título>
-...
+---
+
+> [!note]- ℹ️ Sobre
+> Área: [[<Código>]] · digest automático da Routine.
 ```
 
-Emoji por categoria do tópico:
-`noticia 📰 · ferramenta 🛠️ · estudo 🔬 · analise 📊 · dado 📈 · review ⭐ ·
-lancamento 🚀 · regulatorio ⚖️ · exercicio 🏃 · nutricao 🥗 · dica 💡 · curiosidade 🔍`.
-Se não encaixar, use `📌`. Resumo SEMPRE em pt-BR (traduza fontes em inglês).
-Todo tópico precisa de título, resumo e URL reais; descarte os incompletos.
+**Regras de formatação do callout (obrigatório):**
+- O digest abre com **um** callout `> [!tldr]` de 1 frase (resumo do dia).
+- **Cada tópico é um callout** `> [!<tipo>] <emoji> <título>`. TODA linha do tópico
+  (resumo, data, fonte) começa com `> `. Separe o resumo da linha da data com **uma linha
+  `>` vazia** (senão viram um parágrafo só).
+- O `<tipo>` do callout vem da categoria do tópico (a cor/ícone no leitor derivam dele):
+
+  | Categoria | emoji | `<tipo>` |
+  |---|---|---|
+  | notícia | 📰 | `info` |
+  | ferramenta | 🛠️ | `tip` |
+  | estudo | 🔬 | `abstract` |
+  | análise | 📊 | `note` |
+  | dado | 📈 | `example` |
+  | review | ⭐ | `quote` |
+  | lançamento | 🚀 | `success` |
+  | regulatório | ⚖️ | `warning` |
+  | exercício | 🏃 | `todo` |
+  | nutrição | 🥗 | `success` |
+  | dica | 💡 | `tip` |
+  | curiosidade | 🔍 | `question` |
+
+  Se não encaixar, use `> [!note] 📌 <título>`.
+- Termine com o callout de rodapé `> [!note]- ℹ️ Sobre` contendo `[[<Código>]]` — esse
+  wikilink conecta os digests da área no grafo do Obsidian. Mantenha exatamente esse formato.
+
+Resumo SEMPRE em pt-BR (traduza fontes em inglês). Todo tópico precisa de título, resumo e
+URL reais; descarte os incompletos.
 
 ### 5. Robustez
 Se a busca/escrita de uma área falhar, registre o erro mentalmente e **siga para a próxima
