@@ -8,6 +8,16 @@ source: routine
 
 # Calima — Avaliação diária (2026-08-10)
 
+## Nota de entrega
+
+O passo (b) desta rotina (notificar via `ntfy.sh`) **também falhou** — mesma causa do bloqueio do
+site: `curl` para `ntfy.sh` deu `CONNECT tunnel failed, response 403`, confirmado no status do
+proxy (`connect_rejected` para `ntfy.sh:443`, mesmo padrão de `calima.med.br:443`). Ou seja, a
+política de rede desta sessão bloqueia **os dois hosts** de que esta rotina depende. O relatório
+foi commitado e pushado normalmente (isso passa pelo GitHub, que está liberado); só o `curl` de
+saída livre está restrito. Se isso persistir amanhã, a rotina fica sem canal de aviso — vale
+liberar `ntfy.sh` (e `calima.med.br`) na política de egress deste ambiente.
+
 ## TL;DR
 
 - **SITE NÃO VERIFICADO HOJE** — `calima.med.br` está bloqueado pela política de rede (egress) *deste ambiente de execução*, não é sinal de o site estar fora do ar. Ver detalhes abaixo; isso provavelmente vai se repetir em toda execução futura até alguém ajustar a política.
