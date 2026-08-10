@@ -15,7 +15,7 @@ source: routine
 
 | Sugestão | Data | Status |
 |---|---|---|
-| Ativar compressão HTTP (gzip/brotli) no Express (`server/server.js:118`) | 2026-08-10 | aberto |
+| Ativar compressão HTTP (gzip/brotli) no Express (`server/server.js:118`) | 2026-08-10 | **improcedente** — probe do Mac em 10/08 08:20 mostrou `content-encoding: gzip` em `/css/style.css` com `Accept-Encoding: gzip, br`. O Traefik/Coolify já comprime na borda; a conclusão veio de análise só-por-código, sem medir produção |
 | `Cache-Control` de longa duração para ativos imutáveis (fontes/ícones/vendor), sem tocar no caminho do SHELL do SW | 2026-08-10 | aberto |
 | App Shortcuts no `manifest.json` ("Novo atendimento" direto do ícone) | 2026-08-10 | aberto |
 | Assinatura eletrônica gov.br (gratuita) como reforço sobre o selo médico-legal existente | 2026-08-10 | aberto |
