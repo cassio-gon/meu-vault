@@ -581,8 +581,23 @@
     'Cardiologia':          { icon: '❤️', label: 'Cardiologia' },
     'Pediatria':            { icon: '🧒', label: 'Pediatria' },
     'Filmes e Series':      { icon: '🎬', label: 'Filmes e Séries' },
+    'Jogos':                { icon: '🎮', label: 'Jogos' },
+    'B2B':                  { icon: '🤝', label: 'B2B' },
+    'Calima':               { icon: '🩺', label: 'Calima' },
+    'Concorrencia':         { icon: '🔍', label: 'Concorrência' },
+    'Concorrência':         { icon: '🔍', label: 'Concorrência' },
+    'Infra':                { icon: '🖥️', label: 'Infra' },
+    'Seguranca':            { icon: '🔐', label: 'Segurança' },
+    'Segurança':            { icon: '🔐', label: 'Segurança' },
   };
   function getMeta(name) { return META[name] || { icon: '📁', label: name }; }
+
+  // Agrupamento da aba Topics. Pasta que não estiver aqui cai em "Outros".
+  const GROUPS = [
+    { title: 'Notícias',        cats: ['IA', 'Mercado Financeiro', 'Filmes e Series', 'Jogos', 'Noticias', 'Notícias'] },
+    { title: 'Medicina',        cats: ['Saude', 'Saúde', 'Medicina do Trabalho', 'RN', 'Puerperio', 'Puerpério', 'UTI', 'Cardiologia', 'Pediatria'] },
+    { title: 'Meus projetos',   cats: ['Calima', 'B2B', 'Concorrencia', 'Concorrência', 'Infra', 'Seguranca', 'Segurança', 'Research'] },
+  ];
 
   const MONTHS_EN = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   const MONTHS_PT = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
@@ -836,7 +851,20 @@
     const el = document.getElementById('brief-topics');
     if (!catsCache || !catsCache.length) { showStateInEl(el, '📭', 'Nenhuma categoria.'); return; }
     el.innerHTML = '';
-    catsCache.forEach(cat => {
+    const grouped = GROUPS
+      .map(g => ({ title: g.title, cats: catsCache.filter(c => g.cats.includes(c)) }))
+      .concat([{ title: 'Outros', cats: catsCache.filter(c => !GROUPS.some(g => g.cats.includes(c))) }])
+      .filter(g => g.cats.length);
+    grouped.forEach(group => {
+      const h = document.createElement('div');
+      h.className = 'more-label';
+      h.textContent = group.title;
+      el.appendChild(h);
+      group.cats.forEach(cat => renderTopicRow(el, cat));
+    });
+  }
+
+  function renderTopicRow(el, cat) {
       const m = getMeta(cat);
       const row = document.createElement('div');
       row.className = 'topic-row';
@@ -857,7 +885,6 @@
         const d = f ? parseDate(f.dateISO) : null;
         mEl.textContent = d ? `Última edição · ${d.day} ${d.month}` : 'Sem edições';
       }).catch(() => {});
-    });
   }
 
   function setBriefTab(tab) {
