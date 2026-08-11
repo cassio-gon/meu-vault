@@ -20,3 +20,8 @@ source: routine
 | App Shortcuts no `manifest.json` ("Novo atendimento" direto do ícone) | 2026-08-10 | aberto |
 | Assinatura eletrônica gov.br (gratuita) como reforço sobre o selo médico-legal existente | 2026-08-10 | aberto |
 | CID-10 (DATASUS) como dataset estático para autocomplete determinístico no campo HD:, complementar à sugestão por IA | 2026-08-10 | aberto |
+| E-mail de cobrança ao próprio cliente quando `PAYMENT_OVERDUE` (hoje só o admin é avisado, `billing.js:153-158`) | 2026-08-11 | aberto |
+| Mostrar preço (R$ 19,90/mês) e duração do trial (7 dias) na tela "Criar conta", antes do cadastro | 2026-08-11 | aberto |
+| Plano anual com desconto, usando o parâmetro `cycle` que a lib do Asaas já aceita (`asaas.js:40-41`, hoje fixo `MONTHLY` em `billing.js:69`) | 2026-08-11 | aberto |
+| Notificação de cobrança em atraso via WhatsApp/SMS nativo do Asaas (configuração no painel, sem código novo) | 2026-08-11 | aberto |
+| Link de pagamento recorrente por WhatsApp no fim do trial, complementar ao e-mail `TEXTOS.fim` | 2026-08-11 | aberto |
