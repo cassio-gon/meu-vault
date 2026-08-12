@@ -25,3 +25,4 @@ source: routine
 | Plano anual com desconto, usando o parâmetro `cycle` que a lib do Asaas já aceita (`asaas.js:40-41`, hoje fixo `MONTHLY` em `billing.js:69`) | 2026-08-11 | aberto |
 | Notificação de cobrança em atraso via WhatsApp/SMS nativo do Asaas (configuração no painel, sem código novo) | 2026-08-11 | aberto |
 | Link de pagamento recorrente por WhatsApp no fim do trial, complementar ao e-mail `TEXTOS.fim` | 2026-08-11 | aberto |
+| Preload da arte do login desktop (`login-painel-v5.webp`, 63 KB) — hoje só carrega via `background-image` no CSS atrás de `body:has()`, sem `<link rel="preload">` | 2026-08-12 | aberto |
