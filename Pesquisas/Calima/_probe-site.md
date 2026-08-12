@@ -1,12 +1,12 @@
 ---
 title: Calima — probe do site (medido do Mac)
-date: 2026-08-11
+date: 2026-08-12
 area: Calima
 tags: [calima, probe, uptime]
 source: mac-launchagent
 ---
 
-# Probe de `calima.med.br` — 2026-08-11 10:04:06 (America/Sao_Paulo)
+# Probe de `calima.med.br` — 2026-08-12 03:56:50 (America/Sao_Paulo)
 
 > Medido do Mac do Cássio, não da nuvem. O ambiente das Routines tem egress bloqueado
 > para este host. Se o timestamp acima estiver velho, o Mac estava desligado — diga isso
@@ -16,10 +16,10 @@ source: mac-launchagent
 
 | Path | HTTP | Tempo total | TTFB | Bytes | Content-Type |
 |---|---|---|---|---|---|
-| `/` | 200 | 0.652628s | 0.485362s | 21630 B | text/html; charset=UTF-8 |
-| `/manifest.json` | 200 | 0.487165s | 0.486896s | 884 B | application/json; charset=UTF-8 |
-| `/sw.js` | 200 | 0.481637s | 0.481136s | 5719 B | application/javascript; charset=UTF-8 |
-| `/js/app.js` | 200 | 0.837316s | 0.487583s | 39172 B | application/javascript; charset=UTF-8 |
+| `/` | 200 | 0.736541s | 0.507842s | 24865 B | text/html; charset=UTF-8 |
+| `/manifest.json` | 200 | 0.507015s | 0.506644s | 884 B | application/json; charset=UTF-8 |
+| `/sw.js` | 200 | 0.493738s | 0.493457s | 5719 B | application/javascript; charset=UTF-8 |
+| `/js/app.js` | 200 | 0.770627s | 0.492869s | 44635 B | application/javascript; charset=UTF-8 |
 
 ## Compressão (`/css/style.css` com `Accept-Encoding: gzip, br`)
 
@@ -43,13 +43,13 @@ cache-control: public, max-age=0
 content-security-policy: default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self' https://api.github.com https://raw.githubusercontent.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'
 content-type: text/html; charset=UTF-8
 cross-origin-opener-policy: same-origin
-date: Tue, 11 Aug 2026 13:04:04 GMT
-etag: W/"547e-19fe99eac70"
-last-modified: Mon, 10 Aug 2026 03:01:58 GMT
+date: Wed, 12 Aug 2026 06:56:49 GMT
+etag: W/"6121-19ff1530e20"
+last-modified: Tue, 11 Aug 2026 14:56:20 GMT
 referrer-policy: no-referrer
 strict-transport-security: max-age=15552000
 x-content-type-options: nosniff
 x-frame-options: DENY
-content-length: 21630
+content-length: 24865
 
 ```
