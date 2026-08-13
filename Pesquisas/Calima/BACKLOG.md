@@ -26,3 +26,6 @@ source: routine
 | Notificação de cobrança em atraso via WhatsApp/SMS nativo do Asaas (configuração no painel, sem código novo) | 2026-08-11 | aberto |
 | Link de pagamento recorrente por WhatsApp no fim do trial, complementar ao e-mail `TEXTOS.fim` | 2026-08-11 | aberto |
 | Preload da arte do login desktop (`login-painel-v5.webp`, 63 KB) — hoje só carrega via `background-image` no CSS atrás de `body:has()`, sem `<link rel="preload">` | 2026-08-12 | aberto |
+| Aplicar `requireEscrita`/`anexarPlano`/`requireCota` em `server/routes/receitas.js` (hoje sem gate, ao contrário de `records.js`/`pacientes.js`/`format`/`sugerir`) — médico bloqueado por trial/inadimplência ainda consome IA (import dontpad) e emite receita sem paywall | 2026-08-13 | aberto |
+| Padrão ARIA combobox/listbox no autocomplete de medicamento (`public/js/receita-ui.js:118-170`), espelhando o autocomplete de paciente na mesma tela (`public/js/pacientes-ui.js:259-320`) | 2026-08-13 | aberto |
+| Smoke test que sobe `server/server.js` de verdade (import + listen) — teria pego a janela de `server/lib/cota.js` ausente (`b4bfeb4`→`202c504`, ~4h17) que quebrava o boot sem a suíte notar | 2026-08-13 | aberto |
