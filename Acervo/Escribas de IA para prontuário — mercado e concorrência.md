@@ -10,6 +10,7 @@ tags: [acervo, saude, ia, calima]
 
 - **Dr. Pera IA** (drpera.com.br) é o concorrente brasileiro mais próximo: extensão Chrome para plantonista, SOAP por voz, memória de 12h, multimodal (raio-X, ECG), rodando Claude Sonnet 4.6 com sete ferramentas clínicas. [[2026-08-10 — Pesquisa: Tempo do médico digitando prontuário]]
 - **Versatilis** (versatilis.com.br) é o segundo concorrente BR: prontuário com reconhecimento de voz que transcreve, remove vícios de fala e organiza nos campos. [[2026-08-10 — Pesquisa: Ditado por voz em prontuário eletrônico]]
+- **Helfy** (helfy.io) é o terceiro concorrente BR direto, com promessa explícita: "grave a consulta, a IA escreve o prontuário — economize até 2h por dia, teste grátis". [[2026-08-10 — Pesquisa: Reclamações sobre Amplimed e iClinic]]
 - **Whisper já está em piloto no Albert Einstein e no Sírio-Libanês**, com relato de 40-60% de redução no tempo de prontuário. O caminho técnico do Calima é o mesmo dos grandes hospitais. [[2026-08-10 — Pesquisa: Tempo do médico digitando prontuário]]
 - Existem **mais de cem empresas com capital de risco** no nicho de documentação clínica por IA; a previsão é onda de fusões e aquisições em 2026. [[2026-08-10 — Pesquisa: Tempo do médico digitando prontuário]]
 - O mercado de língua inglesa está saturado e com **preço-âncora público**: Freed a partir de US$ 39/mês, Suki a US$ 299+/mês (queixa nº 1 dos médicos), Abridge para grandes redes, Heidi para consultório. [[2026-08-10 — Pesquisa: Ditado por voz em prontuário eletrônico]]
@@ -21,6 +22,7 @@ tags: [acervo, saude, ia, calima]
 
 - 2026-07-03 — primeira leitura pelo ângulo regulatório; mercado visto como ranking de ferramentas estrangeiras.
 - 2026-08-10 — o retrato brasileiro apareceu: dois concorrentes nacionais diretos (Dr. Pera, Versatilis) e piloto de Whisper em hospital de ponta. A categoria em inglês já está saturada e entrando em M&A.
+- 2026-08-10 — terceiro concorrente BR identificado (Helfy) por outra busca; já são três nacionais com a mesma promessa. Âncora de preço BR apareceu: R$ 79 a R$ 439/mês. [[2026-08-10 — Pesquisa: Reclamações sobre Amplimed e iClinic]]
 
 ## Em aberto
 
