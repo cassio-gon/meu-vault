@@ -14,3 +14,8 @@
 
 # macOS
 .DS_Store
+
+# O grafo mora fora do vault (~/.local/share/acervo-grafo). Se o graphify
+# for rodado apontando para uma pasta daqui, ele cria graphify-out/ ao lado
+# do corpus — aconteceu em 16/08/2026. Isto impede o vazamento virar commit.
+graphify-out/
