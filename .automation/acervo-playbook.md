@@ -52,6 +52,28 @@ Obsidian resolver sem alias.
 5. **Teto de 15 bullets** em `O que sabemos hoje`. Ao estourar, o mais antigo ou
    o menos ancorado desce para o log. Mente que aprende também descarta.
 
+## Filtro de sinal (aprendido no piloto de 16/08/2026)
+
+Raw do `/last30days` **não é evidência pronta** — vem com muito ruído. A busca
+`medicina medicos aplicativo plantao medico` trouxe 106 itens dos quais a maioria
+era r/brasil genérico (terremoto na Colômbia, geologia de São Paulo, política) e
+memes em espanhol. A busca `plantao` no Instagram trouxe 1 item, e sobre programa
+jornalístico, não plantão médico.
+
+Regras:
+
+1. **Descartar item fora do tema sem dó.** Score alto no raw não significa
+   relevante — o motor ranqueia engajamento, não pertinência.
+2. **O bloco `WebSearch Supplemental` costuma ser o de maior sinal.** Ler antes
+   dos clusters ranqueados.
+3. **Se depois do filtro sobrarem menos de 3 fatos ancorados, NÃO criar nota
+   viva.** Escrever só a nota datada, com a ressalva de qualidade. Nota viva com
+   um fato só é pior que nenhuma: ocupa espaço na camada 2, entra na rotina de
+   consolidação diária e sugere conhecimento que não existe.
+4. **Registrar a ressalva na nota datada**, numa seção `## Ressalva de qualidade`:
+   o que foi descartado e por quê, e como refazer melhor a busca. Isso evita
+   repetir a mesma query ruim daqui a três meses.
+
 ## Dedupe por URL
 
 Antes de acrescentar um fato, conferir as fontes já citadas na própria nota.
