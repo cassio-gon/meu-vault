@@ -2,7 +2,7 @@
 tema: Panorama de modelos e ferramentas de IA
 tipo: nota-viva
 criado: 2026-07-07
-atualizado: 2026-07-07
+atualizado: 2026-08-17
 tags: [acervo, ia]
 ---
 
@@ -18,10 +18,14 @@ tags: [acervo, ia]
 - **Nano Banana 2 Lite** e **Gemini Omni Flash** liberados para desenvolvedores em 30/06/2026 — opções de imagem rápida e barata. [[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]]
 - Consolidação de mercado: **Adobe comprando a Topaz Labs**; Runway lançando Agent 2.0 para marketing. [[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]]
 - Sinal de custo virando gestão: a **Tesla impôs teto de US$ 200/semana de token por engenheiro**. [[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]]
+- **Gemini 3.7 Flash** lançado em 17/08/2026: benchmarks superiores ao antecessor, US$ 0,75/M tokens entrada e US$ 3,75/M tokens saída — nova referência de preço-desempenho. [[2026-08-17 06h00 — IA Digest]]
+- **Stripe adquiriu o OpenRouter** (plataforma de acesso unificado a +200 modelos de IA) por US$ 7 bi em 17/08/2026 — markup 5× sobre a Series B de maio/2026. Sinaliza consolidação da camada de roteamento de modelos. [[2026-08-17 06h00 — IA Digest]]
+- **Google aposentou 3 IDs do Imagen 4**: desenvolvedores devem migrar para `gemini-3.1-flash-image`. [[2026-08-17 06h00 — IA Digest]]
 
 ## Como isso mudou
 
 - 2026-07-07 — primeira leitura, com janela de apenas 3 dias. Retrato, não panorama.
+- 2026-08-17 — Gemini 3.7 Flash lançado com preços competitivos; Stripe absorve OpenRouter por US$ 7 bi consolidando roteamento de modelos; Google aposenta Imagen 4 IDs em favor do Gemini.
 
 ## Em aberto
 
@@ -30,4 +34,4 @@ tags: [acervo, ia]
 
 ## Origens
 
-[[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]]
+[[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]] · [[2026-08-17 06h00 — IA Digest]]
