@@ -6,7 +6,7 @@ tags: [calima, probe, uptime]
 source: mac-launchagent
 ---
 
-# Probe de `calima.med.br` — 2026-08-18 09:39:50 (America/Sao_Paulo)
+# Probe de `calima.med.br` — 2026-08-18 15:59:57 (America/Sao_Paulo)
 
 > Medido do Mac do Cássio, não da nuvem. O ambiente das Routines tem egress bloqueado
 > para este host. Se o timestamp acima estiver velho, o Mac estava desligado — diga isso
@@ -16,10 +16,10 @@ source: mac-launchagent
 
 | Path | HTTP | Tempo total | TTFB | Bytes | Content-Type |
 |---|---|---|---|---|---|
-| `/` | 200 | 0.809417s | 0.631073s | 27500 B | text/html; charset=UTF-8 |
-| `/manifest.json` | 200 | 0.496439s | 0.496229s | 884 B | application/json; charset=UTF-8 |
-| `/sw.js` | 200 | 0.499657s | 0.499275s | 6943 B | application/javascript; charset=UTF-8 |
-| `/js/app.js` | 200 | 0.843119s | 0.496361s | 57907 B | application/javascript; charset=UTF-8 |
+| `/` | 200 | 0.861304s | 0.656214s | 28760 B | text/html; charset=UTF-8 |
+| `/manifest.json` | 200 | 0.574457s | 0.574028s | 884 B | application/json; charset=UTF-8 |
+| `/sw.js` | 200 | 0.608023s | 0.594418s | 6976 B | application/javascript; charset=UTF-8 |
+| `/js/app.js` | 200 | 1.780582s | 1.298320s | 60233 B | application/javascript; charset=UTF-8 |
 
 ## Compressão (`/css/style.css` com `Accept-Encoding: gzip, br`)
 
@@ -43,13 +43,13 @@ cache-control: public, max-age=0
 content-security-policy: default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self' https://api.github.com https://raw.githubusercontent.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'
 content-type: text/html; charset=UTF-8
 cross-origin-opener-policy: same-origin
-date: Tue, 18 Aug 2026 12:39:48 GMT
-etag: W/"6b6c-1a014d89f40"
-last-modified: Tue, 18 Aug 2026 12:28:56 GMT
+date: Tue, 18 Aug 2026 18:59:55 GMT
+etag: W/"7058-1a0157e4198"
+last-modified: Tue, 18 Aug 2026 15:29:51 GMT
 referrer-policy: no-referrer
 strict-transport-security: max-age=15552000
 x-content-type-options: nosniff
 x-frame-options: DENY
-content-length: 27500
+content-length: 28760
 
 ```
