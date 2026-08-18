@@ -2,7 +2,7 @@
 tema: Medicina ocupacional e SST no Brasil
 tipo: nota-viva
 criado: 2026-06-29
-atualizado: 2026-08-17
+atualizado: 2026-08-18
 tags: [acervo, medtrab]
 ---
 
@@ -18,11 +18,16 @@ tags: [acervo, medtrab]
 - **NR-12 e NR-35 atualizadas em 2026**: NR-12 exige bloqueio eletrônico e parada automática em máquinas; NR-35 passa a exigir ancoragem certificada e registro digital de treinamentos em altura. [[2026-08-17 06h10 — MedTrab Digest]]
 - **eSocial SST 2026 — multas reajustadas**: infrações leves a partir de R$ 443/trabalhador; graves a gravíssimas até R$ 44.396/trabalhador exposto. Algoritmo cruza dados declarados no eSocial vs. ausências e acidentes reais — autuação automática por inconsistência. [[2026-08-17 06h10 — MedTrab Digest]]
 - **Trabalhador com doença ocupacional** tem direito a auxílio-doença acidentário (B91) e estabilidade de 12 meses após alta; emissão da CAT é o ponto de partida, mas subnotificação persiste como obstáculo estrutural. [[2026-08-17 06h10 — MedTrab Digest]]
+- Em 2025, a Previdência concedeu **546.254 benefícios por incapacidade temporária por transtornos mentais** (+15,6% a.a.), custo de R$ 3,5 bi — reforço empírico do argumento econômico para gestão de saúde mental no trabalho. [[2026-08-18 06h10 — MedTrab Digest]]
+- **Lista de doenças ocupacionais saltou de 182 para 347 diagnósticos em 2026**, incorporando burnout, Covid-19 e transtornos mentais — impacto direto no nexo técnico, nos ASOs e nos benefícios acidentários. [[2026-08-18 06h10 — MedTrab Digest]]
+- Brasil registrou **806 mil acidentes de trabalho em 2025** (+8,6% a.a.), concentrados em construção civil e logística; subnotificação via CAT continua como obstáculo estrutural. [[2026-08-18 06h10 — MedTrab Digest]]
+- Rede **CEREST** expandiu de 17 para **180 unidades** no país; Região Sudeste concentra 72 centros — referencial para suporte técnico ao SUS em diagnóstico e vigilância de doenças relacionadas ao trabalho. [[2026-08-18 06h10 — MedTrab Digest]]
 
 ## Como isso mudou
 
 - 2026-06-29 — primeira leitura. O ecossistema de audiência em SST é dominado por fornecedor de software, não por médico; a conversa técnica está no Instagram e TikTok, não em fórum.
 - 2026-08-17 — NR-7 publicada com novos protocolos de exames periódicos por exposição; NR-12/35 atualizadas com bloqueio eletrônico e registros digitais; eSocial SST com multas reajustadas até R$ 44.396/trabalhador; trabalhador doente tem mais proteções legais.
+- 2026-08-18 — 546 mil afastamentos por saúde mental em 2025 (+15,6%, R$ 3,5 bi); lista de doenças ocupacionais dobrou (182→347, incluindo burnout); 806 mil acidentes em 2025 (+8,6%); CEREST cresceu de 17 para 180 unidades.
 
 ## Em aberto
 
@@ -30,4 +35,4 @@ tags: [acervo, medtrab]
 
 ## Origens
 
-[[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]] · [[2026-08-17 06h10 — MedTrab Digest]]
+[[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]] · [[2026-08-17 06h10 — MedTrab Digest]] · [[2026-08-18 06h10 — MedTrab Digest]]
