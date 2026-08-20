@@ -2,14 +2,13 @@
 tema: Medicina ocupacional e SST no Brasil
 tipo: nota-viva
 criado: 2026-06-29
-atualizado: 2026-08-19
+atualizado: 2026-08-20
 tags: [acervo, medtrab]
 ---
 
 ## O que sabemos hoje
 
 - A **ANAMT** é a maior associação de médicos do trabalho da América Latina e a fonte primária de conteúdo normativo (PCMSO 360, eSocial). [[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]]
-- Quem tem audiência no Instagram de SST **não é médico, é software de gestão de clínica** — @socgestaosst (23 mil) e @clm_med (14 mil) superam a própria ANAMT (13 mil). O público desses perfis é dono de clínica. [[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]]
 - **Portaria MTE 1.131/2025** alterou as multas de eventos SST no eSocial; nova NR-7 e mudanças no PCMSO estão em curso. [[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]]
 - A atualização das NRs gerou **alta demanda por médicos do trabalho especialistas**, segundo a própria ANAMT. [[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]]
 - O conteúdo clínico que engaja é dor musculoesquelética do trabalhador e a decisão de aptidão: "lombalgia no exame ocupacional é inapto? Depende". [[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]]
@@ -23,6 +22,7 @@ tags: [acervo, medtrab]
 - Brasil registrou **806 mil acidentes de trabalho em 2025** (+8,6% a.a.), concentrados em construção civil e logística; subnotificação via CAT continua como obstáculo estrutural. [[2026-08-18 06h10 — MedTrab Digest]]
 - Rede **CEREST** expandiu de 17 para **180 unidades** no país; Região Sudeste concentra 72 centros — referencial para suporte técnico ao SUS em diagnóstico e vigilância de doenças relacionadas ao trabalho. [[2026-08-18 06h10 — MedTrab Digest]]
 - **CBIGS 2026 consolida IA e digitalização na saúde ocupacional**: o 7º Congresso Brasileiro de Inovação e Gestão em Saúde (14–15/08, HC-USP) destacou uso de IA em diagnósticos ocupacionais e modelos inovadores de gestão de saúde corporativa como tendências irreversíveis para os serviços de SST nas empresas brasileiras. [[2026-08-19 06h15 — MedTrab Digest]]
+- **TST analisa Tema 204**: pendente de julgamento que pode obrigar empregadores a custear integralmente e de forma vitalícia o tratamento do trabalhador acidentado por culpa ou dolo da empresa; precedentes de turmas do TST já condenaram empresas ao pagamento de despesas médicas futuras (queimaduras, lesões graves). [[2026-08-20 06h10 — MedTrab Digest]]
 
 ## Como isso mudou
 
@@ -30,6 +30,7 @@ tags: [acervo, medtrab]
 - 2026-08-17 — NR-7 publicada com novos protocolos de exames periódicos por exposição; NR-12/35 atualizadas com bloqueio eletrônico e registros digitais; eSocial SST com multas reajustadas até R$ 44.396/trabalhador; trabalhador doente tem mais proteções legais.
 - 2026-08-18 — 546 mil afastamentos por saúde mental em 2025 (+15,6%, R$ 3,5 bi); lista de doenças ocupacionais dobrou (182→347, incluindo burnout); 806 mil acidentes em 2025 (+8,6%); CEREST cresceu de 17 para 180 unidades.
 - 2026-08-19 — CBIGS 2026 (HC-USP) consagra IA e digitalização como tendências centrais da saúde ocupacional; municípios avançam na formalização de SST via licitações; ANAMT encerra inscrições da Prova de Título 2026.
+- 2026-08-20 — TST prestes a julgar Tema 204 (custeio vitalício por acidente do trabalho); audiência Instagram de SST dominada por software (dado de jun/2026, desceu para o log por ser o mais volátil ao estourar teto de 15 bullets).
 
 ## Em aberto
 
@@ -37,4 +38,4 @@ tags: [acervo, medtrab]
 
 ## Origens
 
-[[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]] · [[2026-08-17 06h10 — MedTrab Digest]] · [[2026-08-18 06h10 — MedTrab Digest]] · [[2026-08-19 06h15 — MedTrab Digest]]
+[[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]] · [[2026-08-17 06h10 — MedTrab Digest]] · [[2026-08-18 06h10 — MedTrab Digest]] · [[2026-08-19 06h15 — MedTrab Digest]] · [[2026-08-20 06h10 — MedTrab Digest]]

@@ -2,7 +2,7 @@
 tema: Panorama de modelos e ferramentas de IA
 tipo: nota-viva
 criado: 2026-07-07
-atualizado: 2026-08-18
+atualizado: 2026-08-20
 tags: [acervo, ia]
 ---
 
@@ -24,12 +24,15 @@ tags: [acervo, ia]
 - **Anthropic revelou o "Modelo 2" interno** (14/08/2026): mais capaz que o Mythos 5, atingiu 62,8% no Codebench interno (limiar de lançamento: 85%), mantido interno por não completar avaliações de segurança de pré-implantação; o mesmo relatório elevou o risco de desalinhamento catastrófico de "muito baixo" para "baixo". [[2026-08-18 06h00 — IA Digest]]
 - **Guerra de preços americanos vs. IA chinesa** (agosto/2026): OpenAI cortou 80% no GPT-5.6 Luna (US$ 1 → US$ 0,20/M tokens entrada); Anthropic lançou Claude Opus 5 pela metade do Fable 5 e cancelou reajuste do Sonnet 5 — o custo médio de inferência caiu ~25% desde meados de julho, pressionado por DeepSeek e Moonshot. [[2026-08-18 06h00 — IA Digest]]
 - **Google DeepMind reestruturou a liderança** (05/08/2026): Demis Hassabis passa a chairman da Alphabet e cientista-chefe; Koray Kavukcuoglu assume operações diárias reportando direto a Sundar Pichai e supervisiona o Gemini, pesquisa de ponta e apps de dev. [[2026-08-18 06h00 — IA Digest]]
+- **Grok 4.6** lançado pela xAI em 12/08/2026 iguala o GPT-5.6 Sol Max da OpenAI no Artificial Analysis Intelligence Index (61 pontos cada) ao mesmo preço de US$ 2/US$ 6 por M tokens — paridade técnica como novo eixo competitivo entre labs. [[2026-08-20 06h00 — IA Digest]]
+- **Anthropic registrou US$ 11,5 bi em receita no Q2 2026** (alta de 14× a/a, superando os US$ 4,73 bi do Q1) e o primeiro lucro operacional de uma empresa de IA de fronteira; Palantir cresceu 93% no Q2 com receita de US$ 1,94 bi em contratos de IA governamental e comercial — sinal de monetização real do setor. [[2026-08-20 06h00 — IA Digest]]
 
 ## Como isso mudou
 
 - 2026-07-07 — primeira leitura, com janela de apenas 3 dias. Retrato, não panorama.
 - 2026-08-17 — Gemini 3.7 Flash lançado com preços competitivos; Stripe absorve OpenRouter por US$ 7 bi consolidando roteamento de modelos; Google aposenta Imagen 4 IDs em favor do Gemini.
 - 2026-08-18 — Anthropic revela Modelo 2 interno e eleva risco de desalinhamento; guerra de preços OpenAI/Anthropic vs. IAs chinesas comprime ~25% do custo médio de inferência; Google reorganiza DeepMind com Kavukcuoglu no operacional.
+- 2026-08-20 — Grok 4.6 iguala GPT-5.6 Sol Max em benchmark ao mesmo preço; Anthropic reporta US$ 11,5 bi no Q2 e primeiro lucro operacional de IA de fronteira; Palantir +93% no Q2 com US$ 1,94 bi.
 
 ## Em aberto
 
@@ -38,4 +41,4 @@ tags: [acervo, ia]
 
 ## Origens
 
-[[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]] · [[2026-08-17 06h00 — IA Digest]] · [[2026-08-18 06h00 — IA Digest]]
+[[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]] · [[2026-08-17 06h00 — IA Digest]] · [[2026-08-18 06h00 — IA Digest]] · [[2026-08-20 06h00 — IA Digest]]
