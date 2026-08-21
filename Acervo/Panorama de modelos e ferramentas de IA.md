@@ -2,7 +2,7 @@
 tema: Panorama de modelos e ferramentas de IA
 tipo: nota-viva
 criado: 2026-07-07
-atualizado: 2026-08-20
+atualizado: 2026-08-21
 tags: [acervo, ia]
 ---
 
@@ -26,6 +26,8 @@ tags: [acervo, ia]
 - **Google DeepMind reestruturou a liderança** (05/08/2026): Demis Hassabis passa a chairman da Alphabet e cientista-chefe; Koray Kavukcuoglu assume operações diárias reportando direto a Sundar Pichai e supervisiona o Gemini, pesquisa de ponta e apps de dev. [[2026-08-18 06h00 — IA Digest]]
 - **Grok 4.6** lançado pela xAI em 12/08/2026 iguala o GPT-5.6 Sol Max da OpenAI no Artificial Analysis Intelligence Index (61 pontos cada) ao mesmo preço de US$ 2/US$ 6 por M tokens — paridade técnica como novo eixo competitivo entre labs. [[2026-08-20 06h00 — IA Digest]]
 - **Anthropic registrou US$ 11,5 bi em receita no Q2 2026** (alta de 14× a/a, superando os US$ 4,73 bi do Q1) e o primeiro lucro operacional de uma empresa de IA de fronteira; Palantir cresceu 93% no Q2 com receita de US$ 1,94 bi em contratos de IA governamental e comercial — sinal de monetização real do setor. [[2026-08-20 06h00 — IA Digest]]
+- **OpenAI Ultrafast para GPT-5.6 Sol** (agosto/2026): parceria com a Cerebras processa até **750 tokens/s — 14× mais rápido** que o modo padrão; prévia limitada para clientes, foco em agentes de tempo real; novos controles de raciocínio contínuo e orquestração multi-agente nativa via Responses API. [[2026-08-21 06h00 — IA Digest]]
+- **EU AI Act GPAI** em pleno vigor desde 02/08/2026: AI Office publicou lista de **8 modelos frontier acima de 10²⁵ FLOPs** (incluindo GPT, Claude, Gemini, Llama) com avaliações mensais de risco sistêmico obrigatórias e multas até 3% de faturamento global; prazo de adequação até 2027 para modelos lançados antes de ago/2025. [[2026-08-21 06h00 — IA Digest]]
 
 ## Como isso mudou
 
@@ -33,6 +35,7 @@ tags: [acervo, ia]
 - 2026-08-17 — Gemini 3.7 Flash lançado com preços competitivos; Stripe absorve OpenRouter por US$ 7 bi consolidando roteamento de modelos; Google aposenta Imagen 4 IDs em favor do Gemini.
 - 2026-08-18 — Anthropic revela Modelo 2 interno e eleva risco de desalinhamento; guerra de preços OpenAI/Anthropic vs. IAs chinesas comprime ~25% do custo médio de inferência; Google reorganiza DeepMind com Kavukcuoglu no operacional.
 - 2026-08-20 — Grok 4.6 iguala GPT-5.6 Sol Max em benchmark ao mesmo preço; Anthropic reporta US$ 11,5 bi no Q2 e primeiro lucro operacional de IA de fronteira; Palantir +93% no Q2 com US$ 1,94 bi.
+- 2026-08-21 — OpenAI Ultrafast (GPT-5.6 Sol via Cerebras, 750 t/s, 14× mais rápido); EU AI Act com lista de 8 modelos acima de 10²⁵ FLOPs e fiscalização formal desde 02/08; benchmark Reconstruction aponta 3–15% de precisão em raciocínio científico dos LLMs.
 
 ## Em aberto
 
@@ -41,4 +44,4 @@ tags: [acervo, ia]
 
 ## Origens
 
-[[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]] · [[2026-08-17 06h00 — IA Digest]] · [[2026-08-18 06h00 — IA Digest]] · [[2026-08-20 06h00 — IA Digest]]
+[[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]] · [[2026-08-17 06h00 — IA Digest]] · [[2026-08-18 06h00 — IA Digest]] · [[2026-08-20 06h00 — IA Digest]] · [[2026-08-21 06h00 — IA Digest]]

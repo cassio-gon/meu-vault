@@ -2,7 +2,7 @@
 tema: NR-1 e riscos psicossociais
 tipo: nota-viva
 criado: 2026-07-06
-atualizado: 2026-08-20
+atualizado: 2026-08-21
 tags: [acervo, medtrab]
 ---
 
@@ -15,11 +15,13 @@ tags: [acervo, medtrab]
 - A crítica que circula entre profissionais é a do PGR de fachada: "está no seu PGR porque foi avaliado ou porque alguém copiou e colou texto padrão?". [[2026-07-06 — Pesquisa: NR-1 e riscos psicossociais]]
 - O argumento econômico público é o custo do INSS com afastamento por ansiedade e depressão. [[2026-07-06 — Pesquisa: NR-1 e riscos psicossociais]]
 - Três meses após o início da fase punitiva (maio 2026), empresas ainda buscam consultoria e ferramentas de mapeamento para adequar o PGR a riscos psicossociais; ausência de metodologia oficial de avaliação psicossocial mantém variância nos PGRs entregues ao mercado. [[2026-08-20 06h10 — MedTrab Digest]]
+- **S-2240 sem fatores psicossociais gera multa automática de R$ 805,06 por trabalhador** sem informação atualizada após o prazo de maio/2026; fiscalização cruzada com INSS e Receita Federal dispensa auditores presenciais — a exigência de mapeamento psicossocial no eSocial tornou o PGR incompleto em falta autuável diretamente. [[2026-08-21 06h10 — MedTrab Digest]]
 
 ## Como isso mudou
 
 - 2026-07-06 — primeira leitura. Norma em vigor desde maio, multas suspensas pelo STF em junho, e o mercado ainda discutindo metodologia de avaliação.
 - 2026-08-20 — Três meses após a fase punitiva, mercado de consultoria NR-1 aquecido; suspensão STF das multas de saúde mental vence ~24/09 sem confirmação de renovação; treinamentos sobre a nova redação da NR-1 agendados para 26/08.
+- 2026-08-21 — S-2240 sem psicossocial = R$ 805,06/trabalhador de multa automática via eSocial (fiscalização cruzada INSS + Receita); exigência de mapeamento psicossocial no S-2240 ligou o PGR incompleto diretamente à autuação.
 
 ## Em aberto
 
@@ -29,4 +31,4 @@ tags: [acervo, medtrab]
 
 ## Origens
 
-[[2026-07-06 — Pesquisa: NR-1 e riscos psicossociais]] · [[2026-08-20 06h10 — MedTrab Digest]]
+[[2026-07-06 — Pesquisa: NR-1 e riscos psicossociais]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]]
