@@ -2,7 +2,7 @@
 tema: Medicina ocupacional e SST no Brasil
 tipo: nota-viva
 criado: 2026-06-29
-atualizado: 2026-08-21
+atualizado: 2026-08-22
 tags: [acervo, medtrab]
 ---
 
@@ -10,7 +10,6 @@ tags: [acervo, medtrab]
 
 - A **ANAMT** é a maior associação de médicos do trabalho da América Latina e a fonte primária de conteúdo normativo (PCMSO 360, eSocial). [[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]]
 - **Portaria MTE 1.131/2025** alterou as multas de eventos SST no eSocial; nova NR-7 e mudanças no PCMSO estão em curso. [[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]]
-- A atualização das NRs gerou **alta demanda por médicos do trabalho especialistas**, segundo a própria ANAMT. [[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]]
 - **NR-7 (PCMSO) publicada com novos protocolos em 2026**: exames periódicos agora devem seguir protocolos específicos por tipo de exposição ocupacional; ASOs precisam refletir as novas exigências. [[2026-08-17 06h10 — MedTrab Digest]]
 - **NR-12 e NR-35 atualizadas em 2026**: NR-12 exige bloqueio eletrônico e parada automática em máquinas; NR-35 passa a exigir ancoragem certificada e registro digital de treinamentos em altura. [[2026-08-17 06h10 — MedTrab Digest]]
 - **eSocial SST 2026 — multas reajustadas**: infrações leves a partir de R$ 443/trabalhador; graves a gravíssimas até R$ 44.396/trabalhador exposto. Algoritmo cruza dados declarados no eSocial vs. ausências e acidentes reais — autuação automática por inconsistência. [[2026-08-17 06h10 — MedTrab Digest]]
@@ -23,6 +22,7 @@ tags: [acervo, medtrab]
 - **TST analisa Tema 204**: pendente de julgamento que pode obrigar empregadores a custear integralmente e de forma vitalícia o tratamento do trabalhador acidentado por culpa ou dolo da empresa; precedentes de turmas do TST já condenaram empresas ao pagamento de despesas médicas futuras (queimaduras, lesões graves). [[2026-08-20 06h10 — MedTrab Digest]]
 - **S-2240 sem mapeamento psicossocial gera multa automática de R$ 805,06/trabalhador** após prazo de maio/2026; fiscalização cruzada INSS + Receita Federal dispensa auditores presenciais — autuação já em curso. [[2026-08-21 06h10 — MedTrab Digest]]
 - **Projeção de novo recorde em 2026**: 380 mil acidentes no 1º semestre indicam ultrapassagem dos 806 mil de 2025; construção civil e transporte lideram; subnotificação via CAT persiste como obstáculo estrutural, especialmente para informais. [[2026-08-21 06h10 — MedTrab Digest]]
+- **CFM, ANAMT e AGSSO posicionam-se contra substituição irrestrita de presencial por teleconsulta** em saúde ocupacional: as três entidades reafirmaram o direito do trabalhador à avaliação médica presencial de qualidade e alertaram para os riscos clínicos da expansão irrestrita da telemedicina no trabalho. [[2026-08-22 06h00 — MedTrab Digest]]
 
 ## Como isso mudou
 
@@ -32,6 +32,7 @@ tags: [acervo, medtrab]
 - 2026-08-19 — CBIGS 2026 (HC-USP) consagra IA e digitalização como tendências centrais da saúde ocupacional; municípios avançam na formalização de SST via licitações; ANAMT encerra inscrições da Prova de Título 2026.
 - 2026-08-20 — TST prestes a julgar Tema 204 (custeio vitalício por acidente do trabalho); audiência Instagram de SST dominada por software (dado de jun/2026, desceu para o log por ser o mais volátil ao estourar teto de 15 bullets).
 - 2026-08-21 — S-2240 sem psicossocial gera R$ 805,06/trabalhador de multa automática (em curso); 380 mil acidentes em 6 meses projeta novo recorde anual; CFM 2.336/2023 e lombalgia-conteúdo desceram para o log (off-theme para SST).
+- 2026-08-22 — CFM, ANAMT e AGSSO se posicionam contra telemedicina irrestrita em saúde ocupacional; RN registra 48,4 mil acidentes e 326 mortes em dez anos (dado regional). Bullet "alta demanda por médicos" (jun/2026, soft claim) desceu para o log ao atingir teto de 15.
 
 ## Em aberto
 
@@ -39,4 +40,4 @@ tags: [acervo, medtrab]
 
 ## Origens
 
-[[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]] · [[2026-08-17 06h10 — MedTrab Digest]] · [[2026-08-18 06h10 — MedTrab Digest]] · [[2026-08-19 06h15 — MedTrab Digest]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]]
+[[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]] · [[2026-08-17 06h10 — MedTrab Digest]] · [[2026-08-18 06h10 — MedTrab Digest]] · [[2026-08-19 06h15 — MedTrab Digest]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-08-22 06h00 — MedTrab Digest]]
