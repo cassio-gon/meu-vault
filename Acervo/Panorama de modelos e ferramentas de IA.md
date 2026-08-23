@@ -2,7 +2,7 @@
 tema: Panorama de modelos e ferramentas de IA
 tipo: nota-viva
 criado: 2026-07-07
-atualizado: 2026-08-22
+atualizado: 2026-08-23
 tags: [acervo, ia]
 ---
 
@@ -11,8 +11,6 @@ tags: [acervo, ia]
 
 ## O que sabemos hoje
 
-- **Gemini 3.5 Pro** com janela de 2 milhões de tokens entrou em rollout no início de julho de 2026. [[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]]
-- **Claude Sonnet 5** virou o padrão da Anthropic, com preço reduzido e posicionamento mais agêntico. [[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]]
 - **GPT-5.6** (Sol/Terra/Luna) saiu restrito a 20 parceiros; **Grok 4.5** em beta privada na SpaceX e Tesla. [[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]]
 - Sinal de custo virando gestão: a **Tesla impôs teto de US$ 200/semana de token por engenheiro**. [[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]]
 - **Gemini 3.7 Flash** lançado em 17/08/2026: benchmarks superiores ao antecessor, US$ 0,75/M tokens entrada e US$ 3,75/M tokens saída — nova referência de preço-desempenho. [[2026-08-17 06h00 — IA Digest]]
@@ -26,6 +24,8 @@ tags: [acervo, ia]
 - **EU AI Act GPAI** em pleno vigor desde 02/08/2026: AI Office publicou lista de **8 modelos frontier acima de 10²⁵ FLOPs** (incluindo GPT, Claude, Gemini, Llama) com avaliações mensais de risco sistêmico obrigatórias e multas até 3% de faturamento global; prazo de adequação até 2027 para modelos lançados antes de ago/2025. [[2026-08-21 06h00 — IA Digest]]
 - **Corrida ao IPO entre Anthropic e OpenAI**: Anthropic mira avaliação de US$ 2 trilhões (receita anualizada de US$ 65 bi em jul/2026, pela primeira vez superando a receita trimestral da OpenAI; projeta US$ 190–200 bi para 2028); OpenAI planeja Q4/2026, precisando de US$ 100–200 bi/ano para cobrir US$ 800 bi em computação até 2030. [[2026-08-22 06h00 — IA Digest]]
 - **Claude projeta binders de proteínas** em 14/15 alvos com taxa de sucesso de 22–35% (vs. 10–15% médio do setor), validado pela Adaptyv Bio e Twist Bioscience; Cloudflare lançou **Kitesurf** (runtime de agentes, 3–7× menos CPU que Chromium) e **protocolo x402** (pagamentos autônomos entre agentes, 20+ parceiros). [[2026-08-22 06h00 — IA Digest]]
+- **OpenAI Zero Data Retention (ZDR) para API** (20/08/2026): clientes elegíveis solicitam que prompts e respostas não sejam retidos após o processamento — conteúdo fora do alcance de revisão interna e não usado para treino sem consentimento; principal alvo: setores regulamentados (saúde, financeiro, jurídico). [[2026-08-23 06h05 — IA Digest]]
+- **ChatGPT for Teens** lançado globalmente (18/08/2026): versão dedicada a 13–17 anos com restrições para temas sensíveis, lembretes de pausa periódicos, indicação explícita de que o interlocutor é IA e "Modo Estudo" que detecta tentativas de burlar tarefas. [[2026-08-23 06h05 — IA Digest]]
 
 ## Como isso mudou
 
@@ -35,6 +35,7 @@ tags: [acervo, ia]
 - 2026-08-20 — Grok 4.6 iguala GPT-5.6 Sol Max em benchmark ao mesmo preço; Anthropic reporta US$ 11,5 bi no Q2 e primeiro lucro operacional de IA de fronteira; Palantir +93% no Q2 com US$ 1,94 bi.
 - 2026-08-21 — OpenAI Ultrafast (GPT-5.6 Sol via Cerebras, 750 t/s, 14× mais rápido); EU AI Act com lista de 8 modelos acima de 10²⁵ FLOPs e fiscalização formal desde 02/08; benchmark Reconstruction aponta 3–15% de precisão em raciocínio científico dos LLMs.
 - 2026-08-22 — Corrida ao IPO: Anthropic mira US$ 2 tri (receita anual US$ 65 bi, supera OpenAI/trimestre), OpenAI planeja Q4/2026; Claude projeta binders de proteínas (22–35% de sucesso vs. 10–15% médio); Cloudflare lança Kitesurf + x402. Itens de vídeo/imagem de jul/2026 (Seedance/Kling, Nano Banana/Gemini Flash, Adobe/Runway) e Imagen 4 deprecated desceram para o log por estourar teto de 15.
+- 2026-08-23 — OpenAI ZDR para API (privacidade enterprise sem retenção de prompts); ChatGPT for Teens com Modo Estudo e restrições por faixa etária. Gemini 3.5 Pro (jan-2M tokens, jul/2026) e Claude Sonnet 5 padrão (jul/2026) desceram para o log ao estourar teto de 15.
 
 ## Em aberto
 
@@ -42,4 +43,4 @@ tags: [acervo, ia]
 
 ## Origens
 
-[[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]] · [[2026-08-17 06h00 — IA Digest]] · [[2026-08-18 06h00 — IA Digest]] · [[2026-08-20 06h00 — IA Digest]] · [[2026-08-21 06h00 — IA Digest]] · [[2026-08-22 06h00 — IA Digest]]
+[[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]] · [[2026-08-17 06h00 — IA Digest]] · [[2026-08-18 06h00 — IA Digest]] · [[2026-08-20 06h00 — IA Digest]] · [[2026-08-21 06h00 — IA Digest]] · [[2026-08-22 06h00 — IA Digest]] · [[2026-08-23 06h05 — IA Digest]]

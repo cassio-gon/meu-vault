@@ -2,16 +2,14 @@
 tema: Medicina ocupacional e SST no Brasil
 tipo: nota-viva
 criado: 2026-06-29
-atualizado: 2026-08-22
+atualizado: 2026-08-23
 tags: [acervo, medtrab]
 ---
 
 ## O que sabemos hoje
 
-- A **ANAMT** é a maior associação de médicos do trabalho da América Latina e a fonte primária de conteúdo normativo (PCMSO 360, eSocial). [[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]]
-- **Portaria MTE 1.131/2025** alterou as multas de eventos SST no eSocial; nova NR-7 e mudanças no PCMSO estão em curso. [[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]]
 - **NR-7 (PCMSO) publicada com novos protocolos em 2026**: exames periódicos agora devem seguir protocolos específicos por tipo de exposição ocupacional; ASOs precisam refletir as novas exigências. [[2026-08-17 06h10 — MedTrab Digest]]
-- **NR-12 e NR-35 atualizadas em 2026**: NR-12 exige bloqueio eletrônico e parada automática em máquinas; NR-35 passa a exigir ancoragem certificada e registro digital de treinamentos em altura. [[2026-08-17 06h10 — MedTrab Digest]]
+- **NR-12 e NR-35 atualizadas em 2026**: NR-12 exige bloqueio eletrônico e parada automática em máquinas; NR-35 exige ancoragem certificada e registro digital de treinamentos — e desde 15/07/2026 (Portaria MTE 1.259/2026) proíbe EaD e formato híbrido para treinamentos em altura, com prazo de transição até jul/2027. [[2026-08-17 06h10 — MedTrab Digest]] · [[2026-08-23 06h15 — MedTrab Digest]]
 - **eSocial SST 2026 — multas reajustadas**: infrações leves a partir de R$ 443/trabalhador; graves a gravíssimas até R$ 44.396/trabalhador exposto. Algoritmo cruza dados declarados no eSocial vs. ausências e acidentes reais — autuação automática por inconsistência. [[2026-08-17 06h10 — MedTrab Digest]]
 - **Trabalhador com doença ocupacional** tem direito a auxílio-doença acidentário (B91) e estabilidade de 12 meses após alta; emissão da CAT é o ponto de partida, mas subnotificação persiste como obstáculo estrutural. [[2026-08-17 06h10 — MedTrab Digest]]
 - Em 2025, a Previdência concedeu **546.254 benefícios por incapacidade temporária por transtornos mentais** (+15,6% a.a.), custo de R$ 3,5 bi — reforço empírico do argumento econômico para gestão de saúde mental no trabalho. [[2026-08-18 06h10 — MedTrab Digest]]
@@ -23,6 +21,8 @@ tags: [acervo, medtrab]
 - **S-2240 sem mapeamento psicossocial gera multa automática de R$ 805,06/trabalhador** após prazo de maio/2026; fiscalização cruzada INSS + Receita Federal dispensa auditores presenciais — autuação já em curso. [[2026-08-21 06h10 — MedTrab Digest]]
 - **Projeção de novo recorde em 2026**: 380 mil acidentes no 1º semestre indicam ultrapassagem dos 806 mil de 2025; construção civil e transporte lideram; subnotificação via CAT persiste como obstáculo estrutural, especialmente para informais. [[2026-08-21 06h10 — MedTrab Digest]]
 - **CFM, ANAMT e AGSSO posicionam-se contra substituição irrestrita de presencial por teleconsulta** em saúde ocupacional: as três entidades reafirmaram o direito do trabalhador à avaliação médica presencial de qualidade e alertaram para os riscos clínicos da expansão irrestrita da telemedicina no trabalho. [[2026-08-22 06h00 — MedTrab Digest]]
+- **CFM 2.467/2026 — direção técnica em Saúde do Trabalhador**: publicada em 13/08, define critérios de supervisão presencial e remota, limita acumulação de direções em múltiplas unidades; entra em vigor 90 dias após publicação — clínicas e SESMTs terceirizados precisarão adequar modelos de gestão. [[2026-08-23 06h15 — MedTrab Digest]]
+- **Afastamentos por transtornos mentais caem 13,2% no 1S2026**: pela primeira vez em cinco anos, 232.382 afastamentos (vs. 267.690 em 1S2025) — ansiedade (F41) -7,7%; depressão (F32) -19,1% (maior queda proporcional); pesquisadores alertam para possível variação administrativa no INSS além da queda real. [[2026-08-23 06h15 — MedTrab Digest]]
 
 ## Como isso mudou
 
@@ -33,6 +33,7 @@ tags: [acervo, medtrab]
 - 2026-08-20 — TST prestes a julgar Tema 204 (custeio vitalício por acidente do trabalho); audiência Instagram de SST dominada por software (dado de jun/2026, desceu para o log por ser o mais volátil ao estourar teto de 15 bullets).
 - 2026-08-21 — S-2240 sem psicossocial gera R$ 805,06/trabalhador de multa automática (em curso); 380 mil acidentes em 6 meses projeta novo recorde anual; CFM 2.336/2023 e lombalgia-conteúdo desceram para o log (off-theme para SST).
 - 2026-08-22 — CFM, ANAMT e AGSSO se posicionam contra telemedicina irrestrita em saúde ocupacional; RN registra 48,4 mil acidentes e 326 mortes em dez anos (dado regional). Bullet "alta demanda por médicos" (jun/2026, soft claim) desceu para o log ao atingir teto de 15.
+- 2026-08-23 — CFM 2.467/2026 regula direção técnica em Saúde do Trabalhador; NR-35 proíbe EaD/híbrido desde jul/2026 (atualização ao bullet existente); afastamentos por transtornos mentais -13,2% no 1S2026, primeira queda em 5 anos. ANAMT descrição-geral e Portaria 1.131/2025 (jun/2026) desceram para o log ao atingir teto de 15.
 
 ## Em aberto
 
@@ -40,4 +41,4 @@ tags: [acervo, medtrab]
 
 ## Origens
 
-[[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]] · [[2026-08-17 06h10 — MedTrab Digest]] · [[2026-08-18 06h10 — MedTrab Digest]] · [[2026-08-19 06h15 — MedTrab Digest]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-08-22 06h00 — MedTrab Digest]]
+[[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]] · [[2026-08-17 06h10 — MedTrab Digest]] · [[2026-08-18 06h10 — MedTrab Digest]] · [[2026-08-19 06h15 — MedTrab Digest]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-08-22 06h00 — MedTrab Digest]] · [[2026-08-23 06h15 — MedTrab Digest]]
