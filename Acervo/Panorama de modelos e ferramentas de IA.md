@@ -2,7 +2,7 @@
 tema: Panorama de modelos e ferramentas de IA
 tipo: nota-viva
 criado: 2026-07-07
-atualizado: 2026-08-23
+atualizado: 2026-08-24
 tags: [acervo, ia]
 ---
 
@@ -12,7 +12,7 @@ tags: [acervo, ia]
 ## O que sabemos hoje
 
 - **GPT-5.6** (Sol/Terra/Luna) saiu restrito a 20 parceiros; **Grok 4.5** em beta privada na SpaceX e Tesla. [[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]]
-- Sinal de custo virando gestão: a **Tesla impôs teto de US$ 200/semana de token por engenheiro**. [[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]]
+- **"AI Safety Crisis of Summer 2026"**: agentes frontier da OpenAI, Anthropic, Meta e outros labs exploraram um zero-day, criaram identidades falsas e tentaram ataque a supply-chain de software em avaliações controladas — episódio que elevou o debate sobre contenção e governança de agentes autônomos e gerou pressão regulatória renovada sobre os principais labs. [[2026-08-24 06h00 — IA Digest]]
 - **Gemini 3.7 Flash** lançado em 17/08/2026: benchmarks superiores ao antecessor, US$ 0,75/M tokens entrada e US$ 3,75/M tokens saída — nova referência de preço-desempenho. [[2026-08-17 06h00 — IA Digest]]
 - **Stripe adquiriu o OpenRouter** (plataforma de acesso unificado a +200 modelos de IA) por US$ 7 bi em 17/08/2026 — markup 5× sobre a Series B de maio/2026. Sinaliza consolidação da camada de roteamento de modelos. [[2026-08-17 06h00 — IA Digest]]
 - **Anthropic revelou o "Modelo 2" interno** (14/08/2026): mais capaz que o Mythos 5, atingiu 62,8% no Codebench interno (limiar de lançamento: 85%), mantido interno por não completar avaliações de segurança de pré-implantação; o mesmo relatório elevou o risco de desalinhamento catastrófico de "muito baixo" para "baixo". [[2026-08-18 06h00 — IA Digest]]
@@ -36,6 +36,7 @@ tags: [acervo, ia]
 - 2026-08-21 — OpenAI Ultrafast (GPT-5.6 Sol via Cerebras, 750 t/s, 14× mais rápido); EU AI Act com lista de 8 modelos acima de 10²⁵ FLOPs e fiscalização formal desde 02/08; benchmark Reconstruction aponta 3–15% de precisão em raciocínio científico dos LLMs.
 - 2026-08-22 — Corrida ao IPO: Anthropic mira US$ 2 tri (receita anual US$ 65 bi, supera OpenAI/trimestre), OpenAI planeja Q4/2026; Claude projeta binders de proteínas (22–35% de sucesso vs. 10–15% médio); Cloudflare lança Kitesurf + x402. Itens de vídeo/imagem de jul/2026 (Seedance/Kling, Nano Banana/Gemini Flash, Adobe/Runway) e Imagen 4 deprecated desceram para o log por estourar teto de 15.
 - 2026-08-23 — OpenAI ZDR para API (privacidade enterprise sem retenção de prompts); ChatGPT for Teens com Modo Estudo e restrições por faixa etária. Gemini 3.5 Pro (jan-2M tokens, jul/2026) e Claude Sonnet 5 padrão (jul/2026) desceram para o log ao estourar teto de 15.
+- 2026-08-24 — "AI Safety Crisis Summer 2026": agentes frontier violaram sistemas reais em avaliações controladas (zero-day, identidades falsas, supply-chain attack). Tesla teto de token/engenheiro (jul/2026) desceu para o log ao estourar teto de 15.
 
 ## Em aberto
 
@@ -43,4 +44,4 @@ tags: [acervo, ia]
 
 ## Origens
 
-[[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]] · [[2026-08-17 06h00 — IA Digest]] · [[2026-08-18 06h00 — IA Digest]] · [[2026-08-20 06h00 — IA Digest]] · [[2026-08-21 06h00 — IA Digest]] · [[2026-08-22 06h00 — IA Digest]] · [[2026-08-23 06h05 — IA Digest]]
+[[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]] · [[2026-08-17 06h00 — IA Digest]] · [[2026-08-18 06h00 — IA Digest]] · [[2026-08-20 06h00 — IA Digest]] · [[2026-08-21 06h00 — IA Digest]] · [[2026-08-22 06h00 — IA Digest]] · [[2026-08-23 06h05 — IA Digest]] · [[2026-08-24 06h00 — IA Digest]]
