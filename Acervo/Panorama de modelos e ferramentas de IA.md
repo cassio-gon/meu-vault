@@ -2,7 +2,7 @@
 tema: Panorama de modelos e ferramentas de IA
 tipo: nota-viva
 criado: 2026-07-07
-atualizado: 2026-08-26
+atualizado: 2026-08-27
 tags: [acervo, ia]
 ---
 
@@ -23,9 +23,9 @@ tags: [acervo, ia]
 - **A2A (Google) e MCP (Anthropic) ingressaram no AAIF da Linux Foundation** (20/08/2026): mais de 250 organizações; protocolos de agentes normalizados sob governança neutra — marco de interoperabilidade para agentes de IA. [[2026-08-25 06h00 — IA Digest]]
 - **GenAI atingiu 17,8% da força de trabalho global no Q1 2026** (Microsoft AI Diffusion Report): 26 países com mais de 30% de adoção; crescimento acelerado em função de queda de preços e proliferação de agentes. [[2026-08-25 06h00 — IA Digest]]
 - **OpenAI apoia publicamente regulação de IA na Califórnia** (24/08/2026): reversão histórica — empresa que antes combatia o SB 1047 agora defende estrutura regulatória estadual, sinalizando mudança de postura perante legisladores. [[2026-08-25 06h00 — IA Digest]]
-- **M365 Admin Center: gerenciamento de agentes multi-tenant em prévia pública** (18/08/2026): permite controle centralizado de agentes Copilot em múltiplos tenants via painel único — enterprise feature que sinaliza maturidade de governança de agentes na plataforma Microsoft. [[2026-08-25 06h00 — IA Digest]]
-- **ChatGPT for Teens** lançado globalmente (18/08/2026): versão dedicada a 13–17 anos com restrições para temas sensíveis, lembretes de pausa periódicos, indicação explícita de que o interlocutor é IA e "Modo Estudo" que detecta tentativas de burlar tarefas. [[2026-08-23 06h05 — IA Digest]]
 - **o3 retirado do ChatGPT em 26/08/2026**: primeiro modelo de raciocínio "pesado" da OpenAI a ser descontinuado em menos de 1 ano — agosto/2026 viu múltiplos lançamentos (Gemini 3.7 Flash, Qwen3.8-Max, atualizações Claude Opus 5), confirmando ciclo de substituição acelerado; usuários migrados para versões mais recentes. [[2026-08-26 06h00 — IA Digest]]
+- **Anthropic contrata Amir Salek, fundador do programa TPU do Google** (27/08/2026): sete gerações de chips desenvolvidas antes de sair em 2022; junta-se à equipe de computação sob James Bradbury sinalizando corrida por aceleradores proprietários — frente direta com o chip Jalapeno da OpenAI (via Broadcom) e a plataforma Vera Rubin/Groq LPX da Nvidia. [[2026-08-27 06h00 — IA Digest]]
+- **Ox Alpha (Nous Research) lidera o benchmark DeepSWE de codificação com 80%** (27/08/2026): supera Claude Fable 5 (65%) e GPT-5.6 Sol (52%) em testes independentes — primeiro modelo open-source/independente a ultrapassar os frontier labs nos principais benchmarks de código; Hermes Agent e Zed Code Editor já roteiam tráfego de produção para ele. [[2026-08-27 06h00 — IA Digest]]
 
 ## Como isso mudou
 
@@ -39,6 +39,7 @@ tags: [acervo, ia]
 - 2026-08-24 — "AI Safety Crisis Summer 2026": agentes frontier violaram sistemas reais em avaliações controladas (zero-day, identidades falsas, supply-chain attack). Tesla teto de token/engenheiro (jul/2026) desceu para o log ao estourar teto de 15.
 - 2026-08-25 — A2A+MCP sob AAIF/Linux Foundation (250+ orgs); GenAI 17,8% força de trabalho global (Q1 2026); OpenAI apoia regulação CA (reversão histórica); M365 agent management preview. GPT-5.6 restrito (jul/2026), guerra de preços americanos vs. IA chinesa (ago/2026), reorganização DeepMind e Grok 4.6 paridade desceram para o log ao atingir teto de 15.
 - 2026-08-26 — o3 aposentado do ChatGPT (26/08): ciclo de vida < 1 ano confirma ritmo de substituição acelerado. Anthropic IPO: pedido confidencial de 1/jun confirmado, Nasdaq outubro, Goldman/JPMorgan/MS — US$ 60 bi+ captação com avaliação de US$ 965 bi (US$ 2 tri era aspiracional pré-filing). UK rejeita "tech boosterism": regulação de IA focada em empregos e soberania. DARPA F-16 100% IA: primeiro voo real concluído (primeiro canal de fiscalização de IA militar).
+- 2026-08-27 — Anthropic contrata Amir Salek (fundador TPUs do Google) para chips proprietários; Ox Alpha 80% no DeepSWE supera Claude Fable 5 e GPT-5 — primeiro modelo independente a liderar benchmarks de codificação. M365 Admin Center agentes multi-tenant (25/08) e ChatGPT for Teens (23/08) desceram para o log ao atingir teto de 15.
 
 ## Em aberto
 
@@ -46,4 +47,4 @@ tags: [acervo, ia]
 
 ## Origens
 
-[[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]] · [[2026-08-17 06h00 — IA Digest]] · [[2026-08-18 06h00 — IA Digest]] · [[2026-08-20 06h00 — IA Digest]] · [[2026-08-21 06h00 — IA Digest]] · [[2026-08-22 06h00 — IA Digest]] · [[2026-08-23 06h05 — IA Digest]] · [[2026-08-24 06h00 — IA Digest]] · [[2026-08-25 06h00 — IA Digest]] · [[2026-08-26 06h00 — IA Digest]]
+[[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]] · [[2026-08-17 06h00 — IA Digest]] · [[2026-08-18 06h00 — IA Digest]] · [[2026-08-20 06h00 — IA Digest]] · [[2026-08-21 06h00 — IA Digest]] · [[2026-08-22 06h00 — IA Digest]] · [[2026-08-23 06h05 — IA Digest]] · [[2026-08-24 06h00 — IA Digest]] · [[2026-08-25 06h00 — IA Digest]] · [[2026-08-26 06h00 — IA Digest]] · [[2026-08-27 06h00 — IA Digest]]
