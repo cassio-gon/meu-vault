@@ -6,7 +6,7 @@ tags: [calima, probe, uptime]
 source: mac-launchagent
 ---
 
-# Probe de `calima.med.br` — 2026-08-27 16:59:38 (America/Sao_Paulo)
+# Probe de `calima.med.br` — 2026-08-27 22:59:47 (America/Sao_Paulo)
 
 > Medido do Mac do Cássio, não da nuvem. O ambiente das Routines tem egress bloqueado
 > para este host. Se o timestamp acima estiver velho, o Mac estava desligado — diga isso
@@ -16,10 +16,10 @@ source: mac-launchagent
 
 | Path | HTTP | Tempo total | TTFB | Bytes | Content-Type |
 |---|---|---|---|---|---|
-| `/` | 200 | 0.906837s | 0.758362s | 31427 B | text/html; charset=UTF-8 |
-| `/manifest.json` | 200 | 0.501168s | 0.500800s | 884 B | application/json; charset=UTF-8 |
-| `/sw.js` | 200 | 0.699656s | 0.482073s | 7825 B | application/javascript; charset=UTF-8 |
-| `/js/app.js` | 200 | 0.757657s | 0.475465s | 64778 B | application/javascript; charset=UTF-8 |
+| `/` | 200 | 0.652489s | 0.446378s | 32616 B | text/html; charset=UTF-8 |
+| `/manifest.json` | 200 | 0.493676s | 0.493383s | 884 B | application/json; charset=UTF-8 |
+| `/sw.js` | 200 | 0.639548s | 0.497187s | 8100 B | application/javascript; charset=UTF-8 |
+| `/js/app.js` | 200 | 0.864996s | 0.488123s | 64778 B | application/javascript; charset=UTF-8 |
 
 ## Compressão (`/css/style.css` com `Accept-Encoding: gzip, br`)
 
@@ -43,13 +43,13 @@ cache-control: public, max-age=0
 content-security-policy: default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self' wss://calima.med.br https://api.github.com https://raw.githubusercontent.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'
 content-type: text/html; charset=UTF-8
 cross-origin-opener-policy: same-origin
-date: Thu, 27 Aug 2026 19:59:37 GMT
-etag: W/"7ac3-1a041297880"
-last-modified: Thu, 27 Aug 2026 03:00:32 GMT
+date: Fri, 28 Aug 2026 01:59:45 GMT
+etag: W/"7f68-1a0460ebc70"
+last-modified: Fri, 28 Aug 2026 01:49:26 GMT
 referrer-policy: no-referrer
 strict-transport-security: max-age=15552000
 x-content-type-options: nosniff
 x-frame-options: DENY
-content-length: 31427
+content-length: 32616
 
 ```
