@@ -2,7 +2,7 @@
 tema: Medicina ocupacional e SST no Brasil
 tipo: nota-viva
 criado: 2026-06-29
-atualizado: 2026-08-26
+atualizado: 2026-08-28
 tags: [acervo, medtrab]
 ---
 
@@ -14,8 +14,8 @@ tags: [acervo, medtrab]
 - Em 2025, a Previdência concedeu **546.254 benefícios por incapacidade temporária por transtornos mentais** (+15,6% a.a.), custo de R$ 3,5 bi — reforço empírico do argumento econômico para gestão de saúde mental no trabalho. [[2026-08-18 06h10 — MedTrab Digest]]
 - **Lista de doenças ocupacionais saltou de 182 para 347 diagnósticos em 2026**, incorporando burnout, Covid-19 e transtornos mentais — impacto direto no nexo técnico, nos ASOs e nos benefícios acidentários. [[2026-08-18 06h10 — MedTrab Digest]]
 - Brasil registrou **806 mil acidentes de trabalho em 2025** (+8,6% a.a.), concentrados em construção civil e logística; subnotificação via CAT continua como obstáculo estrutural. [[2026-08-18 06h10 — MedTrab Digest]]
-- Rede **CEREST** expandiu de 17 para **180 unidades** no país; Região Sudeste concentra 72 centros — referencial para suporte técnico ao SUS em diagnóstico e vigilância de doenças relacionadas ao trabalho. [[2026-08-18 06h10 — MedTrab Digest]]
-- **CBIGS 2026 consolida IA e digitalização na saúde ocupacional**: o 7º Congresso Brasileiro de Inovação e Gestão em Saúde (14–15/08, HC-USP) destacou uso de IA em diagnósticos ocupacionais e modelos inovadores de gestão de saúde corporativa como tendências irreversíveis para os serviços de SST nas empresas brasileiras. [[2026-08-19 06h15 — MedTrab Digest]]
+- **INSS Portaria 15/2026 — triagem documental prévia à perícia**: com o novo teto de R$ 8.475,55, o auxílio-acidente sobe ao máximo de R$ 4.237,78 (50%); pedidos sem data do acidente, confirmação de consolidação da lesão ou nexo causal podem ser negados antes mesmo de agendar a perícia presencial — médicos do trabalho devem orientar trabalhadores na documentação prévia para evitar indeferimento na fase inicial. [[2026-08-28 06h10 — MedTrab Digest]]
+- **Novas regras de carência do INSS 2026 — impacto no nexo causal**: auxílio-acidente segue sem carência (qualidade de segurado basta); para o auxílio por incapacidade temporária, doenças ocupacionais e acidentes dispensam carência de 12 meses somente quando o nexo causal com o trabalho for comprovado — enquadramento correto entre benefício acidentário (sem carência) e previdenciário comum (com carência) exige CAT bem emitido com nexo técnico claro. [[2026-08-28 06h10 — MedTrab Digest]]
 - **TST analisa Tema 204**: pendente de julgamento que pode obrigar empregadores a custear integralmente e de forma vitalícia o tratamento do trabalhador acidentado por culpa ou dolo da empresa; precedentes de turmas do TST já condenaram empresas ao pagamento de despesas médicas futuras (queimaduras, lesões graves). [[2026-08-20 06h10 — MedTrab Digest]]
 - **S-2240 sem mapeamento psicossocial gera multa automática de R$ 805,06/trabalhador** após prazo de maio/2026; fiscalização cruzada INSS + Receita Federal dispensa auditores presenciais — autuação já em curso. [[2026-08-21 06h10 — MedTrab Digest]]
 - **Projeção de novo recorde em 2026**: 380 mil acidentes no 1º semestre indicam ultrapassagem dos 806 mil de 2025; construção civil e transporte lideram; subnotificação via CAT persiste como obstáculo estrutural, especialmente para informais. [[2026-08-21 06h10 — MedTrab Digest]]
@@ -35,6 +35,7 @@ tags: [acervo, medtrab]
 - 2026-08-22 — CFM, ANAMT e AGSSO se posicionam contra telemedicina irrestrita em saúde ocupacional; RN registra 48,4 mil acidentes e 326 mortes em dez anos (dado regional). Bullet "alta demanda por médicos" (jun/2026, soft claim) desceu para o log ao atingir teto de 15.
 - 2026-08-23 — CFM 2.467/2026 regula direção técnica em Saúde do Trabalhador; NR-35 proíbe EaD/híbrido desde jul/2026 (atualização ao bullet existente); afastamentos por transtornos mentais -13,2% no 1S2026, primeira queda em 5 anos. ANAMT descrição-geral e Portaria 1.131/2025 (jun/2026) desceram para o log ao atingir teto de 15.
 - 2026-08-26 — Lei 15.377/2026: folgas remuneradas para exames, vacinação HPV e prevenção do câncer. Bullet "Trabalhador com doença ocupacional" (direitos gerais CAT/B91, 2026-08-17) desceu para o log ao atingir teto de 15.
+- 2026-08-28 — INSS Portaria 15/2026: triagem documental prévia à perícia exige nexo causal documentado para não ter pedido negado antes da perícia presencial; novas regras de carência: acidentário sem carência somente com nexo causal comprovado. CEREST (17→180 unidades, 18/08) e CBIGS 2026 (19/08) desceram para o log ao atingir teto de 15.
 
 ## Em aberto
 
@@ -42,4 +43,4 @@ tags: [acervo, medtrab]
 
 ## Origens
 
-[[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]] · [[2026-08-17 06h10 — MedTrab Digest]] · [[2026-08-18 06h10 — MedTrab Digest]] · [[2026-08-19 06h15 — MedTrab Digest]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-08-22 06h00 — MedTrab Digest]] · [[2026-08-23 06h15 — MedTrab Digest]] · [[2026-08-26 06h10 — MedTrab Digest]]
+[[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]] · [[2026-08-17 06h10 — MedTrab Digest]] · [[2026-08-18 06h10 — MedTrab Digest]] · [[2026-08-19 06h15 — MedTrab Digest]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-08-22 06h00 — MedTrab Digest]] · [[2026-08-23 06h15 — MedTrab Digest]] · [[2026-08-26 06h10 — MedTrab Digest]] · [[2026-08-28 06h10 — MedTrab Digest]]
