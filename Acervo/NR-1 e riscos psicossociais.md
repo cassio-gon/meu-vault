@@ -2,7 +2,7 @@
 tema: NR-1 e riscos psicossociais
 tipo: nota-viva
 criado: 2026-07-06
-atualizado: 2026-08-28
+atualizado: 2026-08-29
 tags: [acervo, medtrab]
 ---
 
@@ -20,6 +20,7 @@ tags: [acervo, medtrab]
 - **ANAMT (ago/2026) orienta que empresas NÃO devem fazer diagnósticos psiquiátricos de trabalhadores** sob a NR-1: o mandato é identificar e controlar fatores organizacionais geradores de risco (metas incompatíveis, sobrecarga, assédio, falhas de comunicação) — confundir GRO com triagem clínica cria passivo trabalhista e mina a confiança no programa de SST. [[2026-08-26 06h10 — MedTrab Digest]]
 - **SIPATs 2026 incorporam saúde mental como tema central**: eventos internos de prevenção, antes focados em acidentes físicos, passaram a incluir burnout, ansiedade e qualidade de vida como pilares — sinal de normalização da pauta NR-1 psicossocial nas empresas; guias jurídicos especializados sobre obrigações psicossociais proliferam no mercado de conteúdo. [[2026-08-27 06h10 — MedTrab Digest]]
 - **STF Plenário confirma por unanimidade a suspensão das sanções NR-1 psicossociais por 90 dias** (7–18/ago/2026): ADPF 1.316 chancelada em sessão virtual; obrigações de mapeamento e prevenção permanecem intactas — apenas o poder sancionador do MTE está suspenso; período de conciliação aberto entre governo e setor produtivo para definição de critérios objetivos de fiscalização; sanções devem retornar ~novembro 2026. [[2026-08-28 06h10 — MedTrab Digest]]
+- **Q1 2026: 105.874 afastamentos por saúde mental** — queda de apenas 3% sobre o recorde de 2025 (534.904 anuais); dado reforça a urgência das obrigações de GRO psicossocial da NR-1 mesmo durante a suspensão das sanções pelo STF. [[2026-08-29 06h10 — MedTrab Digest]]
 
 ## Como isso mudou
 
@@ -30,6 +31,7 @@ tags: [acervo, medtrab]
 - 2026-08-26 — ANAMT clarifica o que NÃO fazer: empresa não diagnostica trabalhador — identifica e controla fatores de trabalho. Fórum SOU (Caxias do Sul) debate implementação prática da NR-1 psicossocial.
 - 2026-08-27 — SIPATs 2026 passam a incorporar saúde mental como eixo central; mercado de conteúdo jurídico sobre obrigações psicossociais cresce com guias especializados.
 - 2026-08-28 — STF Plenário Virtual confirma por unanimidade a suspensão das sanções (ADPF 1.316); abre conciliação MTE + setor produtivo para critérios objetivos de fiscalização; sanções devem retornar ~novembro 2026 — questão do Em aberto sobre "24/09" parcialmente respondida (suspensão foi renovada/confirmada em agosto).
+- 2026-08-29 — Q1 2026: 105.874 afastamentos por saúde mental (-3% sobre 2025); dado cita diretamente a urgência das obrigações NR-1 psicossociais mesmo com sanções suspensas.
 
 ## Em aberto
 
@@ -39,4 +41,4 @@ tags: [acervo, medtrab]
 
 ## Origens
 
-[[2026-07-06 — Pesquisa: NR-1 e riscos psicossociais]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-08-24 06h10 — MedTrab Digest]] · [[2026-08-26 06h10 — MedTrab Digest]] · [[2026-08-27 06h10 — MedTrab Digest]] · [[2026-08-28 06h10 — MedTrab Digest]]
+[[2026-07-06 — Pesquisa: NR-1 e riscos psicossociais]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-08-24 06h10 — MedTrab Digest]] · [[2026-08-26 06h10 — MedTrab Digest]] · [[2026-08-27 06h10 — MedTrab Digest]] · [[2026-08-28 06h10 — MedTrab Digest]] · [[2026-08-29 06h10 — MedTrab Digest]]
