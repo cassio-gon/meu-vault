@@ -40,6 +40,15 @@ Faça, nesta ordem:
   `site:protecao.com.br saúde e segurança do trabalho` (acrescente o tema do dia).
 - **Uma busca aberta** do tema da área, para não perder o furo que nasceu fora da lista.
 
+**Duas regras de query (obrigatórias — o `site:` do WebSearch quebra fácil):**
+- **Domínio nu, sem caminho.** `site:g1.globo.com saúde` funciona; `site:g1.globo.com/saude`
+  devolve lixo. Para chegar numa seção, use as palavras do tema, não o caminho da URL.
+- **NUNCA ponha data na query.** "agosto 2026", "29 de agosto", "August 29 2026" puxam
+  página de retrospectiva e artigo velho. O WebSearch já prioriza o recente; a data você
+  **lê no snippet**, não pede na busca.
+- Se uma busca `site:` voltar resultado claramente fora do domínio pedido (Wikipédia,
+  agregador), descarte-a e siga — não insista com variações da mesma query.
+
 Prefira o que veio dos 5 âncoras. Material de outra fonte só entra se for **claramente
 relevante, datado e de veículo confiável** — nunca blog agregador, nunca site que só
 republica release. Priorize conteúdo de HOJE ou das últimas ~48h, com URL real e
@@ -134,11 +143,17 @@ Se a busca/escrita de uma área falhar, registre o erro mentalmente e **siga par
 área**. Nunca aborte o run inteiro por causa de uma área.
 
 ## Fechamento (uma vez só, depois das 6 áreas)
+
+⚠️ **Você provavelmente está em `detached HEAD` — isso é NORMAL no ambiente da Routine e
+não significa que exista trabalho por enviar.** NÃO tente consertar o branch local: nada de
+`git checkout main`, `git stash`, `git reset --hard` ou `git merge`. Isso já causou conflito
+e retrabalho (29/08/2026). Só faça commit e empurre com `HEAD:main`.
+
 ```bash
 git add Pesquisas/
 git commit -m "auto: <AAAA-MM-DD HHhMM BRT> — digests do dia (<N> áreas)"
 git pull --rebase origin main   # absorve edições manuais do Obsidian
-git push origin main
+git push origin HEAD:main       # HEAD:main funciona mesmo em detached HEAD
 ```
 O commit é feito **antes** do rebase para evitar que mudanças staged não-commitadas
 abortem o rebase. Se `git push` falhar por avanço do remoto, repita apenas
