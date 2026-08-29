@@ -1,8 +1,7 @@
 # Playbook: Digests diários do Vault
 
 Você é executado por uma Routine às 06:00 BRT. Objetivo: gerar o digest de hoje para
-**cada área elegível hoje** (veja "Cadência por área"), em sequência, e fazer **um único**
-commit+push no fim.
+**cada uma das 6 áreas**, em sequência, e fazer **um único** commit+push no fim.
 Trabalhe na raiz do repo `meu-vault` já clonado. NÃO altere nada fora de `Pesquisas/`.
 
 ## Ordem das áreas (faça nesta ordem)
@@ -14,17 +13,17 @@ frontmatter e no heading H1. A pasta e a tag permanecem como abaixo.
 2. Código `Saude` → pasta `Pesquisas/Saude` → tag `saude`
 3. Código `MedTrab` → pasta `Pesquisas/Medicina do Trabalho` → tag `medtrab`
 4. Código `MercFin` → pasta `Pesquisas/Mercado Financeiro` → tag `mercado-financeiro`
-5. Código `Puerperio` → pasta `Pesquisas/Puerperio` → tag `puerperio`
-6. Código `RN` → pasta `Pesquisas/RN` → tag `recem-nascidos`
-7. Código `Filmes` → pasta `Pesquisas/Filmes e Series` → tag `filmes-series`
-8. Código `Jogos` → pasta `Pesquisas/Jogos` → tag `jogos`
+5. Código `Filmes` → pasta `Pesquisas/Filmes e Series` → tag `filmes-series`
+6. Código `Jogos` → pasta `Pesquisas/Jogos` → tag `jogos`
 
-## Cadência por área
+## Cadência
 
-Por padrão todas as áreas rodam **todo dia**. Exceção (para conter custo):
-- **Puerperio** e **RN** só rodam **segunda, quarta e sexta** (3×/semana). Nos demais dias
-  (terça, quinta, sábado, domingo) **pule essas duas áreas** sem criar arquivo e sem contá-las
-  como falha. Determine o dia da semana a partir da data de hoje em BRT antes de começar.
+As 6 áreas rodam **todo dia**. Não há exceção de dia da semana.
+
+**Áreas desativadas (2026-08-29): `Puerperio` e `RN`.** NÃO gere digest para elas em
+nenhum dia, NÃO crie arquivo em `Pesquisas/Puerperio` nem em `Pesquisas/RN` e NÃO as
+conte como falha. As pastas `Pesquisas/Puerperio` e `Pesquisas/RN` foram **removidas**
+do repo em 2026-08-29 — não as recrie.
 
 ## Para cada área, faça:
 
@@ -32,19 +31,26 @@ Por padrão todas as áreas rodam **todo dia**. Exceção (para conter custo):
 Liste os 3 arquivos `*Digest.md` mais recentes da pasta da área e leia seus títulos de
 tópico. Guarde-os como "já publicado".
 
-### 2. Busca do dia — use WebSearch como fonte principal (NUNCA firecrawl)
-No ambiente da Routine, **WebSearch é a ferramenta principal e suficiente**: é ela que traz
-os tópicos do dia (título, URL real e data) já nos próprios snippets. Use os sites de
-`.automation/area-sources.md` como pista de temas/fontes a pesquisar (ex.:
-`site:infomoney.com.br` na query). Priorize conteúdo datado e recente (HOJE ou últimas ~48h),
-com URL real e verificável.
+### 2. Busca do dia — WebSearch ancorado nos 5 sites da área (NUNCA firecrawl)
+`.automation/area-sources.md` define **5 sites âncora por área**. Eles são o piso de
+qualidade da busca e todos foram verificados como ativos, recentes e indexáveis.
+
+Faça, nesta ordem:
+- **Uma busca `site:` por site âncora** — 5 buscas, ex.:
+  `site:protecao.com.br saúde e segurança do trabalho` (acrescente o tema do dia).
+- **Uma busca aberta** do tema da área, para não perder o furo que nasceu fora da lista.
+
+Prefira o que veio dos 5 âncoras. Material de outra fonte só entra se for **claramente
+relevante, datado e de veículo confiável** — nunca blog agregador, nunca site que só
+republica release. Priorize conteúdo de HOJE ou das últimas ~48h, com URL real e
+verificável.
 
 **Não use WebFetch por padrão.** A maioria dos grandes portais devolve **403 (anti-bot)**,
 inclusive feeds RSS, e cada tentativa falha ainda queima tokens à toa. Extraia título, data e
 resumo direto dos snippets do WebSearch. Só recorra ao WebFetch se a **data** de um tópico que
 você realmente vai publicar estiver ambígua e não der pra resolver com outra busca — e, nesse
 caso, **uma única tentativa**; se der 403, siga com o que o WebSearch trouxe, sem reprocessar.
-**Não use firecrawl** (sem créditos).
+**Não use firecrawl** (sem créditos na Routine).
 
 ### 3. Seleção
 Escolha os ~5 tópicos mais relevantes. **Descarte** qualquer um cujo assunto já apareça
@@ -53,7 +59,7 @@ Mínimo 3 tópicos; se não houver material suficiente, gere menos e **não inve
 houver nada novo, **pule a área sem criar arquivo**.
 
 ### 4. Escreva a nota — formato OBRIGATÓRIO
-Use o **Código** da área (IA, Saude, MedTrab, MercFin, Puerperio, RN, Filmes, Jogos) —
+Use o **Código** da área (IA, Saude, MedTrab, MercFin, Filmes, Jogos) —
 NÃO o nome de exibição completo — em todos os campos abaixo. O app de leitura depende
 desse identificador curto para indexar e filtrar as notas.
 
@@ -127,7 +133,7 @@ URL reais; descarte os incompletos.
 Se a busca/escrita de uma área falhar, registre o erro mentalmente e **siga para a próxima
 área**. Nunca aborte o run inteiro por causa de uma área.
 
-## Fechamento (uma vez só, depois das 8 áreas)
+## Fechamento (uma vez só, depois das 6 áreas)
 ```bash
 git add Pesquisas/
 git commit -m "auto: <AAAA-MM-DD HHhMM BRT> — digests do dia (<N> áreas)"

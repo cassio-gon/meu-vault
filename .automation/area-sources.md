@@ -1,63 +1,64 @@
-# Fontes curadas por área (dica de busca)
+# Fontes curadas por área — 5 sites fixos por área
 
-> Ponto de partida, NÃO restrição. A Routine faz busca aberta por tema; use estas
-> fontes como referência de qualidade e como sementes de busca. Extraído de
-> `.automation/main.py` (DIGEST_SOURCES).
+> **Atualizado em 2026-08-29.** As áreas **Puerperio** e **RN** foram desativadas e
+> as pastas `Pesquisas/Puerperio` e `Pesquisas/RN` foram **removidas** do repo. As 73
+> notas antigas continuam recuperáveis pelo histórico do git (commit anterior a este).
+>
+> Cada área tem **5 sites âncora**, escolhidos por dois critérios verificados em
+> 2026-08-29 com busca datada: (1) publicam conteúdo **recente** (últimos ~7 dias)
+> e (2) são **indexáveis** — aparecem em busca com `site:`, que é como a Routine
+> os alcança (os portais bloqueiam WebFetch com 403).
+>
+> **Como usar:** a Routine faz UMA busca `site:` por site âncora + UMA busca aberta
+> do tema da área. Os 5 sites são o piso de qualidade, **não um teto**: se a busca
+> aberta trouxer algo relevante de outra fonte confiável e datada, pode entrar.
 
 ## IA — pasta `Pesquisas/IA` — tag `ia`
-- https://techcrunch.com/category/artificial-intelligence/feed/
-- https://www.wired.com/feed/tag/ai/latest/rss
-- https://www.technologyreview.com/feed/
-- https://tecnoblog.net/feed/
-- https://news.google.com/rss/search?q=inteligencia+artificial+ia&hl=pt-BR&gl=BR&ceid=BR:pt-419
+1. `techcrunch.com` — notícia diária de IA/startups (categoria artificial-intelligence)
+2. `technologyreview.com` — MIT Tech Review: análise e contexto, menos hype
+3. `arstechnica.com` — apuração técnica profunda (seção /ai)
+4. `olhardigital.com.br` — editoria de IA em pt-BR, publica todo dia
+5. `tecnoblog.net` — pt-BR, boa cobertura de produto e do mercado brasileiro
 
 ## Saúde — pasta `Pesquisas/Saude` — tag `saude`
-- https://g1.globo.com/dynamo/saude/rss2.xml
-- https://saude.abril.com.br/feed/
-- https://www.sciencedaily.com/rss/health_medicine.xml
-- https://news.google.com/rss/search?q=saude+medicina+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419
-- https://feeds.folha.uol.com.br/equilibrioesaude/rss091.xml
+1. `g1.globo.com/saude` — maior volume de saúde em pt-BR, sempre datado
+2. `veja.abril.com.br/saude` — pauta clínica e de medicamentos (Anvisa, FDA)
+3. `agenciabrasil.ebc.com.br` — fonte pública, SUS e Ministério da Saúde
+4. `folha.uol.com.br/equilibrioesaude` — saúde e ciência com apuração própria
+5. `sciencedaily.com` (seção health_medicine) — estudos originais; traduzir para pt-BR
 
 ## Medicina do Trabalho — pasta `Pesquisas/Medicina do Trabalho` — tag `medtrab`
-- https://abmt.org.br/noticias/
-- https://www.anamt.org.br/portal/
-- https://www.soc.com.br/
-- https://revistaproteger.com.br/
-- https://www.sesi.org.br/
-- https://www.fundacentro.gov.br/
-- https://sbmt.org.br/
+1. `protecao.com.br` — Revista Proteção: a fonte mais ativa de SST no Brasil
+2. `gov.br/trabalho-e-emprego` — MTE: NRs, portarias, eSocial, fiscalização
+3. `conjur.com.br` — seção Trabalhista: nexo, insalubridade, EPI, prova técnica
+4. `tst.jus.br` — decisões e notícias do TST sobre acidente e doença ocupacional
+5. `ilo.org` — OIT (tem versão pt): normas e relatórios de segurança e saúde no trabalho
+
+> Nota: `sbmt.org.br` saiu da lista — é a Sociedade Brasileira de Medicina **Tropical**,
+> não do Trabalho. `anamt.org.br` e `revistacipa.com.br` também saíram: não aparecem em
+> busca datada, então não servem como pista. A ANAMT continua sendo coberta indiretamente,
+> porque a Proteção noticia as ações dela.
 
 ## Mercado Financeiro — pasta `Pesquisas/Mercado Financeiro` — tag `mercado-financeiro`
-- https://news.google.com/rss/search?q=mercado+financeiro+bolsa+ibovespa+economia+brasil&hl=pt-BR&gl=BR&ceid=BR:pt-419
-- https://www.infomoney.com.br/feed/
-- https://rss.uol.com.br/feed/economia.xml
-- https://www.moneytimes.com.br/feed/
-- https://braziljournal.com/feed/
-
-## Puerpério — pasta `Pesquisas/Puerperio` — tag `puerperio`
-- https://news.google.com/rss/search?q=%22exercicios+para+gestantes%22+OR+%22yoga+gestante%22+OR+%22pilates+gravidez%22&hl=pt-BR&gl=BR&ceid=BR:pt-419
-- https://news.google.com/rss/search?q=%22alimentacao+na+gravidez%22+OR+%22o+que+comer+gravidez%22+OR+%22nutricao+gestante%22&hl=pt-BR&gl=BR&ceid=BR:pt-419
-- https://news.google.com/rss/search?q=%22dicas+para+gestantes%22+OR+%22cuidados+na+gravidez%22+OR+%22bem-estar+gestante%22&hl=pt-BR&gl=BR&ceid=BR:pt-419
-- https://news.google.com/rss/search?q=%22preparacao+para+o+parto%22+OR+%22saude+mental+gestante%22+OR+%22ansiedade+gravidez%22&hl=pt-BR&gl=BR&ceid=BR:pt-419
-- https://www.sciencedaily.com/rss/health_medicine/pregnancy_and_childbirth.xml
-
-## Recém-Nascidos — pasta `Pesquisas/RN` — tag `recem-nascidos`
-- https://news.google.com/rss/search?q=%22cuidados+recem-nascido%22+OR+%22como+cuidar+do+bebe%22+OR+%22dicas+bebe%22&hl=pt-BR&gl=BR&ceid=BR:pt-419
-- https://news.google.com/rss/search?q=%22amamentacao%22+OR+%22aleitamento+materno%22+OR+%22leite+materno%22&hl=pt-BR&gl=BR&ceid=BR:pt-419
-- https://news.google.com/rss/search?q=%22desenvolvimento+bebe%22+OR+%22sono+bebe%22+OR+%22choro+bebe%22&hl=pt-BR&gl=BR&ceid=BR:pt-419
-- https://news.google.com/rss/search?q=%22vacina+bebe%22+OR+%22triagem+neonatal%22+OR+%22teste+pezinho%22&hl=pt-BR&gl=BR&ceid=BR:pt-419
-- https://www.sciencedaily.com/rss/health_medicine/infant_and_toddler_health.xml
+1. `infomoney.com.br` — fechamento de mercado e análise, acesso aberto
+2. `moneytimes.com.br` — tempo real do Ibovespa, juros futuros, câmbio
+3. `valor.globo.com` — referência de economia (paywall: usar título/lide do snippet)
+4. `exame.com` — seção invest/mercados, acesso aberto
+5. `neofeed.com.br` — negócios, M&A e bastidores corporativos
 
 ## Filmes e Séries — pasta `Pesquisas/Filmes e Series` — tag `filmes-series`
-- https://omelete.com.br/feed/
-- https://cinepop.com.br/feed
-- https://variety.com/feed/
-- https://collider.com/feed/
-- https://news.google.com/rss/search?q=filmes+series+lancamento+streaming+cinema+netflix+disney&hl=pt-BR&gl=BR&ceid=BR:pt-419
+1. `omelete.com.br` — pt-BR, notícia e crítica diária
+2. `adorocinema.com` — pt-BR, agenda de estreias e lançamentos por streaming
+3. `variety.com` — indústria: negócios, elenco, festivais
+4. `deadline.com` — furos de escalação e produção
+5. `hollywoodreporter.com` — indústria e audiência de streaming
 
 ## Jogos — pasta `Pesquisas/Jogos` — tag `jogos`
-- https://br.ign.com/feed.xml
-- https://www.eurogamer.net/?format=rss
-- https://www.pcgamer.com/rss/
-- https://www.destructoid.com/feed/
-- https://www.rockpapershotgun.com/feed/
+1. `br.ign.com` — IGN Brasil, pt-BR
+2. `tecmundo.com.br/voxel` — Voxel: notícia diária de games em pt-BR
+3. `adrenaline.com.br` — pt-BR, hardware e lançamentos
+4. `gamespot.com` — notícia e review de peso
+5. `polygon.com` — pauta editorial e indústria
+
+> Nota: `eurogamer.net` e `rockpapershotgun.com` saíram — hoje a maior parte do que
+> indexam é lista de "códigos de Roblox", ruim para digest.
