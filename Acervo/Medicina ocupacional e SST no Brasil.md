@@ -2,7 +2,7 @@
 tema: Medicina ocupacional e SST no Brasil
 tipo: nota-viva
 criado: 2026-06-29
-atualizado: 2026-09-01
+atualizado: 2026-09-02
 tags: [acervo, medtrab]
 ---
 
@@ -10,8 +10,8 @@ tags: [acervo, medtrab]
 
 - **INSS Portaria 15/2026 — triagem documental prévia à perícia**: com o novo teto de R$ 8.475,55, o auxílio-acidente sobe ao máximo de R$ 4.237,78 (50%); pedidos sem data do acidente, confirmação de consolidação da lesão ou nexo causal podem ser negados antes mesmo de agendar a perícia presencial — médicos do trabalho devem orientar trabalhadores na documentação prévia para evitar indeferimento na fase inicial. [[2026-08-28 06h10 — MedTrab Digest]]
 - **Novas regras de carência do INSS 2026 — impacto no nexo causal**: auxílio-acidente segue sem carência (qualidade de segurado basta); para o auxílio por incapacidade temporária, doenças ocupacionais e acidentes dispensam carência de 12 meses somente quando o nexo causal com o trabalho for comprovado — enquadramento correto entre benefício acidentário (sem carência) e previdenciário comum (com carência) exige CAT bem emitido com nexo técnico claro. [[2026-08-28 06h10 — MedTrab Digest]]
-- **TST analisa Tema 204**: pendente de julgamento que pode obrigar empregadores a custear integralmente e de forma vitalícia o tratamento do trabalhador acidentado por culpa ou dolo da empresa; precedentes de turmas do TST já condenaram empresas ao pagamento de despesas médicas futuras (queimaduras, lesões graves). [[2026-08-20 06h10 — MedTrab Digest]]
-- **S-2240 sem mapeamento psicossocial gera multa automática de R$ 805,06/trabalhador** após prazo de maio/2026; fiscalização cruzada INSS + Receita Federal dispensa auditores presenciais — autuação já em curso. [[2026-08-21 06h10 — MedTrab Digest]]
+- **NR-16 Anexo V atualizado em 2026**: nova redação define com precisão as funções e condições de uso de motocicleta que caracterizam o adicional de periculosidade de 30%; empresas de logística, delivery e moto-táxi precisam revisar laudos de periculosidade vigentes sob risco de contingência trabalhista em fiscalizações do MTE. [[2026-09-02 06h10 — MedTrab Digest]]
+- **PCMSO em modo de vigilância ativa pós-NR-7/2026**: o modelo reativo de exames periódicos isolados cede lugar ao monitoramento contínuo — indicadores do PCMSO integram afastamentos, riscos psicossociais e necessidades de acolhimento, conectando-se ao PGR da NR-1; médicos do trabalho precisam atualizar planos de ação e protocolos de exames. [[2026-09-02 06h10 — MedTrab Digest]]
 - **Projeção de novo recorde em 2026**: 380 mil acidentes no 1º semestre indicam ultrapassagem dos 806 mil de 2025; construção civil e transporte lideram; subnotificação via CAT persiste como obstáculo estrutural, especialmente para informais. [[2026-08-21 06h10 — MedTrab Digest]]
 - **CFM, ANAMT e AGSSO posicionam-se contra substituição irrestrita de presencial por teleconsulta** em saúde ocupacional: as três entidades reafirmaram o direito do trabalhador à avaliação médica presencial de qualidade e alertaram para os riscos clínicos da expansão irrestrita da telemedicina no trabalho. [[2026-08-22 06h00 — MedTrab Digest]]
 - **CFM 2.467/2026 — direção técnica em Saúde do Trabalhador**: publicada em 13/08, define critérios de supervisão presencial e remota, limita acumulação de direções em múltiplas unidades; entra em vigor 90 dias após publicação — clínicas e SESMTs terceirizados precisarão adequar modelos de gestão. [[2026-08-23 06h15 — MedTrab Digest]]
@@ -39,6 +39,7 @@ tags: [acervo, medtrab]
 - 2026-08-29 — NR-4 consulta pública reaberta (Portaria MTE 203/2026): revisão dos Graus de Risco pode alterar dimensionamento de SESMT; Q1 2026: 105.874 afastamentos por saúde mental (-3% sobre 2025). 546.254 benefícios incapacidade 2025 (+15,6%) e 806 mil acidentes 2025 (+8,6%) desceram para o log — supersedidos por dados de 2026.
 - 2026-08-31 — Governo federal institui CISST para servidores públicos federais (lógica CIPA ao funcionalismo). TST: auxílio previdenciário por doença superveniente ao acidente afeta cômputo da estabilidade do art. 118 da Lei 8.213/1991. NR-7 PCMSO (17/08) e NR-12/35 (17/08) desceram para o log ao atingir teto de 15.
 - 2026-09-01 — NR-35 Portaria MTE 1.259/2026: presencial obrigatório em treinamentos de altura, análise de risco individual para escadas fixas (1–3 anos), transição de 1 ano. TST: redução permanente de capacidade trabalhista gera pensão vitalícia + plano de saúde vitalício. eSocial SST multas (17/08) e lista doenças ocupacionais 182→347 (18/08) desceram para o log ao atingir teto de 15.
+- 2026-09-02 — NR-16 Anexo V atualizado: periculosidade em motocicletas redefinida, logística/delivery/moto-táxi devem revisar laudos. PCMSO vigilância ativa pós-NR-7: monitoramento contínuo integrado ao PGR da NR-1. TST Tema 204 (20/08, julgamento pendente) e S-2240 multa psicossocial (21/08, em curso no eSocial) desceram para o log ao atingir teto de 15.
 
 ## Em aberto
 
@@ -46,4 +47,4 @@ tags: [acervo, medtrab]
 
 ## Origens
 
-[[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]] · [[2026-08-17 06h10 — MedTrab Digest]] · [[2026-08-18 06h10 — MedTrab Digest]] · [[2026-08-19 06h15 — MedTrab Digest]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-08-22 06h00 — MedTrab Digest]] · [[2026-08-23 06h15 — MedTrab Digest]] · [[2026-08-26 06h10 — MedTrab Digest]] · [[2026-08-28 06h10 — MedTrab Digest]] · [[2026-08-29 06h10 — MedTrab Digest]] · [[2026-08-31 06h10 — MedTrab Digest]] · [[2026-09-01 06h10 — MedTrab Digest]]
+[[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]] · [[2026-08-17 06h10 — MedTrab Digest]] · [[2026-08-18 06h10 — MedTrab Digest]] · [[2026-08-19 06h15 — MedTrab Digest]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-08-22 06h00 — MedTrab Digest]] · [[2026-08-23 06h15 — MedTrab Digest]] · [[2026-08-26 06h10 — MedTrab Digest]] · [[2026-08-28 06h10 — MedTrab Digest]] · [[2026-08-29 06h10 — MedTrab Digest]] · [[2026-08-31 06h10 — MedTrab Digest]] · [[2026-09-01 06h10 — MedTrab Digest]] · [[2026-09-02 06h10 — MedTrab Digest]]
