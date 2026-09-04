@@ -2,7 +2,7 @@
 tema: Panorama de modelos e ferramentas de IA
 tipo: nota-viva
 criado: 2026-07-07
-atualizado: 2026-09-03
+atualizado: 2026-09-04
 tags: [acervo, ia]
 ---
 
@@ -26,6 +26,7 @@ tags: [acervo, ia]
 - **Amazon Shopping: IA passa a detectar golpes nas comunicações recebidas pelo cliente** (02/09/2026): comprador submete mensagem suspeita e recebe avaliação de autenticidade; ~360 mil clientes/ano já consultavam a Amazon para verificar comunicações — recurso formaliza isso como produto de IA; expansão para o aplicativo prevista. [[2026-09-03 06h00 — IA Digest]]
 - **Apple reconstrói Siri com Google Gemini** — implantação completa prevista para setembro de 2026; gestão de IA passa para John Ternus (background hardware), que enfrenta como desafio #1 superar os atrasos históricos da Siri por meio da parceria com o Gemini da Google. [[2026-09-01 06h00 — IA Digest]]
 - **Brasil lidera adoção corporativa de agentes de IA**: 76% das empresas brasileiras têm agentes de IA em produção, superando EUA (67%) — pesquisa Sinch com 2.527 executivos em múltiplos países; dado sinaliza que a velocidade de implantação no mercado brasileiro excede o ritmo regulatório. [[2026-09-01 06h00 — IA Digest]]
+- **Quasar 438B (Multiverse Computing, ESP) lidera índice europeu de inteligência de IA** (02/09/2026): 438B parâmetros, pontuação 43 no AA Intelligence Index v4.1.1 — primeiro modelo europeu a superar equivalentes americanos e chineses no índice; 500 tokens em 15,3 s com raciocínio incluído, janela de 1M de tokens, disponível via API CompactifAI (EN/ES) — marco para soberania europeia de IA. CrowdStrike + Nvidia lançam SafeMind (Fal.Con 2026): sistema agentico de cibersegurança com Red Tempest (ofensivo) + Blue Solano (defensivo) em loop fechado sobre Nemotron 3, integrado ao Falcon. [[2026-09-04 06h00 — IA Digest]]
 
 ## Como isso mudou
 
@@ -46,6 +47,7 @@ tags: [acervo, ia]
 - 2026-09-01 — Apple reconstrói Siri com Google Gemini (implantação setembro 2026, Ternus no comando). Brasil supera EUA na adoção corporativa de agentes de IA (76% vs. 67%, pesquisa Sinch 2.527 executivos). OpenAI Ultrafast GPT-5.6 Sol via Cerebras (21/08) e AI Safety Crisis Summer 2026 (24/08) desceram para o log ao atingir teto de 15.
 - 2026-09-02 — Incidentes de controle de IA dobraram em julho (OpenAI pausou modelo): primeiro dado quantificado de safety incidents em aceleração. AIR capta US$ 50M para vetting de agentes em supply chains: mercado de segurança específico para agentes emerge como categoria. AWS Mechanical Turk (27/08, encerramento 30/09) e Unitree -45% do pico (25/08, IPO drama China) desceram para o log ao atingir teto de 15.
 - 2026-09-03 — OpenAI Astra atinge limiar "Critical" de risco cibernético: primeiro modelo frontier com acesso restrito por capacidades ofensivas avançadas. Microsoft encerra `=COPILOT()` no Excel em 14/09. Amazon Shopping passa a detectar golpes via IA (~360 mil consultas/ano). Google anuncia Googlebooks (nova categoria hardware-IA). Fambot lança agente "chief of staff" familiar. Falha de API corrigida nas três grandes (29/08), Ox Alpha benchmark DeepSWE (27/08) e Meta Muse Glimmer (31/08) desceram para o log ao atingir teto de 15.
+- 2026-09-04 — Quasar 438B (Multiverse Computing): maior modelo europeu de raciocínio, lidera AA Intelligence Index v4.1.1 com pontuação 43 — primeiro europeu a superar americanos e chineses no índice. SafeMind (CrowdStrike+Nvidia): primeiro sistema agentico de cibersegurança em escala empresarial (Red Tempest + Blue Solano, base Nemotron 3). EUA propõem ao G20 pausa na criação de novas regulamentações nacionais de IA — resistência europeia.
 
 ## Em aberto
 
@@ -53,4 +55,4 @@ tags: [acervo, ia]
 
 ## Origens
 
-[[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]] · [[2026-08-17 06h00 — IA Digest]] · [[2026-08-18 06h00 — IA Digest]] · [[2026-08-20 06h00 — IA Digest]] · [[2026-08-21 06h00 — IA Digest]] · [[2026-08-22 06h00 — IA Digest]] · [[2026-08-23 06h05 — IA Digest]] · [[2026-08-24 06h00 — IA Digest]] · [[2026-08-25 06h00 — IA Digest]] · [[2026-08-26 06h00 — IA Digest]] · [[2026-08-27 06h00 — IA Digest]] · [[2026-08-28 06h00 — IA Digest]] · [[2026-08-29 06h00 — IA Digest]] · [[2026-08-31 06h00 — IA Digest]] · [[2026-09-01 06h00 — IA Digest]] · [[2026-09-02 06h00 — IA Digest]] · [[2026-09-03 06h00 — IA Digest]]
+[[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]] · [[2026-08-17 06h00 — IA Digest]] · [[2026-08-18 06h00 — IA Digest]] · [[2026-08-20 06h00 — IA Digest]] · [[2026-08-21 06h00 — IA Digest]] · [[2026-08-22 06h00 — IA Digest]] · [[2026-08-23 06h05 — IA Digest]] · [[2026-08-24 06h00 — IA Digest]] · [[2026-08-25 06h00 — IA Digest]] · [[2026-08-26 06h00 — IA Digest]] · [[2026-08-27 06h00 — IA Digest]] · [[2026-08-28 06h00 — IA Digest]] · [[2026-08-29 06h00 — IA Digest]] · [[2026-08-31 06h00 — IA Digest]] · [[2026-09-01 06h00 — IA Digest]] · [[2026-09-02 06h00 — IA Digest]] · [[2026-09-03 06h00 — IA Digest]] · [[2026-09-04 06h00 — IA Digest]]

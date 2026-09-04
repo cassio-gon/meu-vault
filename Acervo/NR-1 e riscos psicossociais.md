@@ -2,7 +2,7 @@
 tema: NR-1 e riscos psicossociais
 tipo: nota-viva
 criado: 2026-07-06
-atualizado: 2026-09-02
+atualizado: 2026-09-04
 tags: [acervo, medtrab]
 ---
 
@@ -22,6 +22,7 @@ tags: [acervo, medtrab]
 - **STF Plenário confirma por unanimidade a suspensão das sanções NR-1 psicossociais por 90 dias** (7–18/ago/2026): ADPF 1.316 chancelada em sessão virtual; obrigações de mapeamento e prevenção permanecem intactas — apenas o poder sancionador do MTE está suspenso; período de conciliação aberto entre governo e setor produtivo para definição de critérios objetivos de fiscalização; sanções devem retornar ~novembro 2026. [[2026-08-28 06h10 — MedTrab Digest]]
 - **Q1 2026: 105.874 afastamentos por saúde mental** — queda de apenas 3% sobre o recorde de 2025 (534.904 anuais); dado reforça a urgência das obrigações de GRO psicossocial da NR-1 mesmo durante a suspensão das sanções pelo STF. [[2026-08-29 06h10 — MedTrab Digest]]
 - **Setembro Amarelo 2026 com peso regulatório**: com NR-1 psicossocial vigente desde maio/2026, Setembro Amarelo passa de campanha voluntária a obrigação legal — gestão de riscos de saúde mental (estresse, assédio, sofrimento psíquico) é item obrigatório do PGR; empregadores sem GRO atualizado expostos a multas eSocial SST; médico do trabalho tem papel central na detecção precoce e emissão de CAT em casos de sofrimento grave associado ao trabalho. [[2026-09-02 06h10 — MedTrab Digest]]
+- **OIT 2026 define fatores psicossociais como eixo central da agenda global de SST**: estresse crônico, assédio moral, sobrecarga cognitiva e insegurança no emprego são a prioridade da OIT para 2026 — alinhado com a vigência plena da NR-1 brasileira desde maio; OIT alerta que digitalização acelerada, teletrabalho e pressões por desempenho criaram perfil de exposição que ultrapassa os mecanismos das legislações tradicionais, incluindo a brasileira, que ainda carece de protocolos específicos de mensuração e compensação. [[2026-09-04 06h10 — MedTrab Digest]]
 
 ## Como isso mudou
 
@@ -34,6 +35,7 @@ tags: [acervo, medtrab]
 - 2026-08-28 — STF Plenário Virtual confirma por unanimidade a suspensão das sanções (ADPF 1.316); abre conciliação MTE + setor produtivo para critérios objetivos de fiscalização; sanções devem retornar ~novembro 2026 — questão do Em aberto sobre "24/09" parcialmente respondida (suspensão foi renovada/confirmada em agosto).
 - 2026-08-29 — Q1 2026: 105.874 afastamentos por saúde mental (-3% sobre 2025); dado cita diretamente a urgência das obrigações NR-1 psicossociais mesmo com sanções suspensas.
 - 2026-09-02 — Setembro Amarelo ganha peso regulatório pela primeira vez: NR-1 psicossocial vigente desde maio transforma a campanha em obrigação do PGR; empregadores sem GRO atualizado expostos a multas eSocial SST; médico do trabalho com papel de detecção precoce e emissão de CAT para sofrimento grave associado ao trabalho.
+- 2026-09-04 — OIT 2026 eleva fatores psicossociais a prioridade global de SST: reforço externo ao mandato da NR-1 brasileira; OIT sinaliza lacuna de protocolos específicos de mensuração e compensação mesmo em países com legislações avançadas — lacuna que a NR-1 brasileira ainda compartilha.
 
 ## Em aberto
 
@@ -43,4 +45,4 @@ tags: [acervo, medtrab]
 
 ## Origens
 
-[[2026-07-06 — Pesquisa: NR-1 e riscos psicossociais]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-08-24 06h10 — MedTrab Digest]] · [[2026-08-26 06h10 — MedTrab Digest]] · [[2026-08-27 06h10 — MedTrab Digest]] · [[2026-08-28 06h10 — MedTrab Digest]] · [[2026-08-29 06h10 — MedTrab Digest]] · [[2026-09-02 06h10 — MedTrab Digest]]
+[[2026-07-06 — Pesquisa: NR-1 e riscos psicossociais]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-08-24 06h10 — MedTrab Digest]] · [[2026-08-26 06h10 — MedTrab Digest]] · [[2026-08-27 06h10 — MedTrab Digest]] · [[2026-08-28 06h10 — MedTrab Digest]] · [[2026-08-29 06h10 — MedTrab Digest]] · [[2026-09-02 06h10 — MedTrab Digest]] · [[2026-09-04 06h10 — MedTrab Digest]]
