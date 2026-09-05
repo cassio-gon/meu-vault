@@ -2,13 +2,12 @@
 tema: Medicina ocupacional e SST no Brasil
 tipo: nota-viva
 criado: 2026-06-29
-atualizado: 2026-09-04
+atualizado: 2026-09-05
 tags: [acervo, medtrab]
 ---
 
 ## O que sabemos hoje
 
-- **INSS Portaria 15/2026 — triagem documental prévia à perícia**: com o novo teto de R$ 8.475,55, o auxílio-acidente sobe ao máximo de R$ 4.237,78 (50%); pedidos sem data do acidente, confirmação de consolidação da lesão ou nexo causal podem ser negados antes mesmo de agendar a perícia presencial — médicos do trabalho devem orientar trabalhadores na documentação prévia para evitar indeferimento na fase inicial. [[2026-08-28 06h10 — MedTrab Digest]]
 - **Novas regras de carência do INSS 2026 — impacto no nexo causal**: auxílio-acidente segue sem carência (qualidade de segurado basta); para o auxílio por incapacidade temporária, doenças ocupacionais e acidentes dispensam carência de 12 meses somente quando o nexo causal com o trabalho for comprovado — enquadramento correto entre benefício acidentário (sem carência) e previdenciário comum (com carência) exige CAT bem emitido com nexo técnico claro. [[2026-08-28 06h10 — MedTrab Digest]]
 - **NR-16 Anexo V atualizado em 2026**: nova redação define com precisão as funções e condições de uso de motocicleta que caracterizam o adicional de periculosidade de 30%; empresas de logística, delivery e moto-táxi precisam revisar laudos de periculosidade vigentes sob risco de contingência trabalhista em fiscalizações do MTE. [[2026-09-02 06h10 — MedTrab Digest]]
 - **PCMSO em modo de vigilância ativa pós-NR-7/2026**: o modelo reativo de exames periódicos isolados cede lugar ao monitoramento contínuo — indicadores do PCMSO integram afastamentos, riscos psicossociais e necessidades de acolhimento, conectando-se ao PGR da NR-1; médicos do trabalho precisam atualizar planos de ação e protocolos de exames. [[2026-09-02 06h10 — MedTrab Digest]]
@@ -23,6 +22,7 @@ tags: [acervo, medtrab]
 - **TST: auxílio previdenciário por doença superveniente ao acidente afeta estabilidade acidentária** (08/2026): recebimento de benefício INSS decorrente de doença surgida após o acidente pode impactar o cômputo da estabilidade do art. 118 da Lei 8.213/1991 — exige análise individualizada do nexo causal em afastamentos prolongados com múltiplos benefícios. [[2026-08-31 06h10 — MedTrab Digest]]
 - **NR-35 reformulada — Portaria MTE 1.259/2026**: item 35.4.5 torna obrigatória a modalidade presencial para todos os treinamentos de trabalho em altura (elimina EaD); Anexo III exige análise de risco individual para escadas fixas verticais com prazos de 1 a 3 anos conforme quantidade; equipamentos já instalados ficam isentos mediante documentação comprobatória; prazo de transição de 1 ano para adequação. [[2026-09-01 06h10 — MedTrab Digest]]
 - **TST decide: redução permanente de capacidade trabalhista gera pensão mensal vitalícia + plano de saúde vitalício** — independentemente da extinção do vínculo empregatício; obrigação do empregador extrapolou a rescisão contratual; médicos e peritos do trabalho ganham papel central na caracterização do nexo e do grau de incapacidade para os cálculos de indenização. [[2026-09-01 06h10 — MedTrab Digest]]
+- **Portaria MTE 672/2026 — novas regras de aprovação e controle de EPIs (CA)**: atualiza exigências de ensaio e rotulagem para alinhar ao modelo internacional de avaliação de conformidade; empresas importadoras/fabricantes e médicos do trabalho responsáveis por especificação de EPI devem verificar conformidade dos equipamentos em uso, especialmente expostos a agentes químicos, ruído e calor. [[2026-09-05 06h10 — MedTrab Digest]]
 
 ## Como isso mudou
 
@@ -42,6 +42,7 @@ tags: [acervo, medtrab]
 - 2026-09-02 — NR-16 Anexo V atualizado: periculosidade em motocicletas redefinida, logística/delivery/moto-táxi devem revisar laudos. PCMSO vigilância ativa pós-NR-7: monitoramento contínuo integrado ao PGR da NR-1. TST Tema 204 (20/08, julgamento pendente) e S-2240 multa psicossocial (21/08, em curso no eSocial) desceram para o log ao atingir teto de 15.
 - 2026-09-03 — CTPP agenda revisão de NR-11, NR-21 e Anexos Químicos da NR-9 para 22-23/09. Estresse térmico como risco ocupacional crescente em pauta com a revisão da NR-9. PreveNor 2026 (22-24/09, região Norte) confirmado — maior feira de SST da região coincide com reunião da CTPP. CFM/ANAMT/AGSSO contra telemedicina irrestrita (22/08) e Q1 2026 afastamentos saúde mental (29/08) desceram para o log ao atingir teto de 15.
 - 2026-09-04 — NR-15 e NR-16: empregadores obrigados a disponibilizar laudos de periculosidade e insalubridade a trabalhadores e sindicatos. TST reforça análise individualizada de estabilidade acidentária quando há B31 e doença surgida durante o afastamento (reforço ao entendimento de 31/08). Projeção 380 mil acidentes 1S2026 (21/08) desceu para o log ao atingir teto de 15.
+- 2026-09-05 — Portaria MTE 672/2026: novo CA EPI com ensaios e rotulagem alinhados ao padrão internacional — especificadores de EPI devem validar conformidade do estoque. TST: ônus de prova em dispensa discriminatória recai sobre o empregador (02/09). STF: teto R$ 5.000 para Justiça Gratuita na JT (03/09). Bullet "INSS Portaria 15/2026" (28/08) desceu para o log ao atingir teto de 15.
 
 ## Em aberto
 
@@ -49,4 +50,4 @@ tags: [acervo, medtrab]
 
 ## Origens
 
-[[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]] · [[2026-08-17 06h10 — MedTrab Digest]] · [[2026-08-18 06h10 — MedTrab Digest]] · [[2026-08-19 06h15 — MedTrab Digest]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-08-22 06h00 — MedTrab Digest]] · [[2026-08-23 06h15 — MedTrab Digest]] · [[2026-08-26 06h10 — MedTrab Digest]] · [[2026-08-28 06h10 — MedTrab Digest]] · [[2026-08-29 06h10 — MedTrab Digest]] · [[2026-08-31 06h10 — MedTrab Digest]] · [[2026-09-01 06h10 — MedTrab Digest]] · [[2026-09-02 06h10 — MedTrab Digest]] · [[2026-09-03 06h10 — MedTrab Digest]] · [[2026-09-04 06h10 — MedTrab Digest]]
+[[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]] · [[2026-08-17 06h10 — MedTrab Digest]] · [[2026-08-18 06h10 — MedTrab Digest]] · [[2026-08-19 06h15 — MedTrab Digest]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-08-22 06h00 — MedTrab Digest]] · [[2026-08-23 06h15 — MedTrab Digest]] · [[2026-08-26 06h10 — MedTrab Digest]] · [[2026-08-28 06h10 — MedTrab Digest]] · [[2026-08-29 06h10 — MedTrab Digest]] · [[2026-08-31 06h10 — MedTrab Digest]] · [[2026-09-01 06h10 — MedTrab Digest]] · [[2026-09-02 06h10 — MedTrab Digest]] · [[2026-09-03 06h10 — MedTrab Digest]] · [[2026-09-04 06h10 — MedTrab Digest]] · [[2026-09-05 06h10 — MedTrab Digest]]
