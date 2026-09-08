@@ -2,7 +2,7 @@
 tema: Panorama de modelos e ferramentas de IA
 tipo: nota-viva
 criado: 2026-07-07
-atualizado: 2026-09-07
+atualizado: 2026-09-08
 tags: [acervo, ia]
 ---
 
@@ -20,7 +20,7 @@ tags: [acervo, ia]
 - **Anthropic contrata Amir Salek e monta equipe completa de design de chips** (27–29/08/2026): Salek é fundador do programa TPU do Google (sete gerações); empresa, que antes declarava não depender de silício próprio, reverteu a posição e passou a recrutar ativamente uma equipe completa de chip design — reação direta ao tape-out do Jalapeño da OpenAI (Broadcom/TSMC N3P). [[2026-08-27 06h00 — IA Digest]] · [[2026-08-29 06h00 — IA Digest]]
 - **Microsoft encerra a função `=COPILOT()` nativa do Excel em 14/09/2026**: IA integrada às células de planilha descontinuada — recurso migra exclusivamente para o painel lateral do Copilot; empresas que automatizaram fluxos com a função nativa precisarão adaptar processos; marca o fim de uma abordagem de integração IA/planilha que não atingiu adoção em massa. [[2026-09-03 06h00 — IA Digest]]
 - **John Ternus assume CEO da Apple em 1º/09/2026**: sucessor de Tim Cook à frente da empresa mais valiosa do mundo; Apple Intelligence passa a ser responsabilidade de nova liderança, com Ternus trazendo background de hardware para orientar a estratégia de IA on-device. [[2026-08-31 06h00 — IA Digest]]
-- **OpenAI encerra acesso direto do Cursor após SpaceX adquirir a empresa** (31/08/2026): Cursor migra para Claude como LLM primário — primeiro efeito prático da consolidação OpenAI/SpaceX afetando ferramentas de desenvolvimento de software. [[2026-08-31 06h00 — IA Digest]]
+- **128 empresas e organizações assinam carta pedindo pausa no desenvolvimento de IA irrestrita** (ago/2026): signatários incluem representantes de OpenAI, Anthropic e Google; carta argumenta que sistemas frontier sem controles adequados representam riscos civilizacionais — contraponto direto ao ritmo de lançamentos que o próprio setor pratica. [[2026-09-08 06h05 — IA Digest]]
 - **Anthropic amplia parceria com Google e Broadcom para múltiplos gigawatts de computação next-gen** (30/08/2026): acordo de infraestrutura de longo prazo reforça independência de fornecimento de computação enquanto empresa se prepara para IPO e escala de agentes autônomos. [[2026-08-31 06h00 — IA Digest]]
 - **Apple reconstrói Siri com Google Gemini** — implantação completa prevista para setembro de 2026; gestão de IA passa para John Ternus (background hardware), que enfrenta como desafio #1 superar os atrasos históricos da Siri por meio da parceria com o Gemini da Google. [[2026-09-01 06h00 — IA Digest]]
 - **Brasil lidera adoção corporativa de agentes de IA**: 76% das empresas brasileiras têm agentes de IA em produção, superando EUA (67%) — pesquisa Sinch com 2.527 executivos em múltiplos países; dado sinaliza que a velocidade de implantação no mercado brasileiro excede o ritmo regulatório. [[2026-09-01 06h00 — IA Digest]]
@@ -50,6 +50,7 @@ tags: [acervo, ia]
 - 2026-09-05 — Thinking Machines (Mira Murati) negocia US$ 1 bi a valuation de US$ 40 bi (set/2026): terceiro round em 18 meses confirma ritmo de valorização mais rápido que OpenAI e Anthropic nos estágios iniciais; receita anualizada >US$ 100 mi. Nvidia/Hugging Face (27/08, US$ 13 bi) desceu para o log ao atingir teto de 15.
 - 2026-09-06 — Claude Fable 5.1 lidera AA Intelligence Index v4.2 (score 66): novo topo de benchmark pós-Quasar 438B (v4.1.1, 04/09). Nscale busca US$ 3,5 bi pré-IPO com Nvidia âncora a valuation de US$ 30 bi. Bullets "Corrida ao IPO Anthropic/OpenAI" (ago/2026), "Incidentes de controle dobraram em julho" (set/2026) e "Amazon Shopping detecta golpes via IA" (03/09) desceram para o log ao atingir teto de 15.
 - 2026-09-07 — GPT-6 Astra (03/09): maior treinamento OpenAI (100K GPUs/Stargate), computer use, 1M tokens — primeiro modelo com classificação AGI-adjacente da OpenAI. Nvidia/Hugging Face confirmada em US$ 12,9 bi (03/09 — confirmação do deal relatado em 28/08; URL nova, mesmo tema). Google DeepMind perde talentos de elite (28/08: Jeff Dean, Ghemawat, Vinyals, Quoc Le, Nobel Jumper) desceu para o log ao atingir teto de 15.
+- 2026-09-08 — 128 empresas (incluindo signatários de OpenAI, Anthropic e Google) assinam carta pedindo pausa no desenvolvimento de IA irrestrita — contraponto ao ritmo de lançamentos do próprio setor. Bullet "OpenAI encerra acesso do Cursor após SpaceX adquirir" (31/08) desceu para o log ao atingir teto de 15.
 
 ## Em aberto
 
@@ -57,4 +58,4 @@ tags: [acervo, ia]
 
 ## Origens
 
-[[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]] · [[2026-08-17 06h00 — IA Digest]] · [[2026-08-18 06h00 — IA Digest]] · [[2026-08-20 06h00 — IA Digest]] · [[2026-08-21 06h00 — IA Digest]] · [[2026-08-22 06h00 — IA Digest]] · [[2026-08-23 06h05 — IA Digest]] · [[2026-08-24 06h00 — IA Digest]] · [[2026-08-25 06h00 — IA Digest]] · [[2026-08-26 06h00 — IA Digest]] · [[2026-08-27 06h00 — IA Digest]] · [[2026-08-28 06h00 — IA Digest]] · [[2026-08-29 06h00 — IA Digest]] · [[2026-08-31 06h00 — IA Digest]] · [[2026-09-01 06h00 — IA Digest]] · [[2026-09-02 06h00 — IA Digest]] · [[2026-09-03 06h00 — IA Digest]] · [[2026-09-04 06h00 — IA Digest]] · [[2026-09-05 06h00 — IA Digest]] · [[2026-09-06 06h00 — IA Digest]] · [[2026-09-07 06h00 — IA Digest]]
+[[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]] · [[2026-08-17 06h00 — IA Digest]] · [[2026-08-18 06h00 — IA Digest]] · [[2026-08-20 06h00 — IA Digest]] · [[2026-08-21 06h00 — IA Digest]] · [[2026-08-22 06h00 — IA Digest]] · [[2026-08-23 06h05 — IA Digest]] · [[2026-08-24 06h00 — IA Digest]] · [[2026-08-25 06h00 — IA Digest]] · [[2026-08-26 06h00 — IA Digest]] · [[2026-08-27 06h00 — IA Digest]] · [[2026-08-28 06h00 — IA Digest]] · [[2026-08-29 06h00 — IA Digest]] · [[2026-08-31 06h00 — IA Digest]] · [[2026-09-01 06h00 — IA Digest]] · [[2026-09-02 06h00 — IA Digest]] · [[2026-09-03 06h00 — IA Digest]] · [[2026-09-04 06h00 — IA Digest]] · [[2026-09-05 06h00 — IA Digest]] · [[2026-09-06 06h00 — IA Digest]] · [[2026-09-07 06h00 — IA Digest]] · [[2026-09-08 06h05 — IA Digest]]
