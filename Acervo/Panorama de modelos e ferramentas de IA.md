@@ -2,7 +2,7 @@
 tema: Panorama de modelos e ferramentas de IA
 tipo: nota-viva
 criado: 2026-07-07
-atualizado: 2026-09-09
+atualizado: 2026-09-10
 tags: [acervo, ia]
 ---
 
@@ -18,8 +18,7 @@ tags: [acervo, ia]
 - **OpenAI Astra atinge limiar "Critical" de risco cibernético** (01/09/2026): primeiro modelo frontier a receber a classificação máxima da escala interna da OpenAI — consegue identificar falhas de segurança desconhecidas e explorá-las em sistemas bem protegidos sem orientação humana a cada etapa; acesso restrito a testadores verificados focados em infraestrutura crítica. [[2026-09-03 06h00 — IA Digest]]
 - **Anthropic contrata Amir Salek e monta equipe completa de design de chips** (27–29/08/2026): Salek é fundador do programa TPU do Google (sete gerações); empresa, que antes declarava não depender de silício próprio, reverteu a posição e passou a recrutar ativamente uma equipe completa de chip design — reação direta ao tape-out do Jalapeño da OpenAI (Broadcom/TSMC N3P). [[2026-08-27 06h00 — IA Digest]] · [[2026-08-29 06h00 — IA Digest]]
 - **128 empresas e organizações assinam carta pedindo pausa no desenvolvimento de IA irrestrita** (ago/2026): signatários incluem representantes de OpenAI, Anthropic e Google; carta argumenta que sistemas frontier sem controles adequados representam riscos civilizacionais — contraponto direto ao ritmo de lançamentos que o próprio setor pratica. [[2026-09-08 06h05 — IA Digest]]
-- **Anthropic amplia parceria com Google e Broadcom para múltiplos gigawatts de computação next-gen** (30/08/2026): acordo de infraestrutura de longo prazo reforça independência de fornecimento de computação enquanto empresa se prepara para IPO e escala de agentes autônomos. [[2026-08-31 06h00 — IA Digest]]
-- **Apple reconstrói Siri com Google Gemini** — implantação completa prevista para setembro de 2026; gestão de IA passa para John Ternus (background hardware), que enfrenta como desafio #1 superar os atrasos históricos da Siri por meio da parceria com o Gemini da Google. [[2026-09-01 06h00 — IA Digest]]
+- **Apple lança iOS 27 com Siri+Gemini em 14/09/2026** (confirmado em 09/09 com iPhone 17): Ternus apresentou o iPhone 17 e o novo posicionamento de IA da Apple na semana de 10/09; Siri com Google Gemini é implantação completa — gestão de IA passou para John Ternus (background hardware) desde ago/2026. [[2026-09-01 06h00 — IA Digest]] · [[2026-09-10 06h05 — IA Digest]]
 - **Quasar 438B (Multiverse Computing, ESP) lidera índice europeu de inteligência de IA** (02/09/2026): 438B parâmetros, pontuação 43 no AA Intelligence Index v4.1.1 — primeiro modelo europeu a superar equivalentes americanos e chineses no índice; 500 tokens em 15,3 s com raciocínio incluído, janela de 1M de tokens, disponível via API CompactifAI (EN/ES) — marco para soberania europeia de IA. CrowdStrike + Nvidia lançam SafeMind (Fal.Con 2026): sistema agentico de cibersegurança com Red Tempest (ofensivo) + Blue Solano (defensivo) em loop fechado sobre Nemotron 3, integrado ao Falcon. [[2026-09-04 06h00 — IA Digest]]
 - **Thinking Machines (Mira Murati) negocia rodada de US$ 1 bilhão a valuation de US$ 40 bilhões** (set/2026): terceiro round em 18 meses, valuation +233% sobre o seed de US$ 12 bi (jul/2025); receita anualizada >US$ 100 mi com Tinker (fine-tuning API) e Inkling Small (276B, lançado jul/2026) — velocidade de crescimento supera OpenAI e Anthropic nos rounds iniciais. [[2026-09-05 06h00 — IA Digest]]
 
@@ -27,6 +26,7 @@ tags: [acervo, ia]
 - **Mistral fecha Série D de €3 bilhões liderada pela Samsung, valuation €21 bilhões** (08/09/2026): maior rodada de capital próprio da história tecnológica europeia; a16z, NVIDIA, General Catalyst, BlackRock e Grão-Ducado de Luxemburgo entre os investidores — consolida tese de IA soberana europeia em escala global. [[2026-09-09 06h05 — IA Digest]]
 - **China MIIT: plano para quadruplicar capacidade de IA para 9.800 exaflops até 2030** (08/09/2026): investimento de ¥3,8 trilhões (US$ 532 bilhões) em infraestrutura de TI; confronto direto com EUA na liderança de IA de próxima geração. [[2026-09-09 06h05 — IA Digest]]
 - **Google, Anthropic e OpenAI lançam modelos de cibersegurança; CNBC cunha "model fatigue"** (08/09/2026): quatro lançamentos de frontier AI em 72h (Claude Fable 5.1, Gemini 3.8 Flash Cyber, Muse Spark 1.3, GPT-6 Astra) geram desorientação entre compradores de TI pelo ritmo — sinal de saturação de comunicação no mercado corporativo. [[2026-09-09 06h05 — IA Digest]]
+- **ARM lança CSS for Mobile 2** (set/2026): nova plataforma de subsistemas compute para mobile com foco em IA on-device; define referência para chips de próxima geração de fabricantes como Apple, Qualcomm e MediaTek — amplia a corrida por inferência eficiente em smartphones fora da nuvem. [[2026-09-10 06h05 — IA Digest]]
 
 ## Como isso mudou
 
@@ -53,6 +53,7 @@ tags: [acervo, ia]
 - 2026-09-07 — GPT-6 Astra (03/09): maior treinamento OpenAI (100K GPUs/Stargate), computer use, 1M tokens — primeiro modelo com classificação AGI-adjacente da OpenAI. Nvidia/Hugging Face confirmada em US$ 12,9 bi (03/09 — confirmação do deal relatado em 28/08; URL nova, mesmo tema). Google DeepMind perde talentos de elite (28/08: Jeff Dean, Ghemawat, Vinyals, Quoc Le, Nobel Jumper) desceu para o log ao atingir teto de 15.
 - 2026-09-08 — 128 empresas (incluindo signatários de OpenAI, Anthropic e Google) assinam carta pedindo pausa no desenvolvimento de IA irrestrita — contraponto ao ritmo de lançamentos do próprio setor. Bullet "OpenAI encerra acesso do Cursor após SpaceX adquirir" (31/08) desceu para o log ao atingir teto de 15.
 - 2026-09-09 — OpenAI: ~10.000 agentes resolvem Navier-Stokes (primeiro Problema do Milênio resolvido por IA, verificado em Lean). Mistral Série D €3B/Samsung, valuation €21B — maior rodada tech europeia. China MIIT: 9.800 exaflops até 2030 (US$532B). "Model fatigue" cunhado pela CNBC após 4 lançamentos frontier em 72h. AIR US$50M (01/09), Microsoft =COPILOT() Excel (03/09), John Ternus Apple CEO (31/08) e Brasil lidera adoção agentes (01/09) desceram para o log ao atingir teto de 15.
+- 2026-09-10 — iOS 27 + Siri com Google Gemini confirma lançamento em 14/09 (bullet Apple atualizado); iPhone 17 revelado por Ternus em 09/09. ARM CSS for Mobile 2 entra como nova plataforma mobile de IA on-device. "Anthropic amplia parceria Google+Broadcom" (ago/2026) desceu para o log ao atingir teto de 15.
 
 ## Em aberto
 
@@ -60,4 +61,4 @@ tags: [acervo, ia]
 
 ## Origens
 
-[[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]] · [[2026-08-17 06h00 — IA Digest]] · [[2026-08-18 06h00 — IA Digest]] · [[2026-08-20 06h00 — IA Digest]] · [[2026-08-21 06h00 — IA Digest]] · [[2026-08-22 06h00 — IA Digest]] · [[2026-08-23 06h05 — IA Digest]] · [[2026-08-24 06h00 — IA Digest]] · [[2026-08-25 06h00 — IA Digest]] · [[2026-08-26 06h00 — IA Digest]] · [[2026-08-27 06h00 — IA Digest]] · [[2026-08-28 06h00 — IA Digest]] · [[2026-08-29 06h00 — IA Digest]] · [[2026-08-31 06h00 — IA Digest]] · [[2026-09-01 06h00 — IA Digest]] · [[2026-09-02 06h00 — IA Digest]] · [[2026-09-03 06h00 — IA Digest]] · [[2026-09-04 06h00 — IA Digest]] · [[2026-09-05 06h00 — IA Digest]] · [[2026-09-06 06h00 — IA Digest]] · [[2026-09-07 06h00 — IA Digest]] · [[2026-09-08 06h05 — IA Digest]] · [[2026-09-09 06h05 — IA Digest]]
+[[2026-07-07 — Pesquisa: Panorama de lançamentos de IA]] · [[2026-08-17 06h00 — IA Digest]] · [[2026-08-18 06h00 — IA Digest]] · [[2026-08-20 06h00 — IA Digest]] · [[2026-08-21 06h00 — IA Digest]] · [[2026-08-22 06h00 — IA Digest]] · [[2026-08-23 06h05 — IA Digest]] · [[2026-08-24 06h00 — IA Digest]] · [[2026-08-25 06h00 — IA Digest]] · [[2026-08-26 06h00 — IA Digest]] · [[2026-08-27 06h00 — IA Digest]] · [[2026-08-28 06h00 — IA Digest]] · [[2026-08-29 06h00 — IA Digest]] · [[2026-08-31 06h00 — IA Digest]] · [[2026-09-01 06h00 — IA Digest]] · [[2026-09-02 06h00 — IA Digest]] · [[2026-09-03 06h00 — IA Digest]] · [[2026-09-04 06h00 — IA Digest]] · [[2026-09-05 06h00 — IA Digest]] · [[2026-09-06 06h00 — IA Digest]] · [[2026-09-07 06h00 — IA Digest]] · [[2026-09-08 06h05 — IA Digest]] · [[2026-09-09 06h05 — IA Digest]] · [[2026-09-10 06h05 — IA Digest]]
