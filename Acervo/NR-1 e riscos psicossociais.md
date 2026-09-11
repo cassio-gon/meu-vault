@@ -2,13 +2,12 @@
 tema: NR-1 e riscos psicossociais
 tipo: nota-viva
 criado: 2026-07-06
-atualizado: 2026-09-08
+atualizado: 2026-09-11
 tags: [acervo, medtrab]
 ---
 
 ## O que sabemos hoje
 
-- Nasceu um mercado de serviço em volta da norma — psicólogos organizacionais, RH e consultores vendendo avaliação de risco psicossocial como produto. [[2026-07-06 — Pesquisa: NR-1 e riscos psicossociais]]
 - A crítica que circula entre profissionais é a do PGR de fachada: "está no seu PGR porque foi avaliado ou porque alguém copiou e colou texto padrão?". [[2026-07-06 — Pesquisa: NR-1 e riscos psicossociais]]
 - O argumento econômico público é o custo do INSS com afastamento por ansiedade e depressão. [[2026-07-06 — Pesquisa: NR-1 e riscos psicossociais]]
 - Três meses após o início da fase punitiva (maio 2026), empresas ainda buscam consultoria e ferramentas de mapeamento para adequar o PGR a riscos psicossociais; ausência de metodologia oficial de avaliação psicossocial mantém variância nos PGRs entregues ao mercado. [[2026-08-20 06h10 — MedTrab Digest]]
@@ -23,6 +22,7 @@ tags: [acervo, medtrab]
 - **Mind Summit 2026 (16-17/09, São Paulo)** reúne especialistas em saúde mental e trabalho para debater implementação prática das obrigações NR-1 GRO psicossocial: burnout, riscos psicossociais e estratégias de intervenção; evento de capacitação para médicos do trabalho, gestores RH e técnicos SST sobre os requisitos do PGR. [[2026-09-05 06h05 — Saude Digest]]
 - **Discriminação e preconceito no ambiente de trabalho como fatores de risco psicossocial** (set/2026): exposição crônica a preconceito racial, de gênero, por deficiência ou orientação sexual está associada a quadros de ansiedade, depressão e burnout — risco psicossocial já contemplado no mandato do GRO da NR-1; empresas devem adotar políticas internas de prevenção e canais de denúncia efetivos, com acompanhamento pelo serviço de medicina do trabalho. [[2026-09-06 06h10 — MedTrab Digest]]
 - **MTE publica manual oficial para implantação do GRO da NR-1** (mar/2026): orientações práticas para empregadores, trabalhadores e profissionais de SST na implementação do sistema de prevenção de riscos — inclui expressamente os fatores psicossociais desde maio/2026; traz exemplos práticos, tabelas de categorização de riscos e checklists para o PGR — ferramenta de referência para empresas ainda em processo de adequação. [[2026-09-08 06h05 — MedTrab Digest]]
+- **OIT "The psychosocial working environment" (abr/2026): 840 mil mortes anuais globais vinculadas a riscos psicossociais**: relatório estrutura abordagem em três níveis — cargo em si (demandas, autonomia, carga), gestão do trabalho e organização mais ampla; aponta estresse crônico, assédio, insegurança no emprego e falta de controle como principais agentes letais; serve de embasamento para as políticas nacionais que países signatários da Convenção 187 da OIT — inclusive o Brasil (ratificou em 03/09/2026) — devem desenvolver. [[2026-09-11 06h05 — MedTrab Digest]]
 
 ## Como isso mudou
 
@@ -39,6 +39,7 @@ tags: [acervo, medtrab]
 - 2026-09-05 — Mind Summit 2026 (16-17/09): primeiro grande evento de capacitação focado em implementação prática do GRO psicossocial NR-1 — médicos do trabalho, RH e técnicos SST se organizam antes do retorno das sanções (~novembro 2026). Bullet "NR-1 entrou em vigor 26/05/2026" (jul/2026) desceu para o log ao atingir teto de 15.
 - 2026-09-06 — Discriminação e preconceito no trabalho explicitados como fatores de risco psicossocial: exposição crônica associada a ansiedade, depressão e burnout; obrigação de políticas de prevenção e canais de denúncia no âmbito do GRO. Bullet "O STF suspendeu por 90 dias as multas" (jul/2026) desceu para o log — supersedido pelo bullet de STF Plenário unanimidade (ADPF 1.316, ago/2026).
 - 2026-09-08 — MTE lançou manual oficial de implementação do GRO da NR-1 (mar/2026): exemplos práticos, tabelas de risco e checklists para o PGR com psicossociais. Bullet "A dúvida do mercado não é 'o que é', é 'como avaliar'" (jul/2026) desceu para o log ao atingir teto de 15.
+- 2026-09-11 — OIT publica base científica global: 840 mil mortes/ano por riscos psicossociais (relatório abr/2026); framework tripartite alinha-se à estrutura do GRO da NR-1; Brasil (Convenção 187 ratificada em 03/09) obrigado a desenvolver política nacional de SST com indicadores mensuráveis. Bullet "Nasceu um mercado de serviço em volta da norma" (jul/2026) desceu para o log ao atingir teto de 15.
 
 ## Em aberto
 
@@ -48,4 +49,4 @@ tags: [acervo, medtrab]
 
 ## Origens
 
-[[2026-07-06 — Pesquisa: NR-1 e riscos psicossociais]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-08-24 06h10 — MedTrab Digest]] · [[2026-08-26 06h10 — MedTrab Digest]] · [[2026-08-27 06h10 — MedTrab Digest]] · [[2026-08-28 06h10 — MedTrab Digest]] · [[2026-08-29 06h10 — MedTrab Digest]] · [[2026-09-02 06h10 — MedTrab Digest]] · [[2026-09-04 06h10 — MedTrab Digest]] · [[2026-09-05 06h05 — Saude Digest]] · [[2026-09-06 06h10 — MedTrab Digest]] · [[2026-09-08 06h05 — MedTrab Digest]]
+[[2026-07-06 — Pesquisa: NR-1 e riscos psicossociais]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-08-24 06h10 — MedTrab Digest]] · [[2026-08-26 06h10 — MedTrab Digest]] · [[2026-08-27 06h10 — MedTrab Digest]] · [[2026-08-28 06h10 — MedTrab Digest]] · [[2026-08-29 06h10 — MedTrab Digest]] · [[2026-09-02 06h10 — MedTrab Digest]] · [[2026-09-04 06h10 — MedTrab Digest]] · [[2026-09-05 06h05 — Saude Digest]] · [[2026-09-06 06h10 — MedTrab Digest]] · [[2026-09-08 06h05 — MedTrab Digest]] · [[2026-09-11 06h05 — MedTrab Digest]]
