@@ -2,14 +2,13 @@
 tema: Medicina ocupacional e SST no Brasil
 tipo: nota-viva
 criado: 2026-06-29
-atualizado: 2026-09-10
+atualizado: 2026-09-12
 tags: [acervo, medtrab]
 ---
 
 ## O que sabemos hoje
 
 - **NR-15 e NR-16: empregadores obrigados a disponibilizar laudos de periculosidade e insalubridade** a trabalhadores e representantes sindicais (2026): mudanças visam aumentar transparência das condições de trabalho; impacta especialmente logística, indústria, construção e atividades com agentes químicos — laudos desatualizados ou não comunicados geravam passivos trabalhistas relevantes. [[2026-09-04 06h10 — MedTrab Digest]]
-- **CTPP setembro revisa NR-11, NR-21 e Anexos Químicos da NR-9 (22-23/09/2026)**: pauta confirmada inclui revisão geral da NR-11 (transporte, movimentação e armazenagem), NR-21 (trabalho a céu aberto) e atualização dos Anexos Químicos da NR-9 — impacto direto em PPRA e PCMSO; empresas do agronegócio, construção pesada e setor químico devem acompanhar para antecipar adequações. [[2026-09-03 06h10 — MedTrab Digest]]
 - **Limbo trabalhista-previdenciário** (set/2026): quando o INSS cessa o auxílio por doença e o médico da empresa conclui que o trabalhador não pode retornar à função, o TST tem reconhecido o direito à reintegração ou ao pagamento de salários no período — empregadores precisam ter protocolo médico claro e ágil para evitar dupla exposição. [[2026-09-07 06h10 — MedTrab Digest]]
 - **EPI eficaz e aposentadoria especial: STF chega à Justiça do Trabalho** (set/2026): o precedente do STF de que uso eficaz de EPI afasta direito à aposentadoria especial por ruído está sendo aplicado pela JT em demandas de insalubridade — impacto direto em laudos de PPRA e na especificação de EPI por médicos e engenheiros de segurança. [[2026-09-07 06h10 — MedTrab Digest]]
 - **Tema 555 (STF/TST) — alcance real sobre EPI e ruído**: a tese não elimina automaticamente o adicional de insalubridade pelo simples fornecimento do EPI; é necessário laudo pericial demonstrando que o equipamento efetivamente neutralizou a exposição ao agente nocivo — para ruído, a atenuação real (não a nominal do fabricante) deve ser comprovada; relevante para ações trabalhistas em andamento. [[2026-09-08 06h05 — MedTrab Digest]]
@@ -24,6 +23,7 @@ tags: [acervo, medtrab]
 - **LTCAT e eSocial: erros em laudos técnicos ganham visibilidade digital** (09/2026): a integração do LTCAT ao eSocial expôs laudos incompletos, ausência de agentes causadores e metodologias desatualizadas à Receita Federal e ao INSS — risco de autuação fiscal e questionamentos previdenciários para empresas com pendências. [[2026-09-09 06h05 — MedTrab Digest]]
 - **TST reafirma: impossível cumular adicionais de insalubridade e periculosidade** (09/2026): a 1ª Turma reiterou a Súmula 364 e o art. 193, § 2º, da CLT — trabalhador deve optar por apenas um dos adicionais; referência para ações em que ambos são pleiteados simultaneamente. [[2026-09-09 06h05 — MedTrab Digest]]
 - **Brasil ratifica Convenção 187 da OIT — Marco Promocional de SST** (03/09/2026): Senado aprovou PDL 720/2024 (rel. Sen. Esperidião Amin); Brasil assume compromisso formal de desenvolver política, sistema e programa nacionais de SST com metas e indicadores mensuráveis de melhoria contínua — maior avanço regulatório de SST dos últimos anos, com potencial de revisão estrutural das NRs. [[2026-09-10 06h05 — MedTrab Digest]]
+- **Nota técnica com diretrizes atualizadas de SST para teletrabalho e trabalho por plataformas digitais** (09/2026): aborda riscos ergonômicos e psicossociais do trabalho remoto e por aplicativos, e define responsabilidade do empregador nesses contextos — fornece orientações práticas para elaboração do PGR e do PCMSO nas modalidades home office e gig economy. [[2026-09-12 06h15 — MedTrab Digest]]
 
 ## Como isso mudou
 
@@ -49,6 +49,7 @@ tags: [acervo, medtrab]
 - 2026-09-08 — Conjur delimita alcance do Tema 555: EPI eficaz neutralizador de ruído deve ser comprovado por laudo com atenuação real, não nominal do fabricante. NR-10 nova redação (jun/2026) incorpora GRO da NR-1 ao contexto de segurança elétrica. "Lei 15.377/2026" (ago/2026) e "NR-4 consulta pública" (ago/2026) desceram para o log ao atingir teto de 15.
 - 2026-09-09 — STF determina prazo de 18 meses para o Congresso regulamentar adicional de penosidade (art. 7º, XXIII, CF). CTPP analisa novo Anexo da NR-16 para agentes de trânsito com risco em vias públicas. eSocial expõe erros de LTCAT a Receita Federal e INSS. TST reafirma Súmula 364: impossível cumular insalubridade e periculosidade. CISST servidores (08/2026) e TST estabilidade acidentária doença superveniente (08/2026) desceram para o log; NR-16 Anexo V motocicletas (09/02) e PCMSO vigilância ativa (09/02) desceram para o log ao atingir teto de 15.
 - 2026-09-10 — Brasil ratifica Convenção 187 da OIT (03/09/2026): Senado aprova PDL 720/2024 — primeiro compromisso formal com sistema nacional de SST baseado em metas e indicadores mensuráveis. "Estresse térmico em ascensão como risco ocupacional" (set/2026) desceu para o log ao atingir teto de 15.
+- 2026-09-12 — Nota técnica publicada com diretrizes de SST para teletrabalho e trabalho por plataformas digitais (riscos ergonômicos, psicossociais, PGR e PCMSO). Bullet "CTPP setembro revisa NR-11, NR-21 e NR-9 (22-23/09)" (03/09, agenda de evento futuro) desceu para o log ao atingir teto de 15.
 
 ## Em aberto
 
@@ -56,4 +57,4 @@ tags: [acervo, medtrab]
 
 ## Origens
 
-[[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]] · [[2026-08-17 06h10 — MedTrab Digest]] · [[2026-08-18 06h10 — MedTrab Digest]] · [[2026-08-19 06h15 — MedTrab Digest]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-08-22 06h00 — MedTrab Digest]] · [[2026-08-23 06h15 — MedTrab Digest]] · [[2026-08-26 06h10 — MedTrab Digest]] · [[2026-08-28 06h10 — MedTrab Digest]] · [[2026-08-29 06h10 — MedTrab Digest]] · [[2026-08-31 06h10 — MedTrab Digest]] · [[2026-09-01 06h10 — MedTrab Digest]] · [[2026-09-02 06h10 — MedTrab Digest]] · [[2026-09-03 06h10 — MedTrab Digest]] · [[2026-09-04 06h10 — MedTrab Digest]] · [[2026-09-05 06h10 — MedTrab Digest]] · [[2026-09-06 06h10 — MedTrab Digest]] · [[2026-09-07 06h10 — MedTrab Digest]] · [[2026-09-08 06h05 — MedTrab Digest]] · [[2026-09-09 06h05 — MedTrab Digest]] · [[2026-09-10 06h05 — MedTrab Digest]]
+[[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]] · [[2026-08-17 06h10 — MedTrab Digest]] · [[2026-08-18 06h10 — MedTrab Digest]] · [[2026-08-19 06h15 — MedTrab Digest]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-08-22 06h00 — MedTrab Digest]] · [[2026-08-23 06h15 — MedTrab Digest]] · [[2026-08-26 06h10 — MedTrab Digest]] · [[2026-08-28 06h10 — MedTrab Digest]] · [[2026-08-29 06h10 — MedTrab Digest]] · [[2026-08-31 06h10 — MedTrab Digest]] · [[2026-09-01 06h10 — MedTrab Digest]] · [[2026-09-02 06h10 — MedTrab Digest]] · [[2026-09-03 06h10 — MedTrab Digest]] · [[2026-09-04 06h10 — MedTrab Digest]] · [[2026-09-05 06h10 — MedTrab Digest]] · [[2026-09-06 06h10 — MedTrab Digest]] · [[2026-09-07 06h10 — MedTrab Digest]] · [[2026-09-08 06h05 — MedTrab Digest]] · [[2026-09-09 06h05 — MedTrab Digest]] · [[2026-09-10 06h05 — MedTrab Digest]] · [[2026-09-12 06h15 — MedTrab Digest]]
