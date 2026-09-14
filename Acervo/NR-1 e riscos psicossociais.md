@@ -2,13 +2,13 @@
 tema: NR-1 e riscos psicossociais
 tipo: nota-viva
 criado: 2026-07-06
-atualizado: 2026-09-11
+atualizado: 2026-09-14
 tags: [acervo, medtrab]
 ---
 
 ## O que sabemos hoje
 
-- A crítica que circula entre profissionais é a do PGR de fachada: "está no seu PGR porque foi avaliado ou porque alguém copiou e colou texto padrão?". [[2026-07-06 — Pesquisa: NR-1 e riscos psicossociais]]
+- **CONBCON 2026 live (16/09): "NR-1 — Desafios, Oportunidades e Tendências para a SST"**: debate de especialistas sobre implementação prática dos riscos psicossociais no PGR, com foco na obrigatoriedade de incluir burnout, assédio moral, estresse ocupacional e sobrecarga; evento sinaliza aquecimento contínuo do mercado de capacitação em NR-1 a menos de 2 meses do retorno previsto das sanções (~novembro 2026). [[2026-09-14 06h05 — MedTrab Digest]]
 - O argumento econômico público é o custo do INSS com afastamento por ansiedade e depressão. [[2026-07-06 — Pesquisa: NR-1 e riscos psicossociais]]
 - Três meses após o início da fase punitiva (maio 2026), empresas ainda buscam consultoria e ferramentas de mapeamento para adequar o PGR a riscos psicossociais; ausência de metodologia oficial de avaliação psicossocial mantém variância nos PGRs entregues ao mercado. [[2026-08-20 06h10 — MedTrab Digest]]
 - **S-2240 sem fatores psicossociais gera multa automática de R$ 805,06 por trabalhador** sem informação atualizada após o prazo de maio/2026; fiscalização cruzada com INSS e Receita Federal dispensa auditores presenciais — a exigência de mapeamento psicossocial no eSocial tornou o PGR incompleto em falta autuável diretamente. [[2026-08-21 06h10 — MedTrab Digest]]
@@ -40,6 +40,7 @@ tags: [acervo, medtrab]
 - 2026-09-06 — Discriminação e preconceito no trabalho explicitados como fatores de risco psicossocial: exposição crônica associada a ansiedade, depressão e burnout; obrigação de políticas de prevenção e canais de denúncia no âmbito do GRO. Bullet "O STF suspendeu por 90 dias as multas" (jul/2026) desceu para o log — supersedido pelo bullet de STF Plenário unanimidade (ADPF 1.316, ago/2026).
 - 2026-09-08 — MTE lançou manual oficial de implementação do GRO da NR-1 (mar/2026): exemplos práticos, tabelas de risco e checklists para o PGR com psicossociais. Bullet "A dúvida do mercado não é 'o que é', é 'como avaliar'" (jul/2026) desceu para o log ao atingir teto de 15.
 - 2026-09-11 — OIT publica base científica global: 840 mil mortes/ano por riscos psicossociais (relatório abr/2026); framework tripartite alinha-se à estrutura do GRO da NR-1; Brasil (Convenção 187 ratificada em 03/09) obrigado a desenvolver política nacional de SST com indicadores mensuráveis. Bullet "Nasceu um mercado de serviço em volta da norma" (jul/2026) desceu para o log ao atingir teto de 15.
+- 2026-09-14 — CONBCON 2026 realiza live amanhã (16/09) sobre NR-1 e riscos psicossociais: mercado de capacitação aquecido com retorno das sanções previsto para ~novembro. Bullet "A crítica do PGR de fachada" (jul/2026) desceu para o log ao atingir teto de 15.
 
 ## Em aberto
 
@@ -49,4 +50,4 @@ tags: [acervo, medtrab]
 
 ## Origens
 
-[[2026-07-06 — Pesquisa: NR-1 e riscos psicossociais]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-08-24 06h10 — MedTrab Digest]] · [[2026-08-26 06h10 — MedTrab Digest]] · [[2026-08-27 06h10 — MedTrab Digest]] · [[2026-08-28 06h10 — MedTrab Digest]] · [[2026-08-29 06h10 — MedTrab Digest]] · [[2026-09-02 06h10 — MedTrab Digest]] · [[2026-09-04 06h10 — MedTrab Digest]] · [[2026-09-05 06h05 — Saude Digest]] · [[2026-09-06 06h10 — MedTrab Digest]] · [[2026-09-08 06h05 — MedTrab Digest]] · [[2026-09-11 06h05 — MedTrab Digest]]
+[[2026-07-06 — Pesquisa: NR-1 e riscos psicossociais]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-08-24 06h10 — MedTrab Digest]] · [[2026-08-26 06h10 — MedTrab Digest]] · [[2026-08-27 06h10 — MedTrab Digest]] · [[2026-08-28 06h10 — MedTrab Digest]] · [[2026-08-29 06h10 — MedTrab Digest]] · [[2026-09-02 06h10 — MedTrab Digest]] · [[2026-09-04 06h10 — MedTrab Digest]] · [[2026-09-05 06h05 — Saude Digest]] · [[2026-09-06 06h10 — MedTrab Digest]] · [[2026-09-08 06h05 — MedTrab Digest]] · [[2026-09-11 06h05 — MedTrab Digest]] · [[2026-09-14 06h05 — MedTrab Digest]]
