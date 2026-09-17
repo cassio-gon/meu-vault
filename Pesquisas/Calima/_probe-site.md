@@ -6,7 +6,7 @@ tags: [calima, probe, uptime]
 source: mac-launchagent
 ---
 
-# Probe de `calima.med.br` — 2026-09-17 06:39:21 (America/Sao_Paulo)
+# Probe de `calima.med.br` — 2026-09-17 12:39:29 (America/Sao_Paulo)
 
 > Medido do Mac do Cássio, não da nuvem. O ambiente das Routines tem egress bloqueado
 > para este host. Se o timestamp acima estiver velho, o Mac estava desligado — diga isso
@@ -16,10 +16,10 @@ source: mac-launchagent
 
 | Path | HTTP | Tempo total | TTFB | Bytes | Content-Type |
 |---|---|---|---|---|---|
-| `/` | 200 | 0.614953s | 0.469505s | 33154 B | text/html; charset=UTF-8 |
-| `/manifest.json` | 200 | 0.496223s | 0.495730s | 884 B | application/json; charset=UTF-8 |
-| `/sw.js` | 200 | 0.647168s | 0.510372s | 8784 B | application/javascript; charset=UTF-8 |
-| `/js/app.js` | 200 | 0.756253s | 0.463489s | 67040 B | application/javascript; charset=UTF-8 |
+| `/` | 200 | 0.645317s | 0.477056s | 33154 B | text/html; charset=UTF-8 |
+| `/manifest.json` | 200 | 0.466843s | 0.466503s | 884 B | application/json; charset=UTF-8 |
+| `/sw.js` | 200 | 0.731711s | 0.560345s | 8784 B | application/javascript; charset=UTF-8 |
+| `/js/app.js` | 200 | 1.194808s | 0.594673s | 67040 B | application/javascript; charset=UTF-8 |
 
 ## Compressão (`/css/style.css` com `Accept-Encoding: gzip, br`)
 
@@ -43,7 +43,7 @@ cache-control: public, max-age=0
 content-security-policy: default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self' wss://calima.med.br https://api.github.com https://raw.githubusercontent.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'
 content-type: text/html; charset=UTF-8
 cross-origin-opener-policy: same-origin
-date: Thu, 17 Sep 2026 09:39:19 GMT
+date: Thu, 17 Sep 2026 15:39:27 GMT
 etag: W/"8182-1a0aa575020"
 last-modified: Wed, 16 Sep 2026 13:10:44 GMT
 referrer-policy: no-referrer
