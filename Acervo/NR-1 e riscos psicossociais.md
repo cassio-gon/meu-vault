@@ -2,13 +2,12 @@
 tema: NR-1 e riscos psicossociais
 tipo: nota-viva
 criado: 2026-07-06
-atualizado: 2026-09-22
+atualizado: 2026-09-23
 tags: [acervo, medtrab]
 ---
 
 ## O que sabemos hoje
 
-- **CONBCON 2026 live (16/09): "NR-1 — Desafios, Oportunidades e Tendências para a SST"**: debate de especialistas sobre implementação prática dos riscos psicossociais no PGR, com foco na obrigatoriedade de incluir burnout, assédio moral, estresse ocupacional e sobrecarga; evento sinaliza aquecimento contínuo do mercado de capacitação em NR-1 a menos de 2 meses do retorno previsto das sanções (~novembro 2026). [[2026-09-14 06h05 — MedTrab Digest]]
 - **Benefícios previdenciários por transtornos mentais e comportamentais mais que dobraram pós-pandemia** (Fundacentro/INSS, set/2026): subnotificação de causas ocupacionais é estrutural — perícias do INSS raramente associam adoecimento ao ambiente de trabalho, o que subestima o impacto real; dado reforça o argumento pela implementação plena da NR-1. [[2026-09-22 06h15 — MedTrab Digest]]
 - **Suspensão das sanções NR-1 (STF, ago/2026) não exime responsabilidade civil e trabalhista**: TST já reconhece nexo causal entre ambiente de trabalho tóxico e doenças como burnout e depressão; empregadores negligentes podem ser condenados em ações trabalhistas mesmo sem autuação fiscal — limbo entre ausência de multa administrativa e risco contencioso real. [[2026-09-22 06h15 — MedTrab Digest]]
 - **S-2240 sem fatores psicossociais gera multa automática de R$ 805,06 por trabalhador** sem informação atualizada após o prazo de maio/2026; fiscalização cruzada com INSS e Receita Federal dispensa auditores presenciais — a exigência de mapeamento psicossocial no eSocial tornou o PGR incompleto em falta autuável diretamente. [[2026-08-21 06h10 — MedTrab Digest]]
@@ -23,6 +22,7 @@ tags: [acervo, medtrab]
 - **Discriminação e preconceito no ambiente de trabalho como fatores de risco psicossocial** (set/2026): exposição crônica a preconceito racial, de gênero, por deficiência ou orientação sexual está associada a quadros de ansiedade, depressão e burnout — risco psicossocial já contemplado no mandato do GRO da NR-1; empresas devem adotar políticas internas de prevenção e canais de denúncia efetivos, com acompanhamento pelo serviço de medicina do trabalho. [[2026-09-06 06h10 — MedTrab Digest]]
 - **MTE publica manual oficial para implantação do GRO da NR-1** (mar/2026): orientações práticas para empregadores, trabalhadores e profissionais de SST na implementação do sistema de prevenção de riscos — inclui expressamente os fatores psicossociais desde maio/2026; traz exemplos práticos, tabelas de categorização de riscos e checklists para o PGR — ferramenta de referência para empresas ainda em processo de adequação. [[2026-09-08 06h05 — MedTrab Digest]]
 - **OIT "The psychosocial working environment" (abr/2026): 840 mil mortes anuais globais vinculadas a riscos psicossociais**: relatório estrutura abordagem em três níveis — cargo em si (demandas, autonomia, carga), gestão do trabalho e organização mais ampla; aponta estresse crônico, assédio, insegurança no emprego e falta de controle como principais agentes letais; serve de embasamento para as políticas nacionais que países signatários da Convenção 187 da OIT — inclusive o Brasil (ratificou em 03/09/2026) — devem desenvolver. [[2026-09-11 06h05 — MedTrab Digest]]
+- **CTB (set/2026): NR-1 representa avanço formal para proteção das mulheres contra assédio e adoecimento mental — mas efetividade depende de implementação real**: central aponta que a norma precisa ser combinada com capacitação de lideranças, canais seguros de denúncia, cultura organizacional que não trate saúde mental como tabu e fiscalização mais rigorosa do MTE; representação sindical no processo de GRO é condição defendida pela CTB para além do cumprimento burocrático. [[2026-09-23 06h15 — MedTrab Digest]]
 
 ## Como isso mudou
 
@@ -42,6 +42,7 @@ tags: [acervo, medtrab]
 - 2026-09-11 — OIT publica base científica global: 840 mil mortes/ano por riscos psicossociais (relatório abr/2026); framework tripartite alinha-se à estrutura do GRO da NR-1; Brasil (Convenção 187 ratificada em 03/09) obrigado a desenvolver política nacional de SST com indicadores mensuráveis. Bullet "Nasceu um mercado de serviço em volta da norma" (jul/2026) desceu para o log ao atingir teto de 15.
 - 2026-09-14 — CONBCON 2026 realiza live amanhã (16/09) sobre NR-1 e riscos psicossociais: mercado de capacitação aquecido com retorno das sanções previsto para ~novembro. Bullet "A crítica do PGR de fachada" (jul/2026) desceu para o log ao atingir teto de 15.
 - 2026-09-22 — Fundacentro/INSS: benefícios por transtornos mentais mais que dobraram pós-pandemia; subnotificação de nexo ocupacional estrutural. TST confirma responsabilidade civil/trabalhista mesmo sem autuação fiscal — limbo pós-STF tem risco contencioso real. Bullets "O argumento econômico público" (jul/2026) e "Três meses após" (ago/2026) desceram para o log ao atingir teto de 15.
+- 2026-09-23 — CTB detalha perspectiva sindical sobre NR-1 e proteção específica das mulheres contra assédio: implementação real exige cultura organizacional + fiscalização MTE + representação sindical no GRO — além do cumprimento burocrático. Bullet CONBCON 2026 live (16/09) desceu para o log por ser evento passado.
 
 ## Em aberto
 
@@ -51,4 +52,4 @@ tags: [acervo, medtrab]
 
 ## Origens
 
-[[2026-07-06 — Pesquisa: NR-1 e riscos psicossociais]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-08-24 06h10 — MedTrab Digest]] · [[2026-08-26 06h10 — MedTrab Digest]] · [[2026-08-27 06h10 — MedTrab Digest]] · [[2026-08-28 06h10 — MedTrab Digest]] · [[2026-08-29 06h10 — MedTrab Digest]] · [[2026-09-02 06h10 — MedTrab Digest]] · [[2026-09-04 06h10 — MedTrab Digest]] · [[2026-09-05 06h05 — Saude Digest]] · [[2026-09-06 06h10 — MedTrab Digest]] · [[2026-09-08 06h05 — MedTrab Digest]] · [[2026-09-11 06h05 — MedTrab Digest]] · [[2026-09-14 06h05 — MedTrab Digest]] · [[2026-09-22 06h15 — MedTrab Digest]]
+[[2026-07-06 — Pesquisa: NR-1 e riscos psicossociais]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-08-24 06h10 — MedTrab Digest]] · [[2026-08-26 06h10 — MedTrab Digest]] · [[2026-08-27 06h10 — MedTrab Digest]] · [[2026-08-28 06h10 — MedTrab Digest]] · [[2026-08-29 06h10 — MedTrab Digest]] · [[2026-09-02 06h10 — MedTrab Digest]] · [[2026-09-04 06h10 — MedTrab Digest]] · [[2026-09-05 06h05 — Saude Digest]] · [[2026-09-06 06h10 — MedTrab Digest]] · [[2026-09-08 06h05 — MedTrab Digest]] · [[2026-09-11 06h05 — MedTrab Digest]] · [[2026-09-14 06h05 — MedTrab Digest]] · [[2026-09-22 06h15 — MedTrab Digest]] · [[2026-09-23 06h15 — MedTrab Digest]]
