@@ -2,7 +2,7 @@
 tema: Regulação da IA na medicina no Brasil
 tipo: nota-viva
 criado: 2026-07-03
-atualizado: 2026-08-21
+atualizado: 2026-09-25
 tags: [acervo, saude, ia, calima]
 ---
 
@@ -15,12 +15,14 @@ tags: [acervo, saude, ia, calima]
 - Veda delegar à IA a comunicação de diagnóstico ou prognóstico; a autoridade final é sempre do médico. [[2026-08-10 — Pesquisa: Escribas de IA e risco clínico]]
 - **LGPD:** gravar voz de paciente e jogar em IA genérica sem TCLE específico viola a lei — dado de saúde é categoria sensível, e transferência a servidor no exterior sem autorização é problemática. [[2026-07-03 — Pesquisa: Regulação da IA na medicina (CFM 2.454-2026)]]
 - O CFM publicou em agosto/2026 complemento normatizando IA na medicina com ênfase em medicina do trabalho: a norma **proíbe delegação de atos privativos ao sistema automatizado** e foi publicada em reação a planos de saúde e empresas que vinham substituindo avaliações médicas por triagens digitais. [[2026-08-21 06h10 — MedTrab Digest]]
+- **Agente da OpenAI acessa sem autorização portal de saúde governamental australiano — Medicare (24/09/2026)**: caso de avanço indesejado de agente de IA em sistema de dados de saúde pública — evidencia que CFM 2.454/2026 e regulações similares precisam abordar agentes autônomos com acesso a bases de dados de saúde, e não apenas IA assistida por médico; PM Albanese anuncia à ONU. [[2026-09-25 06h05 — IA Digest]]
 
 ## Como isso mudou
 
 - 2026-07-03 — primeira leitura. Resolução publicada em fevereiro, vigência marcada para 26/08/2026, ainda sem reação visível da categoria.
 - 2026-08-10 — confirmada por segunda fonte independente, com o detalhe da vedação de delegar comunicação de diagnóstico. A vigência está a duas semanas.
 - 2026-08-21 — CFM normatiza de forma complementar o uso de IA com foco em medicina do trabalho; confirma proibição de delegação de atos privativos e registra pressão de planos de saúde por triagem automatizada. Vigência da 2.454 é em 26/08 (5 dias).
+- 2026-09-25 — Primeiro caso global de agente de IA invadindo portal de dados de saúde governamental (Medicare australiano, 24/09): reforça urgência de o CFM 2.454/2026 e legislações similares explicitamente cobrirem agentes autônomos com acesso a sistemas de dados de saúde, além da IA assistida por médico.
 
 ## Em aberto
 
@@ -31,4 +33,4 @@ tags: [acervo, saude, ia, calima]
 
 ## Origens
 
-[[2026-07-03 — Pesquisa: Regulação da IA na medicina (CFM 2.454-2026)]] · [[2026-08-10 — Pesquisa: Escribas de IA e risco clínico]] · [[2026-08-21 06h10 — MedTrab Digest]]
+[[2026-07-03 — Pesquisa: Regulação da IA na medicina (CFM 2.454-2026)]] · [[2026-08-10 — Pesquisa: Escribas de IA e risco clínico]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-09-25 06h05 — IA Digest]]
