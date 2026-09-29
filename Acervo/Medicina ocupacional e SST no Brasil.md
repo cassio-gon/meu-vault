@@ -2,7 +2,7 @@
 tema: Medicina ocupacional e SST no Brasil
 tipo: nota-viva
 criado: 2026-06-29
-atualizado: 2026-09-26
+atualizado: 2026-09-29
 tags: [acervo, medtrab]
 ---
 
@@ -23,6 +23,7 @@ tags: [acervo, medtrab]
 - **2025 = pior ano da história do Brasil em acidentes de trabalho: 806.011 acidentes formais e 3.644 mortes** (MTE, consolidado em 2026): um acidente a cada 43 segundos e uma morte a cada 3,5 horas — NR-1 revisada com riscos psicossociais e Tema 204 do TST são as principais apostas regulatórias para reversão em 2026; referência definitiva para benchmarking e argumentação preventiva. [[2026-09-21 06h15 — MedTrab Digest]]
 - **NR-32 ganha anexo específico sobre perfurocortantes em serviços de saúde (set/2026)**: detalha manuseio e descarte seguro, recipientes rígidos homologados e treinamento obrigatório para toda equipe que manipula agulhas, bisturis, lancetas e similares — acidentes com perfurocortantes são a principal causa de exposição ocupacional a HIV e hepatites B e C nos serviços de saúde brasileiros. [[2026-09-25 06h15 — MedTrab Digest]]
 - **NR-24 atualizada em setembro (Portaria MTE, 14/09/2026)**: duas portarias publicadas em edição extraordinária do DOU estabelecem novas exigências para água potável, sanitários móveis, módulos pré-fabricados e contêineres como instalações de campo — impacta construção civil, obras de infraestrutura e atividades rurais. [[2026-09-26 06h15 — MedTrab Digest]]
+- **NR-9 atualizada em 2026 (MTE)**: nova versão da norma de agentes físicos, químicos e biológicos alinha-se ao Gerenciamento de Riscos Ocupacionais (GRO) da NR-1 revisada, substituindo a estrutura do antigo PPRA por exigências integradas ao PGR — empresas devem adaptar seus programas de higiene ocupacional aos novos parâmetros e ao cronograma de implementação. [[2026-09-29 06h00 — MedTrab Digest]]
 
 ## Como isso mudou
 
@@ -61,6 +62,7 @@ tags: [acervo, medtrab]
 - 2026-09-24 — MTE prorroga consulta pública NR-4 (CNAE e Graus de Risco, Portaria MTE 203/2026 ainda em curso). Bullet "NR-11/NR-21/Anexos Químicos NR-9 em revisão — CTPP 22-23/09" (14/09, agenda de reunião já realizada) desceu para o log ao atingir teto de 15.
 - 2026-09-25 — NR-32 ganha anexo específico sobre perfurocortantes em serviços de saúde: treinamento obrigatório e recipientes rígidos homologados para toda equipe que manipula agulhas/bisturis/lancetas. [Dropped bullet: "OIT: quedas de altura são a principal causa de morte por AT no mundo" (19/09, dado global sem alteração normativa brasileira)]
 - 2026-09-26 — NR-24 atualizada em setembro (Portaria MTE, 14/09/2026): novas regras para água potável, sanitários móveis, módulos pré-fabricados e contêineres em locais de trabalho — impacta construção civil, infraestrutura e atividades rurais. [Dropped bullet: "Brasil ratifica Convenção 187 OIT" (10/09) — conteúdo preservado no log de 10/09 e no bullet da agenda regulatória CTPP]
+- 2026-09-29 — NR-9 atualizada em 2026 (MTE): norma de agentes físicos/químicos/biológicos integrada ao GRO da NR-1 com substituição do PPRA pelo PGR.
 
 ## Em aberto
 
@@ -68,4 +70,4 @@ tags: [acervo, medtrab]
 
 ## Origens
 
-[[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]] · [[2026-08-17 06h10 — MedTrab Digest]] · [[2026-08-18 06h10 — MedTrab Digest]] · [[2026-08-19 06h15 — MedTrab Digest]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-08-22 06h00 — MedTrab Digest]] · [[2026-08-23 06h15 — MedTrab Digest]] · [[2026-08-26 06h10 — MedTrab Digest]] · [[2026-08-28 06h10 — MedTrab Digest]] · [[2026-08-29 06h10 — MedTrab Digest]] · [[2026-08-31 06h10 — MedTrab Digest]] · [[2026-09-01 06h10 — MedTrab Digest]] · [[2026-09-02 06h10 — MedTrab Digest]] · [[2026-09-03 06h10 — MedTrab Digest]] · [[2026-09-04 06h10 — MedTrab Digest]] · [[2026-09-05 06h10 — MedTrab Digest]] · [[2026-09-06 06h10 — MedTrab Digest]] · [[2026-09-07 06h10 — MedTrab Digest]] · [[2026-09-08 06h05 — MedTrab Digest]] · [[2026-09-09 06h05 — MedTrab Digest]] · [[2026-09-10 06h05 — MedTrab Digest]] · [[2026-09-12 06h15 — MedTrab Digest]] · [[2026-09-13 06h15 — MedTrab Digest]] · [[2026-09-14 06h05 — MedTrab Digest]] · [[2026-09-15 06h05 — MedTrab Digest]] · [[2026-09-16 06h15 — MedTrab Digest]] · [[2026-09-17 06h15 — MedTrab Digest]] · [[2026-09-18 06h15 — MedTrab Digest]] · [[2026-09-19 06h15 — MedTrab Digest]] · [[2026-09-20 06h15 — MedTrab Digest]] · [[2026-09-21 06h15 — MedTrab Digest]] · [[2026-09-24 06h20 — MedTrab Digest]] · [[2026-09-25 06h15 — MedTrab Digest]] · [[2026-09-26 06h15 — MedTrab Digest]]
+[[2026-06-29 — Pesquisa: Medicina ocupacional e SST no Brasil]] · [[2026-08-17 06h10 — MedTrab Digest]] · [[2026-08-18 06h10 — MedTrab Digest]] · [[2026-08-19 06h15 — MedTrab Digest]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-08-22 06h00 — MedTrab Digest]] · [[2026-08-23 06h15 — MedTrab Digest]] · [[2026-08-26 06h10 — MedTrab Digest]] · [[2026-08-28 06h10 — MedTrab Digest]] · [[2026-08-29 06h10 — MedTrab Digest]] · [[2026-08-31 06h10 — MedTrab Digest]] · [[2026-09-01 06h10 — MedTrab Digest]] · [[2026-09-02 06h10 — MedTrab Digest]] · [[2026-09-03 06h10 — MedTrab Digest]] · [[2026-09-04 06h10 — MedTrab Digest]] · [[2026-09-05 06h10 — MedTrab Digest]] · [[2026-09-06 06h10 — MedTrab Digest]] · [[2026-09-07 06h10 — MedTrab Digest]] · [[2026-09-08 06h05 — MedTrab Digest]] · [[2026-09-09 06h05 — MedTrab Digest]] · [[2026-09-10 06h05 — MedTrab Digest]] · [[2026-09-12 06h15 — MedTrab Digest]] · [[2026-09-13 06h15 — MedTrab Digest]] · [[2026-09-14 06h05 — MedTrab Digest]] · [[2026-09-15 06h05 — MedTrab Digest]] · [[2026-09-16 06h15 — MedTrab Digest]] · [[2026-09-17 06h15 — MedTrab Digest]] · [[2026-09-18 06h15 — MedTrab Digest]] · [[2026-09-19 06h15 — MedTrab Digest]] · [[2026-09-20 06h15 — MedTrab Digest]] · [[2026-09-21 06h15 — MedTrab Digest]] · [[2026-09-24 06h20 — MedTrab Digest]] · [[2026-09-25 06h15 — MedTrab Digest]] · [[2026-09-26 06h15 — MedTrab Digest]] · [[2026-09-29 06h00 — MedTrab Digest]]
