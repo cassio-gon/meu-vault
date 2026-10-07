@@ -6,7 +6,7 @@ tags: [calima, probe, uptime]
 source: mac-launchagent
 ---
 
-# Probe de `calima.med.br` — 2026-10-07 11:59:42 (America/Sao_Paulo)
+# Probe de `calima.med.br` — 2026-10-07 17:59:47 (America/Sao_Paulo)
 
 > Medido do Mac do Cássio, não da nuvem. O ambiente das Routines tem egress bloqueado
 > para este host. Se o timestamp acima estiver velho, o Mac estava desligado — diga isso
@@ -16,10 +16,10 @@ source: mac-launchagent
 
 | Path | HTTP | Tempo total | TTFB | Bytes | Content-Type |
 |---|---|---|---|---|---|
-| `/` | 200 | 0.147831s | 0.103421s | 45962 B | text/html; charset=UTF-8 |
-| `/manifest.json` | 200 | 0.105260s | 0.105099s | 884 B | application/json; charset=UTF-8 |
-| `/sw.js` | 200 | 0.121845s | 0.101241s | 9649 B | application/javascript; charset=UTF-8 |
-| `/js/app.js` | 200 | 0.202805s | 0.123992s | 83888 B | application/javascript; charset=UTF-8 |
+| `/` | 200 | 0.116280s | 0.087754s | 45962 B | text/html; charset=UTF-8 |
+| `/manifest.json` | 200 | 0.093275s | 0.092846s | 884 B | application/json; charset=UTF-8 |
+| `/sw.js` | 200 | 0.096681s | 0.088181s | 9649 B | application/javascript; charset=UTF-8 |
+| `/js/app.js` | 200 | 0.124649s | 0.083985s | 83888 B | application/javascript; charset=UTF-8 |
 
 ## Compressão (`/css/style.css` com `Accept-Encoding: gzip, br`)
 
@@ -43,9 +43,9 @@ cache-control: public, max-age=0
 content-security-policy: default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self' wss://calima.med.br https://api.github.com https://raw.githubusercontent.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'
 content-type: text/html; charset=UTF-8
 cross-origin-opener-policy: same-origin
-date: Wed, 07 Oct 2026 14:59:42 GMT
-etag: W/"b38a-1a116e02618"
-last-modified: Wed, 07 Oct 2026 14:59:11 GMT
+date: Wed, 07 Oct 2026 20:59:47 GMT
+etag: W/"b38a-1a1176f8538"
+last-modified: Wed, 07 Oct 2026 17:35:47 GMT
 referrer-policy: no-referrer
 strict-transport-security: max-age=15552000
 x-content-type-options: nosniff
