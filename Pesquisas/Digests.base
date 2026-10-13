@@ -1,49 +1,43 @@
-# Dashboard dos digests diários gerados pela Routine.
-# Mostra só notas com a tag "digest" (todas as áreas: IA, Saúde, MedTrab, MercFin, etc.).
 filters:
   and:
     - file.hasTag("digest")
-
 properties:
   area:
-    displayName: "Área"
+    displayName: Área
   date:
-    displayName: "Data/hora"
+    displayName: Data/hora
   file.name:
-    displayName: "Digest"
+    displayName: Digest
   file.folder:
-    displayName: "Pasta"
-
+    displayName: Pasta
 views:
   - type: cards
-    name: "Recentes"
-    limit: 24
-    sort:
-      - property: file.name
-        direction: DESC
+    name: Recentes
     order:
       - area
       - date
-
+    sort:
+      - property: file.name
+        direction: DESC
+    limit: 24
   - type: table
-    name: "Por área"
+    name: Por área
     groupBy:
       property: area
       direction: ASC
-    sort:
-      - property: file.name
-        direction: DESC
     order:
       - date
       - file.name
-
-  - type: table
-    name: "Linha do tempo"
-    limit: 60
     sort:
       - property: file.name
         direction: DESC
+  - type: table
+    name: Linha do tempo
     order:
       - date
       - area
       - file.folder
+    sort:
+      - property: file.name
+        direction: DESC
+    limit: 60
