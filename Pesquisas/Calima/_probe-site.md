@@ -6,7 +6,7 @@ tags: [calima, probe, uptime]
 source: mac-launchagent
 ---
 
-# Probe de `calima.med.br` — 2026-10-14 06:01:47 (America/Sao_Paulo)
+# Probe de `calima.med.br` — 2026-10-14 07:07:17 (America/Sao_Paulo)
 
 > Medido do Mac do Cássio, não da nuvem. O ambiente das Routines tem egress bloqueado
 > para este host. Se o timestamp acima estiver velho, o Mac estava desligado — diga isso
@@ -16,40 +16,25 @@ source: mac-launchagent
 
 | Path | HTTP | Tempo total | TTFB | Bytes | Content-Type |
 |---|---|---|---|---|---|
-| `/` | 200 | 0.200404s | 0.155191s | 47450 B | text/html; charset=UTF-8 |
-| `/manifest.json` | 200 | 0.199963s | 0.198252s | 884 B | application/json; charset=UTF-8 |
-| `/sw.js` | 200 | 0.150900s | 0.131181s | 9808 B | application/javascript; charset=UTF-8 |
-| `/js/app.js` | 200 | 0.200160s | 0.142851s | 85228 B | application/javascript; charset=UTF-8 |
+| `/` | ERRO | - | - | - |
+| `/manifest.json` | ERRO | - | - | - |
+| `/sw.js` | ERRO | - | - | - |
+| `/js/app.js` | ERRO | - | - | - |
 
 ## Compressão (`/css/style.css` com `Accept-Encoding: gzip, br`)
 
 ```
-content-encoding: gzip
+(nenhum — servidor respondeu sem content-encoding mesmo com Accept-Encoding: gzip, br)
 ```
 
 ## Certificado TLS
 
 ```
-notAfter=Dec 22 22:32:29 2026 GMT issuer= /C=US/O=Let's Encrypt/CN=YR2 
+(não foi possível ler o certificado)
 ```
 
 ## Headers de resposta de `/`
 
 ```http
-HTTP/2 200 
-accept-ranges: bytes
-alt-svc: h3=":443"; ma=2592000
-cache-control: public, max-age=0
-content-security-policy: default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self' wss://calima.med.br https://api.github.com https://raw.githubusercontent.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'
-content-type: text/html; charset=UTF-8
-cross-origin-opener-policy: same-origin
-date: Wed, 14 Oct 2026 09:01:47 GMT
-etag: W/"b95a-1a1256f69c8"
-last-modified: Sat, 10 Oct 2026 10:50:21 GMT
-referrer-policy: no-referrer
-strict-transport-security: max-age=15552000
-x-content-type-options: nosniff
-x-frame-options: DENY
-content-length: 47450
-
+curl: (6) Could not resolve host: calima.med.br
 ```
