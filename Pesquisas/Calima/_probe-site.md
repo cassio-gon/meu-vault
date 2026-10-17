@@ -1,12 +1,12 @@
 ---
 title: Calima — probe do site (medido do Mac)
-date: 2026-10-16
+date: 2026-10-17
 area: Calima
 tags: [calima, probe, uptime]
 source: mac-launchagent
 ---
 
-# Probe de `calima.med.br` — 2026-10-16 19:08:17 (America/Sao_Paulo)
+# Probe de `calima.med.br` — 2026-10-17 01:08:21 (America/Sao_Paulo)
 
 > Medido do Mac do Cássio, não da nuvem. O ambiente das Routines tem egress bloqueado
 > para este host. Se o timestamp acima estiver velho, o Mac estava desligado — diga isso
@@ -16,10 +16,10 @@ source: mac-launchagent
 
 | Path | HTTP | Tempo total | TTFB | Bytes | Content-Type |
 |---|---|---|---|---|---|
-| `/` | 200 | 0.104453s | 0.074044s | 47450 B | text/html; charset=UTF-8 |
-| `/manifest.json` | 200 | 0.072245s | 0.071886s | 884 B | application/json; charset=UTF-8 |
-| `/sw.js` | 200 | 0.075801s | 0.062953s | 9808 B | application/javascript; charset=UTF-8 |
-| `/js/app.js` | 200 | 0.108954s | 0.075724s | 85228 B | application/javascript; charset=UTF-8 |
+| `/` | 200 | 0.112425s | 0.075191s | 47450 B | text/html; charset=UTF-8 |
+| `/manifest.json` | 200 | 0.086525s | 0.086188s | 884 B | application/json; charset=UTF-8 |
+| `/sw.js` | 200 | 0.092878s | 0.077709s | 9808 B | application/javascript; charset=UTF-8 |
+| `/js/app.js` | 200 | 0.126957s | 0.086604s | 85228 B | application/javascript; charset=UTF-8 |
 
 ## Compressão (`/css/style.css` com `Accept-Encoding: gzip, br`)
 
@@ -43,9 +43,9 @@ cache-control: public, max-age=0
 content-security-policy: default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self' wss://calima.med.br https://api.github.com https://raw.githubusercontent.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'
 content-type: text/html; charset=UTF-8
 cross-origin-opener-policy: same-origin
-date: Fri, 16 Oct 2026 22:08:17 GMT
-etag: W/"b95a-1a1452ec740"
-last-modified: Fri, 16 Oct 2026 14:47:36 GMT
+date: Sat, 17 Oct 2026 04:08:20 GMT
+etag: W/"b95a-1a1473ce6c0"
+last-modified: Sat, 17 Oct 2026 00:22:16 GMT
 referrer-policy: no-referrer
 strict-transport-security: max-age=15552000
 x-content-type-options: nosniff
