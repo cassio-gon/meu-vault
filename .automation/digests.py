@@ -29,7 +29,7 @@ import coleta
 from acervo import consolidar
 from coleta import BRT, ColetaErro, Item
 
-MODELO_PADRAO = "claude-sonnet-5-5"
+MODELO_PADRAO = "claude-haiku-5-5"  # escolha do Cássio em 19/10: ~US$ 0,50/mês; Sonnet 5.5 ~US$ 6–8
 MODELO_BUSCA = "claude-haiku-5-5"  # a busca do Claude só dispara a ferramenta, não precisa raciocinar
 PRECOS = {"claude-sonnet-5-5": (2.00, 10.00), "claude-haiku-5-5": (0.10, 0.50)}  # US$/MTok entrada, saída
 USD_POR_BUSCA = 0.01  # web_search da API: US$ 10 por mil buscas
