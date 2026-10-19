@@ -31,16 +31,35 @@ do repo em 2026-08-29 — não as recrie.
 Liste os 3 arquivos `*Digest.md` mais recentes da pasta da área e leia seus títulos de
 tópico. Guarde-os como "já publicado".
 
-### 2. Busca do dia — WebSearch ancorado nos 5 sites da área (NUNCA firecrawl)
-`.automation/area-sources.md` define **5 sites âncora por área**. Eles são o piso de
-qualidade da busca e todos foram verificados como ativos, recentes e indexáveis.
+### 2. Busca do dia — coleta das páginas de seção pelo agente web
+`.automation/area-sources.md` define **5 sites âncora por área**, cada um com a **URL da
+página de seção** (ou do feed RSS) e o modo de acesso. Eles são o piso de qualidade.
+
+**Ferramenta principal: `web_scrape` do conector `agente-web`** (Firecrawl próprio do
+Cássio, custo zero). A página de seção traz a lista do dia com o link real de cada matéria,
+a hora ("há 3 horas", "19/10/26") e a foto de cada card. Chame SEMPRE com
+`fallback: false` (não gasta a cota paga de reserva) e `maxChars: 6000`. Âncora marcado
+com `waitFor` no area-sources: passe esse valor também.
 
 Faça, nesta ordem:
-- **Uma busca `site:` por site âncora** — 5 buscas, ex.:
-  `site:protecao.com.br saúde e segurança do trabalho` (acrescente o tema do dia).
-- **Uma busca aberta** do tema da área, para não perder o furo que nasceu fora da lista.
+1. **Uma coleta por âncora de modo `coleta`** — `web_scrape` na URL de seção. Anote as
+   matérias com data de hoje ou das últimas ~48h: título, URL da matéria e a URL da foto do
+   mesmo card (regras em "Foto do tópico", seção 4). Se a coleta falhar, siga para o
+   próximo âncora; não repita.
+2. **Uma busca `site:` no WebSearch por âncora de modo `busca`** (sites que bloqueiam o
+   coletor; hoje só os 3 de MedTrab: gov.br, conjur.com.br e tst.jus.br).
+3. **Uma busca aberta no WebSearch** do tema da área, para não perder o furo que nasceu
+   fora da lista.
+4. **Depois de escolher os tópicos (seção 3, Seleção), uma coleta da própria matéria** de cada
+   tópico: `web_scrape` com `fallback: false` e `maxChars: 3000`. É dela que saem o resumo,
+   a data confirmada e, se o card não trouxe, a foto. Paywall ou falha: siga com o que a
+   página de seção mostrou.
 
-**Duas regras de query (obrigatórias — o `site:` do WebSearch quebra fácil):**
+**Se o conector `agente-web` não existir na sessão ou TODAS as coletas da área falharem**
+(VPS fora do ar), volte ao modo antigo só nessa área: uma busca `site:` no WebSearch por
+âncora (use o domínio do âncora) + a busca aberta, sem imagens. Diga no relatório final.
+
+**Regras das buscas no WebSearch (obrigatórias — o `site:` quebra fácil):**
 - **Domínio nu, sem caminho.** `site:g1.globo.com saúde` funciona; `site:g1.globo.com/saude`
   devolve lixo. Para chegar numa seção, use as palavras do tema, não o caminho da URL.
 - **NUNCA ponha data na query.** "agosto 2026", "29 de agosto", "August 29 2026" puxam
@@ -54,12 +73,9 @@ relevante, datado e de veículo confiável** — nunca blog agregador, nunca sit
 republica release. Priorize conteúdo de HOJE ou das últimas ~48h, com URL real e
 verificável.
 
-**Não use WebFetch por padrão.** A maioria dos grandes portais devolve **403 (anti-bot)**,
-inclusive feeds RSS, e cada tentativa falha ainda queima tokens à toa. Extraia título, data e
-resumo direto dos snippets do WebSearch. Só recorra ao WebFetch se a **data** de um tópico que
-você realmente vai publicar estiver ambígua e não der pra resolver com outra busca — e, nesse
-caso, **uma única tentativa**; se der 403, siga com o que o WebSearch trouxe, sem reprocessar.
-**Não use firecrawl** (sem créditos na Routine).
+**Não use WebFetch.** Os grandes portais devolvem **403 (anti-bot)** e cada tentativa queima
+tokens à toa; o `web_scrape` do `agente-web` faz esse papel. **Não use o conector `firecrawl`**
+(o da Firecrawl cloud, sem créditos) — o `agente-web` é outro serviço, esse pode.
 
 ### 3. Seleção
 Escolha os ~5 tópicos mais relevantes. **Descarte** qualquer um cujo assunto já apareça
@@ -94,11 +110,13 @@ source: routine
 > <1 frase em pt-BR resumindo o panorama do dia nesta área>
 
 > [!<tipo>] <emoji> <título do tópico 1>
+> <img src="<url-da-foto>" alt="" loading="lazy" referrerpolicy="no-referrer">
+>
 > <resumo em pt-BR, 2–4 frases>
 >
 > 📅 <DD/MM/AAAA> · [Fonte](<url-real>)
 
-> [!<tipo>] <emoji> <título do tópico 2>
+> [!<tipo>] <emoji> <título do tópico 2 (sem foto válida: sem a linha img)>
 > <resumo em pt-BR, 2–4 frases>
 >
 > 📅 <DD/MM/AAAA> · [Fonte](<url-real>)
@@ -112,7 +130,7 @@ source: routine
 **Regras de formatação do callout (obrigatório):**
 - O digest abre com **um** callout `> [!tldr]` de 1 frase (resumo do dia).
 - **Cada tópico é um callout** `> [!<tipo>] <emoji> <título>`. TODA linha do tópico
-  (resumo, data, fonte) começa com `> `. Separe o resumo da linha da data com **uma linha
+  (foto, resumo, data, fonte) começa com `> `. Separe o resumo da linha da data com **uma linha
   `>` vazia** (senão viram um parágrafo só).
 - O `<tipo>` do callout vem da categoria do tópico (a cor/ícone no leitor derivam dele):
 
@@ -134,6 +152,17 @@ source: routine
   Se não encaixar, use `> [!note] 📌 <título>`.
 - Termine com o callout de rodapé `> [!note]- ℹ️ Sobre` contendo `[[<Código>]]` — esse
   wikilink conecta os digests da área no grafo do Obsidian. Mantenha exatamente esse formato.
+
+**Foto do tópico (opcional, nunca inventada):**
+- Use a foto que veio **na coleta**: a imagem do mesmo card da matéria na página de seção
+  (o `![...](url)` colado ao link dessa matéria) ou, se o card não tinha, a primeira foto do
+  conteúdo da matéria coletada no passo 4 da busca.
+- Descarte, e siga sem foto: `.svg`, `.gif`, pixel de rastreio (`pixel.`, `analytics`,
+  `sync`), `<Base64-Image-Removed>`, logo, ícone, foto de autor (`autor`, `50x50`), URL
+  que não começa com `https://`, URL igual à da própria página, e URL com aspas ou espaço.
+- Nunca use foto de outra matéria, banco de imagens, Openverse ou placeholder. Tópico de
+  feed RSS ou do WebSearch sem foto na coleta da matéria fica sem foto — tudo bem.
+- A linha `<img>` vai logo abaixo do título, seguida de uma linha `>` vazia.
 
 Resumo SEMPRE em pt-BR (traduza fontes em inglês). Todo tópico precisa de título, resumo e
 URL reais; descarte os incompletos.

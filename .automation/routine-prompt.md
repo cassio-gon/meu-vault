@@ -1,8 +1,10 @@
 # Prompt ATUAL da Routine "Digests do Vault — diário"
 
-> Versão 2026-08-29 (rev. 2, após run de teste). Mudanças: áreas **Puerperio** e **RN** desativadas
-> (6 áreas restantes) e busca ancorada nos **5 sites fixos por área** de
-> `.automation/area-sources.md`.
+> Versão 2026-10-19. Mudança: a busca passou para o `web_scrape` do conector `agente-web`
+> nas páginas de seção dos âncoras (URLs em `.automation/area-sources.md`), e as fotos
+> voltaram, só quando vêm na própria coleta. WebSearch ficou para os 3 âncoras de MedTrab
+> que bloqueiam o coletor, para a busca aberta e para o plano B. O conector `agente-web`
+> foi anexado à Routine em `mcp_connections`.
 > Rollback da versão anterior: `.automation/routine-prompt-backup.md`.
 
 ```
@@ -12,23 +14,17 @@ Você está numa sessão fresca de nuvem com o repositório meu-vault já clonad
 
 2. São 6 áreas, todas rodam todo dia, nesta ordem exata: IA, Saude, MedTrab, MercFin, Filmes, Jogos. As áreas Puerperio e RN foram DESATIVADAS — não gere digest para elas, não crie arquivo em Pesquisas/Puerperio nem em Pesquisas/RN (essas pastas foram removidas do repo), e não as conte como falha nem como área pulada.
 
-3. Busca — cada área tem 5 SITES ÂNCORA em .automation/area-sources.md. Para cada área, faça 5 buscas `site:` (uma por site âncora, somando o tema do dia) + 1 busca aberta do tema da área, e monte o digest priorizando o que veio desses 5 sites. Fonte fora da lista só entra se for claramente relevante, datada e de veículo confiável — nunca blog agregador nem site que só republica release. Os 5 âncoras de cada área são:
-   - IA: techcrunch.com, technologyreview.com, arstechnica.com, olhardigital.com.br, tecnoblog.net
-   - Saude: g1.globo.com, veja.abril.com.br, agenciabrasil.ebc.com.br, folha.uol.com.br, sciencedaily.com
-   - MedTrab: protecao.com.br, gov.br, conjur.com.br, tst.jus.br, ilo.org
-   - MercFin: infomoney.com.br, moneytimes.com.br, valor.globo.com, exame.com, neofeed.com.br
-   - Filmes: omelete.com.br, adorocinema.com, variety.com, deadline.com, hollywoodreporter.com
-   - Jogos: br.ign.com, tecmundo.com.br, adrenaline.com.br, gamespot.com, polygon.com
+3. Busca — cada área tem 5 SITES ÂNCORA em .automation/area-sources.md, cada um com a URL da página de seção (ou do feed RSS) e o modo: coleta ou busca. Para cada área: (a) um web_scrape do conector agente-web por âncora de modo coleta, SEMPRE com fallback: false e maxChars: 6000 (e waitFor quando o area-sources indicar); (b) uma busca `site:` no WebSearch por âncora de modo busca; (c) uma busca aberta no WebSearch do tema da área. Depois de escolher os tópicos, faça um web_scrape da própria matéria de cada tópico (fallback: false, maxChars: 3000): é dele que saem o resumo, a data confirmada e a foto. Fonte fora da lista só entra se for claramente relevante, datada e de veículo confiável — nunca blog agregador nem site que só republica release.
 
-4. DUAS REGRAS DE QUERY, obrigatórias: (a) `site:` sempre com DOMÍNIO NU, sem caminho — `site:g1.globo.com saúde` funciona, `site:g1.globo.com/saude` devolve lixo; (b) NUNCA ponha data na query ("agosto 2026", "August 29 2026") — isso puxa retrospectiva e artigo velho; a data você lê no snippet. Se uma busca `site:` voltar resultado fora do domínio pedido, descarte e siga sem insistir.
+4. DUAS REGRAS DE QUERY no WebSearch, obrigatórias: (a) `site:` sempre com DOMÍNIO NU, sem caminho — `site:g1.globo.com saúde` funciona, `site:g1.globo.com/saude` devolve lixo; (b) NUNCA ponha data na query ("agosto 2026", "August 29 2026") — isso puxa retrospectiva e artigo velho; a data você lê no snippet. Se uma busca `site:` voltar resultado fora do domínio pedido, descarte e siga sem insistir.
 
-5. Use SOMENTE WebSearch e WebFetch — NUNCA firecrawl (sem créditos). WebSearch é a ferramenta principal e traz título, URL real e data nos próprios snippets. Os grandes portais bloqueiam o WebFetch com 403, então NÃO dependa dele; não use WebFetch por padrão.
+5. Ferramentas: web_scrape do conector agente-web é a principal (ela chega como ferramenta adiada: carregue antes com ToolSearch, consulta "select:mcp__agente-web__web_scrape"); WebSearch só nos três usos do item 3. NUNCA use WebFetch (os portais dão 403) nem o conector firecrawl (sem créditos) — o agente-web é outro serviço e pode. Se o conector agente-web não existir na sessão, ou se TODAS as coletas de uma área falharem, faça essa área no modo antigo: uma busca `site:` no WebSearch por âncora (domínio do âncora) + a busca aberta, sem fotos.
 
-6. Siga o formato de nota, os CÓDIGOS curtos de área (IA, Saude, MedTrab, MercFin, Filmes, Jogos) em filename/title/area/heading, e o dedupe de 3 dias EXATAMENTE como o playbook descreve. NÃO inclua imagens nos digests.
+6. Siga o formato de nota, os CÓDIGOS curtos de área (IA, Saude, MedTrab, MercFin, Filmes, Jogos) em filename/title/area/heading, e o dedupe de 3 dias EXATAMENTE como o playbook descreve. Foto: inclua a linha <img> de um tópico SÓ com a URL de imagem que veio na coleta (card da página de seção ou matéria coletada), seguindo a seção "Foto do tópico" do playbook. Nunca invente nem busque foto em outro lugar; sem foto válida, o tópico sai sem foto.
 
 7. Fechamento git único do playbook: git add Pesquisas/ → commit → git pull --rebase origin main → git push origin HEAD:main. ATENÇÃO: você provavelmente está em detached HEAD — isso é NORMAL neste ambiente e não significa que há trabalho por enviar. NÃO rode git checkout main, git stash, git reset --hard nem git merge; só commite e empurre com HEAD:main. Se o git push falhar com 403 do proxy, use a integração do GitHub (push_files) para gravar os arquivos de Pesquisas/ na branch main.
 
-8. Relatório final: quantas áreas geraram nota, quais áreas foram puladas e quais falharam, com 1 linha de motivo cada.
+8. Relatório final: quantas áreas geraram nota, quais áreas foram puladas e quais falharam, com 1 linha de motivo cada; e, por área, quantas coletas do agente-web funcionaram, quantos tópicos saíram com foto e se alguma área caiu no modo antigo.
 
 ETAPA FINAL — ACERVO (só depois do commit dos digests estar feito):
 

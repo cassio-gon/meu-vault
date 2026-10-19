@@ -398,6 +398,7 @@
     }
     .art-body .callout-title { font-family: var(--serif); font-weight: 600; font-size: 16px; color: rgb(var(--cc)); margin-bottom: 6px; letter-spacing: -0.01em; }
     .art-body .callout-content { color: var(--fg); font-size: 16px; line-height: 1.62; }
+    .art-body .callout-content img { display: block; width: 100%; height: auto; max-height: 240px; object-fit: cover; border-radius: 6px; margin: 2px 0 10px; }
     .art-body .callout-content p { margin-bottom: 10px; }
     .art-body .callout-content > :last-child { margin-bottom: 0; }
     .art-body .callout[data-callout="note"], .art-body .callout[data-callout="info"], .art-body .callout[data-callout="todo"] { --cc: 8,109,221; }
@@ -1159,6 +1160,9 @@
     link.href = URL.createObjectURL(new Blob([JSON.stringify(m)], { type: 'application/json' }));
     document.head.appendChild(link);
   })();
+
+  // Foto de notícia vem direto do portal: se o link quebrar, some em vez de mostrar ícone quebrado.
+  document.addEventListener('error', e => { if (e.target.tagName === 'IMG' && e.target.closest('.art-body')) e.target.remove(); }, true);
 
   init();
 </script>
