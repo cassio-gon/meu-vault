@@ -339,6 +339,13 @@ def validar(md, area, topicos, quando):
     return erros
 
 
+def _material(texto, trecho):
+    """Texto da matéria; se ela abriu mal (paywall, bloqueio), junta o trecho do feed ou do card."""
+    if len(texto) >= 600:
+        return texto
+    return "\n".join(p for p in (texto, trecho) if p) or "(só o título)"
+
+
 def escrever(ctx, area, topicos):
     system = (secao(ctx.playbook, "4. Escreva a nota") + "\n\n---\n"
               "Você recebe os tópicos já escolhidos e apurados por código, cada um com cabeçalho de callout, data, "
@@ -355,7 +362,7 @@ def escrever(ctx, area, topicos):
         reais[f"URL {n}"], reais[f"FOTO {n}"] = it.url, it.foto
         blocos.append(f'<topico n="{n}">\nCabeçalho: > [!{tipo}] {emoji} <título>\nTítulo original: {it.titulo}\n'
                       f"Data: {it.publicado:%d/%m/%Y}\nFoto: {'{{FOTO %d}}' % n if it.foto else 'nenhuma'}\n"
-                      f"Fonte: {it.fonte}\nTexto coletado:\n{t['texto'] or it.resumo or '(só o título)'}\n</topico>")
+                      f"Fonte: {it.fonte}\nTexto coletado:\n{_material(t['texto'], it.resumo)}\n</topico>")
     user = f"Código: {area.codigo} · tag: {area.tag} · data e hora: {ctx.quando}\n\n" + "\n\n".join(blocos)
 
     def redigir(etapa, pedido):
