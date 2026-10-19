@@ -1,0 +1,79 @@
+name: Digests do Vault — diário
+
+# Substitui a Routine "Digests do Vault — diário". O script lê os playbooks de .automation/
+# e grava em Pesquisas/ e Acervo/; este workflow só agenda, commita e publica o resumo.
+on:
+  schedule:
+    - cron: "5 9 * * *" # 06:05 BRT
+  workflow_dispatch:
+    inputs:
+      modelo:
+        description: "claude-sonnet-5-5 ou claude-haiku-5-5 (vazio = variável DIGEST_MODEL)"
+        required: false
+        default: ""
+      areas:
+        description: "Só estas áreas, ex.: IA,Saude (vazio = todas)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: digests
+  cancel-in-progress: false
+
+jobs:
+  digests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 20
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install --quiet "anthropic==1.15.0"
+
+      - name: Gerar digests
+        env:
+          AGENTE_WEB_TOKEN: ${{ secrets.AGENTE_WEB_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          DIGEST_MODEL: ${{ inputs.modelo || vars.DIGEST_MODEL || 'claude-sonnet-5-5' }}
+          DIGEST_BUSCA: ${{ vars.DIGEST_BUSCA || 'claude' }}
+          AREAS: ${{ inputs.areas }}
+        run: |
+          args=(--resumo "$RUNNER_TEMP/resumo.json" --custos .automation/custos.jsonl)
+          if [ -n "$AREAS" ]; then args+=(--areas "$AREAS"); fi
+          python .automation/digests.py "${args[@]}"
+
+      - name: Commit e push
+        if: ${{ !cancelled() }}
+        run: |
+          R="$RUNNER_TEMP/resumo.json"
+          [ -f "$R" ] || { echo "sem resumo: nada a commitar"; exit 0; }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          quando=$(jq -r .quando "$R")
+          n=$(jq '[.areas[] | select(.status == "ok")] | length' "$R")
+          git add Pesquisas/ .automation/custos.jsonl
+          git diff --cached --quiet || git commit -q -m "auto: $quando BRT — digests do dia ($n áreas)"
+          git add Acervo/
+          git diff --cached --quiet || git commit -q -m "acervo: $(jq -r '.acervo | join(", ")' "$R")"
+          for i in 1 2 3 4; do
+            if git pull -q --rebase origin main && git push -q origin HEAD:main; then exit 0; fi
+            sleep $((i * 5))
+          done
+          exit 1
+
+      - name: Resumo da execução
+        if: ${{ !cancelled() }}
+        run: |
+          R="$RUNNER_TEMP/resumo.json"
+          [ -f "$R" ] || exit 0
+          jq -r '"### Digests \(.quando) · \(.modelo) · busca \(.busca) · US$ \(.custo_usd)", "",
+                 (.areas[] | "- **\(.codigo)**: \(.status) · \(.topicos // 0) tópicos (\(.com_foto // 0) com foto) · coletas \(.coletas // "-") \(.motivo // "")"),
+                 "", "Acervo: \(if (.acervo | length) == 0 then "nenhum tema tocado" else (.acervo | join(", ")) end)"' "$R" >> "$GITHUB_STEP_SUMMARY"

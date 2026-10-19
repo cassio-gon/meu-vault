@@ -1,8 +1,21 @@
 # Playbook: Digests diários do Vault
 
-Você é executado por uma Routine às 06:00 BRT. Objetivo: gerar o digest de hoje para
-**cada uma das 6 áreas**, em sequência, e fazer **um único** commit+push no fim.
-Trabalhe na raiz do repo `meu-vault` já clonado. NÃO altere nada fora de `Pesquisas/`.
+> **Quem executa agora: o script `.automation/digests.py`**, pelo GitHub Actions
+> (`.github/workflows/digests.yml`, 06:05 BRT), no lugar da Routine (que fazia tudo num agente
+> em loop e custava US$ 4–7 por dia). O script não tem cópia das regras: a cada execução ele lê
+> deste arquivo a lista em "Ordem das áreas", a seção "3. Seleção" (vai para a chamada que
+> escolhe os tópicos), a seção "4. Escreva a nota" (vai para a chamada que escreve o `.md`), o
+> parágrafo "Prefira o que veio dos 5 âncoras" e a tabela de categorias. Mudou aqui, muda no
+> digest do dia seguinte. **Não renomeie esses títulos** sem ajustar `digests.py`.
+>
+> Ficam em código, porque são mecânicas: a coleta da seção 2 (`coleta.py`: `web_scrape` com
+> `fallback: false` e os `maxChars` daqui e do `area-sources.md`, lidos dos textos; feed RSS com
+> 40000, já que o parse não gasta token), o dedupe de 3 dias por URL e título normalizado, o corte de
+> 48h e as regras de "Foto do tópico". Se mudar uma delas aqui, mude também em `coleta.py`.
+> As fontes continuam em `area-sources.md`; o commit é do workflow (ver "Fechamento").
+
+Objetivo: gerar o digest de hoje para **cada uma das 6 áreas**, em sequência, e fazer **um
+único** commit+push no fim. NÃO altere nada fora de `Pesquisas/`.
 
 ## Ordem das áreas (faça nesta ordem)
 
@@ -185,6 +198,10 @@ Se a busca/escrita de uma área falhar, registre o erro mentalmente e **siga par
 
 ## Fechamento (uma vez só, depois das 6 áreas)
 
+> Com o script, quem faz isto é o workflow: um commit para `Pesquisas/` (com o
+> `.automation/custos.jsonl` do dia) e outro, separado, para `Acervo/`, com a mesma mensagem e
+> as mesmas 4 tentativas de `pull --rebase` + `push`. O texto abaixo vale para execução manual.
+
 ⚠️ **Você provavelmente está em `detached HEAD` — isso é NORMAL no ambiente da Routine e
 não significa que exista trabalho por enviar.** NÃO tente consertar o branch local: nada de
 `git checkout main`, `git stash`, `git reset --hard` ou `git merge`. Isso já causou conflito
@@ -201,5 +218,8 @@ abortem o rebase. Se `git push` falhar por avanço do remoto, repita apenas
 `git pull --rebase origin main` e `git push` (até 4 tentativas; o commit já foi feito).
 
 ## Relatório final (sua última mensagem)
+> Com o script, o relatório sai no log e no resumo da execução do Actions, com o custo de cada
+> chamada ao Claude.
+
 Resuma: quantas áreas geraram nota, quais foram puladas (sem novidade) e quais falharam,
 com 1 linha de motivo cada.

@@ -1,7 +1,9 @@
 # Playbook do Acervo (camada 2 — notas vivas)
 
 Fonte da verdade do comportamento das notas vivas. Quem consome: o comando
-`/acervo` (ingestão de pesquisas) e a Routine dos digests (consolidação diária).
+`/acervo` (ingestão de pesquisas) e a consolidação diária dos digests, hoje feita por
+`.automation/acervo.py` (chamado por `digests.py` no GitHub Actions), que manda este arquivo
+inteiro para o Claude e aplica em código as edições cirúrgicas que ele devolve.
 
 ⚠️ **Não duplicar estas regras no prompt da Routine.** O prompt deve apenas
 apontar para este arquivo. Regra escrita em dois lugares diverge — foi o que
@@ -100,6 +102,9 @@ Depois de qualquer escrita em `Acervo/`, rodar:
 ```bash
 /Users/cassiogoncalves/.claude/tools/acervo/acervo-check.sh
 ```
+
+No repo há uma cópia, `.automation/acervo-check.sh` (sem argumento, valida a raiz do repo); é a
+que o `acervo.py` roda no GitHub Actions. Se a checagem falhar, ele devolve as notas ao que eram.
 
 Exit `0` é obrigatório antes do commit. Se falhar, corrigir a nota — nunca
 afrouxar o validador.
