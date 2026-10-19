@@ -196,9 +196,13 @@ def _eh_materia(url, secao):
     p = urllib.parse.urlsplit(url)
     if dominio(p.netloc) != dominio(urllib.parse.urlsplit(secao).netloc):
         return False
-    if url.split("#")[0].rstrip("/") == secao.rstrip("/") or _NAO_MATERIA.search(p.path):
-        return False
-    return bool(_CARA_DE_MATERIA.search(p.path))
+    return url.split("#")[0].rstrip("/") != secao.rstrip("/") and parece_materia(url)
+
+
+def parece_materia(url):
+    """URL com cara de matéria (slug longo, id ou data), não de página-índice, tag ou arquivo."""
+    caminho = urllib.parse.urlsplit(url).path
+    return not _NAO_MATERIA.search(caminho) and bool(_CARA_DE_MATERIA.search(caminho))
 
 
 def _titulo_ok(t):
@@ -282,7 +286,7 @@ def _feed_lista(md, fonte, agora):
         urls = [u.split("/*")[-1] for u in re.findall(r"\]\((https?://[^\s)]+)\)", bloco)]
         if urls and len(linhas) > 1 and _SUBLINHADO.match(linhas[1]) and _titulo_ok(linhas[0]):
             itens.append(Item(linhas[0], urls[-1], fonte, data_no_texto(_limpo(bloco), agora), None,
-                              _limpo("\n".join(linhas[2:]))[:200]))
+                              _limpo("\n".join(linhas[2:]))[:1500]))
     return itens
 
 
@@ -300,7 +304,7 @@ def _feed_texto(md, secao, fonte, agora):
         data = _RFC822.search(md, m.end(), fim)
         quando = email.utils.parsedate_to_datetime(data.group(0)).astimezone(BRT) if data else None
         if _titulo_ok(" ".join(titulo)):
-            itens.append(Item(" ".join(titulo), m.group(0), fonte, quando, None, _limpo(md[m.end():fim])[:200]))
+            itens.append(Item(" ".join(titulo), m.group(0), fonte, quando, None, _limpo(md[m.end():fim])[:1500]))
     return itens
 
 
@@ -334,7 +338,8 @@ def feed(md, fonte, agora):
             + re.findall(r'<enclosure[^>]*url="([^"]+)"[^>]*type="image/', bloco) \
             + re.findall(r'<img[^>]*src="([^"]+)"', html.unescape(bloco))
         foto = next((f for f in fotos if foto_ok(f, link)), None)
-        itens.append(Item(titulo, link, fonte, quando, foto, _tag(bloco, "description")[:200]))
+        texto = " ".join(f"{_tag(bloco, 'description')} {_tag(bloco, 'content:encoded')}".split())
+        itens.append(Item(titulo, link, fonte, quando, foto, texto[:1500]))  # reserva se a matéria não abrir
     return itens
 
 
