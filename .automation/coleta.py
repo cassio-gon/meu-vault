@@ -172,10 +172,24 @@ def foto_ok(url, pagina=None):
     return not _FOTO_RUIM.search(url) and url.rstrip("/") != (pagina or "").rstrip("/")
 
 
+def foto_responde(url, timeout=8):
+    """A foto abre de verdade? HEAD (ou GET de 1 byte) sem Referer, como o Brief pede; 200 + image/*."""
+    for metodo, extra in (("HEAD", {}), ("GET", {"Range": "bytes=0-0"})):
+        req = urllib.request.Request(url, method=metodo, headers={"User-Agent": "Mozilla/5.0", **extra})
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                if r.status in (200, 206):
+                    return r.headers.get_content_type().startswith("image/")
+        except (urllib.error.URLError, TimeoutError, ValueError):
+            continue
+    return False
+
+
 # ---------------------------------------------------------------- parse dos cards
 
-_IMG = re.compile(r"!\[([^\]]*)\]\((<Base64-Image-Removed>|\S+?)(?:\s+\"[^\"]*\")?\)")
-_LINK = re.compile(r'(?<!!)\[((?:[^\[\]]|!?\[[^\[\]]*\])*)\]\((https?://[^\s)]+)(?:\s+"([^"]*)")?\)')
+_URL_MD = r"(?:[^\s()]|\([^\s()]*\))+"  # URL dentro de (...) do markdown, aceitando "(webp)" no meio
+_IMG = re.compile(rf"!\[([^\]]*)\]\((<Base64-Image-Removed>|{_URL_MD})(?:\s+\"[^\"]*\")?\)")
+_LINK = re.compile(rf'(?<!!)\[((?:[^\[\]]|!?\[[^\[\]]*\])*)\]\((https?://{_URL_MD})(?:\s+"([^"]*)")?\)')
 _SUBLINHADO = re.compile(r"^[-=]{3,}$")
 _NAO_MATERIA = re.compile(r"/(autor|author|authors|tag|tags|category|categoria|editorias|topic|c|v|video|videos|podcast|podcasts|events|newsletter|print-article)/|\.(jpe?g|png|webp|gif|svg|mp4|pdf)$", re.I)
 _CARA_DE_MATERIA = re.compile(r"\d{5,}|/20\d\d[/-]|[^/]*-[^/]*-[^/]*-")

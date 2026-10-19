@@ -46,6 +46,9 @@ def test_secao():
     assert c.foto is None  # card sem foto não herda a do card anterior
     assert a.publicado.strftime("%d/%m %H") == "18/10 13" and b.publicado.day == 18
     assert c.publicado.day == 16
+    omelete = "[![Ramayana](https://cdn.ome.lt/Zbv=/480x360/smart/filters:format(webp)/extras/ramayana.jpg \"Ramayana\") Filmes há 55 minutos](https://www.omelete.com.br/filmes/ramayana-rise-of-a-legend-ganha-trailer)"
+    o, = coleta.cards(omelete, "https://www.omelete.com.br/noticias", "Omelete", AGORA)
+    assert o.foto.endswith("filters:format(webp)/extras/ramayana.jpg"), o.foto  # parêntese dentro da URL
 
 
 def test_feed():

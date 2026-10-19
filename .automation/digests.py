@@ -306,7 +306,8 @@ def apurar(escolhidos, agora, max_chars):
         quando = it.publicado or data_mat
         if not quando or agora - quando > JANELA:
             return None
-        return {"item": Item(it.titulo, it.url, it.fonte, quando, it.foto or foto_mat, it.resumo),
+        foto = next((f for f in (it.foto, foto_mat) if f and coleta.foto_responde(f)), None)
+        return {"item": Item(it.titulo, it.url, it.fonte, quando, foto, it.resumo),
                 "categoria": categoria, "texto": texto}
 
     with ThreadPoolExecutor(WORKERS) as ex:
