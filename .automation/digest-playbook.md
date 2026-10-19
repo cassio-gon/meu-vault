@@ -27,6 +27,12 @@ do repo em 2026-08-29 — não as recrie.
 
 ## Para cada área, faça:
 
+**Uma área por vez, do começo ao fim.** Para cada área: colete as páginas dela, escolha os
+tópicos, colete as matérias e **grave o arquivo da área (Write) antes de começar a
+próxima**. Não colete as 6 áreas de uma vez. Em 19/10/2026 isso estourou o contexto, a
+compactação guardou só os domínios e 25 de 29 links saíram como `https://deadline.com`.
+**Não abra subagente** (Agent/Task) e **não use `maxChars` acima do indicado** aqui.
+
 ### 1. Dedupe — leia o que já saiu
 Liste os 3 arquivos `*Digest.md` mais recentes da pasta da área e leia seus títulos de
 tópico. Guarde-os como "já publicado".
@@ -38,7 +44,7 @@ página de seção** (ou do feed RSS) e o modo de acesso. Eles são o piso de qu
 **Ferramenta principal: `web_scrape` do conector `agente-web`** (Firecrawl próprio do
 Cássio, custo zero). A página de seção traz a lista do dia com o link real de cada matéria,
 a hora ("há 3 horas", "19/10/26") e a foto de cada card. Chame SEMPRE com
-`fallback: false` (não gasta a cota paga de reserva) e `maxChars: 6000`. Âncora marcado
+`fallback: false` (não gasta a cota paga de reserva) e `maxChars: 4000`. Âncora marcado
 com `waitFor` no area-sources: passe esse valor também.
 
 Faça, nesta ordem:
@@ -51,7 +57,7 @@ Faça, nesta ordem:
 3. **Uma busca aberta no WebSearch** do tema da área, para não perder o furo que nasceu
    fora da lista.
 4. **Depois de escolher os tópicos (seção 3, Seleção), uma coleta da própria matéria** de cada
-   tópico: `web_scrape` com `fallback: false` e `maxChars: 3000`. É dela que saem o resumo,
+   tópico: `web_scrape` com `fallback: false` e `maxChars: 2000`. É dela que saem o resumo,
    a data confirmada e, se o card não trouxe, a foto. Paywall ou falha: siga com o que a
    página de seção mostrou.
 
@@ -162,10 +168,16 @@ source: routine
   que não começa com `https://`, URL igual à da própria página, e URL com aspas ou espaço.
 - Nunca use foto de outra matéria, banco de imagens, Openverse ou placeholder. Tópico de
   feed RSS ou do WebSearch sem foto na coleta da matéria fica sem foto — tudo bem.
-- A linha `<img>` vai logo abaixo do título, seguida de uma linha `>` vazia.
+- A linha `<img>` vai logo abaixo do título, seguida de uma linha `>` vazia, exatamente
+  assim: `> <img src="<url>" alt="" loading="lazy" referrerpolicy="no-referrer">`. Nunca
+  `![](url)` e nunca a foto depois do resumo.
 
 Resumo SEMPRE em pt-BR (traduza fontes em inglês). Todo tópico precisa de título, resumo e
 URL reais; descarte os incompletos.
+
+**O link `[Fonte](...)` é a URL exata da matéria**, copiada do resultado do `web_scrape`
+(ou do WebSearch): nunca só o domínio (`https://deadline.com`), nunca a página de seção e
+nunca um domínio deduzido. Se você não tem mais a URL exata, descarte o tópico.
 
 ### 5. Robustez
 Se a busca/escrita de uma área falhar, registre o erro mentalmente e **siga para a próxima

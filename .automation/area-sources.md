@@ -2,7 +2,7 @@
 
 > **Atualizado em 2026-10-19: a busca passou para o `web_scrape` do conector `agente-web`.**
 > Cada âncora agora tem a **URL da página de seção** (ou do feed RSS) e um modo:
-> - **coleta** — `web_scrape` nessa URL, com `fallback: false` e `maxChars: 6000`. Todas
+> - **coleta** — `web_scrape` nessa URL, com `fallback: false` e `maxChars: 4000`. Todas
 >   foram testadas em 19/10/2026 pela instância própria: abriram com a lista do dia.
 > - **busca** — o site bloqueia o coletor; use uma busca `site:<domínio>` no WebSearch.
 > - **waitFor** — página que carrega por JavaScript; passe `waitFor: 4000`.
