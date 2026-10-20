@@ -3,8 +3,11 @@ name: Digests do Vault — diário
 # Substitui a Routine "Digests do Vault — diário". O script lê os playbooks de .automation/
 # e grava em Pesquisas/ e Acervo/; este workflow só agenda, commita e publica o resumo.
 on:
+  # O GitHub atrasa ou descarta agendamento na hora cheia quando há fila (20/10/2026 não
+  # rodou). Dois horários fora da hora cheia; o segundo só gera se o primeiro falhou.
   schedule:
-    - cron: "5 9 * * *" # 06:05 BRT
+    - cron: "41 8 * * *" # 05:41 BRT
+    - cron: "17 10 * * *" # 07:17 BRT, rede de segurança
   workflow_dispatch:
     inputs:
       modelo:
@@ -32,13 +35,26 @@ jobs:
         with:
           fetch-depth: 20
 
+      - name: Já saiu hoje?
+        id: ja
+        if: ${{ github.event_name == 'schedule' }}
+        run: |
+          hoje=$(TZ=America/Sao_Paulo date +%F)
+          if compgen -G "Pesquisas/*/$hoje *Digest.md" > /dev/null; then
+            echo "Digests de $hoje já existem; nada a fazer."
+            echo "feito=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - uses: actions/setup-python@v5
+        if: ${{ steps.ja.outputs.feito != 'true' }}
         with:
           python-version: "3.12"
 
       - run: pip install --quiet "anthropic==1.15.0"
+        if: ${{ steps.ja.outputs.feito != 'true' }}
 
       - name: Gerar digests
+        if: ${{ steps.ja.outputs.feito != 'true' }}
         env:
           AGENTE_WEB_TOKEN: ${{ secrets.AGENTE_WEB_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -52,7 +68,7 @@ jobs:
           python .automation/digests.py "${args[@]}"
 
       - name: Commit e push
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && steps.ja.outputs.feito != 'true' }}
         run: |
           R="$RUNNER_TEMP/resumo.json"
           [ -f "$R" ] || { echo "sem resumo: nada a commitar"; exit 0; }
@@ -72,7 +88,7 @@ jobs:
           exit 1
 
       - name: Resumo da execução
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && steps.ja.outputs.feito != 'true' }}
         run: |
           R="$RUNNER_TEMP/resumo.json"
           [ -f "$R" ] || exit 0
