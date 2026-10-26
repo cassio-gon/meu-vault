@@ -6,7 +6,7 @@ tags: [calima, probe, uptime]
 source: mac-launchagent
 ---
 
-# Probe de `calima.med.br` — 2026-10-26 04:57:09 (America/Sao_Paulo)
+# Probe de `calima.med.br` — 2026-10-26 10:57:13 (America/Sao_Paulo)
 
 > Medido do Mac do Cássio, não da nuvem. O ambiente das Routines tem egress bloqueado
 > para este host. Se o timestamp acima estiver velho, o Mac estava desligado — diga isso
@@ -16,10 +16,10 @@ source: mac-launchagent
 
 | Path | HTTP | Tempo total | TTFB | Bytes | Content-Type |
 |---|---|---|---|---|---|
-| `/` | 200 | 0.160276s | 0.105898s | 47439 B | text/html; charset=UTF-8 |
-| `/manifest.json` | 200 | 0.220732s | 0.197400s | 884 B | application/json; charset=UTF-8 |
-| `/sw.js` | 200 | 0.298675s | 0.287826s | 11516 B | application/javascript; charset=UTF-8 |
-| `/js/app.js` | 200 | 0.154273s | 0.106789s | 85228 B | application/javascript; charset=UTF-8 |
+| `/` | 200 | 0.108623s | 0.079146s | 47440 B | text/html; charset=UTF-8 |
+| `/manifest.json` | 200 | 0.162998s | 0.162572s | 884 B | application/json; charset=UTF-8 |
+| `/sw.js` | 200 | 0.087699s | 0.074827s | 11568 B | application/javascript; charset=UTF-8 |
+| `/js/app.js` | 200 | 0.110036s | 0.071862s | 85228 B | application/javascript; charset=UTF-8 |
 
 ## Compressão (`/css/style.css` com `Accept-Encoding: gzip, br`)
 
@@ -43,14 +43,14 @@ cache-control: public, max-age=0
 content-security-policy: default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self' wss://calima.med.br https://api.github.com https://raw.githubusercontent.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'
 content-type: text/html; charset=UTF-8
 cross-origin-opener-policy: same-origin
-date: Mon, 26 Oct 2026 07:57:08 GMT
-etag: W/"b94f-1a176de7588"
-last-modified: Mon, 26 Oct 2026 06:20:53 GMT
+date: Mon, 26 Oct 2026 13:57:13 GMT
+etag: W/"b950-1a177794270"
+last-modified: Mon, 26 Oct 2026 09:09:58 GMT
 referrer-policy: no-referrer
 strict-transport-security: max-age=15552000
 vary: Cookie
 x-content-type-options: nosniff
 x-frame-options: DENY
-content-length: 47439
+content-length: 47440
 
 ```
