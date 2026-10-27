@@ -2,7 +2,7 @@
 tema: NR-1 e riscos psicossociais
 tipo: nota-viva
 criado: 2026-07-06
-atualizado: 2026-10-17
+atualizado: 2026-10-26
 tags: [acervo, medtrab]
 ---
 
@@ -51,6 +51,7 @@ tags: [acervo, medtrab]
 - 2026-10-11 — TST: 601.538 ações de assédio moral em 5 anos (2020–2025), recorde de 116.739 em 2024 (+14%); assédio moral quantificado como principal fonte de litigância psicossocial; micro e PMEs concentram >60% dos casos. [Dropped: Q1 2026 afastamentos saúde mental (105.874, ago/2026) — dado parcial supersedido pelo registro anual completo de 546 mil afastamentos em 2025]
 - 2026-10-13 — Doença mental ocupacional reconhecida pelo INSS como doença do trabalho = estabilidade provisória no emprego (art. 118 Lei 8.213/91): nexo técnico epidemiológico facilita reconhecimento em perícias e processos trabalhistas; amplia o escopo prático da NR-1 psicossocial. [Dropped: MTE manual oficial para implantação do GRO (mar/2026) — documento de referência disponível na fonte original; conteúdo preservado no log de 2026-09-08]
 - 2026-10-17 — OIT publica nota específica sobre avanços da América Latina em riscos psicossociais (out/2026, próxima ao Dia Mundial da Saúde Mental): iniciativas regulatórias de vários países destacadas — vigência plena da NR-1 brasileira (mai/2026) citada como referência regional; reforça bullet OIT de set/2026 sem fato genuinamente novo.
+- 2026-10-26 — AGU abre Tomada de Subsídios nº 3/2026 sobre riscos psicossociais na NR 1, em articulação com a NR 17, e sobre proposta de conciliação do MTE; prazo de 29/10 a 02/12/2026; subsidia discussões em andamento no STF.
 
 ## Em aberto
 
@@ -60,4 +61,4 @@ tags: [acervo, medtrab]
 
 ## Origens
 
-[[2026-07-06 — Pesquisa: NR-1 e riscos psicossociais]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-08-24 06h10 — MedTrab Digest]] · [[2026-08-26 06h10 — MedTrab Digest]] · [[2026-08-27 06h10 — MedTrab Digest]] · [[2026-08-28 06h10 — MedTrab Digest]] · [[2026-08-29 06h10 — MedTrab Digest]] · [[2026-09-02 06h10 — MedTrab Digest]] · [[2026-09-04 06h10 — MedTrab Digest]] · [[2026-09-05 06h05 — Saude Digest]] · [[2026-09-06 06h10 — MedTrab Digest]] · [[2026-09-08 06h05 — MedTrab Digest]] · [[2026-09-11 06h05 — MedTrab Digest]] · [[2026-09-14 06h05 — MedTrab Digest]] · [[2026-09-22 06h15 — MedTrab Digest]] · [[2026-09-23 06h15 — MedTrab Digest]] · [[2026-09-27 06h15 — MedTrab Digest]] · [[2026-09-30 06h00 — MedTrab Digest]] · [[2026-10-04 06h05 — MedTrab Digest]] · [[2026-10-06 06h08 — MedTrab Digest]] · [[2026-10-09 06h09 — MedTrab Digest]] · [[2026-10-11 06h05 — MedTrab Digest]] · [[2026-10-13 06h08 — MedTrab Digest]] · [[2026-10-17 06h05 — MedTrab Digest]]
+[[2026-07-06 — Pesquisa: NR-1 e riscos psicossociais]] · [[2026-08-20 06h10 — MedTrab Digest]] · [[2026-08-21 06h10 — MedTrab Digest]] · [[2026-08-24 06h10 — MedTrab Digest]] · [[2026-08-26 06h10 — MedTrab Digest]] · [[2026-08-27 06h10 — MedTrab Digest]] · [[2026-08-28 06h10 — MedTrab Digest]] · [[2026-08-29 06h10 — MedTrab Digest]] · [[2026-09-02 06h10 — MedTrab Digest]] · [[2026-09-04 06h10 — MedTrab Digest]] · [[2026-09-05 06h05 — Saude Digest]] · [[2026-09-06 06h10 — MedTrab Digest]] · [[2026-09-08 06h05 — MedTrab Digest]] · [[2026-09-11 06h05 — MedTrab Digest]] · [[2026-09-14 06h05 — MedTrab Digest]] · [[2026-09-22 06h15 — MedTrab Digest]] · [[2026-09-23 06h15 — MedTrab Digest]] · [[2026-09-27 06h15 — MedTrab Digest]] · [[2026-09-30 06h00 — MedTrab Digest]] · [[2026-10-04 06h05 — MedTrab Digest]] · [[2026-10-06 06h08 — MedTrab Digest]] · [[2026-10-09 06h09 — MedTrab Digest]] · [[2026-10-11 06h05 — MedTrab Digest]] · [[2026-10-13 06h08 — MedTrab Digest]] · [[2026-10-17 06h05 — MedTrab Digest]] · [[2026-10-27 05h45 — MedTrab Digest]]
