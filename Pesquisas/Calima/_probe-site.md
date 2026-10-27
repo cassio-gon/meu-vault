@@ -6,7 +6,7 @@ tags: [calima, probe, uptime]
 source: mac-launchagent
 ---
 
-# Probe de `calima.med.br` — 2026-10-27 04:57:30 (America/Sao_Paulo)
+# Probe de `calima.med.br` — 2026-10-27 10:57:35 (America/Sao_Paulo)
 
 > Medido do Mac do Cássio, não da nuvem. O ambiente das Routines tem egress bloqueado
 > para este host. Se o timestamp acima estiver velho, o Mac estava desligado — diga isso
@@ -16,10 +16,10 @@ source: mac-launchagent
 
 | Path | HTTP | Tempo total | TTFB | Bytes | Content-Type |
 |---|---|---|---|---|---|
-| `/` | 200 | 0.146074s | 0.093775s | 47440 B | text/html; charset=UTF-8 |
-| `/manifest.json` | 200 | 0.109381s | 0.109012s | 884 B | application/json; charset=UTF-8 |
-| `/sw.js` | 200 | 0.156194s | 0.136122s | 11568 B | application/javascript; charset=UTF-8 |
-| `/js/app.js` | 200 | 0.228253s | 0.194869s | 85228 B | application/javascript; charset=UTF-8 |
+| `/` | 200 | 0.221815s | 0.195123s | 47440 B | text/html; charset=UTF-8 |
+| `/manifest.json` | 200 | 0.080544s | 0.080186s | 884 B | application/json; charset=UTF-8 |
+| `/sw.js` | 200 | 0.094866s | 0.085065s | 11681 B | application/javascript; charset=UTF-8 |
+| `/js/app.js` | 200 | 0.105362s | 0.066366s | 85262 B | application/javascript; charset=UTF-8 |
 
 ## Compressão (`/css/style.css` com `Accept-Encoding: gzip, br`)
 
@@ -43,9 +43,9 @@ cache-control: public, max-age=0
 content-security-policy: default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self' wss://calima.med.br https://api.github.com https://raw.githubusercontent.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'
 content-type: text/html; charset=UTF-8
 cross-origin-opener-policy: same-origin
-date: Tue, 27 Oct 2026 07:57:29 GMT
-etag: W/"b950-1a17af83000"
-last-modified: Tue, 27 Oct 2026 01:27:28 GMT
+date: Tue, 27 Oct 2026 13:57:33 GMT
+etag: W/"b950-1a17cf5f018"
+last-modified: Tue, 27 Oct 2026 10:44:15 GMT
 referrer-policy: no-referrer
 strict-transport-security: max-age=15552000
 vary: Cookie
