@@ -1,5 +1,11 @@
 # Playbook do Acervo (camada 2 — notas vivas)
 
+> [!warning] Congelado desde 02/11/2026
+> A consolidação diária está desligada (`--sem-acervo` em `.github/workflows/digests.yml`) e as 11
+> notas ficam paradas, só para consulta. Motivo: o histórico "Como isso mudou" só crescia (notas de
+> 17 a 37 KB copiando as manchetes dos digests) e, desde 31/10, a nota de IA passou do teto de 15 bullets,
+> então toda edição era desfeita depois de pagar a leitura da nota inteira. Religar = tirar a flag.
+
 Fonte da verdade do comportamento das notas vivas. Quem consome: o comando
 `/acervo` (ingestão de pesquisas) e a consolidação diária dos digests, hoje feita por
 `.automation/acervo.py` (chamado por `digests.py` no GitHub Actions), que manda este arquivo

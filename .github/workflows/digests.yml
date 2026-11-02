@@ -1,7 +1,8 @@
 name: Digests do Vault — diário
 
 # Substitui a Routine "Digests do Vault — diário". O script lê os playbooks de .automation/
-# e grava em Pesquisas/ e Acervo/; este workflow só agenda, commita e publica o resumo.
+# e grava em Pesquisas/; este workflow só agenda, commita e publica o resumo.
+# O Acervo (notas vivas) está congelado desde 02/11/2026: --sem-acervo abaixo. Para religar, tirar a flag.
 on:
   # O GitHub atrasa ou descarta agendamento na hora cheia quando há fila (20/10/2026 não
   # rodou). Dois horários fora da hora cheia; o segundo só gera se o primeiro falhou.
@@ -63,7 +64,7 @@ jobs:
           DIGEST_BUSCA: ${{ vars.DIGEST_BUSCA || 'searxng' }}
           AREAS: ${{ inputs.areas }}
         run: |
-          args=(--resumo "$RUNNER_TEMP/resumo.json" --custos .automation/custos.jsonl)
+          args=(--resumo "$RUNNER_TEMP/resumo.json" --custos .automation/custos.jsonl --sem-acervo)
           if [ -n "$AREAS" ]; then args+=(--areas "$AREAS"); fi
           python .automation/digests.py "${args[@]}"
 
