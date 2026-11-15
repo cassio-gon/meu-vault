@@ -27,3 +27,4 @@
 {"quando": "2026-11-12 05h45", "modelo": "claude-haiku-5-5", "busca": "searxng", "custo_usd": 0.0136, "areas_ok": 6, "entrada": 51768, "saida": 16917}
 {"quando": "2026-11-13 05h45", "modelo": "claude-haiku-5-5", "busca": "searxng", "custo_usd": 0.014, "areas_ok": 6, "entrada": 51069, "saida": 17802}
 {"quando": "2026-11-14 05h45", "modelo": "claude-haiku-5-5", "busca": "searxng", "custo_usd": 0.0143, "areas_ok": 6, "entrada": 51793, "saida": 18305}
+{"quando": "2026-11-15 05h45", "modelo": "claude-haiku-5-5", "busca": "searxng", "custo_usd": 0.0112, "areas_ok": 5, "entrada": 42665, "saida": 13845}
